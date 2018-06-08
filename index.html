@@ -1,0 +1,320 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>PySAT: SAT-based prototyping in Python &#8212; PySAT 0.1.3.dev10 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="pysat-sat-based-prototyping-in-python">
+<h1>PySAT: SAT-based prototyping in Python<a class="headerlink" href="#pysat-sat-based-prototyping-in-python" title="Permalink to this headline">¶</a></h1>
+<p>PySAT is a Python library providing a simple interface to a number of
+state-of-art Boolean satisfiability (SAT) solvers and a few types of
+cardinality encodings. The purpose of PySAT is to enable researchers
+working on SAT and its applications and generalizations to easily
+prototype with SAT oracles in Python while exploiting incrementally the
+power of the original low-level implementations of modern SAT solvers.</p>
+<p>With PySAT it should be easy for you to implement a MaxSAT solver, an
+MUS/MCS extractor/enumerator, or any tool solving an application problem
+with the (potentially multiple) use of a SAT oracle.</p>
+<p>Currently, the following SAT solvers are supported (currently, for
+Minisat-based solvers only <em>core</em> versions are integrated):</p>
+<ul class="simple">
+<li>Glucose (<a class="reference external" href="http://www.labri.fr/perso/lsimon/glucose/">3.0</a>)</li>
+<li>Glucose (<a class="reference external" href="http://www.labri.fr/perso/lsimon/glucose/">4.1</a>)</li>
+<li>Lingeling (<a class="reference external" href="http://fmv.jku.at/lingeling/">bbc-9230380-160707</a>)</li>
+<li>Minicard (<a class="reference external" href="https://github.com/liffiton/minicard">1.2</a>)</li>
+<li>Minisat (<a class="reference external" href="http://minisat.se/MiniSat.html">2.2 release</a>)</li>
+<li>Minisat (<a class="reference external" href="https://github.com/niklasso/minisat">GitHub version</a>)</li>
+</ul>
+<p>Cardinality encodings supported are implemented in C++ and include:</p>
+<ul class="simple">
+<li>pairwise <a class="footnote-reference" href="#id16" id="id1">[7]</a></li>
+<li>bitwise <a class="footnote-reference" href="#id16" id="id2">[7]</a></li>
+<li>sequential counters <a class="footnote-reference" href="#id17" id="id3">[8]</a></li>
+<li>sorting networks <a class="footnote-reference" href="#id12" id="id4">[3]</a></li>
+<li>cardinality networks <a class="footnote-reference" href="#id10" id="id5">[1]</a></li>
+<li>ladder <a class="footnote-reference" href="#id13" id="id6">[4]</a></li>
+<li>totalizer <a class="footnote-reference" href="#id11" id="id7">[2]</a></li>
+<li>modulo totalizer <a class="footnote-reference" href="#id15" id="id8">[6]</a></li>
+<li>iterative totalizer <a class="footnote-reference" href="#id14" id="id9">[5]</a></li>
+</ul>
+<table class="docutils footnote" frame="void" id="id10" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[1]</a></td><td>Roberto Asin, Robert Nieuwenhuis, Albert Oliveras,
+Enric Rodriguez-Carbonell. <em>Cardinality Networks and Their Applications</em>.
+SAT 2009. pp. 167-180</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id11" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id7">[2]</a></td><td>Olivier Bailleux, Yacine Boufkhad. <em>Efficient CNF Encoding of Boolean
+Cardinality Constraints</em>. CP 2003. pp. 108-122</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id12" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[3]</a></td><td>Kenneth E. Batcher. <em>Sorting Networks and Their Applications</em>.
+AFIPS Spring Joint Computing Conference 1968. pp. 307-314</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id13" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id6">[4]</a></td><td>Ian P. Gent, Peter Nightingale. <em>A New Encoding of Alldifferent Into
+SAT</em>. In International workshop on modelling and reformulating constraint
+satisfaction problems 2004. pp. 95-110</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id14" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id9">[5]</a></td><td>Ruben Martins, Saurabh Joshi, Vasco M. Manquinho, Inês Lynce.
+<em>Incremental Cardinality Constraints for MaxSAT</em>. CP 2014. pp. 531-548</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id15" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id8">[6]</a></td><td>Toru Ogawa, Yangyang Liu, Ryuzo Hasegawa, Miyuki Koshimura,
+Hiroshi Fujita. <em>Modulo Based CNF Encoding of Cardinality Constraints and
+Its Application to MaxSAT Solvers</em>. ICTAI 2013. pp. 9-17</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id16" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[7]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Steven David Prestwich. <em>CNF Encodings</em>. Handbook of Satisfiability.
+2009. pp. 75-97</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id17" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[8]</a></td><td>Carsten Sinz. <em>Towards an Optimal CNF Encoding of Boolean
+Cardinality Constraints</em>. CP 2005. pp. 827-831</td></tr>
+</tbody>
+</table>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>Boolean variables in PySAT are represented as natural identifiers, e.g. numbers
+from <span class="math notranslate nohighlight">\(\mathbb{N}_{&gt;0}\)</span>. A <em>literal</em> in PySAT is assumed to be an integer,
+e.g. <code class="docutils literal notranslate"><span class="pre">-1</span></code> represents a literal <span class="math notranslate nohighlight">\(\neg{x_1}\)</span> while <span class="math notranslate nohighlight">\(5\)</span> represents a
+literal <span class="math notranslate nohighlight">\(x_5\)</span>.  A <em>clause</em> is a list of literals, e.g. <code class="docutils literal notranslate"><span class="pre">[-3,</span> <span class="pre">-2]</span></code> is a
+clause <span class="math notranslate nohighlight">\((\neg{x_3} \vee \neg{x_2})\)</span>.</p>
+<p>The following is a trivial example of PySAT usage:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="k">import</span> <span class="n">Glucose3</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">Glucose3</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">g</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">g</span><span class="o">.</span><span class="n">get_model</span><span class="p">()</span>
+<span class="gp">...</span>
+<span class="go">True</span>
+<span class="go">[-1, -2, -3]</span>
+</pre></div>
+</div>
+<p>Another example shows how to extract <em>unsatisfiable cores</em> from a SAT
+solver given an unsatisfiable set of clauses:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="k">import</span> <span class="n">Minisat22</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Minisat22</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span> <span class="k">as</span> <span class="n">m</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span> <span class="n">m</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">])</span>
+<span class="gp">... </span>    <span class="nb">print</span> <span class="n">m</span><span class="o">.</span><span class="n">get_core</span><span class="p">()</span>
+<span class="gp">...</span>
+<span class="go">False</span>
+<span class="go">[-3, 1]</span>
+</pre></div>
+</div>
+<p>Finally, the following example gives an idea of how one can extract a
+<em>proof</em> (supported by Glucose3, Glucose4, and Lingeling only):</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="k">import</span> <span class="n">CNF</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="k">import</span> <span class="n">Lingeling</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">formula</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">formula</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">formula</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">formula</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">formula</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Lingeling</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">formula</span><span class="o">.</span><span class="n">clauses</span><span class="p">,</span> <span class="n">with_proof</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">l</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">l</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">get_proof</span><span class="p">())</span>
+<span class="gp">...</span>
+<span class="go">[&#39;2 0&#39;, &#39;1 0&#39;, &#39;0&#39;]</span>
+</pre></div>
+</div>
+<p>PySAT usage is detailed in the <a class="reference external" href="examples">provided examples</a>. For
+instance, one can see there simple PySAT-based implementations of</p>
+<ul class="simple">
+<li>Fu&amp;Malik algorithm for MaxSAT <a class="footnote-reference" href="#id24" id="id18">[9]</a></li>
+<li>RC2/OLLITI algorithm for MaxSAT <a class="footnote-reference" href="#id28" id="id19">[13]</a> <a class="footnote-reference" href="#id29" id="id20">[14]</a></li>
+<li>CLD-like algorithm for MCS extraction and enumeration <a class="footnote-reference" href="#id26" id="id21">[11]</a></li>
+<li>LBX-like algorithm for MCS extraction and enumeration <a class="footnote-reference" href="#id27" id="id22">[12]</a></li>
+<li>Deletion-based MUS extraction <a class="footnote-reference" href="#id25" id="id23">[10]</a></li>
+</ul>
+<table class="docutils footnote" frame="void" id="id24" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id18">[9]</a></td><td>Zhaohui Fu, Sharad Malik. <em>On Solving the Partial MAX-SAT Problem</em>.
+SAT 2006. pp. 252-265</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id25" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id23">[10]</a></td><td>Joao Marques Silva. <em>Minimal Unsatisfiability: Models, Algorithms and
+Applications</em>. ISMVL 2010. pp. 9-14</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id26" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id21">[11]</a></td><td>Joao Marques-Silva, Federico Heras, Mikolas Janota, Alessandro Previti,
+Anton Belov. <em>On Computing Minimal Correction Subsets</em>. IJCAI 2013. pp.
+615-622</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id27" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id22">[12]</a></td><td>Carlos Mencia, Alessandro Previti, Joao Marques-Silva. <em>Literal-Based
+MCS Extraction</em>. IJCAI 2015. pp. 1973-1979</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id28" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id19">[13]</a></td><td>António Morgado, Carmine Dodaro, Joao Marques-Silva. <em>Core-Guided
+MaxSAT with Soft Cardinality Constraints</em>. CP 2014. pp. 564-573.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id29" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id20">[14]</a></td><td>António Morgado, Alexey Ignatiev, Joao Marques-Silva. <em>MSCG: Robust
+Core-Guided MaxSAT Solving. System Description</em>. JSAT 2015. vol. 9,
+pp. 129-134.</td></tr>
+</tbody>
+</table>
+<p>The examples can also be accessed as a subpackage of PySAT:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="k">import</span> <span class="n">CNF</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.lbx</span> <span class="k">import</span> <span class="n">LBX</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">formula</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;input.cnf&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mcsls</span> <span class="o">=</span> <span class="n">LBX</span><span class="p">(</span><span class="n">formula</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">mcs</span> <span class="ow">in</span> <span class="n">mcsls</span><span class="o">.</span><span class="n">enumerate</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">print</span> <span class="n">mcs</span>
+</pre></div>
+</div>
+<p>Alternatively, they can be used as standalone executables, e.g. like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lbx</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">e</span> <span class="nb">all</span> <span class="o">-</span><span class="n">d</span> <span class="o">-</span><span class="n">s</span> <span class="n">g4</span> <span class="o">-</span><span class="n">v</span> <span class="n">another</span><span class="o">-</span><span class="nb">input</span><span class="o">.</span><span class="n">wcnf</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>The simplest way to get and start using PySAT is to install the latest
+stable release of PySAT from PyPI:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">sat</span>
+</pre></div>
+</div>
+<p>Alternatively, you can clone this repository and do the following with
+your local copy:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>or (if you choose a directory to install PySAT into)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=&lt;</span><span class="n">where</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">install</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Both options (i.e. via <code class="docutils literal notranslate"><span class="pre">pip</span></code> or <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>) are supposed to download
+and compile all the supported SAT solvers as well as prepare the
+installation of PySAT.</p>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>PySAT is licensed under the MIT License - see the <a class="reference external" href="https://raw.githubusercontent.com/pysathq/pysat/master/LICENSE.txt">LICENSE</a> file
+for details.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div class="sidebarblock">
+    <a href="https://github.com/pysathq/pysat">
+        <img src='_static/pysat.png' alt='pysat' width=128>
+    </a>
+    </br>
+    </br>
+    <div class="tile">
+    <h4>Latest version:</h4>
+    0.1.3.dev10 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    </div>
+    </br>
+    </br>
+</div>
+<div class="sidebarblock">
+<h4>Contact us:</h4>
+      <a class="reference external" href="https://github.com/pysathq/pysat/issues">
+            Issue tracker
+      </a>
+      |
+      <a class="reference external" href="mailto:pysathq@gmail.com">
+          Email
+      </a>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
