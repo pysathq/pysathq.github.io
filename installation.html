@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>PySAT: SAT technology in Python &#8212; PySAT 0.1.3.dev10 documentation</title>
+    <title>Installation &#8212; PySAT 0.1.3.dev10 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -16,7 +16,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Features" href="features.html" />
+    <link rel="next" title="Citation" href="citation.html" />
+    <link rel="prev" title="Usage" href="usage.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -31,23 +32,31 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="pysat-sat-technology-in-python">
-<h1>PySAT: SAT technology in Python<a class="headerlink" href="#pysat-sat-technology-in-python" title="Permalink to this headline">¶</a></h1>
-<p>PySAT is a Python (2.7, 3.4+) toolkit, which aims at providing a simple and
-unified interface to a number of state-of-art <a class="reference external" href="https://en.wikipedia.org/wiki/Boolean_satisfiability_problem">Boolean satisfiability (SAT)</a> solvers as
-well as to a variety of cardinality encodings. The purpose of PySAT is to
-enable researchers working on SAT and its applications and generalizations to
-easily prototype with SAT oracles in Python while exploiting incrementally the
-power of the original low-level implementations of modern SAT solvers.</p>
-<p>PySAT can be helpful when solving problems in <span class="math notranslate nohighlight">\(\mathbb{NP}\)</span> but also
-<a class="reference external" href="http://beyondnp.org/">beyond</a> <span class="math notranslate nohighlight">\(\mathbb{NP}\)</span>. For instance, PySAT is
-handy when one needs to quickly implement a MaxSAT solver, an MUS/MCS extractor
-or enumerator, an abstraction-based QBF solver, or any other kind of tool
-solving an application problem with the (potentially <em>multiple</em> and/or
-<em>incremental</em>) use of a SAT oracle.</p>
-<p>PySAT is licensed under <a class="reference external" href="https://raw.githubusercontent.com/pysathq/pysat/master/LICENSE.txt">MIT</a>.</p>
-<div class="toctree-wrapper compound">
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p>There are several ways to install PySAT. The simplest way to get and start
+using it is to install the latest stable release of the toolkit from <a class="reference external" href="https://pypi.org/">PyPI</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install python-sat
+</pre></div>
 </div>
+<p>Once installed from PyPI, the toolkit at a later stage can be updated in the
+following way:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install -U python-sat
+</pre></div>
+</div>
+<p>Alternatively, one can clone <a class="reference external" href="https://github.com/pysathq/pysat">the repository</a> and execute the following command in the
+local copy:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python setup.py install
+</pre></div>
+</div>
+<p>This will install the toolkit into the system’s Python path. If another
+destination directory is preferred, it can be set by</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python setup.py install --prefix=&lt;where-to-install&gt;
+</pre></div>
+</div>
+<p>Both options (i.e. via <code class="docutils literal notranslate"><span class="pre">pip</span></code> or <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>) are supposed to download
+and compile all the supported SAT solvers as well as prepare the
+installation of PySAT.</p>
 </div>
 
 
@@ -57,7 +66,7 @@ solving an application problem with the (potentially <em>multiple</em> and/or
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
 <p class="logo">
-  <a href="#">
+  <a href="index.html">
     <img class="logo" src="_static/pysat.png" alt="Logo"/>
     
   </a>
@@ -85,10 +94,10 @@ solving an application problem with the (potentially <em>multiple</em> and/or
     </div>
     </br>
 </div><h3>Navigation</h3>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="features.html">Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="citation.html">Citation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="todo.html">To-Do</a></li>
 </ul>
@@ -117,7 +126,7 @@ solving an application problem with the (potentially <em>multiple</em> and/or
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
-      <a href="_sources/index.rst.txt"
+      <a href="_sources/installation.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
