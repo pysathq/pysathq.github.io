@@ -1,0 +1,939 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>SAT solvers’ API (pysat.solvers) &#8212; PySAT 0.1.3.dev11 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Fu&amp;Malik MaxSAT algorithm (pysat.examples.fm)" href="examples/fm.html" />
+    <link rel="prev" title="Boolean formula manipulation (pysat.formula)" href="formula.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-pysat.solvers">
+<span id="sat-solvers-api-pysat-solvers"></span><h1>SAT solvers’ API (<a class="reference internal" href="#module-pysat.solvers" title="pysat.solvers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.solvers</span></code></a>)<a class="headerlink" href="#module-pysat.solvers" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="list-of-classes">
+<h2>List of classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#pysat.solvers.SolverNames" title="pysat.solvers.SolverNames"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SolverNames</span></code></a></td>
+<td>This class serves to determine the solver requested by a user given a string name.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#pysat.solvers.Solver" title="pysat.solvers.Solver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Solver</span></code></a></td>
+<td>Main class for creating and manipulating a SAT solver.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">Glucose3</span></code></td>
+<td>Glucose 3 SAT solver.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">Glucose4</span></code></td>
+<td>Glucose 4.1 SAT solver.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">Lingeling</span></code></td>
+<td>Lingeling SAT solver.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">Minicard</span></code></td>
+<td>Minicard SAT solver.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">Minisat22</span></code></td>
+<td>MiniSat 2.2 SAT solver.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">MinisatGH</span></code></td>
+<td>MiniSat SAT solver (version from github).</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-description">
+<h2>Module description<a class="headerlink" href="#module-description" title="Permalink to this headline">¶</a></h2>
+<p>This module provides <em>incremental</em> access to a few modern SAT solvers. The
+solvers supported by PySAT are:</p>
+<ul class="simple">
+<li>Glucose (<a class="reference external" href="http://www.labri.fr/perso/lsimon/glucose/">3.0</a>)</li>
+<li>Glucose (<a class="reference external" href="http://www.labri.fr/perso/lsimon/glucose/">4.1</a>)</li>
+<li>Lingeling (<a class="reference external" href="http://fmv.jku.at/lingeling/">bbc-9230380-160707</a>)</li>
+<li>Minicard (<a class="reference external" href="https://github.com/liffiton/minicard">1.2</a>)</li>
+<li>Minisat (<a class="reference external" href="http://minisat.se/MiniSat.html">2.2 release</a>)</li>
+<li>Minisat (<a class="reference external" href="https://github.com/niklasso/minisat">GitHub version</a>)</li>
+</ul>
+<p>All solvers can be accessed through a unified MiniSat-like <a class="footnote-reference" href="#id3" id="id1">[1]</a> incremental
+<a class="footnote-reference" href="#id4" id="id2">[2]</a> interface described below.</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Niklas Eén, Niklas Sörensson. <em>An Extensible SAT-solver</em>. SAT 2003.
+pp. 502-518</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id5">2</a>)</em> Niklas Eén, Niklas Sörensson. <em>Temporal induction by incremental SAT
+solving</em>. Electr. Notes Theor. Comput. Sci. 89(4). 2003. pp. 543-560</td></tr>
+</tbody>
+</table>
+<p>The module provides direct access to all supported solvers using the
+corresponding classes <code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose3</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose4</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Lingeling</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Minicard</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Minisat22</span></code>, and
+<code class="xref py py-class docutils literal notranslate"><span class="pre">MinisatGH</span></code>. However, the solvers can also be accessed through the
+common base class <a class="reference internal" href="#pysat.solvers.Solver" title="pysat.solvers.Solver"><code class="xref py py-class docutils literal notranslate"><span class="pre">Solver</span></code></a> using the solver <code class="docutils literal notranslate"><span class="pre">name</span></code> argument. For
+example, both of the following pieces of code create a copy of the
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose3</span></code> solver:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Glucose3</span><span class="p">,</span> <span class="n">Solver</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">Glucose3</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Solver</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;g3&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="#module-pysat.solvers" title="pysat.solvers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.solvers</span></code></a> module is designed to create and manipulate SAT
+solvers as <em>oracles</em>, i.e. it does not give access to solvers’ internal
+parameters such as variable polarities or activities. PySAT provides a user
+with the following basic SAT solving functionality:</p>
+<ul class="simple">
+<li>creating and deleting solver objects</li>
+<li>adding individual clauses and formulas to solver objects</li>
+<li>making SAT calls with or without assumptions</li>
+<li>propagating a given set of assumption literals</li>
+<li>extracting a model of a satisfiable input formula</li>
+<li>enumerating models of an input formula</li>
+<li>extracting an unsatisfiable core of an unsatisfiable formula</li>
+<li>extracting a <a class="reference external" href="http://www.cs.utexas.edu/~marijn/drup/">DRUP proof</a> logged by the solver</li>
+</ul>
+<p>PySAT supports both non-incremental and incremental SAT solving.
+Incrementality can be achieved with the use of the MiniSat-like
+<em>assumption-based</em> interface <a class="footnote-reference" href="#id4" id="id5">[2]</a>. It can be helpful if multiple calls to a
+SAT solver are needed for the same formula using different sets of
+“assumptions”, e.g. when doing consecutive SAT calls for formula
+<span class="math notranslate nohighlight">\(\mathcal{F}\land (a_{i_1}\land\ldots\land a_{i_1+j_1})\)</span> and
+<span class="math notranslate nohighlight">\(\mathcal{F}\land (a_{i_2}\land\ldots\land a_{i_2+j_2})\)</span>, where every
+<span class="math notranslate nohighlight">\(a_{l_k}\)</span> is an assumption literal.</p>
+<p>There are several advantages of using assumptions: (1) it enables one to
+<em>keep and reuse</em> the clauses learnt during previous SAT calls at a later
+stage and (2) assumptions can be easily used to extract an <em>unsatisfiable
+core</em> of the formula. A drawback of assumption-based SAT solving is that
+the clauses learnt are longer (they typically contain many assumption
+literals), which makes the SAT calls harder.</p>
+<p>In PySAT, assumptions should be provided as a list of literals given to the
+<code class="docutils literal notranslate"><span class="pre">solve()</span></code> method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Solver</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Solver</span><span class="p">()</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">... </span><span class="c1"># assume that solver s is fed with a formula</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>  <span class="c1"># a simple SAT call</span>
+<span class="go">True</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>  <span class="c1"># a SAT call with assumption literals</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">get_core</span><span class="p">()</span>  <span class="c1"># extracting an unsatisfiable core</span>
+<span class="go">[3, 1]</span>
+</pre></div>
+</div>
+<p>In order to shorten the description of the module, the classes providing
+direct access to the individual solvers, i.e. classes <code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose3</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose4</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Lingeling</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Minicard</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Minisat22</span></code>, and <code class="xref py py-class docutils literal notranslate"><span class="pre">MinisatGH</span></code>, are <strong>omitted</strong>. They replicate
+the interface of the base class <a class="reference internal" href="#pysat.solvers.Solver" title="pysat.solvers.Solver"><code class="xref py py-class docutils literal notranslate"><span class="pre">Solver</span></code></a> and, thus, can be used the
+same exact way.</p>
+</div>
+<div class="section" id="module-details">
+<h2>Module details<a class="headerlink" href="#module-details" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="pysat.solvers.NoSuchSolverError">
+<em class="property">exception </em><code class="descclassname">pysat.solvers.</code><code class="descname">NoSuchSolverError</code><a class="headerlink" href="#pysat.solvers.NoSuchSolverError" title="Permalink to this definition">¶</a></dt>
+<dd><p>This exception is raised when creating a new SAT solver whose name does
+not match any name in <a class="reference internal" href="#pysat.solvers.SolverNames" title="pysat.solvers.SolverNames"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolverNames</span></code></a>. The list of <em>known</em> solvers
+includes the names <cite>‘glucose3’</cite>, <cite>‘glucose4’</cite>, <cite>‘lingeling’</cite>,
+<cite>‘minicard’</cite>, <cite>‘minisat22’</cite>, and <cite>‘minisatgh’</cite>.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="pysat.solvers.Solver">
+<em class="property">class </em><code class="descclassname">pysat.solvers.</code><code class="descname">Solver</code><span class="sig-paren">(</span><em>name='m22'</em>, <em>bootstrap_with=None</em>, <em>use_timer=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main class for creating and manipulating a SAT solver. Any available
+SAT solver can be accessed as an object of this class and so
+<a class="reference internal" href="#pysat.solvers.Solver" title="pysat.solvers.Solver"><code class="xref py py-class docutils literal notranslate"><span class="pre">Solver</span></code></a> can be seen as a wrapper for all supported solvers.</p>
+<p>The constructor of <a class="reference internal" href="#pysat.solvers.Solver" title="pysat.solvers.Solver"><code class="xref py py-class docutils literal notranslate"><span class="pre">Solver</span></code></a> has only one mandatory argument
+<code class="docutils literal notranslate"><span class="pre">name</span></code>, while all the others are default. This means that explicit
+solver constructors, e.g. <code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose3</span></code> or <code class="xref py py-class docutils literal notranslate"><span class="pre">MinisatGH</span></code> etc.,
+have only default arguments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – solver’s name (see <a class="reference internal" href="#pysat.solvers.SolverNames" title="pysat.solvers.SolverNames"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolverNames</span></code></a>).</li>
+<li><strong>bootstrap_with</strong> (<em>list</em><em>(</em><em>list</em><em>(</em><em>int</em><em>)</em><em>)</em>) – a list of clauses for solver initialization.</li>
+<li><strong>use_timer</strong> (<em>bool</em>) – whether or not to measure SAT solving time.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The <code class="docutils literal notranslate"><span class="pre">bootstrap_with</span></code> argument is useful when there is an input CNF
+formula to feed the solver with. The argument expects a list of
+clauses, each clause being a list of literals, i.e. a list of integers.</p>
+<p>If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the <code class="docutils literal notranslate"><span class="pre">use_timer</span></code> parameter will force the solver
+to accumulate the time spent by all SAT calls made with this solver but
+also to keep time of the last SAT call.</p>
+<p>Once created and used, a solver must be deleted with the <a class="reference internal" href="#pysat.solvers.Solver.delete" title="pysat.solvers.Solver.delete"><code class="xref py py-meth docutils literal notranslate"><span class="pre">delete()</span></code></a>
+method. Alternatively, if created using the <code class="docutils literal notranslate"><span class="pre">with</span></code> statement,
+deletion is done automatically when the end of the <code class="docutils literal notranslate"><span class="pre">with</span></code> block is
+reached.</p>
+<p>Given the above, a couple of examples of solver creation are the
+following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Solver</span><span class="p">,</span> <span class="n">Minisat22</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Solver</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;g4&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">get_model</span><span class="p">()</span>
+<span class="go">[-1, -2]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Minisat22</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]])</span> <span class="k">as</span> <span class="n">m</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">m</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="n">m</span><span class="o">.</span><span class="n">get_model</span><span class="p">()</span>
+<span class="go">[-1, -2]</span>
+</pre></div>
+</div>
+<p>Note that while all explicit solver classes necessarily have default
+arguments <code class="docutils literal notranslate"><span class="pre">bootstrap_with</span></code> and <code class="docutils literal notranslate"><span class="pre">use_timer</span></code>, solvers
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Lingeling</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose3</span></code>, and <code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose4</span></code> can have
+additional default arguments. One such argument supported by
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose3</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose4</span></code> but also by <code class="docutils literal notranslate"><span class="pre">Lingeling</span></code> is
+<a class="reference external" href="http://www.cs.utexas.edu/~marijn/drup/">DRUP proof</a> logging. This
+can be enabled by setting the <code class="docutils literal notranslate"><span class="pre">with_proof</span></code> argument to <code class="docutils literal notranslate"><span class="pre">True</span></code>
+(<code class="docutils literal notranslate"><span class="pre">False</span></code> by default):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Lingeling</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.genhard</span> <span class="kn">import</span> <span class="n">PHP</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">PHP</span><span class="p">(</span><span class="n">nof_holes</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># pigeonhole principle for 3 pigeons</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Lingeling</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">,</span> <span class="n">with_proof</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">l</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">l</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+<span class="go">False</span>
+<span class="gp">... </span>    <span class="n">l</span><span class="o">.</span><span class="n">get_proof</span><span class="p">()</span>
+<span class="go">[&#39;-5 0&#39;, &#39;6 0&#39;, &#39;-2 0&#39;, &#39;-4 0&#39;, &#39;1 0&#39;, &#39;3 0&#39;, &#39;0&#39;]</span>
+</pre></div>
+</div>
+<p>Additionally and in contrast to <code class="xref py py-class docutils literal notranslate"><span class="pre">Lingeling</span></code>, both
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose3</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose4</span></code> have one more default argument
+<code class="docutils literal notranslate"><span class="pre">incr</span></code> (<code class="docutils literal notranslate"><span class="pre">False</span></code> by default), which enables incrementality features
+introduced in Glucose3 <a class="footnote-reference" href="#id8" id="id6">[3]</a>. To summarize, the additional arguments of
+Glucose are:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>incr</strong> (<em>bool</em>) – enable the incrementality features of Glucose3 <a class="footnote-reference" href="#id8" id="id7">[3]</a>.</li>
+<li><strong>with_proof</strong> (<em>bool</em>) – enable proof logging in the <a class="reference external" href="http://www.cs.utexas.edu/~marijn/drup/">DRUP format</a>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[3]</td><td><em>(<a class="fn-backref" href="#id6">1</a>, <a class="fn-backref" href="#id7">2</a>)</em> Gilles Audemard, Jean-Marie Lagniez, Laurent Simon. <em>Improving
+Glucose for Incremental SAT Solving with Assumptions: Application
+to MUS Extraction</em>. SAT 2013. pp. 309-317</td></tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="pysat.solvers.Solver.add_atmost">
+<code class="descname">add_atmost</code><span class="sig-paren">(</span><em>lits</em>, <em>k</em>, <em>no_return=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.add_atmost" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is responsible for adding a new <em>native</em> AtMostK (see
+<a class="reference internal" href="card.html#module-pysat.card" title="pysat.card"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.card</span></code></a>) constraint into <code class="xref py py-class docutils literal notranslate"><span class="pre">Minicard</span></code>.</p>
+<p><strong>Note that none of the other solvers supports native AtMostK
+constraints</strong>.</p>
+<p>An AtMostK constraint is <span class="math notranslate nohighlight">\(\sum_{i=1}^{n}{x_i}\leq k\)</span>. A
+native AtMostK constraint should be given as a pair <code class="docutils literal notranslate"><span class="pre">lits</span></code> and
+<code class="docutils literal notranslate"><span class="pre">k</span></code>, where <code class="docutils literal notranslate"><span class="pre">lits</span></code> is a list of literals in the sum.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>lits</strong> (<em>list</em><em>(</em><em>int</em><em>)</em>) – a list of literals.</li>
+<li><strong>k</strong> (<em>int</em>) – upper bound on the number of satisfied literals</li>
+<li><strong>no_return</strong> (<em>bool</em>) – check solver’s internal formula and return the
+result, if set to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool if <code class="docutils literal notranslate"><span class="pre">no_return</span></code> is set to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>A usage example is the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Solver</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;mc&#39;</span><span class="p">,</span> <span class="n">bootstrap_with</span><span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">add_atmost</span><span class="p">(</span><span class="n">lits</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">no_return</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># the AtMostK constraint is in conflict with initial unit clauses</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysat.solvers.Solver.add_clause">
+<code class="descname">add_clause</code><span class="sig-paren">(</span><em>clause</em>, <em>no_return=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.add_clause" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to add a single clause to the solver. An
+optional argument <code class="docutils literal notranslate"><span class="pre">no_return</span></code> controls whether or not to check
+the formula’s satisfiability after adding the new clause.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>clause</strong> (<em>list</em><em>(</em><em>int</em><em>)</em>) – a list of literals.</li>
+<li><strong>no_return</strong> (<em>bool</em>) – check solver’s internal formula and return the
+result, if set to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool if <code class="docutils literal notranslate"><span class="pre">no_return</span></code> is set to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>A usage example is the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Solver</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="n">no_return</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysat.solvers.Solver.append_formula">
+<code class="descname">append_formula</code><span class="sig-paren">(</span><em>formula</em>, <em>no_return=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.append_formula" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method can be used to add a given list of clauses into the
+solver.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>formula</strong> (<em>list</em><em>(</em><em>list</em><em>(</em><em>int</em><em>)</em><em>)</em>) – a list of clauses.</li>
+<li><strong>no_return</strong> (<em>bool</em>) – check solver’s internal formula and return the
+result, if set to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The <code class="docutils literal notranslate"><span class="pre">no_return</span></code> argument is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> by default.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool if <code class="docutils literal notranslate"><span class="pre">no_return</span></code> is set to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">()</span>
+<span class="gp">... </span><span class="c1"># assume the formula contains clauses</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Solver</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">append_formula</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">,</span> <span class="n">no_return</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysat.solvers.Solver.conf_budget">
+<code class="descname">conf_budget</code><span class="sig-paren">(</span><em>budget=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.conf_budget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set limit (i.e. the upper bound) on the number of conflicts in the
+next limited SAT call (see <a class="reference internal" href="#pysat.solvers.Solver.solve_limited" title="pysat.solvers.Solver.solve_limited"><code class="xref py py-meth docutils literal notranslate"><span class="pre">solve_limited()</span></code></a>). The limit value
+is given as a <code class="docutils literal notranslate"><span class="pre">budget</span></code> variable and is an integer greater than
+<code class="docutils literal notranslate"><span class="pre">0</span></code>.  If the budget is set to <code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">-1</span></code>, the upper bound on
+the number of conflicts is disabled.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>budget</strong> (<em>int</em>) – the upper bound on the number of conflicts.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">MinisatGH</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.genhard</span> <span class="kn">import</span> <span class="n">PHP</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">PHP</span><span class="p">(</span><span class="n">nof_holes</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>  <span class="c1"># PHP20 is too hard for a SAT solver</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">MinisatGH</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">conf_budget</span><span class="p">(</span><span class="mi">2000</span><span class="p">)</span>  <span class="c1"># getting at most 2000 conflicts</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">m</span><span class="o">.</span><span class="n">solve_limited</span><span class="p">()</span>  <span class="c1"># making a limited oracle call</span>
+<span class="go">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysat.solvers.Solver.delete">
+<code class="descname">delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Solver destructor, which must be called explicitly if the solver is
+to be removed. This is not needed inside an <code class="docutils literal notranslate"><span class="pre">with</span></code> block.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysat.solvers.Solver.enum_models">
+<code class="descname">enum_models</code><span class="sig-paren">(</span><em>assumptions=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.enum_models" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method can be used to enumerate models of a CNF formula. It
+can be used as a standard Python iterator. The method can be used
+without arguments but also with an argument <code class="docutils literal notranslate"><span class="pre">assumptions</span></code>, which
+is a list of literals to “assume”.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>assumptions</strong> (<em>list</em><em>(</em><em>int</em><em>)</em>) – a list of assumption literals.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list(int)</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Solver</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">enum_models</span><span class="p">():</span>
+<span class="gp">... </span>        <span class="k">print</span> <span class="n">m</span>
+<span class="go">[-1, -2, -3]</span>
+<span class="go">[-1, -2, 3]</span>
+<span class="go">[-1, 2, 3]</span>
+<span class="go">[1, 2, 3]</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Solver</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">enum_models</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+<span class="gp">... </span>        <span class="k">print</span> <span class="n">m</span>
+<span class="go">[1, 2, 3]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysat.solvers.Solver.get_core">
+<code class="descname">get_core</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.get_core" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is to be used for extracting an unsatisfiable core in
+the form of a subset of a given set of assumption literals, which
+are responsible for unsatisfiability of the formula. This can be
+done only if the previous SAT call returned <code class="docutils literal notranslate"><span class="pre">False</span></code> (<em>UNSAT</em>).
+Otherwise, <code class="docutils literal notranslate"><span class="pre">None</span></code> is returned.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list(int) or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Usage example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Minisat22</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">Minisat22</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">])</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">m</span><span class="o">.</span><span class="n">get_core</span><span class="p">()</span>  <span class="c1"># literals 2 and 3 are not in the core</span>
+<span class="go">[-4, 1]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysat.solvers.Solver.get_model">
+<code class="descname">get_model</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.get_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>The method is to be used for extracting a satisfying assignment for
+a CNF formula given to the solver. A model is provided if a
+previous SAT call returned <code class="docutils literal notranslate"><span class="pre">True</span></code>. Otherwise, <code class="docutils literal notranslate"><span class="pre">None</span></code> is
+reported.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list(int) or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Solver</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Solver</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">get_model</span><span class="p">()</span>
+<span class="go">[-1, -2]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysat.solvers.Solver.get_proof">
+<code class="descname">get_proof</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.get_proof" title="Permalink to this definition">¶</a></dt>
+<dd><p>A DRUP proof can be extracted using this method if the solver was
+set up to provide a proof. Otherwise, the method returns <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list(str) or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Solver</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.genhard</span> <span class="kn">import</span> <span class="n">PHP</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">PHP</span><span class="p">(</span><span class="n">nof_holes</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Solver</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;g4&#39;</span><span class="p">,</span> <span class="n">with_proof</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">g</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">g</span><span class="o">.</span><span class="n">append_formula</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">g</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+<span class="go">False</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="n">g</span><span class="o">.</span><span class="n">get_proof</span><span class="p">()</span>
+<span class="go">[&#39;-8 4 1 0&#39;, &#39;-10 0&#39;, &#39;-2 0&#39;, &#39;-4 0&#39;, &#39;-8 0&#39;, &#39;-6 0&#39;, &#39;0&#39;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysat.solvers.Solver.get_status">
+<code class="descname">get_status</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.get_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>The result of a previous SAT call is stored in an internal
+variable and can be later obtained using this method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Boolean or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">None</span></code> is returned if a previous SAT call was interrupted.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysat.solvers.Solver.new">
+<code class="descname">new</code><span class="sig-paren">(</span><em>name='m22'</em>, <em>bootstrap_with=None</em>, <em>use_timer=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.new" title="Permalink to this definition">¶</a></dt>
+<dd><p>The actual solver constructor invoked from <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>. Chooses
+the solver to run, based on its name. See <a class="reference internal" href="#pysat.solvers.Solver" title="pysat.solvers.Solver"><code class="xref py py-class docutils literal notranslate"><span class="pre">Solver</span></code></a> for the
+parameters description.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference internal" href="#pysat.solvers.NoSuchSolverError" title="pysat.solvers.NoSuchSolverError"><strong>NoSuchSolverError</strong></a> – if there is no solver matching the given
+name.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysat.solvers.Solver.nof_clauses">
+<code class="descname">nof_clauses</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.nof_clauses" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method returns the number of clauses currently appearing in
+the formula given to the solver.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Solver</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">nof_clauses</span><span class="p">()</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysat.solvers.Solver.nof_vars">
+<code class="descname">nof_vars</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.nof_vars" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method returns the number of variables currently appearing in
+the formula given to the solver.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Solver</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">nof_vars</span><span class="p">()</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysat.solvers.Solver.prop_budget">
+<code class="descname">prop_budget</code><span class="sig-paren">(</span><em>budget=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.prop_budget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set limit (i.e. the upper bound) on the number of propagations in
+the next limited SAT call (see <a class="reference internal" href="#pysat.solvers.Solver.solve_limited" title="pysat.solvers.Solver.solve_limited"><code class="xref py py-meth docutils literal notranslate"><span class="pre">solve_limited()</span></code></a>). The limit
+value is given as a <code class="docutils literal notranslate"><span class="pre">budget</span></code> variable and is an integer greater
+than <code class="docutils literal notranslate"><span class="pre">0</span></code>. If the budget is set to <code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">-1</span></code>, the upper
+bound on the number of conflicts is disabled.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>budget</strong> (<em>int</em>) – the upper bound on the number of propagations.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">MinisatGH</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.genhard</span> <span class="kn">import</span> <span class="n">Parity</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">Parity</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># too hard for a SAT solver</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">MinisatGH</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">prop_budget</span><span class="p">(</span><span class="mi">100000</span><span class="p">)</span>  <span class="c1"># doing at most 100000 propagations</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">m</span><span class="o">.</span><span class="n">solve_limited</span><span class="p">()</span>  <span class="c1"># making a limited oracle call</span>
+<span class="go">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysat.solvers.Solver.propagate">
+<code class="descname">propagate</code><span class="sig-paren">(</span><em>assumptions=[]</em>, <em>phase_saving=0</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.propagate" title="Permalink to this definition">¶</a></dt>
+<dd><p>The method takes a list of assumption literals and does unit
+propagation of each of these literals consecutively. A Boolean
+status is returned followed by a list of assigned (assumed and also
+propagated) literals. The status is <code class="docutils literal notranslate"><span class="pre">True</span></code> if no conflict arised
+during propagation. Otherwise, the status is <code class="docutils literal notranslate"><span class="pre">False</span></code>.
+Additionally, a user may specify an optional argument
+<code class="docutils literal notranslate"><span class="pre">phase_saving</span></code> (<code class="docutils literal notranslate"><span class="pre">0</span></code> by default) to enable MiniSat-like phase
+saving.</p>
+<p><strong>Note</strong> that only MiniSat-like solvers support this functionality
+(e.g. <code class="xref py py-class docutils literal notranslate"><span class="pre">Lingeling</span></code> does not support it).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>assumptions</strong> (<em>list</em><em>(</em><em>int</em><em>)</em>) – a list of assumption literals.</li>
+<li><strong>phase_saving</strong> (<em>int</em>) – enable phase saving (can be <code class="docutils literal notranslate"><span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">1</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">2</span></code>).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple(bool, list(int))</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Usage example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Glucose3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.card</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CardEnc</span><span class="o">.</span><span class="n">atmost</span><span class="p">(</span><span class="n">lits</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">bound</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">EncType</span><span class="o">.</span><span class="n">pairwise</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">Glucose3</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">propagate</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="go">(True, [1, -2, -3, -4, -5])</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">propagate</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="go">(False, [])</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysat.solvers.Solver.solve">
+<code class="descname">solve</code><span class="sig-paren">(</span><em>assumptions=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.solve" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to check satisfiability of a CNF formula given
+to the solver (see methods <a class="reference internal" href="#pysat.solvers.Solver.add_clause" title="pysat.solvers.Solver.add_clause"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_clause()</span></code></a> and
+<a class="reference internal" href="#pysat.solvers.Solver.append_formula" title="pysat.solvers.Solver.append_formula"><code class="xref py py-meth docutils literal notranslate"><span class="pre">append_formula()</span></code></a>). Unless interrupted with SIGINT, the method
+returns either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>Incremental SAT calls can be made with the use of assumption
+literals. (<strong>Note</strong> that the <code class="docutils literal notranslate"><span class="pre">assumptions</span></code> argument is optional
+and disabled by default.)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>assumptions</strong> (<em>list</em><em>(</em><em>int</em><em>)</em>) – a list of assumption literals.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Boolean or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Solver</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Solver</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">])</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysat.solvers.Solver.solve_limited">
+<code class="descname">solve_limited</code><span class="sig-paren">(</span><em>assumptions=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.solve_limited" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to check satisfiability of a CNF formula given
+to the solver (see methods <a class="reference internal" href="#pysat.solvers.Solver.add_clause" title="pysat.solvers.Solver.add_clause"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_clause()</span></code></a> and
+<a class="reference internal" href="#pysat.solvers.Solver.append_formula" title="pysat.solvers.Solver.append_formula"><code class="xref py py-meth docutils literal notranslate"><span class="pre">append_formula()</span></code></a>), taking into account the upper bounds on
+the <em>number of conflicts</em> (see <a class="reference internal" href="#pysat.solvers.Solver.conf_budget" title="pysat.solvers.Solver.conf_budget"><code class="xref py py-meth docutils literal notranslate"><span class="pre">conf_budget()</span></code></a>) and the <em>number
+of propagations</em> (see <a class="reference internal" href="#pysat.solvers.Solver.prop_budget" title="pysat.solvers.Solver.prop_budget"><code class="xref py py-meth docutils literal notranslate"><span class="pre">prop_budget()</span></code></a>). If the number of
+conflicts or propagations is set to be larger than 0 then the
+following SAT call done with <a class="reference internal" href="#pysat.solvers.Solver.solve_limited" title="pysat.solvers.Solver.solve_limited"><code class="xref py py-meth docutils literal notranslate"><span class="pre">solve_limited()</span></code></a> will not exceed
+these values, i.e. it will be <em>incomplete</em>. Otherwise, such a call
+will be identical to <a class="reference internal" href="#pysat.solvers.Solver.solve" title="pysat.solvers.Solver.solve"><code class="xref py py-meth docutils literal notranslate"><span class="pre">solve()</span></code></a>.</p>
+<p>As soon as the given upper bound on the number of conflicts or
+propagations is reached, the SAT call is dropped returning
+<code class="docutils literal notranslate"><span class="pre">None</span></code>, i.e. <em>unknown</em>. <code class="docutils literal notranslate"><span class="pre">None</span></code> can also be returned if the call
+is interrupted by SIGINT. Otherwise, the method returns <code class="docutils literal notranslate"><span class="pre">True</span></code> or
+<code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p><strong>Note</strong> that only MiniSat-like solvers support this functionality
+(e.g. <code class="xref py py-class docutils literal notranslate"><span class="pre">Lingeling</span></code> does not support it).</p>
+<p>Incremental SAT calls can be made with the use of assumption
+literals. (<strong>Note</strong> that the <code class="docutils literal notranslate"><span class="pre">assumptions</span></code> argument is optional
+and disabled by default.)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>assumptions</strong> (<em>list</em><em>(</em><em>int</em><em>)</em>) – a list of assumption literals.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Boolean or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Doing limited SAT calls can be of help if it is known that
+<em>complete</em> SAT calls are too expensive. For instance, it can be
+useful when minimizing unsatisfiable cores in MaxSAT (see
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">pysat.examples.RC2.minimize_core()</span></code> also shown below).</p>
+<p>Usage example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">...</span> <span class="c1"># assume that a SAT oracle is set up to contain an unsatisfiable</span>
+<span class="o">...</span> <span class="c1"># formula, and its core is stored in variable &quot;core&quot;</span>
+<span class="n">oracle</span><span class="o">.</span><span class="n">conf_budget</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>  <span class="c1"># getting at most 1000 conflicts be call</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">core</span><span class="p">):</span>
+    <span class="n">to_test</span> <span class="o">=</span> <span class="n">core</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">core</span><span class="p">[(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):]</span>
+
+    <span class="c1"># doing a limited call</span>
+    <span class="k">if</span> <span class="n">oracle</span><span class="o">.</span><span class="n">solve_limited</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="n">to_test</span><span class="p">)</span> <span class="o">==</span> <span class="bp">False</span><span class="p">:</span>
+        <span class="n">core</span> <span class="o">=</span> <span class="n">to_test</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># True or *unknown*</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysat.solvers.Solver.time">
+<code class="descname">time</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the time spent when doing the last SAT call. <strong>Note</strong> that the
+time is measured only if the <code class="docutils literal notranslate"><span class="pre">use_timer</span></code> argument was previously
+set to <code class="docutils literal notranslate"><span class="pre">True</span></code> when creating the solver (see <a class="reference internal" href="#pysat.solvers.Solver" title="pysat.solvers.Solver"><code class="xref py py-class docutils literal notranslate"><span class="pre">Solver</span></code></a> for
+details).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float.</td>
+</tr>
+</tbody>
+</table>
+<p>Example usage:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Solver</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.genhard</span> <span class="kn">import</span> <span class="n">PHP</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">PHP</span><span class="p">(</span><span class="n">nof_holes</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Solver</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">,</span> <span class="n">use_timer</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+<span class="go">False</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="s1">&#39;{0:.2f}s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+<span class="go">150.16s</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysat.solvers.Solver.time_accum">
+<code class="descname">time_accum</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.time_accum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the time spent for doing all SAT calls accumulated. <strong>Note</strong>
+that the time is measured only if the <code class="docutils literal notranslate"><span class="pre">use_timer</span></code> argument was
+previously set to <code class="docutils literal notranslate"><span class="pre">True</span></code> when creating the solver (see
+<a class="reference internal" href="#pysat.solvers.Solver" title="pysat.solvers.Solver"><code class="xref py py-class docutils literal notranslate"><span class="pre">Solver</span></code></a> for details).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float.</td>
+</tr>
+</tbody>
+</table>
+<p>Example usage:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Solver</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.genhard</span> <span class="kn">import</span> <span class="n">PHP</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">PHP</span><span class="p">(</span><span class="n">nof_holes</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Solver</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">,</span> <span class="n">use_timer</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="go">False</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="s1">&#39;{0:.2f}s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+<span class="go">1.76s</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="go">False</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="s1">&#39;{0:.2f}s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+<span class="go">113.58s</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="s1">&#39;{0:.2f}s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">time_accum</span><span class="p">())</span>
+<span class="go">115.34s</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pysat.solvers.SolverNames">
+<em class="property">class </em><code class="descclassname">pysat.solvers.</code><code class="descname">SolverNames</code><a class="headerlink" href="#pysat.solvers.SolverNames" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class serves to determine the solver requested by a user given a
+string name. This allows for using several possible names for
+specifying a solver.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">glucose3</span>  <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;g3&#39;</span><span class="p">,</span> <span class="s1">&#39;g30&#39;</span><span class="p">,</span> <span class="s1">&#39;glucose3&#39;</span><span class="p">,</span> <span class="s1">&#39;glucose30&#39;</span><span class="p">)</span>
+<span class="n">glucose4</span>  <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;g4&#39;</span><span class="p">,</span> <span class="s1">&#39;g41&#39;</span><span class="p">,</span> <span class="s1">&#39;glucose4&#39;</span><span class="p">,</span> <span class="s1">&#39;glucose41&#39;</span><span class="p">)</span>
+<span class="n">lingeling</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;lgl&#39;</span><span class="p">,</span> <span class="s1">&#39;lingeling&#39;</span><span class="p">)</span>
+<span class="n">minicard</span>  <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;mc&#39;</span><span class="p">,</span> <span class="s1">&#39;mcard&#39;</span><span class="p">,</span> <span class="s1">&#39;minicard&#39;</span><span class="p">)</span>
+<span class="n">minisat22</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;m22&#39;</span><span class="p">,</span> <span class="s1">&#39;msat22&#39;</span><span class="p">,</span> <span class="s1">&#39;minisat22&#39;</span><span class="p">)</span>
+<span class="n">minisatgh</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;mgh&#39;</span><span class="p">,</span> <span class="s1">&#39;msat-gh&#39;</span><span class="p">,</span> <span class="s1">&#39;minisat-gh&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As a result, in order to select Glucose3, a user can specify the
+solver’s name: either <code class="docutils literal notranslate"><span class="pre">'g3'</span></code>, <code class="docutils literal notranslate"><span class="pre">'g30'</span></code>, <code class="docutils literal notranslate"><span class="pre">'glucose3'</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">'glucose30'</span></code>. <em>Note that the capitalized versions of these names are
+also allowed</em>.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../index.html">
+    <img class="logo" src="../_static/pysat.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=pysathq&repo=pysat&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+
+<div class="sidebarblock">
+    <div class="tile">
+    <h4>Latest version:</h4>
+    0.1.3.dev11 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    </div>
+    </br>
+</div>
+<div class="sidebarblock">
+    <div class="tile">
+    <h4><a href="https://pysathq.github.io">Main webpage</a></h4>
+    </div>
+</div>
+</br>
+<div class="sidebarblock">
+<h4>Contact us:</h4>
+      <a class="reference external" href="https://github.com/pysathq/pysat/issues">
+            Issue tracker
+      </a>
+      |
+      <a class="reference external" href="mailto:pysathq@gmail.com">
+          Email
+      </a>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../_sources/api/solvers.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
