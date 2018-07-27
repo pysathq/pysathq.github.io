@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>SAT solvers’ API (pysat.solvers) &#8212; PySAT 0.1.3.dev12 documentation</title>
+    <title>SAT solvers’ API (pysat.solvers) &#8212; PySAT 0.1.3.dev13 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -124,6 +124,7 @@ with the following basic SAT solving functionality:</p>
 <li>adding individual clauses and formulas to solver objects</li>
 <li>making SAT calls with or without assumptions</li>
 <li>propagating a given set of assumption literals</li>
+<li>setting preferred polarities for a (sub)set of variables</li>
 <li>extracting a model of a satisfiable input formula</li>
 <li>enumerating models of an input formula</li>
 <li>extracting an unsatisfiable core of an unsatisfiable formula</li>
@@ -700,6 +701,37 @@ saving.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="pysat.solvers.Solver.set_phases">
+<code class="descname">set_phases</code><span class="sig-paren">(</span><em>literals=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.set_phases" title="Permalink to this definition">¶</a></dt>
+<dd><p>The method takes a list of literals as an argument and sets
+<em>phases</em> (or MiniSat-like <em>polarities</em>) of the corresponding
+variables respecting the literals.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>literals</strong> (<em>list</em><em>(</em><em>int</em><em>)</em>) – a list of literals.</td>
+</tr>
+</tbody>
+</table>
+<p>Usage example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Glucose3</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">Glucose3</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># the formula has 3 models: [-1, 2], [1, -2], [1, 2]</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">set_phases</span><span class="p">(</span><span class="n">literals</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">get_model</span><span class="p">()</span>
+<span class="go">[1, 2]</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
 <dt id="pysat.solvers.Solver.solve">
 <code class="descname">solve</code><span class="sig-paren">(</span><em>assumptions=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.solve" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method is used to check satisfiability of a CNF formula given
@@ -906,7 +938,7 @@ also allowed</em>.</p>
 <div class="sidebarblock">
     <div class="tile">
     <h4>Latest version:</h4>
-    0.1.3.dev12 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    0.1.3.dev13 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
     </div>
     </br>
 </div>
@@ -934,7 +966,7 @@ also allowed</em>.</p>
       &copy;2018, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.6</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
       
       |
