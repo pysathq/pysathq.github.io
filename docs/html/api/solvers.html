@@ -705,7 +705,15 @@ saving.</p>
 <code class="descname">set_phases</code><span class="sig-paren">(</span><em>literals=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.set_phases" title="Permalink to this definition">¶</a></dt>
 <dd><p>The method takes a list of literals as an argument and sets
 <em>phases</em> (or MiniSat-like <em>polarities</em>) of the corresponding
-variables respecting the literals.</p>
+variables respecting the literals. For example, if a given list of
+literals is <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">-513]</span></code>, the solver will try to set variable
+<span class="math notranslate nohighlight">\(x_1\)</span> to true while setting <span class="math notranslate nohighlight">\(x_{513}\)</span> to false.</p>
+<p><strong>Note</strong> that once these preferences are specified,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">MinisatGH</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">Lingeling</span></code> will always respect them
+when branching on these variables. However, solvers
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose3</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose4</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Minisat22</span></code>, and
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Minicard</span></code> can redefine the preferences in any of the
+following SAT calls due to the phase saving heuristic.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
