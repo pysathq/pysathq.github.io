@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>A deletion-based MUS extractor (pysat.examples.musx) &#8212; PySAT 0.1.3.dev18 documentation</title>
+    <title>Minimum/minimal hitting set solver (pysat.examples.hitman) &#8212; PySAT 0.1.3.dev18 documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -16,8 +16,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="RC2 MaxSAT solver (pysat.examples.rc2)" href="rc2.html" />
-    <link rel="prev" title="CLD-like MCS enumerator (pysat.examples.mcsls)" href="mcsls.html" />
+    <link rel="next" title="LBX-like MCS enumerator (pysat.examples.lbx)" href="lbx.html" />
+    <link rel="prev" title="Hard formula generator (pysat.examples.genhard)" href="genhard.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
@@ -34,42 +34,48 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="module-examples.musx">
-<span id="a-deletion-based-mus-extractor-pysat-examples-musx"></span><h1>A deletion-based MUS extractor (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.musx</span></code>)<a class="headerlink" href="#module-examples.musx" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-examples.hitman">
+<span id="minimum-minimal-hitting-set-solver-pysat-examples-hitman"></span><h1>Minimum/minimal hitting set solver (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.hitman</span></code>)<a class="headerlink" href="#module-examples.hitman" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="examples.musx.MUSX">
-<em class="property">class </em><code class="descclassname">examples.musx.</code><code class="descname">MUSX</code><span class="sig-paren">(</span><em>formula</em>, <em>solver='m22'</em>, <em>verbosity=1</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.musx.MUSX" title="Permalink to this definition">¶</a></dt>
-<dd><p>MUS eXctractor using the deletion based algorithm.</p>
+<dt id="examples.hitman.Hitman">
+<em class="property">class </em><code class="descclassname">examples.hitman.</code><code class="descname">Hitman</code><span class="sig-paren">(</span><em>bootstrap_with=[]</em>, <em>solver='g3'</em>, <em>htype='sorted'</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman" title="Permalink to this definition">¶</a></dt>
+<dd><p>A minimum/minimal hitting set enumerator.</p>
 <dl class="method">
-<dt id="examples.musx.MUSX.compute">
-<code class="descname">compute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.musx.MUSX.compute" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute and return a solution.</p>
+<dt id="examples.hitman.Hitman.block">
+<code class="descname">block</code><span class="sig-paren">(</span><em>to_block</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.block" title="Permalink to this definition">¶</a></dt>
+<dd><p>Block a set.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="examples.musx.MUSX.delete">
-<code class="descname">delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.musx.MUSX.delete" title="Permalink to this definition">¶</a></dt>
+<dt id="examples.hitman.Hitman.delete">
+<code class="descname">delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.delete" title="Permalink to this definition">¶</a></dt>
 <dd><p>Explicit destructor.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="examples.musx.MUSX.oracle_time">
-<code class="descname">oracle_time</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.musx.MUSX.oracle_time" title="Permalink to this definition">¶</a></dt>
-<dd><p>Report the total SAT solving time.</p>
+<dt id="examples.hitman.Hitman.enumerate">
+<code class="descname">enumerate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.enumerate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterator for enumerating hitting sets.</p>
 </dd></dl>
 
+<dl class="method">
+<dt id="examples.hitman.Hitman.get">
+<code class="descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute and return a hitting set.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="examples.musx.parse_options">
-<code class="descclassname">examples.musx.</code><code class="descname">parse_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.musx.parse_options" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parses command-line option</p>
+<dl class="method">
+<dt id="examples.hitman.Hitman.hit">
+<code class="descname">hit</code><span class="sig-paren">(</span><em>to_hit</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.hit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new set to hit.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="examples.musx.usage">
-<code class="descclassname">examples.musx.</code><code class="descname">usage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.musx.usage" title="Permalink to this definition">¶</a></dt>
-<dd><p>Prints usage message.</p>
+<dl class="method">
+<dt id="examples.hitman.Hitman.init">
+<code class="descname">init</code><span class="sig-paren">(</span><em>bootstrap_with</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the hitting set solver.</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -138,7 +144,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
       
       |
-      <a href="../../_sources/api/examples/musx.rst.txt"
+      <a href="../../_sources/api/examples/hitman.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
