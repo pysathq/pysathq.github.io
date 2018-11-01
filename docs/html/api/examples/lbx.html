@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>LBX-like MCS enumerator (pysat.examples.lbx) &#8212; PySAT 0.1.3.dev23 documentation</title>
+    <title>LBX-like MCS enumerator (pysat.examples.lbx) &#8212; PySAT 0.1.3.dev24 documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -36,44 +36,313 @@
             
   <div class="section" id="module-examples.lbx">
 <span id="lbx-like-mcs-enumerator-pysat-examples-lbx"></span><h1>LBX-like MCS enumerator (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.lbx</span></code>)<a class="headerlink" href="#module-examples.lbx" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="list-of-classes">
+<h2>List of classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#examples.lbx.LBX" title="examples.lbx.LBX"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LBX</span></code></a></td>
+<td>LBX-like algorithm for computing MCSes.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">LBXPlus</span></code></td>
+<td>LBX-like algorithm extended for <a class="reference internal" href="../formula.html#pysat.formula.WCNFPlus" title="pysat.formula.WCNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNFPlus</span></code></a> formulas (using Minicard).</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-description">
+<h2>Module description<a class="headerlink" href="#module-description" title="Permalink to this headline">¶</a></h2>
+<p>This module implements a prototype of the LBX algorithm for the computation
+of a <em>minimal correction subset</em> (MCS) and/or MCS enumeration. The LBX
+abbreviation stands for <em>literal-based MCS extraction</em> algorithm, which was
+proposed in <a class="footnote-reference" href="#id3" id="id1">[1]</a>. Note that this prototype does not follow the original
+low-level implementation of the corresponding MCS extractor available
+<a class="reference external" href="https://reason.di.fc.ul.pt/wiki/doku.php?id=lbx">online</a> (compared to
+our prototype, the low-level implementation has a number of additional
+heuristics used). However, it implements the LBX algorithm for partial
+MaxSAT formulas, as described in <a class="footnote-reference" href="#id3" id="id2">[1]</a>.</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>, <a class="fn-backref" href="#id4">3</a>, <a class="fn-backref" href="#id5">4</a>)</em> Carlos Mencia, Alessandro Previti, Joao Marques-Silva.
+<em>Literal-Based MCS Extraction</em>. IJCAI 2015. pp. 1973-1979</td></tr>
+</tbody>
+</table>
+<p>The implementation can be used as an executable (the list of available
+command-line options can be shown using <code class="docutils literal notranslate"><span class="pre">lbx.py</span> <span class="pre">-h</span></code>) in the following
+way:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xzcat formula.wcnf.xz
+p wcnf 3 6 4
+1 1 0
+1 2 0
+1 3 0
+4 -1 -2 0
+4 -1 -3 0
+4 -2 -3 0
+
+$ lbx.py -d -e all -s glucose3 -vv formula.wcnf.xz
+c MCS: 1 3 0
+c cost: 2
+c MCS: 2 3 0
+c cost: 2
+c MCS: 1 2 0
+c cost: 2
+c oracle time: 0.0002
+</pre></div>
+</div>
+<p>Alternatively, the algorithm can be accessed and invoked through the
+standard <code class="docutils literal notranslate"><span class="pre">import</span></code> interface of Python, e.g.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.lbx</span> <span class="kn">import</span> <span class="n">LBX</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">WCNF</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;formula.wcnf.xz&#39;</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lbx</span> <span class="o">=</span> <span class="n">LBX</span><span class="p">(</span><span class="n">wcnf</span><span class="p">,</span> <span class="n">use_cld</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">solver_name</span><span class="o">=</span><span class="s1">&#39;g3&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">mcs</span> <span class="ow">in</span> <span class="n">lbx</span><span class="o">.</span><span class="n">enumerate</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="n">lbx</span><span class="o">.</span><span class="n">block</span><span class="p">(</span><span class="n">mcs</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="n">mcs</span>
+<span class="go">[1, 3]</span>
+<span class="go">[2, 3]</span>
+<span class="go">[1, 2]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="module-details">
+<h2>Module details<a class="headerlink" href="#module-details" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="examples.lbx.LBX">
 <em class="property">class </em><code class="descclassname">examples.lbx.</code><code class="descname">LBX</code><span class="sig-paren">(</span><em>formula</em>, <em>use_cld=False</em>, <em>solver_name='m22'</em>, <em>use_timer=False</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX" title="Permalink to this definition">¶</a></dt>
-<dd><p>LBX-like algorithm for computing MCSes.</p>
+<dd><p>LBX-like algorithm for computing MCSes. Given an unsatisfiable partial
+CNF formula, i.e. formula in the <a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a> format, this class can
+be used to compute a given number of MCSes of the formula. The
+implementation follows the LBX algorithm description in <a class="footnote-reference" href="#id3" id="id4">[1]</a>. It can
+use any SAT solver available in PySAT. Additionally, the “clause
+<span class="math notranslate nohighlight">\(D\)</span>” heuristic can be used when enumerating MCSes.</p>
+<p>The default SAT solver to use is <code class="docutils literal notranslate"><span class="pre">m22</span></code> (see <a class="reference internal" href="../solvers.html#pysat.solvers.SolverNames" title="pysat.solvers.SolverNames"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolverNames</span></code></a>).
+The “clause <span class="math notranslate nohighlight">\(D\)</span>” heuristic is disabled by default, i.e.
+<code class="docutils literal notranslate"><span class="pre">use_cld</span></code> is set to <code class="docutils literal notranslate"><span class="pre">False</span></code>. Internal SAT solver’s timer is also
+disabled by default, i.e. <code class="docutils literal notranslate"><span class="pre">use_timer</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>formula</strong> (<a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a>) – unsatisfiable partial CNF formula</li>
+<li><strong>use_cld</strong> (<em>bool</em>) – whether or not to use “clause <span class="math notranslate nohighlight">\(D\)</span>”</li>
+<li><strong>solver_name</strong> (<em>str</em>) – SAT oracle name</li>
+<li><strong>use_timer</strong> (<em>bool</em>) – whether or not to use SAT solver’s timer</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="examples.lbx.LBX._compute">
+<code class="descname">_compute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX._compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>The main method of the class, which computes an MCS given its
+over-approximation. The over-approximation is defined by a model
+for the hard part of the formula obtained in <a class="reference internal" href="#examples.lbx.LBX.compute" title="examples.lbx.LBX.compute"><code class="xref py py-func docutils literal notranslate"><span class="pre">compute()</span></code></a>.</p>
+<p>The method is essentially a simple loop going over all literals
+unsatisfied by the previous model, i.e. the literals of
+<code class="docutils literal notranslate"><span class="pre">self.setd</span></code> and checking which literals can be satisfied. This
+process can be seen a refinement of the over-approximation of the
+MCS. The algorithm follows the pseudo-code of the LBX algorithm
+presented in <a class="footnote-reference" href="#id3" id="id5">[1]</a>.</p>
+<p>Additionally, if <a class="reference internal" href="#examples.lbx.LBX" title="examples.lbx.LBX"><code class="xref py py-class docutils literal notranslate"><span class="pre">LBX</span></code></a> was constructed with the requirement
+to make “clause <span class="math notranslate nohighlight">\(D\)</span>” calls, the method calls
+<a class="reference internal" href="#examples.lbx.LBX.do_cld_check" title="examples.lbx.LBX.do_cld_check"><code class="xref py py-func docutils literal notranslate"><span class="pre">do_cld_check()</span></code></a> at every iteration of the loop using the
+literals of <code class="docutils literal notranslate"><span class="pre">self.setd</span></code> not yet checked, as the contents of
+“clause <span class="math notranslate nohighlight">\(D\)</span>”.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.lbx.LBX._filter_satisfied">
+<code class="descname">_filter_satisfied</code><span class="sig-paren">(</span><em>update_setd=False</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX._filter_satisfied" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method extracts a model provided by the previous call to a SAT
+oracle and iterates over all soft clauses checking if each of is
+satisfied by the model. Satisfied clauses are marked accordingly
+while the literals of the unsatisfied clauses are kept in a list
+called <code class="docutils literal notranslate"><span class="pre">setd</span></code>, which is then used to refine the correction set
+(see <a class="reference internal" href="#examples.lbx.LBX._compute" title="examples.lbx.LBX._compute"><code class="xref py py-func docutils literal notranslate"><span class="pre">_compute()</span></code></a>, and <a class="reference internal" href="#examples.lbx.LBX.do_cld_check" title="examples.lbx.LBX.do_cld_check"><code class="xref py py-func docutils literal notranslate"><span class="pre">do_cld_check()</span></code></a>).</p>
+<p>Optional Boolean parameter <code class="docutils literal notranslate"><span class="pre">update_setd</span></code> enforces the method to
+update variable <code class="docutils literal notranslate"><span class="pre">self.setd</span></code>. If this parameter is set to
+<code class="docutils literal notranslate"><span class="pre">False</span></code>, the method only updates the list of satisfied clauses,
+which is an under-approximation of a <em>maximal satisfiable subset</em>
+(MSS).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>update_setd</strong> (<em>bool</em>) – whether or not to update setd</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.lbx.LBX._map_extlit">
+<code class="descname">_map_extlit</code><span class="sig-paren">(</span><em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX._map_extlit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Map an external variable to an internal one if necessary.</p>
+<p>This method is used when new clauses are added to the formula
+incrementally, which may result in introducing new variables
+clashing with the previously used <em>clause selectors</em>. The method
+makes sure no clash occurs, i.e. it maps the original variables
+used in the new problem clauses to the newly introduced auxiliary
+variables (see <a class="reference internal" href="#examples.lbx.LBX.add_clause" title="examples.lbx.LBX.add_clause"><code class="xref py py-func docutils literal notranslate"><span class="pre">add_clause()</span></code></a>).</p>
+<p>Given an integer literal, a fresh literal is returned. The returned
+integer has the same sign as the input literal.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>l</strong> (<em>int</em>) – literal to map</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.lbx.LBX._satisfied">
+<code class="descname">_satisfied</code><span class="sig-paren">(</span><em>cl</em>, <em>model</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX._satisfied" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a clause (as an iterable of integers) and an assignment (as a
+list of integers), this method checks whether or not the assignment
+satisfies the clause. This is done by a simple clause traversal.
+The method is invoked from <a class="reference internal" href="#examples.lbx.LBX._filter_satisfied" title="examples.lbx.LBX._filter_satisfied"><code class="xref py py-func docutils literal notranslate"><span class="pre">_filter_satisfied()</span></code></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cl</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – a clause to check</li>
+<li><strong>model</strong> (<em>list</em><em>(</em><em>int</em><em>)</em>) – an assignment</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="method">
 <dt id="examples.lbx.LBX.add_clause">
 <code class="descname">add_clause</code><span class="sig-paren">(</span><em>clause</em>, <em>soft=False</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX.add_clause" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add new hard or soft clause (may be needed in MCS enumeration).</p>
+<dd><p>The method for adding a new hard of soft clause to the problem
+formula. Although the input formula is to be specified as an
+argument of the constructor of <a class="reference internal" href="#examples.lbx.LBX" title="examples.lbx.LBX"><code class="xref py py-class docutils literal notranslate"><span class="pre">LBX</span></code></a>, adding clauses may be
+helpful when <em>enumerating</em> MCSes of the formula. This way, the
+clauses are added incrementally, i.e. <em>on the fly</em>.</p>
+<p>The clause to add can be any iterable over integer literals. The
+additional Boolean parameter <code class="docutils literal notranslate"><span class="pre">soft</span></code> can be set to <code class="docutils literal notranslate"><span class="pre">True</span></code>
+meaning the the clause being added is soft (note that parameter
+<code class="docutils literal notranslate"><span class="pre">soft</span></code> is set to <code class="docutils literal notranslate"><span class="pre">False</span></code> by default).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>clause</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – a clause to add</li>
+<li><strong>soft</strong> (<em>bool</em>) – whether or not the clause is soft</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="examples.lbx.LBX.block">
 <code class="descname">block</code><span class="sig-paren">(</span><em>mcs</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX.block" title="Permalink to this definition">¶</a></dt>
-<dd><p>Block a (previously computed) MCS.</p>
+<dd><p>Block a (previously computed) MCS. The MCS should be given as an
+iterable of integers. Note that this method is not automatically
+invoked from <a class="reference internal" href="#examples.lbx.LBX.enumerate" title="examples.lbx.LBX.enumerate"><code class="xref py py-func docutils literal notranslate"><span class="pre">enumerate()</span></code></a> because a user may want to block
+some of the MCSes conditionally depending on the needs. For
+example, one may want to compute disjoint MCSes only in which case
+this standard blocking is not appropriate.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mcs</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – an MCS to block</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="examples.lbx.LBX.compute">
 <code class="descname">compute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX.compute" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute and return one solution.</p>
+<dd><p>Compute and return one solution. This method checks whether the
+hard part of the formula is satisfiable, i.e. an MCS can be
+extracted. If the formula is satisfiable, the model computed by the
+SAT call is used as an <em>over-approximation</em> of the MCS in the
+method <a class="reference internal" href="#examples.lbx.LBX._compute" title="examples.lbx.LBX._compute"><code class="xref py py-func docutils literal notranslate"><span class="pre">_compute()</span></code></a> invoked here, which implements the LBX
+algorithm.</p>
+<p>An MCS is reported as a list of integers, each representing a soft
+clause index (the smallest index is <code class="docutils literal notranslate"><span class="pre">1</span></code>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list(int)</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="examples.lbx.LBX.delete">
 <code class="descname">delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX.delete" title="Permalink to this definition">¶</a></dt>
-<dd><p>Explicit destructor.</p>
+<dd><p>Explicit destructor of the internal SAT oracle.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="examples.lbx.LBX.do_cld_check">
 <code class="descname">do_cld_check</code><span class="sig-paren">(</span><em>cld</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX.do_cld_check" title="Permalink to this definition">¶</a></dt>
-<dd><p>Do clause D check.</p>
+<dd><p>Do the “clause <span class="math notranslate nohighlight">\(D\)</span>” check. This method receives a list of
+literals, which serves a “clause <span class="math notranslate nohighlight">\(D\)</span>” <a class="footnote-reference" href="#id7" id="id6">[2]</a>, and checks
+whether the formula conjoined with <span class="math notranslate nohighlight">\(D\)</span> is satisfiable.</p>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id6">[2]</a></td><td>Joao Marques-Silva, Federico Heras, Mikolas Janota,
+Alessandro Previti, Anton Belov. <em>On Computing Minimal
+Correction Subsets</em>. IJCAI 2013. pp. 615-622</td></tr>
+</tbody>
+</table>
+<p>If clause <span class="math notranslate nohighlight">\(D\)</span> cannot be satisfied together with the formula,
+then negations of all of its literals are backbones of the formula
+and the LBX algorithm can stop. Otherwise, the literals satisfied
+by the new model refine the MCS further.</p>
+<p>Every time the method is called, a new fresh selector variable
+<span class="math notranslate nohighlight">\(s\)</span> is introduced, which augments the current clause
+<span class="math notranslate nohighlight">\(D\)</span>. The SAT oracle then checks if clause <span class="math notranslate nohighlight">\((D \vee
+\neg{s})\)</span> can be satisfied together with the internal formula.
+The <span class="math notranslate nohighlight">\(D\)</span> clause is then disabled by adding a hard clause
+<span class="math notranslate nohighlight">\((\neg{s})\)</span>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cld</strong> (<em>list</em><em>(</em><em>int</em><em>)</em>) – clause <span class="math notranslate nohighlight">\(D\)</span> to check</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="examples.lbx.LBX.enumerate">
 <code class="descname">enumerate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX.enumerate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enumerate all MCSes and report them one by one.</p>
+<dd><p>This method iterates through MCSes enumerating them until the
+formula has no more MCSes. The method iteratively invokes
+<a class="reference internal" href="#examples.lbx.LBX.compute" title="examples.lbx.LBX.compute"><code class="xref py py-func docutils literal notranslate"><span class="pre">compute()</span></code></a>. Note that the method does not block the MCSes
+computed - this should be explicitly done by a user.</p>
 </dd></dl>
 
 <dl class="method">
@@ -84,66 +353,7 @@
 
 </dd></dl>
 
-<dl class="class">
-<dt id="examples.lbx.LBXPlus">
-<em class="property">class </em><code class="descclassname">examples.lbx.</code><code class="descname">LBXPlus</code><span class="sig-paren">(</span><em>formula</em>, <em>use_cld=False</em>, <em>use_timer=False</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBXPlus" title="Permalink to this definition">¶</a></dt>
-<dd><p>Algorithm LBX for CNF+/WCNF+ formulas.</p>
-<dl class="method">
-<dt id="examples.lbx.LBXPlus.add_clause">
-<code class="descname">add_clause</code><span class="sig-paren">(</span><em>clause</em>, <em>soft=False</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBXPlus.add_clause" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add new hard or soft clause (may be needed in MCS enumeration).</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="examples.lbx.LBXPlus.block">
-<code class="descname">block</code><span class="sig-paren">(</span><em>mcs</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBXPlus.block" title="Permalink to this definition">¶</a></dt>
-<dd><p>Block a (previously computed) MCS.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="examples.lbx.LBXPlus.compute">
-<code class="descname">compute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBXPlus.compute" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute and return one solution.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="examples.lbx.LBXPlus.delete">
-<code class="descname">delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBXPlus.delete" title="Permalink to this definition">¶</a></dt>
-<dd><p>Explicit destructor.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="examples.lbx.LBXPlus.do_cld_check">
-<code class="descname">do_cld_check</code><span class="sig-paren">(</span><em>cld</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBXPlus.do_cld_check" title="Permalink to this definition">¶</a></dt>
-<dd><p>Do clause D check.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="examples.lbx.LBXPlus.enumerate">
-<code class="descname">enumerate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBXPlus.enumerate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enumerate all MCSes and report them one by one.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="examples.lbx.LBXPlus.oracle_time">
-<code class="descname">oracle_time</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBXPlus.oracle_time" title="Permalink to this definition">¶</a></dt>
-<dd><p>Report the total SAT solving time.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="function">
-<dt id="examples.lbx.parse_options">
-<code class="descclassname">examples.lbx.</code><code class="descname">parse_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.parse_options" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parses command-line options.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="examples.lbx.usage">
-<code class="descclassname">examples.lbx.</code><code class="descname">usage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.usage" title="Permalink to this definition">¶</a></dt>
-<dd><p>Prints help message.</p>
-</dd></dl>
-
+</div>
 </div>
 
 
@@ -178,7 +388,7 @@
 <div class="sidebarblock">
     <div class="tile">
     <h4>Latest version:</h4>
-    0.1.3.dev23 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    0.1.3.dev24 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
     </div>
     </br>
 </div>
