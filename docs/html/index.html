@@ -6,14 +6,15 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Welcome to PySAT’s documentation! &#8212; PySAT 0.1.3.dev25 documentation</title>
+    <title>Welcome to PySAT’s documentation! &#8212; PySAT 0.1.4.dev1 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Cardinality encodings (pysat.card)" href="api/card.html" />
@@ -39,10 +40,14 @@
 basic information on what PySAT is, please, see <a class="reference external" href="https://pysathq.github.io">the main project website</a>.</p>
 <div class="section" id="api-documentation">
 <h2>API documentation<a class="headerlink" href="#api-documentation" title="Permalink to this headline">¶</a></h2>
-<p>The PySAT toolkit has three core modules: <a class="reference internal" href="api/card.html#module-pysat.card" title="pysat.card"><code class="xref py py-mod docutils literal notranslate"><span class="pre">card</span></code></a>, <a class="reference internal" href="api/formula.html#module-pysat.formula" title="pysat.formula"><code class="xref py py-mod docutils literal notranslate"><span class="pre">formula</span></code></a>, and
-<a class="reference internal" href="api/solvers.html#module-pysat.solvers" title="pysat.solvers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">solvers</span></code></a>.  The two of them (<a class="reference internal" href="api/card.html#module-pysat.card" title="pysat.card"><code class="xref py py-mod docutils literal notranslate"><span class="pre">card</span></code></a> and <a class="reference internal" href="api/solvers.html#module-pysat.solvers" title="pysat.solvers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">solvers</span></code></a>) are Python
-wrappers for the code originally implemented in the C/C++ languages while the
-<a class="reference internal" href="api/formula.html#module-pysat.formula" title="pysat.formula"><code class="xref py py-mod docutils literal notranslate"><span class="pre">formula</span></code></a> module is a <em>pure</em> Python module.</p>
+<p>The PySAT toolkit has four core modules: <a class="reference internal" href="api/card.html#module-pysat.card" title="pysat.card"><code class="xref py py-mod docutils literal notranslate"><span class="pre">card</span></code></a>, <a class="reference internal" href="api/formula.html#module-pysat.formula" title="pysat.formula"><code class="xref py py-mod docutils literal notranslate"><span class="pre">formula</span></code></a>,
+<a class="reference internal" href="api/pb.html#module-pysat.pb" title="pysat.pb"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pb</span></code></a> and <a class="reference internal" href="api/solvers.html#module-pysat.solvers" title="pysat.solvers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">solvers</span></code></a>. The three of them (<a class="reference internal" href="api/card.html#module-pysat.card" title="pysat.card"><code class="xref py py-mod docutils literal notranslate"><span class="pre">card</span></code></a>, <a class="reference internal" href="api/pb.html#module-pysat.pb" title="pysat.pb"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pb</span></code></a>
+and <a class="reference internal" href="api/solvers.html#module-pysat.solvers" title="pysat.solvers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">solvers</span></code></a>) are Python wrappers for the code originally implemented
+in the C/C++ languages while the <a class="reference internal" href="api/formula.html#module-pysat.formula" title="pysat.formula"><code class="xref py py-mod docutils literal notranslate"><span class="pre">formula</span></code></a> module is a <em>pure</em> Python
+module. Version <em>0.1.4.dev0</em> of PySAT brings a new module called <code class="xref py py-mod docutils literal notranslate"><span class="pre">pb</span></code>,
+which is a wrapper for the basic functionality of a third-party library
+<a class="reference external" href="https://pypi.org/project/pypblib/">PyPBLib</a> developed by the <a class="reference external" href="http://ulog.udl.cat/">Logic
+Optimization Group</a> of the University of Lleida.</p>
 <div class="section" id="core-pysat-modules">
 <h3>Core PySAT modules<a class="headerlink" href="#core-pysat-modules" title="Permalink to this headline">¶</a></h3>
 <div class="toctree-wrapper compound">
@@ -57,6 +62,12 @@ wrappers for the code originally implemented in the C/C++ languages while the
 <li class="toctree-l2"><a class="reference internal" href="api/formula.html#list-of-classes">List of classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/formula.html#module-description">Module description</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/formula.html#module-details">Module details</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/pb.html">Pseudo-Boolean encodings (<code class="docutils literal notranslate"><span class="pre">pysat.pb</span></code>)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/pb.html#list-of-classes">List of classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/pb.html#module-description">Module description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/pb.html#module-details">Module details</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api/solvers.html">SAT solvers’ API (<code class="docutils literal notranslate"><span class="pre">pysat.solvers</span></code>)</a><ul>
@@ -158,7 +169,7 @@ wrappers for the code originally implemented in the C/C++ languages while the
 <div class="sidebarblock">
     <div class="tile">
     <h4>Latest version:</h4>
-    0.1.3.dev25 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    0.1.4.dev1 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
     </div>
     </br>
 </div>
@@ -183,10 +194,10 @@ wrappers for the code originally implemented in the C/C++ languages while the
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2018, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.
+      &copy;2018-2019, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
