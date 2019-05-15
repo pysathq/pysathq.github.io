@@ -45,6 +45,12 @@ well as the <code class="docutils literal notranslate"><span class="pre">six</sp
 <p>Note that PySAT was not tested on the Microsoft Windows platform, and so <em>it is
 not yet supported</em>. We are working on resolving this issue but your input may
 be needed.</p>
+<p>Also note that using Clang is preferred on MacOS as there may be an issue with
+GCC <em>being unaware of</em> the command-line option <code class="docutils literal notranslate"><span class="pre">--stdlib=libc++</span></code>. Clang is
+available on MacOS by default. To enforce the installer to use it, you need to
+set the environment variable <code class="docutils literal notranslate"><span class="pre">CC</span></code> to <code class="docutils literal notranslate"><span class="pre">/usr/bin/clang</span></code>. For that, do
+<code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">CC=/usr/bin/clang</span></code> if using Bash, or <code class="docutils literal notranslate"><span class="pre">setenv</span> <span class="pre">CC</span> <span class="pre">/usr/bin/clang</span></code> if
+using tsch. <em>This is not needed on Linux!</em></p>
 <p>Once all the prerequisites are installed, the simplest way to get and start
 using PySAT is to install the latest stable release of the toolkit from <a class="reference external" href="https://pypi.org/">PyPI</a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install python-sat
