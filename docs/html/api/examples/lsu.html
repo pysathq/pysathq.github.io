@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>LSU algorithm for MaxSAT (pysat.examples.lsu) &#8212; PySAT 0.1.4.dev8 documentation</title>
+    <title>LSU algorithm for MaxSAT (pysat.examples.lsu) &#8212; PySAT 0.1.4.dev9 documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -47,6 +47,9 @@
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#examples.lsu.LSU" title="examples.lsu.LSU"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LSU</span></code></a></td>
 <td>Linear SAT-UNSAT algorithm for MaxSAT <a class="footnote-reference" href="#id4" id="id1">[1]</a>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#examples.lsu.LSUPlus" title="examples.lsu.LSUPlus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LSUPlus</span></code></a></td>
+<td>LSU-like algorithm extended for <a class="reference internal" href="../formula.html#pysat.formula.WCNFPlus" title="pysat.formula.WCNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNFPlus</span></code></a> formulas (using <code class="xref py py-class docutils literal notranslate"><span class="pre">Minicard</span></code>).</td>
 </tr>
 </tbody>
 </table>
@@ -260,6 +263,41 @@ otherwise.</p>
 
 </dd></dl>
 
+<dl class="class">
+<dt id="examples.lsu.LSUPlus">
+<em class="property">class </em><code class="descclassname">examples.lsu.</code><code class="descname">LSUPlus</code><span class="sig-paren">(</span><em>formula</em>, <em>verbose=0</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lsu.LSUPlus" title="Permalink to this definition">¶</a></dt>
+<dd><p>LSU-like algorithm extended for <a class="reference internal" href="../formula.html#pysat.formula.WCNFPlus" title="pysat.formula.WCNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNFPlus</span></code></a> formulas (using
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Minicard</span></code>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>formula</strong> (<a class="reference internal" href="../formula.html#pysat.formula.WCNFPlus" title="pysat.formula.WCNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNFPlus</span></code></a>) – input MaxSAT formula in WCNF+ format</li>
+<li><strong>verbose</strong> (<em>int</em>) – verbosity level</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="examples.lsu.LSUPlus._assert_lt">
+<code class="descname">_assert_lt</code><span class="sig-paren">(</span><em>cost</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lsu.LSUPlus._assert_lt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overrides _assert_lt of <a class="reference internal" href="#examples.lsu.LSU" title="examples.lsu.LSU"><code class="xref py py-class docutils literal notranslate"><span class="pre">LSU</span></code></a> in order to use Minicard’s
+native support for cardinality constraints</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cost</strong> (<em>int</em>) – the cost of the next MaxSAT solution is enforced to
+be <em>lower</em> than this current cost</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 </div>
 
@@ -295,7 +333,7 @@ otherwise.</p>
 <div class="sidebarblock">
     <div class="tile">
     <h4>Latest version:</h4>
-    0.1.4.dev8 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    0.1.4.dev9 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
     </div>
     </br>
 </div>
