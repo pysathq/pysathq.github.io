@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>LSU algorithm for MaxSAT (pysat.examples.lsu) &#8212; PySAT 0.1.4.dev9 documentation</title>
+    <title>LSU algorithm for MaxSAT (pysat.examples.lsu) &#8212; PySAT 0.1.4.dev10 documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -213,6 +213,12 @@ stored in variable <code class="docutils literal notranslate"><span class="pre">
 </dd></dl>
 
 <dl class="method">
+<dt id="examples.lsu.LSU.clear_interrupt">
+<code class="descname">clear_interrupt</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.lsu.LSU.clear_interrupt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clears an interruption.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="examples.lsu.LSU.delete">
 <code class="descname">delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.lsu.LSU.delete" title="Permalink to this definition">¶</a></dt>
 <dd><p>Explicit destructor of the internal SAT oracle and the
@@ -232,6 +238,15 @@ oracle call made in <a class="reference internal" href="#examples.lsu.LSU.solve"
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.lsu.LSU.interrupt">
+<code class="descname">interrupt</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.lsu.LSU.interrupt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interrupt the current execution of LSU’s <a class="reference internal" href="#examples.lsu.LSU.solve" title="examples.lsu.LSU.solve"><code class="xref py py-meth docutils literal notranslate"><span class="pre">solve()</span></code></a> method.
+Can be used to enforce time limits using timer objects. The
+interrupt must be cleared before running the LSU algorithm again
+(see <a class="reference internal" href="#examples.lsu.LSU.clear_interrupt" title="examples.lsu.LSU.clear_interrupt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">clear_interrupt()</span></code></a>).</p>
 </dd></dl>
 
 <dl class="method">
@@ -333,7 +348,7 @@ be <em>lower</em> than this current cost</td>
 <div class="sidebarblock">
     <div class="tile">
     <h4>Latest version:</h4>
-    0.1.4.dev9 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    0.1.4.dev10 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
     </div>
     </br>
 </div>
