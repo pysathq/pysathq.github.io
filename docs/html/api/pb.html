@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Pseudo-Boolean encodings (pysat.pb) &#8212; PySAT 0.1.4.dev18 documentation</title>
+    <title>Pseudo-Boolean encodings (pysat.pb) &#8212; PySAT 0.1.4.dev19 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -173,19 +173,19 @@ e.g. <code class="docutils literal notranslate"><span class="pre">PBEnc.atmost(w
 </div>
 <dl class="method">
 <dt id="pysat.pb.PBEnc.atleast">
-<em class="property">classmethod </em><code class="sig-name descname">atleast</code><span class="sig-paren">(</span><em class="sig-param">lits</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">bound=1</em>, <em class="sig-param">top_id=None</em>, <em class="sig-param">encoding=0</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.PBEnc.atleast" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="sig-name descname">atleast</code><span class="sig-paren">(</span><em class="sig-param">lits</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">bound=1</em>, <em class="sig-param">top_id=None</em>, <em class="sig-param">vpool=None</em>, <em class="sig-param">encoding=0</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.PBEnc.atleast" title="Permalink to this definition">¶</a></dt>
 <dd><p>A synonym for <a class="reference internal" href="#pysat.pb.PBEnc.geq" title="pysat.pb.PBEnc.geq"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PBEnc.geq()</span></code></a>.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="pysat.pb.PBEnc.atmost">
-<em class="property">classmethod </em><code class="sig-name descname">atmost</code><span class="sig-paren">(</span><em class="sig-param">lits</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">bound=1</em>, <em class="sig-param">top_id=None</em>, <em class="sig-param">encoding=0</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.PBEnc.atmost" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="sig-name descname">atmost</code><span class="sig-paren">(</span><em class="sig-param">lits</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">bound=1</em>, <em class="sig-param">top_id=None</em>, <em class="sig-param">vpool=None</em>, <em class="sig-param">encoding=0</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.PBEnc.atmost" title="Permalink to this definition">¶</a></dt>
 <dd><p>A synonim for <a class="reference internal" href="#pysat.pb.PBEnc.leq" title="pysat.pb.PBEnc.leq"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PBEnc.leq()</span></code></a>.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="pysat.pb.PBEnc.equals">
-<em class="property">classmethod </em><code class="sig-name descname">equals</code><span class="sig-paren">(</span><em class="sig-param">lits</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">bound=1</em>, <em class="sig-param">top_id=None</em>, <em class="sig-param">encoding=0</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.PBEnc.equals" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="sig-name descname">equals</code><span class="sig-paren">(</span><em class="sig-param">lits</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">bound=1</em>, <em class="sig-param">top_id=None</em>, <em class="sig-param">vpool=None</em>, <em class="sig-param">encoding=0</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.PBEnc.equals" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method can be used for creating a CNF encoding of a weighted
 EqualsK constraint, i.e. of <span class="math notranslate nohighlight">\(\sum_{i=1}^{n}{a_i\cdot x_i}=
 k\)</span>. The method shares the arguments and the return type with
@@ -194,7 +194,7 @@ method <a class="reference internal" href="#pysat.pb.PBEnc.leq" title="pysat.pb.
 
 <dl class="method">
 <dt id="pysat.pb.PBEnc.geq">
-<em class="property">classmethod </em><code class="sig-name descname">geq</code><span class="sig-paren">(</span><em class="sig-param">lits</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">bound=1</em>, <em class="sig-param">top_id=None</em>, <em class="sig-param">encoding=0</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.PBEnc.geq" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="sig-name descname">geq</code><span class="sig-paren">(</span><em class="sig-param">lits</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">bound=1</em>, <em class="sig-param">top_id=None</em>, <em class="sig-param">vpool=None</em>, <em class="sig-param">encoding=0</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.PBEnc.geq" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method can be used for creating a CNF encoding of a GEQ
 (weighted AtLeastK) constraint, i.e. of
 <span class="math notranslate nohighlight">\(\sum_{i=1}^{n}{a_i\cdot x_i}\geq k\)</span>. The method shares the
@@ -204,7 +204,7 @@ Please, see it for details.</p>
 
 <dl class="method">
 <dt id="pysat.pb.PBEnc.leq">
-<em class="property">classmethod </em><code class="sig-name descname">leq</code><span class="sig-paren">(</span><em class="sig-param">lits</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">bound=1</em>, <em class="sig-param">top_id=None</em>, <em class="sig-param">encoding=0</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.PBEnc.leq" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="sig-name descname">leq</code><span class="sig-paren">(</span><em class="sig-param">lits</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">bound=1</em>, <em class="sig-param">top_id=None</em>, <em class="sig-param">vpool=None</em>, <em class="sig-param">encoding=0</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.PBEnc.leq" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method can be used for creating a CNF encoding of a LEQ
 (weighted AtMostK) constraint, i.e. of
 <span class="math notranslate nohighlight">\(\sum_{i=1}^{n}{a_i\cdot x_i}\leq k\)</span>. The resulting set of
@@ -223,6 +223,7 @@ encoding type.</p>
 <li><p><strong>weights</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – a list of weights</p></li>
 <li><p><strong>bound</strong> (<em>int</em>) – the value of bound <span class="math notranslate nohighlight">\(k\)</span>.</p></li>
 <li><p><strong>top_id</strong> (<em>integer</em><em> or </em><em>None</em>) – top variable identifier used so far.</p></li>
+<li><p><strong>vpool</strong> (<a class="reference internal" href="formula.html#pysat.formula.IDPool" title="pysat.formula.IDPool"><code class="xref py py-class docutils literal notranslate"><span class="pre">IDPool</span></code></a>) – variable pool for counting the number of variables.</p></li>
 <li><p><strong>encoding</strong> (<em>integer</em>) – identifier of the encoding to use.</p></li>
 </ul>
 </dd>
@@ -269,7 +270,7 @@ encoding type.</p>
 <div class="sidebarblock">
     <div class="tile">
     <h4>Latest version:</h4>
-    0.1.4.dev18 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    0.1.4.dev19 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
     </div>
     </br>
 </div>

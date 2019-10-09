@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>RC2 MaxSAT solver (pysat.examples.rc2) &#8212; PySAT 0.1.4.dev18 documentation</title>
+    <title>RC2 MaxSAT solver (pysat.examples.rc2) &#8212; PySAT 0.1.4.dev19 documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -57,30 +57,35 @@
 satisfiability. RC2 stands for <em>relaxable cardinality constraints</em>
 (alternatively, <em>soft cardinality constraints</em>) and represents an
 improved version of the OLLITI algorithm, which was described in
-<a class="footnote-reference brackets" href="#id4" id="id1">1</a> and <a class="footnote-reference brackets" href="#id5" id="id2">2</a> and originally implemented in the <a class="reference external" href="https://reason.di.fc.ul.pt/wiki/doku.php?id=mscg">MSCG MaxSAT
+<a class="footnote-reference brackets" href="#id6" id="id1">1</a> and <a class="footnote-reference brackets" href="#id7" id="id2">2</a> and originally implemented in the <a class="reference external" href="https://reason.di.fc.ul.pt/wiki/doku.php?id=mscg">MSCG MaxSAT
 solver</a>.</p>
-<p>Initially, this solver was supposed to serve as an example of a
-possible PySAT usage illustrating how a state-of-the-art MaxSAT
-algorithm could be implemented in Python and still be efficient.
-It participated in the <a class="reference external" href="https://maxsat-evaluations.github.io/2018/">MaxSAT Evaluation 2018</a> where,
-surprisingly, it <a class="reference external" href="https://maxsat-evaluations.github.io/2018/rankings.html">was ranked first</a> in two
-complete categories: <em>unweighted</em> and <em>weighted</em>. A brief solver
-description can be found in <a class="footnote-reference brackets" href="#id6" id="id3">3</a>.</p>
+<p>Initially, this solver was supposed to serve as an example of a possible
+PySAT usage illustrating how a state-of-the-art MaxSAT algorithm could be
+implemented in Python and still be efficient. It participated in the
+<a class="reference external" href="https://maxsat-evaluations.github.io/2018/rankings.html">MaxSAT Evaluations 2018</a> and <a class="reference external" href="https://maxsat-evaluations.github.io/2019/rankings.html">2019</a> where,
+surprisingly, it was ranked first in two complete categories: <em>unweighted</em>
+and <em>weighted</em>. A brief solver description can be found in <a class="footnote-reference brackets" href="#id8" id="id4">3</a>. A more
+detailed solver description can be found in <a class="footnote-reference brackets" href="#id9" id="id5">4</a>.</p>
 <dl class="footnote brackets">
-<dt class="label" id="id4"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id11">2</a>,<a href="#id17">3</a>,<a href="#id18">4</a>)</span></dt>
+<dt class="label" id="id6"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id14">2</a>,<a href="#id20">3</a>,<a href="#id21">4</a>)</span></dt>
 <dd><p>António Morgado, Carmine Dodaro, Joao Marques-Silva.
 <em>Core-Guided MaxSAT with Soft Cardinality Constraints</em>. CP
 2014. pp. 564-573</p>
 </dd>
-<dt class="label" id="id5"><span class="brackets">2</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id12">2</a>)</span></dt>
+<dt class="label" id="id7"><span class="brackets">2</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id15">2</a>)</span></dt>
 <dd><p>António Morgado, Alexey Ignatiev, Joao Marques-Silva.
 <em>MSCG: Robust Core-Guided MaxSAT Solving</em>. JSAT 9. 2014.
 pp. 129-134</p>
 </dd>
-<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id4">3</a></span></dt>
 <dd><p>Alexey Ignatiev, António Morgado, Joao Marques-Silva.
-<em>RC2: a Python-based MaxSAT Solver</em>. MaxSAT Evaluation 2018.
+<em>RC2: A Python-based MaxSAT Solver</em>. MaxSAT Evaluation 2018.
 p. 22</p>
+</dd>
+<dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id5">4</a></span></dt>
+<dd><p>Alexey Ignatiev, António Morgado, Joao Marques-Silva.
+<em>RC2: An Efficient MaxSAT Solver</em>. MaxSAT Evaluation 2018.
+JSAT 11. 2019. pp. 53-64</p>
 </dd>
 </dl>
 <p>The file implements two classes: <a class="reference internal" href="#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2</span></code></a> and
@@ -88,15 +93,15 @@ p. 22</p>
 implementation of the algorithm, which can be applied to a MaxSAT
 formula in the <a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a> format. The latter class
 additionally implements Boolean lexicographic optimization (BLO)
-<a class="footnote-reference brackets" href="#id9" id="id7">4</a> and stratification <a class="footnote-reference brackets" href="#id10" id="id8">5</a> on top of <a class="reference internal" href="#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2</span></code></a>.</p>
+<a class="footnote-reference brackets" href="#id12" id="id10">5</a> and stratification <a class="footnote-reference brackets" href="#id13" id="id11">6</a> on top of <a class="reference internal" href="#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2</span></code></a>.</p>
 <dl class="footnote brackets">
-<dt class="label" id="id9"><span class="brackets">4</span><span class="fn-backref">(<a href="#id7">1</a>,<a href="#id19">2</a>)</span></dt>
+<dt class="label" id="id12"><span class="brackets">5</span><span class="fn-backref">(<a href="#id10">1</a>,<a href="#id22">2</a>)</span></dt>
 <dd><p>Joao Marques-Silva, Josep Argelich, Ana Graça, Inês Lynce.
 <em>Boolean lexicographic optimization: algorithms &amp;
 applications</em>. Ann. Math. Artif. Intell. 62(3-4). 2011.
 pp. 317-343</p>
 </dd>
-<dt class="label" id="id10"><span class="brackets">5</span><span class="fn-backref">(<a href="#id8">1</a>,<a href="#id15">2</a>,<a href="#id20">3</a>)</span></dt>
+<dt class="label" id="id13"><span class="brackets">6</span><span class="fn-backref">(<a href="#id11">1</a>,<a href="#id18">2</a>,<a href="#id23">3</a>)</span></dt>
 <dd><p>Carlos Ansótegui, Maria Luisa Bonet, Joel Gabàs, Jordi
 Levy. <em>Improving WPM2 for (Weighted) Partial MaxSAT</em>. CP
 2013. pp. 117-132</p>
@@ -153,7 +158,7 @@ enumerate a given number (or <em>all</em>) of its top MaxSAT solutions.</p>
 (partial) CNF formula, i.e. formula in the <a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a>
 format, this class can be used to compute a given number of
 MaxSAT solutions for the input formula. <a class="reference internal" href="#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2</span></code></a> roughly
-follows the implementation of algorithm OLLITI <a class="footnote-reference brackets" href="#id4" id="id11">1</a> <a class="footnote-reference brackets" href="#id5" id="id12">2</a> of
+follows the implementation of algorithm OLLITI <a class="footnote-reference brackets" href="#id6" id="id14">1</a> <a class="footnote-reference brackets" href="#id7" id="id15">2</a> of
 MSCG and applies a few heuristics on top of it. These include</p>
 <ul class="simple">
 <li><p><em>unsatisfiable core exhaustion</em> (see method <a class="reference internal" href="#examples.rc2.RC2.exhaust_core" title="examples.rc2.RC2.exhaust_core"><code class="xref py py-func docutils literal notranslate"><span class="pre">exhaust_core()</span></code></a>),</p></li>
@@ -164,7 +169,7 @@ MSCG and applies a few heuristics on top of it. These include</p>
 default SAT solver to use is <code class="docutils literal notranslate"><span class="pre">g3</span></code> (see
 <a class="reference internal" href="../solvers.html#pysat.solvers.SolverNames" title="pysat.solvers.SolverNames"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolverNames</span></code></a>). Additionally, if Glucose is chosen,
 the <code class="docutils literal notranslate"><span class="pre">incr</span></code> parameter controls whether to use the incremental
-mode of Glucose <a class="footnote-reference brackets" href="#id14" id="id13">6</a> (turned off by default). Boolean
+mode of Glucose <a class="footnote-reference brackets" href="#id17" id="id16">7</a> (turned off by default). Boolean
 parameters <code class="docutils literal notranslate"><span class="pre">adapt</span></code>, <code class="docutils literal notranslate"><span class="pre">exhaust</span></code>, and <code class="docutils literal notranslate"><span class="pre">minz</span></code> control
 whether or to apply detection and adaptation of intrinsic
 AtMost1 constraints, core exhaustion, and core reduction.
@@ -172,7 +177,7 @@ Unsatisfiable cores can be trimmed if the <code class="docutils literal notransl
 is set to a non-zero integer. Finally, verbosity level can be
 set using the <code class="docutils literal notranslate"><span class="pre">verbose</span></code> parameter.</p>
 <dl class="footnote brackets">
-<dt class="label" id="id14"><span class="brackets">6</span><span class="fn-backref">(<a href="#id13">1</a>,<a href="#id16">2</a>)</span></dt>
+<dt class="label" id="id17"><span class="brackets">7</span><span class="fn-backref">(<a href="#id16">1</a>,<a href="#id19">2</a>)</span></dt>
 <dd><p>Gilles Audemard, Jean-Marie Lagniez, Laurent Simon.
 <em>Improving Glucose for Incremental SAT Solving with
 Assumptions: Application to MUS Extraction</em>. SAT 2013.
@@ -421,7 +426,7 @@ internally and returns it.</p>
 <code class="sig-name descname">exhaust_core</code><span class="sig-paren">(</span><em class="sig-param">tobj</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2.exhaust_core" title="Permalink to this definition">¶</a></dt>
 <dd><p>Exhaust core by increasing its bound as much as possible.
 Core exhaustion was originally referred to as <em>cover
-optimization</em> in <a class="footnote-reference brackets" href="#id10" id="id15">5</a>.</p>
+optimization</em> in <a class="footnote-reference brackets" href="#id13" id="id18">6</a>.</p>
 <p>Given a totalizer object <code class="docutils literal notranslate"><span class="pre">tobj</span></code> representing a sum of
 some <em>relaxation</em> variables <span class="math notranslate nohighlight">\(r\in R\)</span> that augment
 soft clauses <span class="math notranslate nohighlight">\(\mathcal{C}_r\)</span>, the idea is to
@@ -476,7 +481,7 @@ oracle with its hard clauses. It also augments the soft
 clauses with “fresh” selectors and adds them to the oracle
 afterwards.</p>
 <p>Optional input parameter <code class="docutils literal notranslate"><span class="pre">incr</span></code> (<code class="docutils literal notranslate"><span class="pre">False</span></code> by default)
-regulates whether or not Glucose’s incremental mode <a class="footnote-reference brackets" href="#id14" id="id16">6</a>
+regulates whether or not Glucose’s incremental mode <a class="footnote-reference brackets" href="#id17" id="id19">7</a>
 is turned on.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -564,7 +569,7 @@ used to create a new totalizer object in
 minimal weight of the core, e.g. <code class="docutils literal notranslate"><span class="pre">self.minw</span></code>, the
 selector is marked as garbage and will be removed in
 <a class="reference internal" href="#examples.rc2.RC2.filter_assumps" title="examples.rc2.RC2.filter_assumps"><code class="xref py py-func docutils literal notranslate"><span class="pre">filter_assumps()</span></code></a>. Otherwise, the clause is split as
-described in <a class="footnote-reference brackets" href="#id4" id="id17">1</a>.</p>
+described in <a class="footnote-reference brackets" href="#id6" id="id20">1</a>.</p>
 </dd></dl>
 
 <dl class="method">
@@ -578,7 +583,7 @@ dealt with in <a class="reference internal" href="#examples.rc2.RC2.filter_assum
 <p>In some cases, the process involves updating the
 right-hand sides of the existing cardinality sums (see the
 call to <a class="reference internal" href="#examples.rc2.RC2.update_sum" title="examples.rc2.RC2.update_sum"><code class="xref py py-func docutils literal notranslate"><span class="pre">update_sum()</span></code></a>). The overall procedure is
-detailed in <a class="footnote-reference brackets" href="#id4" id="id18">1</a>.</p>
+detailed in <a class="footnote-reference brackets" href="#id6" id="id21">1</a>.</p>
 </dd></dl>
 
 <dl class="method">
@@ -642,8 +647,8 @@ to improve the performance of the solver on weighted MaxSAT
 formulas. This class extends capabilities of <a class="reference internal" href="#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2</span></code></a> with
 two heuristics, namely</p>
 <ol class="arabic simple">
-<li><p>Boolean lexicographic optimization (BLO) <a class="footnote-reference brackets" href="#id9" id="id19">4</a></p></li>
-<li><p>stratification <a class="footnote-reference brackets" href="#id10" id="id20">5</a></p></li>
+<li><p>Boolean lexicographic optimization (BLO) <a class="footnote-reference brackets" href="#id12" id="id22">5</a></p></li>
+<li><p>stratification <a class="footnote-reference brackets" href="#id13" id="id23">6</a></p></li>
 </ol>
 <p>There is no way to enable only one of them – both heuristics
 are applied at the same time. Except for the aforementioned
@@ -773,7 +778,7 @@ reactivated at a later stage.</p>
 <div class="sidebarblock">
     <div class="tile">
     <h4>Latest version:</h4>
-    0.1.4.dev18 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    0.1.4.dev19 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
     </div>
     </br>
 </div>
