@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Installation &#8212; PySAT 0.1.4.dev25 documentation</title>
+    <title>Installation &#8212; PySAT 0.1.5.dev1 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -43,9 +43,9 @@ well as the <code class="docutils literal notranslate"><span class="pre">six</sp
 Finally, in order to compile “C extensions” included as modules, the installer
 requires the headers of <a class="reference external" href="https://www.python.org/">Python</a> and <a class="reference external" href="https://www.zlib.net/">zlib</a>. Both can be installed using the standard package
 repositories.</p>
-<p>Note that PySAT was not tested on the Microsoft Windows platform, and so <em>it is
-not yet supported</em>. We are working on resolving this issue but your input may
-be needed.</p>
+<p>Note that although version <cite>0.1.5.dev1</cite> of PySAT brings Microsoft Windows
+support, the toolkit was not extensively tested on this system. If you find
+out that something is broken on Windows, please, <a class="reference external" href="https://github.com/pysathq/pysat/issues">let us know</a>. Your input is important.</p>
 <p>Also note that using Clang is preferred on MacOS as there may be an issue with
 GCC <em>being unaware of</em> the command-line option <code class="docutils literal notranslate"><span class="pre">--stdlib=libc++</span></code>. Clang is
 available on MacOS by default. To enforce the installer to use it, you need to
@@ -54,6 +54,13 @@ set the environment variable <code class="docutils literal notranslate"><span cl
 using tsch. <em>This is not needed on Linux!</em></p>
 <p>Once all the prerequisites are installed, the simplest way to get and start
 using PySAT is to install the latest stable release of the toolkit from <a class="reference external" href="https://pypi.org/">PyPI</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install python-sat[pblib,aiger]
+</pre></div>
+</div>
+<p>We encourage you to install the <em>optional</em> dependencies <cite>pblib</cite> and <cite>aiger</cite>,
+as in the previous command. However, if it cannot be done (e.g. if their
+installation fails), you can install PySAT with the functionality of <cite>aiger</cite>
+and <cite>pblib</cite> disabled:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install python-sat
 </pre></div>
 </div>
@@ -109,7 +116,7 @@ installation of PySAT.</p>
 <div class="sidebarblock">
     <div class="tile">
     <h4>Latest version:</h4>
-    0.1.4.dev25 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    0.1.5.dev1 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
     </div>
     </br>
 </div><h3>Navigation</h3>
