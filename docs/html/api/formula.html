@@ -89,13 +89,13 @@ instance, the following piece of code creates a CNF formula
 </div>
 <p>The clauses of a formula can be accessed through the <code class="docutils literal notranslate"><span class="pre">clauses</span></code> variable
 of class <a class="reference internal" href="#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a>, which is a list of lists of integers:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[-1, 2], [-2 ,3]]</span>
 </pre></div>
 </div>
 <p>The number of variables in a CNF formula, i.e. the <em>largest variable
 identifier</em>, can be obtained using the <code class="docutils literal notranslate"><span class="pre">nv</span></code> variable, e.g.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf</span><span class="o">.</span><span class="n">nv</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">nv</span><span class="p">)</span>
 <span class="go">3</span>
 </pre></div>
 </div>
@@ -127,9 +127,9 @@ following way:</p>
 <span class="gp">... </span>    <span class="n">f2</span><span class="o">.</span><span class="n">to_fp</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>  <span class="c1"># writing to a file pointer</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f3</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_string</span><span class="o">=</span><span class="s1">&#39;p cnf 3 3</span><span class="se">\n</span><span class="s1">-1 2 0</span><span class="se">\n</span><span class="s1">-2 3 0</span><span class="se">\n</span><span class="s1">-3 0</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">f3</span><span class="o">.</span><span class="n">clauses</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">f3</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[-1, 2], [-2, 3], [-3]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">f3</span><span class="o">.</span><span class="n">nv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">f3</span><span class="o">.</span><span class="n">nv</span><span class="p">)</span>
 <span class="go">3</span>
 </pre></div>
 </div>
@@ -158,11 +158,11 @@ weights of soft clauses are stored in variable <code class="docutils literal not
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">2</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># the formula becomes unsatisfiable</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">wcnf</span><span class="o">.</span><span class="n">hard</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">wcnf</span><span class="o">.</span><span class="n">hard</span><span class="p">)</span>
 <span class="go">[[-1, -2]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">wcnf</span><span class="o">.</span><span class="n">soft</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">wcnf</span><span class="o">.</span><span class="n">soft</span><span class="p">)</span>
 <span class="go">[[1], [2]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">wcnf</span><span class="o">.</span><span class="n">wght</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">wcnf</span><span class="o">.</span><span class="n">wght</span><span class="p">)</span>
 <span class="go">[1, 3]</span>
 </pre></div>
 </div>
@@ -170,7 +170,7 @@ weights of soft clauses are stored in variable <code class="docutils literal not
 be equal to <span class="math notranslate nohighlight">\(1+\sum_{c_i\in\mathcal{S}}{w_i}\)</span>. Top weight of a
 formula can be accessed through variable <code class="docutils literal notranslate"><span class="pre">topw</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span><span class="o">.</span><span class="n">topw</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">wcnf</span><span class="o">.</span><span class="n">wght</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># (1 + 3) + 1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">wcnf</span><span class="o">.</span><span class="n">topw</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">wcnf</span><span class="o">.</span><span class="n">topw</span><span class="p">)</span>
 <span class="go">5</span>
 </pre></div>
 </div>
@@ -247,7 +247,7 @@ the formula.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">CNF</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_clauses</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[-1, 2], [3], [-3, 4]]</span>
 </pre></div>
 </div>
@@ -267,9 +267,9 @@ the <em>deepcopy</em> functionality to copy the clauses.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cnf1</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_clauses</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf2</span> <span class="o">=</span> <span class="n">cnf1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf2</span><span class="o">.</span><span class="n">clauses</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf2</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[-1, 2], [1]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf2</span><span class="o">.</span><span class="n">nv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf2</span><span class="o">.</span><span class="n">nv</span><span class="p">)</span>
 <span class="go">2</span>
 </pre></div>
 </div>
@@ -290,7 +290,7 @@ the form of list. For every clause in the list, method
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">CNF</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_clauses</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span><span class="o">.</span><span class="n">extend</span><span class="p">([[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[-1, 2], [3], [-3, 4], [5, 6]]</span>
 </pre></div>
 </div>
@@ -356,9 +356,9 @@ string to parse. (Classes <code class="xref py py-class docutils literal notrans
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">CNF</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_clauses</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[-1, 2], [1, -2], [5]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf</span><span class="o">.</span><span class="n">nv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">nv</span><span class="p">)</span>
 <span class="go">5</span>
 </pre></div>
 </div>
@@ -441,13 +441,13 @@ specific comment lines.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">CNF</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf1</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf1</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="o">=</span><span class="s1">&#39;p cnf 2 2</span><span class="se">\n</span><span class="s1">-1 2 0</span><span class="se">\n</span><span class="s1">1 -2 0&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf1</span><span class="o">.</span><span class="n">clauses</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf1</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[-1, 2], [1, -2]]</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf2</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_string</span><span class="o">=</span><span class="s1">&#39;p cnf 3 3</span><span class="se">\n</span><span class="s1">-1 2 0</span><span class="se">\n</span><span class="s1">-2 3 0</span><span class="se">\n</span><span class="s1">-3 0</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf2</span><span class="o">.</span><span class="n">clauses</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf2</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[-1, 2], [-2, 3], [-3]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf2</span><span class="o">.</span><span class="n">nv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf2</span><span class="o">.</span><span class="n">nv</span><span class="p">)</span>
 <span class="go">3</span>
 </pre></div>
 </div>
@@ -482,9 +482,9 @@ Mathematical Logic, Part II. pp.  115–125, 1968</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">CNF</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pos</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_clauses</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">neg</span> <span class="o">=</span> <span class="n">pos</span><span class="o">.</span><span class="n">negate</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">neg</span><span class="o">.</span><span class="n">clauses</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">neg</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[1, -4], [-2, -4], [-1, 2, 4], [4, -3]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">neg</span><span class="o">.</span><span class="n">auxvars</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">neg</span><span class="o">.</span><span class="n">auxvars</span><span class="p">)</span>
 <span class="go">[4, -3]</span>
 </pre></div>
 </div>
@@ -566,11 +566,11 @@ is equal to <code class="docutils literal notranslate"><span class="pre">1</span
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_clauses</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span> <span class="o">=</span> <span class="n">cnf</span><span class="o">.</span><span class="n">weighted</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">wcnf</span><span class="o">.</span><span class="n">hard</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">wcnf</span><span class="o">.</span><span class="n">hard</span><span class="p">)</span>
 <span class="go">[]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">wcnf</span><span class="o">.</span><span class="n">soft</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">wcnf</span><span class="o">.</span><span class="n">soft</span><span class="p">)</span>
 <span class="go">[[-1, 2], [3, 4]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">wcnf</span><span class="o">.</span><span class="n">wght</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">wcnf</span><span class="o">.</span><span class="n">wght</span><span class="p">)</span>
 <span class="go">[1, 1]</span>
 </pre></div>
 </div>
@@ -603,11 +603,11 @@ bound.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">CNFPlus</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNFPlus</span><span class="p">(</span><span class="n">from_string</span><span class="o">=</span><span class="s1">&#39;p cnf+ 7 3</span><span class="se">\n</span><span class="s1">1 -2 3 5 -7 &lt;= 3</span><span class="se">\n</span><span class="s1">4 5 6 -7 &gt;= 2</span><span class="se">\n</span><span class="s1"> 3 5 7 0</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[3, 5, 7]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf</span><span class="o">.</span><span class="n">atmosts</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">atmosts</span><span class="p">)</span>
 <span class="go">[[[1, -2, 3, 5, -7], 3], [[-4, -5, -6, 7], 2]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf</span><span class="o">.</span><span class="n">nv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">nv</span><span class="p">)</span>
 <span class="go">7</span>
 </pre></div>
 </div>
@@ -633,9 +633,9 @@ to <code class="docutils literal notranslate"><span class="pre">False</span></co
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNFPlus</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">1</span><span class="p">],</span> <span class="n">is_atmost</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[-3, 4]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf</span><span class="o">.</span><span class="n">atmosts</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">atmosts</span><span class="p">)</span>
 <span class="go">[[1, 2, 3], 1]</span>
 </pre></div>
 </div>
@@ -715,13 +715,13 @@ remains unchanged.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">1</span><span class="p">],</span> <span class="n">is_atmost</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span> <span class="o">=</span> <span class="n">cnf</span><span class="o">.</span><span class="n">weighted</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">wcnf</span><span class="o">.</span><span class="n">hard</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">wcnf</span><span class="o">.</span><span class="n">hard</span><span class="p">)</span>
 <span class="go">[]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">wcnf</span><span class="o">.</span><span class="n">soft</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">wcnf</span><span class="o">.</span><span class="n">soft</span><span class="p">)</span>
 <span class="go">[[-1, 2], [3, 4]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">wcnf</span><span class="o">.</span><span class="n">wght</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">wcnf</span><span class="o">.</span><span class="n">wght</span><span class="p">)</span>
 <span class="go">[1, 1]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">wcnf</span><span class="o">.</span><span class="n">atms</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">wcnf</span><span class="o">.</span><span class="n">atms</span><span class="p">)</span>
 <span class="go">[[[1, 2], 1]]</span>
 </pre></div>
 </div>
@@ -767,7 +767,7 @@ string variable names.</p>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># creating 5 unique variables for the following strings</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-<span class="gp">... </span>   <span class="k">print</span> <span class="n">vpool</span><span class="o">.</span><span class="n">id</span><span class="p">(</span><span class="s1">&#39;v{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+<span class="gp">... </span>   <span class="k">print</span><span class="p">(</span><span class="n">vpool</span><span class="o">.</span><span class="n">id</span><span class="p">(</span><span class="s1">&#39;v{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)))</span>
 <span class="go">1</span>
 <span class="go">2</span>
 <span class="go">11</span>
@@ -870,11 +870,11 @@ argument. If no weight is set, the clause is considered to be hard.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf</span><span class="o">.</span><span class="n">hard</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">hard</span><span class="p">)</span>
 <span class="go">[[-1, 2]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf</span><span class="o">.</span><span class="n">soft</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">soft</span><span class="p">)</span>
 <span class="go">[[1], [-2]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf</span><span class="o">.</span><span class="n">wght</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">wght</span><span class="p">)</span>
 <span class="go">[10, 20]</span>
 </pre></div>
 </div>
@@ -897,13 +897,13 @@ the <em>deepcopy</em> functionality to copy both hard and soft clauses.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf1</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf2</span> <span class="o">=</span> <span class="n">cnf1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf2</span><span class="o">.</span><span class="n">hard</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf2</span><span class="o">.</span><span class="n">hard</span><span class="p">)</span>
 <span class="go">[[-1, 2]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf2</span><span class="o">.</span><span class="n">soft</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf2</span><span class="o">.</span><span class="n">soft</span><span class="p">)</span>
 <span class="go">[[1]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf2</span><span class="o">.</span><span class="n">wght</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf2</span><span class="o">.</span><span class="n">wght</span><span class="p">)</span>
 <span class="go">[10]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf2</span><span class="o">.</span><span class="n">nv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf2</span><span class="o">.</span><span class="n">nv</span><span class="p">)</span>
 <span class="go">2</span>
 </pre></div>
 </div>
@@ -931,11 +931,11 @@ hard.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span><span class="o">.</span><span class="n">extend</span><span class="p">([[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span><span class="o">.</span><span class="n">extend</span><span class="p">([[</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">6</span><span class="p">]],</span> <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf</span><span class="o">.</span><span class="n">hard</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">hard</span><span class="p">)</span>
 <span class="go">[[-3, 4], [5, 6]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf</span><span class="o">.</span><span class="n">soft</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">soft</span><span class="p">)</span>
 <span class="go">[[3], [-4], [-5], [-6]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf</span><span class="o">.</span><span class="n">wght</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">wght</span><span class="p">)</span>
 <span class="go">[1, 5, 3, 4]</span>
 </pre></div>
 </div>
@@ -1018,17 +1018,17 @@ specific comment lines.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">WCNF</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf1</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf1</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="o">=</span><span class="s1">&#39;p wcnf 2 2 2</span><span class="se">\n</span><span class="s1"> 2 -1 2 0</span><span class="se">\n</span><span class="s1">1 1 -2 0&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf1</span><span class="o">.</span><span class="n">hard</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf1</span><span class="o">.</span><span class="n">hard</span><span class="p">)</span>
 <span class="go">[[-1, 2]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf1</span><span class="o">.</span><span class="n">soft</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf1</span><span class="o">.</span><span class="n">soft</span><span class="p">)</span>
 <span class="go">[[1, 2]]</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf2</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">(</span><span class="n">from_string</span><span class="o">=</span><span class="s1">&#39;p wcnf 3 3 2</span><span class="se">\n</span><span class="s1">2 -1 2 0</span><span class="se">\n</span><span class="s1">2 -2 3 0</span><span class="se">\n</span><span class="s1">1 -3 0</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf2</span><span class="o">.</span><span class="n">hard</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf2</span><span class="o">.</span><span class="n">hard</span><span class="p">)</span>
 <span class="go">[[-1, 2], [-2, 3]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf2</span><span class="o">.</span><span class="n">soft</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf2</span><span class="o">.</span><span class="n">soft</span><span class="p">)</span>
 <span class="go">[[-3]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf2</span><span class="o">.</span><span class="n">nv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf2</span><span class="o">.</span><span class="n">nv</span><span class="p">)</span>
 <span class="go">3</span>
 </pre></div>
 </div>
@@ -1113,7 +1113,7 @@ weights are discarded.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span><span class="o">.</span><span class="n">extend</span><span class="p">([[</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">6</span><span class="p">]],</span> <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">wcnf</span><span class="o">.</span><span class="n">unweighted</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[-3, 4], [5, 6], [3], [-4], [-5], [-6]]</span>
 </pre></div>
 </div>
@@ -1148,15 +1148,15 @@ are stored in variable <code class="docutils literal notranslate"><span class="p
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">WCNFPlus</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">WCNFPlus</span><span class="p">(</span><span class="n">from_string</span><span class="o">=</span><span class="s1">&#39;p wcnf+ 7 3 10</span><span class="se">\n</span><span class="s1">10 1 -2 3 5 -7 &lt;= 3</span><span class="se">\n</span><span class="s1">10 4 5 6 -7 &gt;= 2</span><span class="se">\n</span><span class="s1">5 3 5 7 0</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf</span><span class="o">.</span><span class="n">soft</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">soft</span><span class="p">)</span>
 <span class="go">[[3, 5, 7]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf</span><span class="o">.</span><span class="n">wght</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">wght</span><span class="p">)</span>
 <span class="go">[5]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf</span><span class="o">.</span><span class="n">hard</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">hard</span><span class="p">)</span>
 <span class="go">[]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf</span><span class="o">.</span><span class="n">atms</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">atms</span><span class="p">)</span>
 <span class="go">[[[1, -2, 3, 5, -7], 3], [[-4, -5, -6, 7], 2]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf</span><span class="o">.</span><span class="n">nv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">nv</span><span class="p">)</span>
 <span class="go">7</span>
 </pre></div>
 </div>
@@ -1188,13 +1188,13 @@ soft.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">1</span><span class="p">],</span> <span class="n">is_atmost</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="mi">35</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf</span><span class="o">.</span><span class="n">hard</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">hard</span><span class="p">)</span>
 <span class="go">[[-3, 4]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf</span><span class="o">.</span><span class="n">atms</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">atms</span><span class="p">)</span>
 <span class="go">[[1, 2, 3], 1]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf</span><span class="o">.</span><span class="n">soft</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">soft</span><span class="p">)</span>
 <span class="go">[[-1, -2]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf</span><span class="o">.</span><span class="n">wght</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">wght</span><span class="p">)</span>
 <span class="go">[35]</span>
 </pre></div>
 </div>
@@ -1275,9 +1275,9 @@ formula remain unchanged in the new (plain) formula.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">1</span><span class="p">],</span> <span class="n">is_atmost</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">wcnf</span><span class="o">.</span><span class="n">unweighted</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[-3, 4], [5, 6], [3], [-4], [-5], [-6]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">cnf</span><span class="o">.</span><span class="n">atmosts</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">atmosts</span><span class="p">)</span>
 <span class="go">[[[1, 2, 3], 1]]</span>
 </pre></div>
 </div>

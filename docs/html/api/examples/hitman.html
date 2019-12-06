@@ -130,7 +130,7 @@ enumeration.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sets</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Hitman</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">sets</span><span class="p">,</span> <span class="n">htype</span><span class="o">=</span><span class="s1">&#39;sorted&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">hitman</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">for</span> <span class="n">hs</span> <span class="ow">in</span> <span class="n">hitman</span><span class="o">.</span><span class="n">enumerate</span><span class="p">():</span>
-<span class="gp">... </span>        <span class="k">print</span> <span class="n">hs</span>
+<span class="gp">... </span>        <span class="k">print</span><span class="p">(</span><span class="n">hs</span><span class="p">)</span>
 <span class="gp">...</span>
 <span class="go">[1, 5]</span>
 <span class="go">[1, 6]</span>
@@ -161,8 +161,8 @@ algorithm for MaxSAT:</p>
 <span class="gp">... </span>    <span class="n">ts</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">sels</span><span class="p">)</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">hs</span><span class="p">))</span>  <span class="c1"># soft clauses to try</span>
 <span class="gp">...</span>
 <span class="gp">... </span>    <span class="k">if</span> <span class="n">oracle</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="n">ts</span><span class="p">):</span>
-<span class="gp">... </span>        <span class="k">print</span> <span class="s1">&#39;s OPTIMUM FOUND&#39;</span>
-<span class="gp">... </span>        <span class="k">print</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">hs</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;s OPTIMUM FOUND&#39;</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">hs</span><span class="p">))</span>
 <span class="gp">... </span>        <span class="k">break</span>
 <span class="gp">... </span>    <span class="k">else</span><span class="p">:</span>
 <span class="gp">... </span>        <span class="n">core</span> <span class="o">=</span> <span class="n">oracle</span><span class="o">.</span><span class="n">get_core</span><span class="p">()</span>
