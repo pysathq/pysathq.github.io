@@ -7,12 +7,12 @@
     <title>SAT solvers’ API (pysat.solvers) &#8212; PySAT 0.1.5.dev6 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Fu&amp;Malik MaxSAT algorithm (pysat.examples.fm)" href="examples/fm.html" />
@@ -237,14 +237,14 @@ following:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
 <span class="go">True</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">get_model</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">get_model</span><span class="p">())</span>
 <span class="go">[-1, -2]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Minisat22</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]])</span> <span class="k">as</span> <span class="n">m</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">m</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
 <span class="go">True</span>
-<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">get_model</span><span class="p">())</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">get_model</span><span class="p">())</span>
 <span class="go">[-1, -2]</span>
 </pre></div>
 </div>
@@ -263,7 +263,7 @@ by default):</p>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">PHP</span><span class="p">(</span><span class="n">nof_holes</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># pigeonhole principle for 3 pigeons</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Lingeling</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">,</span> <span class="n">with_proof</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">l</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Lingeling</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">,</span> <span class="n">with_proof</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">l</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">l</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
 <span class="go">False</span>
 <span class="gp">... </span>    <span class="n">l</span><span class="o">.</span><span class="n">get_proof</span><span class="p">()</span>
@@ -315,7 +315,7 @@ result, if set to <code class="docutils literal notranslate"><span class="pre">F
 </dl>
 <p>A usage example is the following:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Solver</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;mc&#39;</span><span class="p">,</span> <span class="n">bootstrap_with</span><span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">add_atmost</span><span class="p">(</span><span class="n">lits</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">no_return</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">add_atmost</span><span class="p">(</span><span class="n">lits</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">no_return</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="go">False</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># the AtMostK constraint is in conflict with initial unit clauses</span>
 </pre></div>
@@ -345,7 +345,7 @@ iterable type over integers, e.g. <code class="docutils literal notranslate"><sp
 others.</p>
 <p>A usage example is the following:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Solver</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="n">no_return</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="n">no_return</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="go">False</span>
 </pre></div>
 </div>
@@ -374,7 +374,7 @@ result, if set to <code class="docutils literal notranslate"><span class="pre">F
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">()</span>
 <span class="gp">... </span><span class="c1"># assume the formula contains clauses</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Solver</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">append_formula</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">,</span> <span class="n">no_return</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">append_formula</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">,</span> <span class="n">no_return</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="go">True</span>
 </pre></div>
 </div>
@@ -409,7 +409,7 @@ the number of conflicts is disabled.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">MinisatGH</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">conf_budget</span><span class="p">(</span><span class="mi">2000</span><span class="p">)</span>  <span class="c1"># getting at most 2000 conflicts</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">solve_limited</span><span class="p">())</span>  <span class="c1"># making a limited oracle call</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">solve_limited</span><span class="p">())</span>  <span class="c1"># making a limited oracle call</span>
 <span class="go">None</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
 </pre></div>
@@ -441,7 +441,7 @@ is a list of literals to “assume”.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Solver</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">enum_models</span><span class="p">():</span>
-<span class="gp">... </span>        <span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
 <span class="go">[-1, -2, -3]</span>
 <span class="go">[-1, -2, 3]</span>
 <span class="go">[-1, 2, 3]</span>
@@ -449,7 +449,7 @@ is a list of literals to “assume”.</p>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Solver</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">enum_models</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
-<span class="gp">... </span>        <span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
 <span class="go">[1, 2, 3]</span>
 </pre></div>
 </div>
@@ -476,7 +476,7 @@ Otherwise, <code class="docutils literal notranslate"><span class="pre">None</sp
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">])</span>
 <span class="go">False</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">get_core</span><span class="p">())</span>  <span class="c1"># literals 2 and 3 are not in the core</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">get_core</span><span class="p">())</span>  <span class="c1"># literals 2 and 3 are not in the core</span>
 <span class="go">[-4, 1]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
 </pre></div>
@@ -503,7 +503,7 @@ reported.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
 <span class="go">True</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">get_model</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">get_model</span><span class="p">())</span>
 <span class="go">[-1, -2]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
 </pre></div>
@@ -525,11 +525,11 @@ set up to provide a proof. Otherwise, the method returns <code class="docutils l
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.genhard</span> <span class="kn">import</span> <span class="n">PHP</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">PHP</span><span class="p">(</span><span class="n">nof_holes</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Solver</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;g4&#39;</span><span class="p">,</span> <span class="n">with_proof</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">g</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Solver</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;g4&#39;</span><span class="p">,</span> <span class="n">with_proof</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">g</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">g</span><span class="o">.</span><span class="n">append_formula</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="n">g</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
 <span class="go">False</span>
-<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">get_proof</span><span class="p">())</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">get_proof</span><span class="p">())</span>
 <span class="go">[&#39;-8 4 1 0&#39;, &#39;-10 0&#39;, &#39;-2 0&#39;, &#39;-4 0&#39;, &#39;-8 0&#39;, &#39;-6 0&#39;, &#39;0&#39;]</span>
 </pre></div>
 </div>
@@ -571,7 +571,7 @@ SAT call (see <a class="reference internal" href="#pysat.solvers.Solver.solve" t
 <span class="gp">&gt;&gt;&gt; </span><span class="n">timer</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">interrupt</span><span class="p">,</span> <span class="p">[</span><span class="n">m</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">solve_limited</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">solve_limited</span><span class="p">())</span>
 <span class="go">None</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
 </pre></div>
@@ -649,7 +649,7 @@ bound on the number of conflicts is disabled.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">MinisatGH</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">prop_budget</span><span class="p">(</span><span class="mi">100000</span><span class="p">)</span>  <span class="c1"># doing at most 100000 propagations</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">solve_limited</span><span class="p">())</span>  <span class="c1"># making a limited oracle call</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">solve_limited</span><span class="p">())</span>  <span class="c1"># making a limited oracle call</span>
 <span class="go">None</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
 </pre></div>
@@ -818,7 +818,7 @@ inside a Python script. See the <a class="reference internal" href="#pysat.solve
     <span class="n">to_test</span> <span class="o">=</span> <span class="n">core</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">core</span><span class="p">[(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):]</span>
 
     <span class="c1"># doing a limited call</span>
-    <span class="k">if</span> <span class="n">oracle</span><span class="o">.</span><span class="n">solve_limited</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="n">to_test</span><span class="p">)</span> <span class="o">==</span> <span class="bp">False</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">oracle</span><span class="o">.</span><span class="n">solve_limited</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="n">to_test</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
         <span class="n">core</span> <span class="o">=</span> <span class="n">to_test</span>
     <span class="k">else</span><span class="p">:</span>  <span class="c1"># True or *unknown*</span>
         <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -843,10 +843,10 @@ details).</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.genhard</span> <span class="kn">import</span> <span class="n">PHP</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">PHP</span><span class="p">(</span><span class="n">nof_holes</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Solver</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">,</span> <span class="n">use_timer</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">solve</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Solver</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">,</span> <span class="n">use_timer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">solve</span><span class="p">())</span>
 <span class="go">False</span>
-<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;{0:.2f}s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">time</span><span class="p">()))</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0:.2f}</span><span class="s1">s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">time</span><span class="p">()))</span>
 <span class="go">150.16s</span>
 </pre></div>
 </div>
@@ -869,16 +869,16 @@ previously set to <code class="docutils literal notranslate"><span class="pre">T
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.genhard</span> <span class="kn">import</span> <span class="n">PHP</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">PHP</span><span class="p">(</span><span class="n">nof_holes</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Solver</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">,</span> <span class="n">use_timer</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Solver</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">,</span> <span class="n">use_timer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
 <span class="go">False</span>
-<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;{0:.2f}s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">time</span><span class="p">()))</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0:.2f}</span><span class="s1">s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">time</span><span class="p">()))</span>
 <span class="go">1.76s</span>
-<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
 <span class="go">False</span>
-<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;{0:.2f}s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">time</span><span class="p">()))</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0:.2f}</span><span class="s1">s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">time</span><span class="p">()))</span>
 <span class="go">113.58s</span>
-<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;{0:.2f}s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">time_accum</span><span class="p">()))</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0:.2f}</span><span class="s1">s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">time_accum</span><span class="p">()))</span>
 <span class="go">115.34s</span>
 </pre></div>
 </div>
@@ -933,7 +933,7 @@ also allowed</em>.</p>
 
 
 <p>
-<iframe src="https://ghbtns.com/github-btn.html?user=pysathq&repo=pysat&type=watch&count=true&size=large&v=2"
+<iframe src="https://ghbtns.com/github-btn.html?user=pysathq&repo=pysat&type=star&count=true&size=large&v=2"
   allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
 </p>
 
@@ -973,7 +973,7 @@ also allowed</em>.</p>
       &copy;2018-2020, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

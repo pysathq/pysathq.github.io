@@ -7,12 +7,12 @@
     <title>Minimum/minimal hitting set solver (pysat.examples.hitman) &#8212; PySAT 0.1.5.dev6 documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="LBX-like MCS enumerator (pysat.examples.lbx)" href="lbx.html" />
@@ -130,7 +130,7 @@ enumeration.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sets</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Hitman</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">sets</span><span class="p">,</span> <span class="n">htype</span><span class="o">=</span><span class="s1">&#39;sorted&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">hitman</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">for</span> <span class="n">hs</span> <span class="ow">in</span> <span class="n">hitman</span><span class="o">.</span><span class="n">enumerate</span><span class="p">():</span>
-<span class="gp">... </span>        <span class="k">print</span><span class="p">(</span><span class="n">hs</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="n">hs</span><span class="p">)</span>
 <span class="gp">...</span>
 <span class="go">[1, 5]</span>
 <span class="go">[1, 6]</span>
@@ -156,13 +156,13 @@ algorithm for MaxSAT:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># is initialized with a MaxSAT formula,</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># whose soft clauses are extended with</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># selector literals stored in &quot;sels&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">hs</span> <span class="o">=</span> <span class="n">hitman</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>  <span class="c1"># hitting the set of unsatisfiable cores</span>
 <span class="gp">... </span>    <span class="n">ts</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">sels</span><span class="p">)</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">hs</span><span class="p">))</span>  <span class="c1"># soft clauses to try</span>
 <span class="gp">...</span>
 <span class="gp">... </span>    <span class="k">if</span> <span class="n">oracle</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="n">ts</span><span class="p">):</span>
-<span class="gp">... </span>        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;s OPTIMUM FOUND&#39;</span><span class="p">)</span>
-<span class="gp">... </span>        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">hs</span><span class="p">))</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;s OPTIMUM FOUND&#39;</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">hs</span><span class="p">))</span>
 <span class="gp">... </span>        <span class="k">break</span>
 <span class="gp">... </span>    <span class="k">else</span><span class="p">:</span>
 <span class="gp">... </span>        <span class="n">core</span> <span class="o">=</span> <span class="n">oracle</span><span class="o">.</span><span class="n">get_core</span><span class="p">()</span>
@@ -315,7 +315,7 @@ either to a MaxSAT solver or an MCS enumerator.</p>
 
 
 <p>
-<iframe src="https://ghbtns.com/github-btn.html?user=pysathq&repo=pysat&type=watch&count=true&size=large&v=2"
+<iframe src="https://ghbtns.com/github-btn.html?user=pysathq&repo=pysat&type=star&count=true&size=large&v=2"
   allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
 </p>
 
@@ -355,7 +355,7 @@ either to a MaxSAT solver or an MCS enumerator.</p>
       &copy;2018-2020, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

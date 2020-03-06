@@ -7,12 +7,12 @@
     <title>LBX-like MCS enumerator (pysat.examples.lbx) &#8212; PySAT 0.1.5.dev6 documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="LSU algorithm for MaxSAT (pysat.examples.lsu)" href="lsu.html" />
@@ -95,10 +95,10 @@ standard <code class="docutils literal notranslate"><span class="pre">import</sp
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;formula.wcnf.xz&#39;</span><span class="p">)</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lbx</span> <span class="o">=</span> <span class="n">LBX</span><span class="p">(</span><span class="n">wcnf</span><span class="p">,</span> <span class="n">use_cld</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">solver_name</span><span class="o">=</span><span class="s1">&#39;g3&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lbx</span> <span class="o">=</span> <span class="n">LBX</span><span class="p">(</span><span class="n">wcnf</span><span class="p">,</span> <span class="n">use_cld</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">solver_name</span><span class="o">=</span><span class="s1">&#39;g3&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">mcs</span> <span class="ow">in</span> <span class="n">lbx</span><span class="o">.</span><span class="n">enumerate</span><span class="p">():</span>
 <span class="gp">... </span>    <span class="n">lbx</span><span class="o">.</span><span class="n">block</span><span class="p">(</span><span class="n">mcs</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">mcs</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">mcs</span><span class="p">)</span>
 <span class="go">[1, 3]</span>
 <span class="go">[2, 3]</span>
 <span class="go">[1, 2]</span>
@@ -344,7 +344,7 @@ computed - this should be explicitly done by a user.</p>
 
 
 <p>
-<iframe src="https://ghbtns.com/github-btn.html?user=pysathq&repo=pysat&type=watch&count=true&size=large&v=2"
+<iframe src="https://ghbtns.com/github-btn.html?user=pysathq&repo=pysat&type=star&count=true&size=large&v=2"
   allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
 </p>
 
@@ -384,7 +384,7 @@ computed - this should be explicitly done by a user.</p>
       &copy;2018-2020, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
