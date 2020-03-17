@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 0.1.5.dev7 documentation</title>
+    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 0.1.5.dev8 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -173,6 +173,14 @@ formula can be accessed through variable <code class="docutils literal notransla
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">wcnf</span><span class="o">.</span><span class="n">topw</span><span class="p">)</span>
 <span class="go">5</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although it is not aligned with the WCNF format description, starting
+with the 0.1.5.dev8 release, PySAT is able to deal with WCNF formulas
+having not only integer clause weights but also weights represented as
+<em>floating point numbers</em>. Moreover, <em>negative weights</em> are also
+supported.</p>
 </div>
 <p>Additionally to classes <a class="reference internal" href="#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a> and <a class="reference internal" href="#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a>, the module provides
 the extended classes <a class="reference internal" href="#pysat.formula.CNFPlus" title="pysat.formula.CNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNFPlus</span></code></a> and <a class="reference internal" href="#pysat.formula.WCNFPlus" title="pysat.formula.WCNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNFPlus</span></code></a>. The only
@@ -1062,6 +1070,18 @@ specific comment lines.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="pysat.formula.WCNF.normalize_negatives">
+<code class="sig-name descname">normalize_negatives</code><span class="sig-paren">(</span><em class="sig-param">negatives</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.WCNF.normalize_negatives" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterate over all soft clauses with negative weights and add their
+negation either as a hard clause or a soft one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>negatives</strong> (<em>list</em><em>(</em><em>list</em><em>(</em><em>int</em><em>)</em><em>)</em>) – soft clauses with their negative weights.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="pysat.formula.WCNF.to_file">
 <code class="sig-name descname">to_file</code><span class="sig-paren">(</span><em class="sig-param">fname</em>, <em class="sig-param">comments=None</em>, <em class="sig-param">compress_with='use_ext'</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.WCNF.to_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>The method is for saving a WCNF formula into a file in the DIMACS
@@ -1379,7 +1399,7 @@ formula remain unchanged in the new (plain) formula.</p>
 <div class="sidebarblock">
     <div class="tile">
     <h4>Latest version:</h4>
-    0.1.5.dev7 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    0.1.5.dev8 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
     </div>
     </br>
 </div>
