@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
-    <title>LBX-like MCS enumerator (pysat.examples.lbx) &#8212; PySAT 0.1.5.dev10 documentation</title>
+    <title>LBX-like MCS enumerator (pysat.examples.lbx) &#8212; PySAT 0.1.5.dev11 documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -107,11 +107,11 @@ standard <code class="docutils literal notranslate"><span class="pre">import</sp
 </div>
 <div class="section" id="module-details">
 <h2>Module details<a class="headerlink" href="#module-details" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="examples.lbx.LBX">
-<em class="property">class </em><code class="sig-prename descclassname">examples.lbx.</code><code class="sig-name descname">LBX</code><span class="sig-paren">(</span><em class="sig-param">formula</em>, <em class="sig-param">use_cld=False</em>, <em class="sig-param">solver_name='m22'</em>, <em class="sig-param">use_timer=False</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">examples.lbx.</code><code class="sig-name descname">LBX</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">formula</span></em>, <em class="sig-param"><span class="n">use_cld</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">solver_name</span><span class="o">=</span><span class="default_value">'m22'</span></em>, <em class="sig-param"><span class="n">use_timer</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX" title="Permalink to this definition">¶</a></dt>
 <dd><p>LBX-like algorithm for computing MCSes. Given an unsatisfiable partial
-CNF formula, i.e. formula in the <a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a> format, this class can
+CNF formula, i.e. formula in the <code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code> format, this class can
 be used to compute a given number of MCSes of the formula. The
 implementation follows the LBX algorithm description in <a class="footnote-reference brackets" href="#id3" id="id4">1</a>. It can
 use any SAT solver available in PySAT. Additionally, the “clause
@@ -123,14 +123,14 @@ disabled by default, i.e. <code class="docutils literal notranslate"><span class
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>formula</strong> (<a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a>) – unsatisfiable partial CNF formula</p></li>
+<li><p><strong>formula</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code>) – unsatisfiable partial CNF formula</p></li>
 <li><p><strong>use_cld</strong> (<em>bool</em>) – whether or not to use “clause <span class="math notranslate nohighlight">\(D\)</span>”</p></li>
 <li><p><strong>solver_name</strong> (<em>str</em>) – SAT oracle name</p></li>
 <li><p><strong>use_timer</strong> (<em>bool</em>) – whether or not to use SAT solver’s timer</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="method">
+<dl class="py method">
 <dt id="examples.lbx.LBX._compute">
 <code class="sig-name descname">_compute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX._compute" title="Permalink to this definition">¶</a></dt>
 <dd><p>The main method of the class, which computes an MCS given its
@@ -149,9 +149,9 @@ literals of <code class="docutils literal notranslate"><span class="pre">self.se
 “clause <span class="math notranslate nohighlight">\(D\)</span>”.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="examples.lbx.LBX._filter_satisfied">
-<code class="sig-name descname">_filter_satisfied</code><span class="sig-paren">(</span><em class="sig-param">update_setd=False</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX._filter_satisfied" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">_filter_satisfied</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">update_setd</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX._filter_satisfied" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method extracts a model provided by the previous call to a SAT
 oracle and iterates over all soft clauses checking if each of is
 satisfied by the model. Satisfied clauses are marked accordingly
@@ -170,9 +170,9 @@ which is an under-approximation of a <em>maximal satisfiable subset</em>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="examples.lbx.LBX._map_extlit">
-<code class="sig-name descname">_map_extlit</code><span class="sig-paren">(</span><em class="sig-param">l</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX._map_extlit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">_map_extlit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">l</span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX._map_extlit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Map an external variable to an internal one if necessary.</p>
 <p>This method is used when new clauses are added to the formula
 incrementally, which may result in introducing new variables
@@ -192,9 +192,9 @@ integer has the same sign as the input literal.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="examples.lbx.LBX._satisfied">
-<code class="sig-name descname">_satisfied</code><span class="sig-paren">(</span><em class="sig-param">cl</em>, <em class="sig-param">model</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX._satisfied" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">_satisfied</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cl</span></em>, <em class="sig-param"><span class="n">model</span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX._satisfied" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given a clause (as an iterable of integers) and an assignment (as a
 list of integers), this method checks whether or not the assignment
 satisfies the clause. This is done by a simple clause traversal.
@@ -212,9 +212,9 @@ The method is invoked from <a class="reference internal" href="#examples.lbx.LBX
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="examples.lbx.LBX.add_clause">
-<code class="sig-name descname">add_clause</code><span class="sig-paren">(</span><em class="sig-param">clause</em>, <em class="sig-param">soft=False</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX.add_clause" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">add_clause</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">clause</span></em>, <em class="sig-param"><span class="n">soft</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX.add_clause" title="Permalink to this definition">¶</a></dt>
 <dd><p>The method for adding a new hard of soft clause to the problem
 formula. Although the input formula is to be specified as an
 argument of the constructor of <a class="reference internal" href="#examples.lbx.LBX" title="examples.lbx.LBX"><code class="xref py py-class docutils literal notranslate"><span class="pre">LBX</span></code></a>, adding clauses may be
@@ -234,9 +234,9 @@ meaning the the clause being added is soft (note that parameter
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="examples.lbx.LBX.block">
-<code class="sig-name descname">block</code><span class="sig-paren">(</span><em class="sig-param">mcs</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX.block" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">block</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mcs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX.block" title="Permalink to this definition">¶</a></dt>
 <dd><p>Block a (previously computed) MCS. The MCS should be given as an
 iterable of integers. Note that this method is not automatically
 invoked from <a class="reference internal" href="#examples.lbx.LBX.enumerate" title="examples.lbx.LBX.enumerate"><code class="xref py py-func docutils literal notranslate"><span class="pre">enumerate()</span></code></a> because a user may want to block
@@ -250,7 +250,7 @@ this standard blocking is not appropriate.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="examples.lbx.LBX.compute">
 <code class="sig-name descname">compute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX.compute" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute and return one solution. This method checks whether the
@@ -268,15 +268,15 @@ clause index (the smallest index is <code class="docutils literal notranslate"><
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="examples.lbx.LBX.delete">
 <code class="sig-name descname">delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX.delete" title="Permalink to this definition">¶</a></dt>
 <dd><p>Explicit destructor of the internal SAT oracle.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="examples.lbx.LBX.do_cld_check">
-<code class="sig-name descname">do_cld_check</code><span class="sig-paren">(</span><em class="sig-param">cld</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX.do_cld_check" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">do_cld_check</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cld</span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX.do_cld_check" title="Permalink to this definition">¶</a></dt>
 <dd><p>Do the “clause <span class="math notranslate nohighlight">\(D\)</span>” check. This method receives a list of
 literals, which serves a “clause <span class="math notranslate nohighlight">\(D\)</span>” <a class="footnote-reference brackets" href="#id7" id="id6">2</a>, and checks
 whether the formula conjoined with <span class="math notranslate nohighlight">\(D\)</span> is satisfiable.</p>
@@ -304,7 +304,7 @@ The <span class="math notranslate nohighlight">\(D\)</span> clause is then disab
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="examples.lbx.LBX.enumerate">
 <code class="sig-name descname">enumerate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX.enumerate" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method iterates through MCSes enumerating them until the
@@ -313,7 +313,7 @@ formula has no more MCSes. The method iteratively invokes
 computed - this should be explicitly done by a user.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="examples.lbx.LBX.oracle_time">
 <code class="sig-name descname">oracle_time</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX.oracle_time" title="Permalink to this definition">¶</a></dt>
 <dd><p>Report the total SAT solving time.</p>
@@ -356,7 +356,7 @@ computed - this should be explicitly done by a user.</p>
 <div class="sidebarblock">
     <div class="tile">
     <h4>Latest version:</h4>
-    0.1.5.dev10 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    0.1.5.dev11 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
     </div>
     </br>
 </div>
@@ -384,7 +384,7 @@ computed - this should be explicitly done by a user.</p>
       &copy;2018-2020, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

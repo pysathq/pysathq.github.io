@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
-    <title>An iterative model enumerator (pysat.examples.models) &#8212; PySAT 0.1.5.dev10 documentation</title>
+    <title>An iterative model enumerator (pysat.examples.models) &#8212; PySAT 0.1.5.dev11 documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -52,7 +52,7 @@
 <div class="section" id="module-description">
 <h2>Module description<a class="headerlink" href="#module-description" title="Permalink to this headline">¶</a></h2>
 <p>The module implements a simple iterative enumeration of a given number of
-models of <a class="reference internal" href="../formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a> or <code class="xref py py-class docutils literal notranslate"><span class="pre">CNFPlus</span></code> formula. In the latter case,
+models of <code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code> or <code class="xref py py-class docutils literal notranslate"><span class="pre">CNFPlus</span></code> formula. In the latter case,
 only <code class="xref py py-class docutils literal notranslate"><span class="pre">Minicard</span></code> can be used as a SAT solver. The module aims at
 illustrating how one can work with model computation and enumeration.</p>
 <p>The implementation facilitates the simplest use of a SAT oracle from the
@@ -78,16 +78,16 @@ c mean  time: 0.00s
 </div>
 <div class="section" id="module-details">
 <h2>Module details<a class="headerlink" href="#module-details" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="examples.models.enumerate_models">
-<code class="sig-prename descclassname">examples.models.</code><code class="sig-name descname">enumerate_models</code><span class="sig-paren">(</span><em class="sig-param">formula</em>, <em class="sig-param">to_enum</em>, <em class="sig-param">solver</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.models.enumerate_models" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">examples.models.</code><code class="sig-name descname">enumerate_models</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">formula</span></em>, <em class="sig-param"><span class="n">to_enum</span></em>, <em class="sig-param"><span class="n">solver</span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.models.enumerate_models" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enumeration procedure. It represents a loop iterating over satisfying
 assignment for a given formula until either all or a given number of
 them is enumerated.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>formula</strong> (<a class="reference internal" href="../formula.html#pysat.formula.CNFPlus" title="pysat.formula.CNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNFPlus</span></code></a>) – input WCNF formula</p></li>
+<li><p><strong>formula</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">CNFPlus</span></code>) – input WCNF formula</p></li>
 <li><p><strong>to_enum</strong> (<em>int</em><em> or </em><em>'all'</em>) – number of models to compute</p></li>
 <li><p><strong>solver</strong> (<em>str</em>) – name of SAT solver</p></li>
 </ul>
@@ -130,7 +130,7 @@ them is enumerated.</p>
 <div class="sidebarblock">
     <div class="tile">
     <h4>Latest version:</h4>
-    0.1.5.dev10 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    0.1.5.dev11 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
     </div>
     </br>
 </div>
@@ -158,7 +158,7 @@ them is enumerated.</p>
       &copy;2018-2020, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
