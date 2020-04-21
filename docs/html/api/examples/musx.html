@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
     <title>A deletion-based MUS extractor (pysat.examples.musx) &#8212; PySAT 0.1.5.dev12 documentation</title>
@@ -116,31 +116,31 @@ enumeration is not supported).</p>
 </div>
 <div class="section" id="module-details">
 <h2>Module details<a class="headerlink" href="#module-details" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
+<dl class="class">
 <dt id="examples.musx.MUSX">
-<em class="property">class </em><code class="sig-prename descclassname">examples.musx.</code><code class="sig-name descname">MUSX</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">formula</span></em>, <em class="sig-param"><span class="n">solver</span><span class="o">=</span><span class="default_value">'m22'</span></em>, <em class="sig-param"><span class="n">verbosity</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.musx.MUSX" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">examples.musx.</code><code class="sig-name descname">MUSX</code><span class="sig-paren">(</span><em class="sig-param">formula</em>, <em class="sig-param">solver='m22'</em>, <em class="sig-param">verbosity=1</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.musx.MUSX" title="Permalink to this definition">¶</a></dt>
 <dd><p>MUS eXtractor using the deletion-based algorithm. The algorithm is
 described in <a class="footnote-reference brackets" href="#id2" id="id3">1</a> (also see the module description above). Essentially,
 the algorithm can be seen as an iterative process, which tries to
 remove one soft clause at a time and check whether the remaining set of
 soft clauses is still unsatisfiable together with the hard clauses.</p>
 <p>The constructor of <a class="reference internal" href="#examples.musx.MUSX" title="examples.musx.MUSX"><code class="xref py py-class docutils literal notranslate"><span class="pre">MUSX</span></code></a> objects receives a target
-<code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code> formula, a SAT solver name, and a verbosity level. Note
+<a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a> formula, a SAT solver name, and a verbosity level. Note
 that the default SAT solver is MiniSat22 (referred to as <code class="docutils literal notranslate"><span class="pre">'m22'</span></code>, see
 <a class="reference internal" href="../solvers.html#pysat.solvers.SolverNames" title="pysat.solvers.SolverNames"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolverNames</span></code></a> for details). The default verbosity level is
 <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>formula</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code>) – input WCNF formula</p></li>
+<li><p><strong>formula</strong> (<a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a>) – input WCNF formula</p></li>
 <li><p><strong>solver</strong> (<em>str</em>) – name of SAT solver</p></li>
 <li><p><strong>verbosity</strong> (<em>int</em>) – verbosity level</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="py method">
+<dl class="method">
 <dt id="examples.musx.MUSX._compute">
-<code class="sig-name descname">_compute</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">approx</span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.musx.MUSX._compute" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">_compute</code><span class="sig-paren">(</span><em class="sig-param">approx</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.musx.MUSX._compute" title="Permalink to this definition">¶</a></dt>
 <dd><p>Deletion-based MUS extraction. Given an over-approximation of an
 MUS, i.e. an unsatisfiable core previously returned by a SAT
 oracle, the method represents a loop, which at each iteration
@@ -170,7 +170,7 @@ incremental SAT solving</em>. Electr. Notes Theor. Comput. Sci.
 the input over-approximation is refined and contains an MUS.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="examples.musx.MUSX.compute">
 <code class="sig-name descname">compute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.musx.MUSX.compute" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is the main method of the <a class="reference internal" href="#examples.musx.MUSX" title="examples.musx.MUSX"><code class="xref py py-class docutils literal notranslate"><span class="pre">MUSX</span></code></a> class. It computes a
@@ -181,13 +181,13 @@ formula is extracted, which is later used as an over-approximation
 of an MUS refined in <a class="reference internal" href="#examples.musx.MUSX._compute" title="examples.musx.MUSX._compute"><code class="xref py py-func docutils literal notranslate"><span class="pre">_compute()</span></code></a>.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="examples.musx.MUSX.delete">
 <code class="sig-name descname">delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.musx.MUSX.delete" title="Permalink to this definition">¶</a></dt>
 <dd><p>Explicit destructor of the internal SAT oracle.</p>
 </dd></dl>
 
-<dl class="py method">
+<dl class="method">
 <dt id="examples.musx.MUSX.oracle_time">
 <code class="sig-name descname">oracle_time</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.musx.MUSX.oracle_time" title="Permalink to this definition">¶</a></dt>
 <dd><p>Method for calculating and reporting the total SAT solving time.</p>
@@ -258,7 +258,7 @@ of an MUS refined in <a class="reference internal" href="#examples.musx.MUSX._co
       &copy;2018-2020, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
