@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>SAT solvers’ API (pysat.solvers) &#8212; PySAT 0.1.5.dev17 documentation</title>
+    <title>SAT solvers’ API (pysat.solvers) &#8212; PySAT 0.1.6.dev1 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -291,6 +291,13 @@ to MUS Extraction</em>. SAT 2013. pp. 309-317</p>
 </dd>
 </dl>
 <dl class="method">
+<dt id="pysat.solvers.Solver.accum_stats">
+<code class="sig-name descname">accum_stats</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.accum_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get accumulated low-level stats from the solver. This varies
+between solvers.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="pysat.solvers.Solver.add_atmost">
 <code class="sig-name descname">add_atmost</code><span class="sig-paren">(</span><em class="sig-param">lits</em>, <em class="sig-param">k</em>, <em class="sig-param">no_return=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.add_atmost" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method is responsible for adding a new <em>native</em> AtMostK (see
@@ -555,6 +562,8 @@ variable and can be later obtained using this method.</p>
 <a class="reference internal" href="#pysat.solvers.Solver.solve_limited" title="pysat.solvers.Solver.solve_limited"><code class="xref py py-meth docutils literal notranslate"><span class="pre">solve_limited()</span></code></a>). Can be used to enforce time limits using
 timer objects. The interrupt must be cleared before performing
 another SAT call (see <a class="reference internal" href="#pysat.solvers.Solver.clear_interrupt" title="pysat.solvers.Solver.clear_interrupt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">clear_interrupt()</span></code></a>).</p>
+<p><strong>Note</strong> that this method can be called if limited SAT calls are
+made with the option <code class="docutils literal notranslate"><span class="pre">expect_interrupt</span></code> set to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 <p>Behaviour is <strong>undefined</strong> if used to interrupt a <em>non-limited</em>
 SAT call (see <a class="reference internal" href="#pysat.solvers.Solver.solve" title="pysat.solvers.Solver.solve"><code class="xref py py-meth docutils literal notranslate"><span class="pre">solve()</span></code></a>).</p>
 <p>Example:</p>
@@ -571,7 +580,7 @@ SAT call (see <a class="reference internal" href="#pysat.solvers.Solver.solve" t
 <span class="gp">&gt;&gt;&gt; </span><span class="n">timer</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">interrupt</span><span class="p">,</span> <span class="p">[</span><span class="n">m</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">solve_limited</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">solve_limited</span><span class="p">(</span><span class="n">expect_interrupt</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 <span class="go">None</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
 </pre></div>
@@ -771,7 +780,7 @@ and disabled by default.)</p>
 
 <dl class="method">
 <dt id="pysat.solvers.Solver.solve_limited">
-<code class="sig-name descname">solve_limited</code><span class="sig-paren">(</span><em class="sig-param">assumptions=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.solve_limited" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">solve_limited</code><span class="sig-paren">(</span><em class="sig-param">assumptions=[]</em>, <em class="sig-param">expect_interrupt=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.solve_limited" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method is used to check satisfiability of a CNF formula given
 to the solver (see methods <a class="reference internal" href="#pysat.solvers.Solver.add_clause" title="pysat.solvers.Solver.add_clause"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_clause()</span></code></a> and
 <a class="reference internal" href="#pysat.solvers.Solver.append_formula" title="pysat.solvers.Solver.append_formula"><code class="xref py py-meth docutils literal notranslate"><span class="pre">append_formula()</span></code></a>), taking into account the upper bounds on
@@ -791,9 +800,20 @@ is interrupted by SIGINT. Otherwise, the method returns <code class="docutils li
 <p>Incremental SAT calls can be made with the use of assumption
 literals. (<strong>Note</strong> that the <code class="docutils literal notranslate"><span class="pre">assumptions</span></code> argument is optional
 and disabled by default.)</p>
+<p><strong>Note</strong> that since SIGINT handling and <a class="reference internal" href="#pysat.solvers.Solver.interrupt" title="pysat.solvers.Solver.interrupt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">interrupt()</span></code></a> are not
+configured to work <em>together</em> at this point, additional input
+parameter <code class="docutils literal notranslate"><span class="pre">expect_interrupt</span></code> is assumed to be given, indicating
+what kind of interruption may happen during the execution of
+<a class="reference internal" href="#pysat.solvers.Solver.solve_limited" title="pysat.solvers.Solver.solve_limited"><code class="xref py py-meth docutils literal notranslate"><span class="pre">solve_limited()</span></code></a>: whether a SIGINT signal or internal
+<a class="reference internal" href="#pysat.solvers.Solver.interrupt" title="pysat.solvers.Solver.interrupt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">interrupt()</span></code></a>. By default, a SIGINT signal handling is
+assumed. If <code class="docutils literal notranslate"><span class="pre">expect_interrupt</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> and eventually
+a SIGINT is received, the behavior is <strong>undefined</strong>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>assumptions</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – a list of assumption literals.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>assumptions</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – a list of assumption literals.</p></li>
+<li><p><strong>expect_interrupt</strong> (<em>bool</em>) – whether <a class="reference internal" href="#pysat.solvers.Solver.interrupt" title="pysat.solvers.Solver.interrupt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">interrupt()</span></code></a> will be called</p></li>
+</ul>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p>Boolean or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
@@ -945,7 +965,7 @@ also allowed</em>.</p>
 <div class="sidebarblock">
     <div class="tile">
     <h4>Latest version:</h4>
-    0.1.5.dev17 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    0.1.6.dev1 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
     </div>
     </br>
 </div>

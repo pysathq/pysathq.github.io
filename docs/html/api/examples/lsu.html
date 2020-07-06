@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>LSU algorithm for MaxSAT (pysat.examples.lsu) &#8212; PySAT 0.1.5.dev17 documentation</title>
+    <title>LSU algorithm for MaxSAT (pysat.examples.lsu) &#8212; PySAT 0.1.6.dev1 documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -112,7 +112,7 @@ standard <code class="docutils literal notranslate"><span class="pre">import</sp
 <h2>Module details<a class="headerlink" href="#module-details" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="examples.lsu.LSU">
-<em class="property">class </em><code class="sig-prename descclassname">examples.lsu.</code><code class="sig-name descname">LSU</code><span class="sig-paren">(</span><em class="sig-param">formula</em>, <em class="sig-param">solver='g4'</em>, <em class="sig-param">verbose=0</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lsu.LSU" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">examples.lsu.</code><code class="sig-name descname">LSU</code><span class="sig-paren">(</span><em class="sig-param">formula</em>, <em class="sig-param">solver='g4'</em>, <em class="sig-param">expect_interrupt=False</em>, <em class="sig-param">verbose=0</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lsu.LSU" title="Permalink to this definition">¶</a></dt>
 <dd><p>Linear SAT-UNSAT algorithm for MaxSAT <a class="footnote-reference brackets" href="#id4" id="id6">1</a>. The algorithm can be seen
 as a series of satisfiability oracle calls refining an upper bound on
 the MaxSAT cost, followed by one unsatisfiability call, which stops the
@@ -135,6 +135,7 @@ integer verbosity level.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>formula</strong> (<a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a>) – input MaxSAT formula</p></li>
 <li><p><strong>solver</strong> (<em>str</em>) – name of SAT solver</p></li>
+<li><p><strong>expect_interrupt</strong> (<em>bool</em>) – whether or not an <a class="reference internal" href="#examples.lsu.LSU.interrupt" title="examples.lsu.LSU.interrupt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">interrupt()</span></code></a> call is expected</p></li>
 <li><p><strong>verbose</strong> (<em>int</em>) – verbosity level</p></li>
 </ul>
 </dd>
@@ -266,13 +267,14 @@ otherwise.</p>
 
 <dl class="class">
 <dt id="examples.lsu.LSUPlus">
-<em class="property">class </em><code class="sig-prename descclassname">examples.lsu.</code><code class="sig-name descname">LSUPlus</code><span class="sig-paren">(</span><em class="sig-param">formula</em>, <em class="sig-param">verbose=0</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lsu.LSUPlus" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">examples.lsu.</code><code class="sig-name descname">LSUPlus</code><span class="sig-paren">(</span><em class="sig-param">formula</em>, <em class="sig-param">expect_interrupt=False</em>, <em class="sig-param">verbose=0</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lsu.LSUPlus" title="Permalink to this definition">¶</a></dt>
 <dd><p>LSU-like algorithm extended for <a class="reference internal" href="../formula.html#pysat.formula.WCNFPlus" title="pysat.formula.WCNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNFPlus</span></code></a> formulas (using
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Minicard</span></code>).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>formula</strong> (<a class="reference internal" href="../formula.html#pysat.formula.WCNFPlus" title="pysat.formula.WCNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNFPlus</span></code></a>) – input MaxSAT formula in WCNF+ format</p></li>
+<li><p><strong>expect_interrupt</strong> (<em>bool</em>) – whether or not an <code class="xref py py-meth docutils literal notranslate"><span class="pre">interrupt()</span></code> call is expected</p></li>
 <li><p><strong>verbose</strong> (<em>int</em>) – verbosity level</p></li>
 </ul>
 </dd>
@@ -327,7 +329,7 @@ be <em>lower</em> than this current cost</p>
 <div class="sidebarblock">
     <div class="tile">
     <h4>Latest version:</h4>
-    0.1.5.dev17 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    0.1.6.dev1 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
     </div>
     </br>
 </div>

@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Features &#8212; PySAT 0.1.5.dev17 documentation</title>
+    <title>Features &#8212; PySAT 0.1.6.dev1 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -37,8 +37,13 @@
 <h1>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h1>
 <p>PySAT integrates a number of widely used state-of-the-art SAT solvers. All the
 provided solvers are the original low-level implementations installed along
-with PySAT. Note that the solvers’ source code <em>is not</em> a part of the project’s
-source tree and is downloaded and patched at every PySAT installation.</p>
+with PySAT. Note that the solvers’ source code <em>is not</em> a part of the
+project’s source tree and is downloaded and patched at every PySAT
+installation. Note that originally the solvers’ source code was not
+distributed with PySAT, which resulted in sequence of download and patch
+operations for each solver during each installation of PySAT. This, however,
+causes serious issues in case of using a proxy. As a result and since version
+0.1.6.dev1, PySAT includes the solvers’ archive files in the distribution.</p>
 <p>Currently, the following SAT solvers are supported (at this point, for
 Minisat-based solvers only <em>core</em> versions are integrated):</p>
 <ul class="simple">
@@ -180,7 +185,7 @@ Generalized Arc Consistency Is Maintained</em>. KI. 2014. pp. 123-134</p>
 <div class="sidebarblock">
     <div class="tile">
     <h4>Latest version:</h4>
-    0.1.5.dev17 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    0.1.6.dev1 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
     </div>
     </br>
 </div><h3>Navigation</h3>
