@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>News &#8212; PySAT 0.1.6.dev3 documentation</title>
+    <title>News &#8212; PySAT 0.1.6.dev4 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -41,6 +41,13 @@ tiny) and frequent updates are provided. As a result, <a class="reference extern
 to date and then is good idea.</p>
 <div class="section" id="changelog-and-more">
 <h2>Changelog and more<a class="headerlink" href="#changelog-and-more" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="dev4">
+<h3>26.07.2020 (<em>0.1.6.dev4</em>)<a class="headerlink" href="#dev4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Accumulated stats for other solvers.</p></li>
+<li><p>More enumeration-related fixes in RC2Stratified.</p></li>
+</ul>
+</div>
 <div class="section" id="dev3">
 <h3>07.07.2020 (<em>0.1.6.dev3</em>)<a class="headerlink" href="#dev3" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
@@ -469,21 +476,21 @@ clauses or propagations.</p></li>
 <li><p>A minor modification of literal propagation.</p></li>
 </ul>
 </div>
-<div class="section" id="dev4">
-<h3>21.05.2018 (<em>0.1.3.dev4</em>)<a class="headerlink" href="#dev4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id38">
+<h3>21.05.2018 (<em>0.1.3.dev4</em>)<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Added <em>literal propagation</em> in MiniSat-like solvers, i.e. <code class="docutils literal notranslate"><span class="pre">Minisat22</span></code>,
 <code class="docutils literal notranslate"><span class="pre">MinisatGH</span></code>, <code class="docutils literal notranslate"><span class="pre">Minicard</span></code>, <code class="docutils literal notranslate"><span class="pre">Glucose3</span></code>, and <code class="docutils literal notranslate"><span class="pre">Glucose41</span></code>.</p></li>
 </ul>
 </div>
-<div class="section" id="id38">
-<h3>15.05.2018 (<em>0.1.3.dev3</em>)<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id39">
+<h3>15.05.2018 (<em>0.1.3.dev3</em>)<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Another attempt to fix installation. Mirrored GitHub-hosted solvers.</p></li>
 </ul>
 </div>
-<div class="section" id="id39">
-<h3>02.05.2018 (<em>0.1.3.dev2</em>)<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id40">
+<h3>02.05.2018 (<em>0.1.3.dev2</em>)<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Modified signal handling in <code class="docutils literal notranslate"><span class="pre">pysolvers</span></code> and <code class="docutils literal notranslate"><span class="pre">pycard</span></code>.</p></li>
 <li><p>Fixed a couple of minor issues in iterative totalizer.</p></li>
@@ -491,8 +498,8 @@ clauses or propagations.</p></li>
 class.</p></li>
 </ul>
 </div>
-<div class="section" id="id40">
-<h3>10.04.2018 (<em>0.1.3.dev1</em>)<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id41">
+<h3>10.04.2018 (<em>0.1.3.dev1</em>)<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Fixed a bug in <em>limited</em> SAT solving, i.e. in solving within a given
 <em>budget</em> on the number of conflicts or the number of propagations.</p></li>
@@ -506,14 +513,14 @@ class.</p></li>
 <li><p>Added example scripts installation as executables.</p></li>
 </ul>
 </div>
-<div class="section" id="id41">
-<h3>08.04.2018 (<em>0.1.2.dev9</em>)<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id42">
+<h3>08.04.2018 (<em>0.1.2.dev9</em>)<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Fixed a couple of minor bugs in <code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.card</span></code> and <code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.formula</span></code>.</p></li>
 </ul>
 </div>
-<div class="section" id="id42">
-<h3>06.04.2018 (<em>0.1.2.dev8</em>)<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id43">
+<h3>06.04.2018 (<em>0.1.2.dev8</em>)<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Added a couple of optimizations to <code class="docutils literal notranslate"><span class="pre">examples/rc2.py</span></code> including
 <em>unsatisfiable core trimming</em> and <em>core exhaustion</em>.</p></li>
@@ -521,8 +528,8 @@ class.</p></li>
 <li><p>An attempt to make the installation process less fragile.</p></li>
 </ul>
 </div>
-<div class="section" id="id43">
-<h3>03.04.2018 (<em>0.1.2.dev7</em>)<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id44">
+<h3>03.04.2018 (<em>0.1.2.dev7</em>)<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Fixed incremental mode of Glucose 4.1.</p></li>
 <li><p>Added support for Minicard’s native cardinality constraints in
@@ -531,27 +538,27 @@ class.</p></li>
 <li><p>Fixed a minor issue in iterative totalizer.</p></li>
 </ul>
 </div>
-<div class="section" id="id44">
-<h3>29.03.2018 (<em>0.1.2.dev6</em>)<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id45">
+<h3>29.03.2018 (<em>0.1.2.dev6</em>)<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Fixed a bug in iterative totalizer, which led to clause duplication.</p></li>
 </ul>
 </div>
-<div class="section" id="id45">
-<h3>28.03.2018 (<em>0.1.2.dev5</em>)<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id46">
+<h3>28.03.2018 (<em>0.1.2.dev5</em>)<a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Added iterative totalizer to <code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.card</span></code>.</p></li>
 <li><p>Added solver download caching (i.e. a solver is not downloaded more than once).</p></li>
 </ul>
 </div>
-<div class="section" id="id46">
-<h3>25.03.2018 (<em>0.1.2.dev4</em>)<a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id47">
+<h3>25.03.2018 (<em>0.1.2.dev4</em>)<a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Added support for Glucose 4.1.</p></li>
 </ul>
 </div>
-<div class="section" id="id47">
-<h3>06.03.2018 (<em>0.1.2.dev3</em>)<a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id48">
+<h3>06.03.2018 (<em>0.1.2.dev3</em>)<a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">examples/genhard.py</span></code> illustrating the work with the
 <code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.formula</span></code> module.</p></li>
@@ -559,35 +566,35 @@ class.</p></li>
 identifiers</em>.</p></li>
 </ul>
 </div>
-<div class="section" id="id48">
-<h3>04.03.2018 (<em>0.1.2.dev2</em>)<a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id49">
+<h3>04.03.2018 (<em>0.1.2.dev2</em>)<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Fixed a bug related to SAT oracle’s timer.</p></li>
 </ul>
 </div>
-<div class="section" id="id49">
-<h3>02.03.2018 (<em>0.1.2.dev1</em>)<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id50">
+<h3>02.03.2018 (<em>0.1.2.dev1</em>)<a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Fixed a number of issues in <code class="docutils literal notranslate"><span class="pre">examples/fm.py</span></code>, <code class="docutils literal notranslate"><span class="pre">examples/lbx.py</span></code>, and
 <code class="docutils literal notranslate"><span class="pre">examples/musx.py</span></code> for a better support of Python 3.</p></li>
 </ul>
 </div>
-<div class="section" id="id50">
-<h3>01.03.2018 (<em>0.1.1.dev9</em>)<a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id51">
+<h3>01.03.2018 (<em>0.1.1.dev9</em>)<a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Minor fixes in <code class="docutils literal notranslate"><span class="pre">README.rst</span></code>.</p></li>
 </ul>
 </div>
-<div class="section" id="id51">
-<h3>22.02.2018 (<em>0.1.1.dev8</em>)<a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id52">
+<h3>22.02.2018 (<em>0.1.1.dev8</em>)<a class="headerlink" href="#id52" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Minor changes in <code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.card</span></code>.</p></li>
 <li><p>A few typos in <code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.fm</span></code>.</p></li>
 <li><p>Fixed <em>author_email</em> in <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>.</p></li>
 </ul>
 </div>
-<div class="section" id="id52">
-<h3>11.02.2018 (<em>0.1.1.dev7</em>)<a class="headerlink" href="#id52" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id53">
+<h3>11.02.2018 (<em>0.1.1.dev7</em>)<a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Initial commit accompanying the <a class="reference external" href="citation.html">corresponding SAT submission</a>.</p></li>
 </ul>
@@ -627,13 +634,14 @@ identifiers</em>.</p></li>
 <div class="sidebarblock">
     <div class="tile">
     <h4>Latest version:</h4>
-    0.1.6.dev3 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    0.1.6.dev4 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
     </div>
     </br>
 </div><h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">News</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#changelog-and-more">Changelog and more</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dev4">26.07.2020 (<em>0.1.6.dev4</em>)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dev3">07.07.2020 (<em>0.1.6.dev3</em>)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dev2">06.07.2020 (<em>0.1.6.dev2</em>)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dev1">06.07.2020 (<em>0.1.6.dev1</em>)</a></li>
@@ -696,23 +704,23 @@ identifiers</em>.</p></li>
 <li class="toctree-l3"><a class="reference internal" href="#id35">23.05.2018 (<em>0.1.3.dev7</em>)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id36">22.05.2018 (<em>0.1.3.dev6</em>)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id37">21.05.2018 (<em>0.1.3.dev5</em>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#dev4">21.05.2018 (<em>0.1.3.dev4</em>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id38">15.05.2018 (<em>0.1.3.dev3</em>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id39">02.05.2018 (<em>0.1.3.dev2</em>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id40">10.04.2018 (<em>0.1.3.dev1</em>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id38">21.05.2018 (<em>0.1.3.dev4</em>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id39">15.05.2018 (<em>0.1.3.dev3</em>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id40">02.05.2018 (<em>0.1.3.dev2</em>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id41">10.04.2018 (<em>0.1.3.dev1</em>)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dev0">09.04.2018 (<em>0.1.3.dev0</em>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id41">08.04.2018 (<em>0.1.2.dev9</em>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id42">06.04.2018 (<em>0.1.2.dev8</em>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id43">03.04.2018 (<em>0.1.2.dev7</em>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id44">29.03.2018 (<em>0.1.2.dev6</em>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id45">28.03.2018 (<em>0.1.2.dev5</em>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id46">25.03.2018 (<em>0.1.2.dev4</em>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id47">06.03.2018 (<em>0.1.2.dev3</em>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id48">04.03.2018 (<em>0.1.2.dev2</em>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id49">02.03.2018 (<em>0.1.2.dev1</em>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id50">01.03.2018 (<em>0.1.1.dev9</em>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id51">22.02.2018 (<em>0.1.1.dev8</em>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id52">11.02.2018 (<em>0.1.1.dev7</em>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id42">08.04.2018 (<em>0.1.2.dev9</em>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id43">06.04.2018 (<em>0.1.2.dev8</em>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id44">03.04.2018 (<em>0.1.2.dev7</em>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id45">29.03.2018 (<em>0.1.2.dev6</em>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id46">28.03.2018 (<em>0.1.2.dev5</em>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id47">25.03.2018 (<em>0.1.2.dev4</em>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id48">06.03.2018 (<em>0.1.2.dev3</em>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id49">04.03.2018 (<em>0.1.2.dev2</em>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id50">02.03.2018 (<em>0.1.2.dev1</em>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id51">01.03.2018 (<em>0.1.1.dev9</em>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id52">22.02.2018 (<em>0.1.1.dev8</em>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id53">11.02.2018 (<em>0.1.1.dev7</em>)</a></li>
 </ul>
 </li>
 </ul>
