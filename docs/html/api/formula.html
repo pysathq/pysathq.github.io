@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 0.1.6.dev6 documentation</title>
+    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 0.1.6.dev7 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -672,6 +672,38 @@ functionality to copy the atmost constraints.</p>
 <span class="go">2</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf2</span><span class="o">.</span><span class="n">atmosts</span><span class="p">)</span>
 <span class="go">[[[1, 2], 1]]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysat.formula.CNFPlus.extend">
+<code class="sig-name descname">extend</code><span class="sig-paren">(</span><em class="sig-param">formula</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.CNFPlus.extend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extend the CNF+ formula with more clauses and/or AtMostK
+constraints. The additional clauses and AtMostK constraints to add
+should be given in the form of <a class="reference internal" href="#pysat.formula.CNFPlus" title="pysat.formula.CNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNFPlus</span></code></a>. Alternatively, a
+list of clauses can be added too. For every single clause and
+AtMostK constraint in the input formula, method <a class="reference internal" href="#pysat.formula.CNFPlus.append" title="pysat.formula.CNFPlus.append"><code class="xref py py-meth docutils literal notranslate"><span class="pre">append()</span></code></a> is
+invoked.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>formula</strong> (<a class="reference internal" href="#pysat.formula.CNFPlus" title="pysat.formula.CNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNFPlus</span></code></a>) – new constraints to add.</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">CNFPlus</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf1</span> <span class="o">=</span> <span class="n">CNFPlus</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf1</span><span class="o">.</span><span class="n">extend</span><span class="p">([[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf1</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
+<span class="go">[[-3, 4], [5, 6]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf1</span><span class="o">.</span><span class="n">atmosts</span><span class="p">)</span>
+<span class="go">[[[1, 2, 3], 1]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf2</span> <span class="o">=</span> <span class="n">CNFPlus</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf2</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">cnf1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf1</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
+<span class="go">[[-3, 4], [5, 6]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf1</span><span class="o">.</span><span class="n">atmosts</span><span class="p">)</span>
+<span class="go">[[[1, 2, 3], 1]]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1399,7 +1431,7 @@ formula remain unchanged in the new (plain) formula.</p>
 <div class="sidebarblock">
     <div class="tile">
     <h4>Latest version:</h4>
-    0.1.6.dev6 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    0.1.6.dev7 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
     </div>
     </br>
 </div>
