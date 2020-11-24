@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 0.1.6.dev10 documentation</title>
+    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 0.1.6.dev11 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -502,11 +502,11 @@ Mathematical Logic, Part II. pp.  115–125, 1968</p>
 <dt id="pysat.formula.CNF.to_alien">
 <code class="sig-name descname">to_alien</code><span class="sig-paren">(</span><em class="sig-param">file_pointer</em>, <em class="sig-param">format='opb'</em>, <em class="sig-param">comments=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.CNF.to_alien" title="Permalink to this definition">¶</a></dt>
 <dd><p>The method can be used to dump a CNF formula into a file pointer
-in an alien file format, which at this point can either be OPB or
-LP. The file pointer is expected as an argument. Additionally, the
-target format ‘opb’ or ‘lp’ may be specified (equal to ‘opb’ by
-default). Finally, supplementary comment lines can be specified in
-the <code class="docutils literal notranslate"><span class="pre">comments</span></code> parameter.</p>
+in an alien file format, which at this point can either be LP,
+OPB, or SMT. The file pointer is expected as an argument.
+Additionally, the target format ‘lp’, ‘opb’, or ‘smt’ may be
+specified (equal to ‘opb’ by default). Finally, supplementary
+comment lines can be specified in the <code class="docutils literal notranslate"><span class="pre">comments</span></code> parameter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -767,11 +767,19 @@ lines.</p>
 <dt id="pysat.formula.CNFPlus.to_alien">
 <code class="sig-name descname">to_alien</code><span class="sig-paren">(</span><em class="sig-param">file_pointer</em>, <em class="sig-param">format='opb'</em>, <em class="sig-param">comments=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.CNFPlus.to_alien" title="Permalink to this definition">¶</a></dt>
 <dd><p>The method can be used to dump a CNF+ formula into a file pointer
-in an alien file format, which at this point can either be OPB or
-LP. The file pointer is expected as an argument. Additionally, the
-target format ‘opb’ or ‘lp’ may be specified (equal to ‘opb’ by
-default). Finally, supplementary comment lines can be specified in
-the <code class="docutils literal notranslate"><span class="pre">comments</span></code> parameter.</p>
+in an alien file format, which at this point can either be LP,
+OPB, or SMT. The file pointer is expected as an argument.
+Additionally, the target format ‘lp’, ‘opb’, or ‘smt’ may be
+specified (equal to ‘opb’ by default). Finally, supplementary
+comment lines can be specified in the <code class="docutils literal notranslate"><span class="pre">comments</span></code> parameter.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference external" href="http://smtlib.cs.uiowa.edu/language.shtml">SMT-LIB2</a> does
+not directly support PB constraints. As a result, native
+cardinality constraints of CNF+ cannot be translated to
+SMT-LIB2 unless an explicit cardinality encoding is applied.
+You may want to use Z3’s API instead (see its PB interface).</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1175,11 +1183,11 @@ negation either as a hard clause or a soft one.</p>
 <dt id="pysat.formula.WCNF.to_alien">
 <code class="sig-name descname">to_alien</code><span class="sig-paren">(</span><em class="sig-param">file_pointer</em>, <em class="sig-param">format='opb'</em>, <em class="sig-param">comments=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.WCNF.to_alien" title="Permalink to this definition">¶</a></dt>
 <dd><p>The method can be used to dump a WCNF formula into a file pointer
-in an alien file format, which at this point can either be OPB or
-LP. The file pointer is expected as an argument. Additionally, the
-target format ‘opb’ or ‘lp’ may be specified (equal to ‘opb’ by
-default). Finally, supplementary comment lines can be specified in
-the <code class="docutils literal notranslate"><span class="pre">comments</span></code> parameter.</p>
+in an alien file format, which at this point can either be LP,
+OPB, or SMT. The file pointer is expected as an argument.
+Additionally, the target format ‘lp’, ‘opb’, or ‘smt’ may be
+specified (equal to ‘opb’ by default). Finally, supplementary
+comment lines can be specified in the <code class="docutils literal notranslate"><span class="pre">comments</span></code> parameter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1427,12 +1435,20 @@ lines.</p>
 <dl class="method">
 <dt id="pysat.formula.WCNFPlus.to_alien">
 <code class="sig-name descname">to_alien</code><span class="sig-paren">(</span><em class="sig-param">file_pointer</em>, <em class="sig-param">format='opb'</em>, <em class="sig-param">comments=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.WCNFPlus.to_alien" title="Permalink to this definition">¶</a></dt>
-<dd><p>The method can be used to dump a WCNF formula into a file pointer
-in an alien file format, which at this point can either be OPB or
-LP. The file pointer is expected as an argument. Additionally, the
-target format ‘opb’ or ‘lp’ may be specified (equal to ‘opb’ by
-default). Finally, supplementary comment lines can be specified in
-the <code class="docutils literal notranslate"><span class="pre">comments</span></code> parameter.</p>
+<dd><p>The method can be used to dump a WCNF+ formula into a file pointer
+in an alien file format, which at this point can either be LP,
+OPB, or SMT. The file pointer is expected as an argument.
+Additionally, the target format ‘lp’, ‘opb’, or ‘smt’ may be
+specified (equal to ‘opb’ by default). Finally, supplementary
+comment lines can be specified in the <code class="docutils literal notranslate"><span class="pre">comments</span></code> parameter.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference external" href="http://smtlib.cs.uiowa.edu/language.shtml">SMT-LIB2</a> does
+not directly support PB constraints. As a result, native
+cardinality constraints of CNF+ cannot be translated to
+SMT-LIB2 unless an explicit cardinality encoding is applied.
+You may want to use Z3’s API instead (see its PB interface).</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1547,7 +1563,7 @@ formula remain unchanged in the new (plain) formula.</p>
 <div class="sidebarblock">
     <div class="tile">
     <h4>Latest version:</h4>
-    0.1.6.dev10 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    0.1.6.dev11 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
     </div>
     </br>
 </div>
