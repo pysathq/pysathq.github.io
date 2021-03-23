@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>LBX-like MCS enumerator (pysat.examples.lbx) &#8212; PySAT 0.1.6.dev12 documentation</title>
+    <title>LBX-like MCS enumerator (pysat.examples.lbx) &#8212; PySAT 0.1.6.dev13 documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -252,7 +252,7 @@ this standard blocking is not appropriate.</p>
 
 <dl class="method">
 <dt id="examples.lbx.LBX.compute">
-<code class="sig-name descname">compute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX.compute" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">compute</code><span class="sig-paren">(</span><em class="sig-param">enable=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX.compute" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute and return one solution. This method checks whether the
 hard part of the formula is satisfiable, i.e. an MCS can be
 extracted. If the formula is satisfiable, the model computed by the
@@ -261,9 +261,18 @@ method <a class="reference internal" href="#examples.lbx.LBX._compute" title="ex
 algorithm.</p>
 <p>An MCS is reported as a list of integers, each representing a soft
 clause index (the smallest index is <code class="docutils literal notranslate"><span class="pre">1</span></code>).</p>
+<p>An optional input parameter is <code class="docutils literal notranslate"><span class="pre">enable</span></code>, which represents a
+sequence (normally a list) of soft clause indices that a user
+would prefer to enable/satisfy. Note that this may result in an
+unsatisfiable oracle call, in which case <code class="docutils literal notranslate"><span class="pre">None</span></code> will be reported
+as solution. Also, the smallest clause index is assumed to be
+<code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>list(int)</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>enable</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – a sequence of clause ids to enable</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list(int)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -356,7 +365,7 @@ computed - this should be explicitly done by a user.</p>
 <div class="sidebarblock">
     <div class="tile">
     <h4>Latest version:</h4>
-    0.1.6.dev12 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    0.1.6.dev13 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
     </div>
     </br>
 </div>
@@ -381,7 +390,7 @@ computed - this should be explicitly done by a user.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2018-2020, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.
+      &copy;2018-2021, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>

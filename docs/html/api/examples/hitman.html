@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Minimum/minimal hitting set solver (pysat.examples.hitman) &#8212; PySAT 0.1.6.dev12 documentation</title>
+    <title>Minimum/minimal hitting set solver (pysat.examples.hitman) &#8212; PySAT 0.1.6.dev13 documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -180,7 +180,7 @@ Sequence of Simpler SAT Instances</em>. CP 2011. pp. 225-239</p>
 <h2>Module details<a class="headerlink" href="#module-details" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="examples.hitman.Hitman">
-<em class="property">class </em><code class="sig-prename descclassname">examples.hitman.</code><code class="sig-name descname">Hitman</code><span class="sig-paren">(</span><em class="sig-param">bootstrap_with=[]</em>, <em class="sig-param">solver='g3'</em>, <em class="sig-param">htype='sorted'</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">examples.hitman.</code><code class="sig-name descname">Hitman</code><span class="sig-paren">(</span><em class="sig-param">bootstrap_with=[]</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">solver='g3'</em>, <em class="sig-param">htype='sorted'</em>, <em class="sig-param">mxs_adapt=False</em>, <em class="sig-param">mxs_exhaust=False</em>, <em class="sig-param">mxs_minz=False</em>, <em class="sig-param">mxs_trim=0</em>, <em class="sig-param">mcs_usecld=False</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman" title="Permalink to this definition">¶</a></dt>
 <dd><p>A cardinality-/subset-minimal hitting set enumerator. The enumerator
 can be set up to use either a MaxSAT solver <a class="reference internal" href="rc2.html#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2</span></code></a> or an MCS
 enumerator (either <a class="reference internal" href="lbx.html#examples.lbx.LBX" title="examples.lbx.LBX"><code class="xref py py-class docutils literal notranslate"><span class="pre">LBX</span></code></a> or <a class="reference internal" href="mcsls.html#examples.mcsls.MCSls" title="examples.mcsls.MCSls"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCSls</span></code></a>). In the former
@@ -204,25 +204,41 @@ of iterables, e.g. a list of lists. This is handled using the
 any type, e.g. integers, strings or objects of any Python class, as
 well as their combinations. The bootstrapping phase is done in
 <a class="reference internal" href="#examples.hitman.Hitman.init" title="examples.hitman.Hitman.init"><code class="xref py py-func docutils literal notranslate"><span class="pre">init()</span></code></a>.</p>
+<p>A few other optional parameters include the possible options for RC2
+as well as for LBX- and MCSls-like MCS enumerators that control the
+behaviour of the underlying solvers.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>bootstrap_with</strong> (<em>iterable</em><em>(</em><em>iterable</em><em>(</em><em>obj</em><em>)</em><em>)</em>) – input set of sets to hit</p></li>
+<li><p><strong>weights</strong> (<em>dict</em><em>(</em><em>obj</em><em>)</em>) – a mapping from objects to their weights (if weighted)</p></li>
 <li><p><strong>solver</strong> (<em>str</em>) – name of SAT solver</p></li>
 <li><p><strong>htype</strong> (<em>str</em>) – enumerator type</p></li>
+<li><p><strong>mxs_adapt</strong> (<em>bool</em>) – detect and process AtMost1 constraints in RC2</p></li>
+<li><p><strong>mxs_exhaust</strong> (<em>bool</em>) – apply unsatisfiable core exhaustion in RC2</p></li>
+<li><p><strong>mxs_minz</strong> (<em>bool</em>) – apply heuristic core minimization in RC2</p></li>
+<li><p><strong>mxs_trim</strong> (<em>int</em>) – trim unsatisfiable cores at most this number of times</p></li>
+<li><p><strong>mcs_usecld</strong> (<em>bool</em>) – use clause-D heuristic in the MCS enumerator</p></li>
 </ul>
 </dd>
 </dl>
 <dl class="method">
 <dt id="examples.hitman.Hitman.block">
-<code class="sig-name descname">block</code><span class="sig-paren">(</span><em class="sig-param">to_block</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.block" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">block</code><span class="sig-paren">(</span><em class="sig-param">to_block</em>, <em class="sig-param">weights=None</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.block" title="Permalink to this definition">¶</a></dt>
 <dd><p>The method serves for imposing a constraint forbidding the hitting
 set solver to compute a given hitting set. Each set to block is
 encoded as a hard clause in the MaxSAT problem formulation, which
 is then added to the underlying oracle.</p>
+<p>Note that an optional parameter that can be passed to this method
+is <code class="docutils literal notranslate"><span class="pre">weights</span></code>, which contains a mapping the objects under
+question into weights. Also note that the weight of an object must
+not change from one call of <a class="reference internal" href="#examples.hitman.Hitman.hit" title="examples.hitman.Hitman.hit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">hit()</span></code></a> to another.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>to_block</strong> (<em>iterable</em><em>(</em><em>obj</em><em>)</em>) – a set to block</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>to_block</strong> (<em>iterable</em><em>(</em><em>obj</em><em>)</em>) – a set to block</p></li>
+<li><p><strong>weights</strong> (<em>dict</em><em>(</em><em>obj</em><em>)</em>) – a mapping from objects to weights</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -265,29 +281,49 @@ problem domain.</p>
 
 <dl class="method">
 <dt id="examples.hitman.Hitman.hit">
-<code class="sig-name descname">hit</code><span class="sig-paren">(</span><em class="sig-param">to_hit</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.hit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">hit</code><span class="sig-paren">(</span><em class="sig-param">to_hit</em>, <em class="sig-param">weights=None</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.hit" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method adds a new set to hit to the hitting set solver. This
 is done by translating the input iterable of objects into a list of
 Boolean variables in the MaxSAT problem formulation.</p>
+<p>Note that an optional parameter that can be passed to this method
+is <code class="docutils literal notranslate"><span class="pre">weights</span></code>, which contains a mapping the objects under
+question into weights. Also note that the weight of an object must
+not change from one call of <a class="reference internal" href="#examples.hitman.Hitman.hit" title="examples.hitman.Hitman.hit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">hit()</span></code></a> to another.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>to_hit</strong> (<em>iterable</em><em>(</em><em>obj</em><em>)</em>) – a new set to hit</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>to_hit</strong> (<em>iterable</em><em>(</em><em>obj</em><em>)</em>) – a new set to hit</p></li>
+<li><p><strong>weights</strong> (<em>dict</em><em>(</em><em>obj</em><em>)</em>) – a mapping from objects to weights</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="examples.hitman.Hitman.init">
-<code class="sig-name descname">init</code><span class="sig-paren">(</span><em class="sig-param">bootstrap_with</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.init" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">init</code><span class="sig-paren">(</span><em class="sig-param">bootstrap_with</em>, <em class="sig-param">weights=None</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.init" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method serves for initializing the hitting set solver with a
 given list of sets to hit. Concretely, the hitting set problem is
 encoded into partial MaxSAT as outlined above, which is then fed
 either to a MaxSAT solver or an MCS enumerator.</p>
+<p>An additional optional parameter is <code class="docutils literal notranslate"><span class="pre">weights</span></code>, which can be used
+to specify non-unit weights for the target objects in the sets to
+hit. This only works if <code class="docutils literal notranslate"><span class="pre">'sorted'</span></code> enumeration of hitting sets
+is applied.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>bootstrap_with</strong> (<em>iterable</em><em>(</em><em>iterable</em><em>(</em><em>obj</em><em>)</em><em>)</em>) – input set of sets to hit</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bootstrap_with</strong> (<em>iterable</em><em>(</em><em>iterable</em><em>(</em><em>obj</em><em>)</em><em>)</em>) – input set of sets to hit</p></li>
+<li><p><strong>weights</strong> (<em>dict</em><em>(</em><em>obj</em><em>)</em>) – weights of the objects in case the problem is weighted</p></li>
+</ul>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.hitman.Hitman.oracle_time">
+<code class="sig-name descname">oracle_time</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.oracle_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report the total SAT solving time.</p>
 </dd></dl>
 
 </dd></dl>
@@ -327,7 +363,7 @@ either to a MaxSAT solver or an MCS enumerator.</p>
 <div class="sidebarblock">
     <div class="tile">
     <h4>Latest version:</h4>
-    0.1.6.dev12 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    0.1.6.dev13 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
     </div>
     </br>
 </div>
@@ -352,7 +388,7 @@ either to a MaxSAT solver or an MCS enumerator.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2018-2020, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.
+      &copy;2018-2021, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
