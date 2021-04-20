@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>An iterative model enumerator (pysat.examples.models) &#8212; PySAT 0.1.7.dev2 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="A deletion-based MUS extractor (pysat.examples.musx)" href="musx.html" />
+    <link rel="prev" title="CLD-like MCS enumerator (pysat.examples.mcsls)" href="mcsls.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-examples.models">
+<span id="an-iterative-model-enumerator-pysat-examples-models"></span><h1>An iterative model enumerator (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.models</span></code>)<a class="headerlink" href="#module-examples.models" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="list-of-classes">
+<h2>List of classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#examples.models.enumerate_models" title="examples.models.enumerate_models"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enumerate_models</span></code></a></p></td>
+<td><p>Enumeration procedure.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-description">
+<h2>Module description<a class="headerlink" href="#module-description" title="Permalink to this headline">¶</a></h2>
+<p>The module implements a simple iterative enumeration of a given number of
+models of <a class="reference internal" href="../formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a> or <code class="xref py py-class docutils literal notranslate"><span class="pre">CNFPlus</span></code> formula. In the latter case,
+only <code class="xref py py-class docutils literal notranslate"><span class="pre">Minicard</span></code> can be used as a SAT solver. The module aims at
+illustrating how one can work with model computation and enumeration.</p>
+<p>The implementation facilitates the simplest use of a SAT oracle from the
+<em>command line</em>. If one deals with the enumeration task from a Python
+script, it is more convenient to exploit the internal model enumeration of
+the <a class="reference internal" href="../solvers.html#module-pysat.solvers" title="pysat.solvers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.solvers</span></code></a> module. Concretely, see
+<a class="reference internal" href="../solvers.html#pysat.solvers.Solver.enum_models" title="pysat.solvers.Solver.enum_models"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pysat.solvers.Solver.enum_models()</span></code></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat formula.cnf
+p cnf 4 4
+-1 2 0
+-1 3 0
+-2 4 0
+3 -4 0
+
+$ models.py -e all -s glucose3 formula.cnf
+v -1 -2 +3 -4 0
+v +1 +2 -3 +4 0
+c nof models: 2
+c accum time: 0.00s
+c mean  time: 0.00s
+</pre></div>
+</div>
+</div>
+<div class="section" id="module-details">
+<h2>Module details<a class="headerlink" href="#module-details" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="examples.models.enumerate_models">
+<code class="sig-prename descclassname">examples.models.</code><code class="sig-name descname">enumerate_models</code><span class="sig-paren">(</span><em class="sig-param">formula</em>, <em class="sig-param">to_enum</em>, <em class="sig-param">solver</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.models.enumerate_models" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enumeration procedure. It represents a loop iterating over satisfying
+assignment for a given formula until either all or a given number of
+them is enumerated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>formula</strong> (<a class="reference internal" href="../formula.html#pysat.formula.CNFPlus" title="pysat.formula.CNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNFPlus</span></code></a>) – input WCNF formula</p></li>
+<li><p><strong>to_enum</strong> (<em>int</em><em> or </em><em>'all'</em>) – number of models to compute</p></li>
+<li><p><strong>solver</strong> (<em>str</em>) – name of SAT solver</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/pysat.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=pysathq&repo=pysat&type=star&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+
+<div class="sidebarblock">
+    <div class="tile">
+    <h4>Latest version:</h4>
+    0.1.7.dev2 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    </div>
+    </br>
+</div>
+<div class="sidebarblock">
+    <div class="tile">
+    <h4><a href="https://pysathq.github.io">Main webpage</a></h4>
+    </div>
+</div>
+</br>
+<div class="sidebarblock">
+<h4>Contact us:</h4>
+      <a class="reference external" href="https://github.com/pysathq/pysat/issues">
+            Issue tracker
+      </a>
+      |
+      <a class="reference external" href="mailto:pysathq@gmail.com">
+          Email
+      </a>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018-2021, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/api/examples/models.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

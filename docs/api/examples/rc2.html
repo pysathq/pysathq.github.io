@@ -1,0 +1,830 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>RC2 MaxSAT solver (pysat.examples.rc2) &#8212; PySAT 0.1.7.dev2 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="OptUx optimal MUS enumerator (pysat.examples.optux)" href="optux.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-examples.rc2">
+<span id="rc2-maxsat-solver-pysat-examples-rc2"></span><h1>RC2 MaxSAT solver (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.rc2</span></code>)<a class="headerlink" href="#module-examples.rc2" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="list-of-classes">
+<h2>List of classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RC2</span></code></a></p></td>
+<td><p>Implementation of the basic RC2 algorithm.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#examples.rc2.RC2Stratified" title="examples.rc2.RC2Stratified"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RC2Stratified</span></code></a></p></td>
+<td><p>RC2 augmented with BLO and stratification techniques.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-description">
+<h2>Module description<a class="headerlink" href="#module-description" title="Permalink to this headline">¶</a></h2>
+<p>An implementation of the RC2 algorithm for solving maximum
+satisfiability. RC2 stands for <em>relaxable cardinality constraints</em>
+(alternatively, <em>soft cardinality constraints</em>) and represents an
+improved version of the OLLITI algorithm, which was described in
+<a class="footnote-reference brackets" href="#id6" id="id1">1</a> and <a class="footnote-reference brackets" href="#id7" id="id2">2</a> and originally implemented in the <a class="reference external" href="https://reason.di.fc.ul.pt/wiki/doku.php?id=mscg">MSCG MaxSAT
+solver</a>.</p>
+<p>Initially, this solver was supposed to serve as an example of a possible
+PySAT usage illustrating how a state-of-the-art MaxSAT algorithm could be
+implemented in Python and still be efficient. It participated in the
+<a class="reference external" href="https://maxsat-evaluations.github.io/2018/rankings.html">MaxSAT Evaluations 2018</a> and <a class="reference external" href="https://maxsat-evaluations.github.io/2019/rankings.html">2019</a> where,
+surprisingly, it was ranked first in two complete categories: <em>unweighted</em>
+and <em>weighted</em>. A brief solver description can be found in <a class="footnote-reference brackets" href="#id8" id="id4">3</a>. A more
+detailed solver description can be found in <a class="footnote-reference brackets" href="#id9" id="id5">4</a>.</p>
+<dl class="footnote brackets">
+<dt class="label" id="id6"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id14">2</a>,<a href="#id20">3</a>,<a href="#id21">4</a>)</span></dt>
+<dd><p>António Morgado, Carmine Dodaro, Joao Marques-Silva.
+<em>Core-Guided MaxSAT with Soft Cardinality Constraints</em>. CP
+2014. pp. 564-573</p>
+</dd>
+<dt class="label" id="id7"><span class="brackets">2</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id15">2</a>)</span></dt>
+<dd><p>António Morgado, Alexey Ignatiev, Joao Marques-Silva.
+<em>MSCG: Robust Core-Guided MaxSAT Solving</em>. JSAT 9. 2014.
+pp. 129-134</p>
+</dd>
+<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id4">3</a></span></dt>
+<dd><p>Alexey Ignatiev, António Morgado, Joao Marques-Silva.
+<em>RC2: A Python-based MaxSAT Solver</em>. MaxSAT Evaluation 2018.
+p. 22</p>
+</dd>
+<dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id5">4</a></span></dt>
+<dd><p>Alexey Ignatiev, António Morgado, Joao Marques-Silva.
+<em>RC2: An Efficient MaxSAT Solver</em>. MaxSAT Evaluation 2018.
+JSAT 11. 2019. pp. 53-64</p>
+</dd>
+</dl>
+<p>The file implements two classes: <a class="reference internal" href="#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2</span></code></a> and
+<a class="reference internal" href="#examples.rc2.RC2Stratified" title="examples.rc2.RC2Stratified"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2Stratified</span></code></a>. The former class is the basic
+implementation of the algorithm, which can be applied to a MaxSAT
+formula in the <a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a> format. The latter class
+additionally implements Boolean lexicographic optimization (BLO)
+<a class="footnote-reference brackets" href="#id12" id="id10">5</a> and stratification <a class="footnote-reference brackets" href="#id13" id="id11">6</a> on top of <a class="reference internal" href="#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2</span></code></a>.</p>
+<dl class="footnote brackets">
+<dt class="label" id="id12"><span class="brackets">5</span><span class="fn-backref">(<a href="#id10">1</a>,<a href="#id22">2</a>)</span></dt>
+<dd><p>Joao Marques-Silva, Josep Argelich, Ana Graça, Inês Lynce.
+<em>Boolean lexicographic optimization: algorithms &amp;
+applications</em>. Ann. Math. Artif. Intell. 62(3-4). 2011.
+pp. 317-343</p>
+</dd>
+<dt class="label" id="id13"><span class="brackets">6</span><span class="fn-backref">(<a href="#id11">1</a>,<a href="#id18">2</a>,<a href="#id23">3</a>)</span></dt>
+<dd><p>Carlos Ansótegui, Maria Luisa Bonet, Joel Gabàs, Jordi
+Levy. <em>Improving WPM2 for (Weighted) Partial MaxSAT</em>. CP
+2013. pp. 117-132</p>
+</dd>
+</dl>
+<p>The implementation can be used as an executable (the list of
+available command-line options can be shown using <code class="docutils literal notranslate"><span class="pre">rc2.py</span> <span class="pre">-h</span></code>)
+in the following way:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xzcat formula.wcnf.xz
+p wcnf 3 6 4
+1 1 0
+1 2 0
+1 3 0
+4 -1 -2 0
+4 -1 -3 0
+4 -2 -3 0
+
+$ rc2.py -vv formula.wcnf.xz
+c formula: 3 vars, 3 hard, 3 soft
+c cost: 1; core sz: 2; soft sz: 2
+c cost: 2; core sz: 2; soft sz: 1
+s OPTIMUM FOUND
+o 2
+v -1 -2 3
+c oracle time: 0.0001
+</pre></div>
+</div>
+<p>Alternatively, the algorithm can be accessed and invoked through the
+standard <code class="docutils literal notranslate"><span class="pre">import</span></code> interface of Python, e.g.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.rc2</span> <span class="kn">import</span> <span class="n">RC2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">WCNF</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;formula.wcnf.xz&#39;</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">RC2</span><span class="p">(</span><span class="n">wcnf</span><span class="p">)</span> <span class="k">as</span> <span class="n">rc2</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">rc2</span><span class="o">.</span><span class="n">enumerate</span><span class="p">():</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;model </span><span class="si">{0}</span><span class="s1"> has cost </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">rc2</span><span class="o">.</span><span class="n">cost</span><span class="p">))</span>
+<span class="go">model [-1, -2, 3] has cost 2</span>
+<span class="go">model [1, -2, -3] has cost 2</span>
+<span class="go">model [-1, 2, -3] has cost 2</span>
+<span class="go">model [-1, -2, -3] has cost 3</span>
+</pre></div>
+</div>
+<p>As can be seen in the example above, the solver can be instructed
+either to compute one MaxSAT solution of an input formula, or to
+enumerate a given number (or <em>all</em>) of its top MaxSAT solutions.</p>
+</div>
+<div class="section" id="module-details">
+<h2>Module details<a class="headerlink" href="#module-details" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="examples.rc2.RC2">
+<em class="property">class </em><code class="sig-prename descclassname">examples.rc2.</code><code class="sig-name descname">RC2</code><span class="sig-paren">(</span><em class="sig-param">formula</em>, <em class="sig-param">solver='g3'</em>, <em class="sig-param">adapt=False</em>, <em class="sig-param">exhaust=False</em>, <em class="sig-param">incr=False</em>, <em class="sig-param">minz=False</em>, <em class="sig-param">trim=0</em>, <em class="sig-param">verbose=0</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implementation of the basic RC2 algorithm. Given a (weighted)
+(partial) CNF formula, i.e. formula in the <a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a>
+format, this class can be used to compute a given number of
+MaxSAT solutions for the input formula. <a class="reference internal" href="#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2</span></code></a> roughly
+follows the implementation of algorithm OLLITI <a class="footnote-reference brackets" href="#id6" id="id14">1</a> <a class="footnote-reference brackets" href="#id7" id="id15">2</a> of
+MSCG and applies a few heuristics on top of it. These include</p>
+<ul class="simple">
+<li><p><em>unsatisfiable core exhaustion</em> (see method <a class="reference internal" href="#examples.rc2.RC2.exhaust_core" title="examples.rc2.RC2.exhaust_core"><code class="xref py py-func docutils literal notranslate"><span class="pre">exhaust_core()</span></code></a>),</p></li>
+<li><p><em>unsatisfiable core reduction</em> (see method <a class="reference internal" href="#examples.rc2.RC2.minimize_core" title="examples.rc2.RC2.minimize_core"><code class="xref py py-func docutils literal notranslate"><span class="pre">minimize_core()</span></code></a>),</p></li>
+<li><p><em>intrinsic AtMost1 constraints</em> (see method <a class="reference internal" href="#examples.rc2.RC2.adapt_am1" title="examples.rc2.RC2.adapt_am1"><code class="xref py py-func docutils literal notranslate"><span class="pre">adapt_am1()</span></code></a>).</p></li>
+</ul>
+<p><a class="reference internal" href="#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2</span></code></a> can use any SAT solver available in PySAT. The
+default SAT solver to use is <code class="docutils literal notranslate"><span class="pre">g3</span></code> (see
+<a class="reference internal" href="../solvers.html#pysat.solvers.SolverNames" title="pysat.solvers.SolverNames"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolverNames</span></code></a>). Additionally, if Glucose is chosen,
+the <code class="docutils literal notranslate"><span class="pre">incr</span></code> parameter controls whether to use the incremental
+mode of Glucose <a class="footnote-reference brackets" href="#id17" id="id16">7</a> (turned off by default). Boolean
+parameters <code class="docutils literal notranslate"><span class="pre">adapt</span></code>, <code class="docutils literal notranslate"><span class="pre">exhaust</span></code>, and <code class="docutils literal notranslate"><span class="pre">minz</span></code> control
+whether or to apply detection and adaptation of intrinsic
+AtMost1 constraints, core exhaustion, and core reduction.
+Unsatisfiable cores can be trimmed if the <code class="docutils literal notranslate"><span class="pre">trim</span></code> parameter
+is set to a non-zero integer. Finally, verbosity level can be
+set using the <code class="docutils literal notranslate"><span class="pre">verbose</span></code> parameter.</p>
+<dl class="footnote brackets">
+<dt class="label" id="id17"><span class="brackets">7</span><span class="fn-backref">(<a href="#id16">1</a>,<a href="#id19">2</a>)</span></dt>
+<dd><p>Gilles Audemard, Jean-Marie Lagniez, Laurent Simon.
+<em>Improving Glucose for Incremental SAT Solving with
+Assumptions: Application to MUS Extraction</em>. SAT 2013.
+pp. 309-317</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>formula</strong> (<a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a>) – (weighted) (partial) CNF formula</p></li>
+<li><p><strong>solver</strong> (<em>str</em>) – SAT oracle name</p></li>
+<li><p><strong>adapt</strong> (<em>bool</em>) – detect and adapt intrinsic AtMost1 constraints</p></li>
+<li><p><strong>exhaust</strong> (<em>bool</em>) – do core exhaustion</p></li>
+<li><p><strong>incr</strong> (<em>bool</em>) – use incremental mode of Glucose</p></li>
+<li><p><strong>minz</strong> (<em>bool</em>) – do heuristic core reduction</p></li>
+<li><p><strong>trim</strong> (<em>int</em>) – do core trimming at most this number of times</p></li>
+<li><p><strong>verbose</strong> (<em>int</em>) – verbosity level</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="examples.rc2.RC2._map_extlit">
+<code class="sig-name descname">_map_extlit</code><span class="sig-paren">(</span><em class="sig-param">l</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2._map_extlit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Map an external variable to an internal one if necessary.</p>
+<p>This method is used when new clauses are added to the
+formula incrementally, which may result in introducing new
+variables clashing with the previously used <em>clause
+selectors</em>. The method makes sure no clash occurs, i.e. it
+maps the original variables used in the new problem
+clauses to the newly introduced auxiliary variables (see
+<a class="reference internal" href="#examples.rc2.RC2.add_clause" title="examples.rc2.RC2.add_clause"><code class="xref py py-func docutils literal notranslate"><span class="pre">add_clause()</span></code></a>).</p>
+<p>Given an integer literal, a fresh literal is returned. The
+returned integer has the same sign as the input literal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>l</strong> (<em>int</em>) – literal to map</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.rc2.RC2.adapt_am1">
+<code class="sig-name descname">adapt_am1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2.adapt_am1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Detect and adapt intrinsic AtMost1 constraints. Assume
+there is a subset of soft clauses
+<span class="math notranslate nohighlight">\(\mathcal{S}'\subseteq \mathcal{S}\)</span> s.t.
+<span class="math notranslate nohighlight">\(\sum_{c\in\mathcal{S}'}{c\leq 1}\)</span>, i.e. at most
+one of the clauses of <span class="math notranslate nohighlight">\(\mathcal{S}'\)</span> can be
+satisfied.</p>
+<p>Each AtMost1 relationship between the soft clauses can be
+detected in the following way. The method traverses all
+soft clauses of the formula one by one, sets one
+respective selector literal to true and checks whether
+some other soft clauses are forced to be false. This is
+checked by testing if selectors for other soft clauses are
+unit-propagated to be false. Note that this method for
+detection of AtMost1 constraints is <em>incomplete</em>, because
+in general unit propagation does not suffice to test
+whether or not <span class="math notranslate nohighlight">\(\mathcal{F}\wedge l_i\models
+\neg{l_j}\)</span>.</p>
+<p>Each intrinsic AtMost1 constraint detected this way is
+handled by calling <a class="reference internal" href="#examples.rc2.RC2.process_am1" title="examples.rc2.RC2.process_am1"><code class="xref py py-func docutils literal notranslate"><span class="pre">process_am1()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.rc2.RC2.add_clause">
+<code class="sig-name descname">add_clause</code><span class="sig-paren">(</span><em class="sig-param">clause</em>, <em class="sig-param">weight=None</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2.add_clause" title="Permalink to this definition">¶</a></dt>
+<dd><p>The method for adding a new hard of soft clause to the
+problem formula. Although the input formula is to be
+specified as an argument of the constructor of
+<a class="reference internal" href="#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2</span></code></a>, adding clauses may be helpful when
+<em>enumerating</em> MaxSAT solutions of the formula. This way,
+the clauses are added incrementally, i.e. <em>on the fly</em>.</p>
+<p>The clause to add can be any iterable over integer
+literals. The additional integer parameter <code class="docutils literal notranslate"><span class="pre">weight</span></code> can
+be set to meaning the the clause being added is soft
+having the corresponding weight (note that parameter
+<code class="docutils literal notranslate"><span class="pre">weight</span></code> is set to <code class="docutils literal notranslate"><span class="pre">None</span></code> by default meaning that the
+clause is hard).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>clause</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – a clause to add</p></li>
+<li><p><strong>weight</strong> (<em>int</em>) – weight of the clause (if any)</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.rc2</span> <span class="kn">import</span> <span class="n">RC2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">WCNF</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">])</span>  <span class="c1"># adding hard clauses</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">])</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># adding soft clauses</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">2</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">3</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">RC2</span><span class="p">(</span><span class="n">wcnf</span><span class="p">)</span> <span class="k">as</span> <span class="n">rc2</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">rc2</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>  <span class="c1"># solving the MaxSAT problem</span>
+<span class="go">[-1, 2, 3]</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">rc2</span><span class="o">.</span><span class="n">cost</span><span class="p">)</span>
+<span class="go">1</span>
+<span class="gp">... </span>    <span class="n">rc2</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">])</span>  <span class="c1"># adding one more hard clause</span>
+<span class="gp">... </span>    <span class="n">rc2</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>  <span class="c1"># computing another model</span>
+<span class="go">[-1, -2, 3]</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">rc2</span><span class="o">.</span><span class="n">cost</span><span class="p">)</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.rc2.RC2.compute">
+<code class="sig-name descname">compute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2.compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method can be used for computing one MaxSAT solution,
+i.e. for computing an assignment satisfying all hard
+clauses of the input formula and maximizing the sum of
+weights of satisfied soft clauses. It is a wrapper for the
+internal <a class="reference internal" href="#examples.rc2.RC2.compute_" title="examples.rc2.RC2.compute_"><code class="xref py py-func docutils literal notranslate"><span class="pre">compute_()</span></code></a> method, which does the job,
+followed by the model extraction.</p>
+<p>Note that the method returns <code class="docutils literal notranslate"><span class="pre">None</span></code> if no MaxSAT model
+exists. The method can be called multiple times, each
+being followed by blocking the last model. This way one
+can enumerate top-<span class="math notranslate nohighlight">\(k\)</span> MaxSAT solutions (this can
+also be done by calling <a class="reference internal" href="#examples.rc2.RC2.enumerate" title="examples.rc2.RC2.enumerate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">enumerate()</span></code></a>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a MaxSAT model</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list(int)</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.rc2</span> <span class="kn">import</span> <span class="n">RC2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">WCNF</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rc2</span> <span class="o">=</span> <span class="n">RC2</span><span class="p">(</span><span class="n">WCNF</span><span class="p">())</span>  <span class="c1"># passing an empty WCNF() formula</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rc2</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rc2</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rc2</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">])</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rc2</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rc2</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="mi">2</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rc2</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="mi">3</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">rc2</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="go">[-1, -2, 3]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">rc2</span><span class="o">.</span><span class="n">cost</span><span class="p">)</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rc2</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.rc2.RC2.compute_">
+<code class="sig-name descname">compute_</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2.compute_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main core-guided loop, which iteratively calls a SAT
+oracle, extracts a new unsatisfiable core and processes
+it. The loop finishes as soon as a satisfiable formula is
+obtained. If specified in the command line, the method
+additionally calls <a class="reference internal" href="#examples.rc2.RC2.adapt_am1" title="examples.rc2.RC2.adapt_am1"><code class="xref py py-meth docutils literal notranslate"><span class="pre">adapt_am1()</span></code></a> to detect and adapt
+intrinsic AtMost1 constraints before executing the loop.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.rc2.RC2.create_sum">
+<code class="sig-name descname">create_sum</code><span class="sig-paren">(</span><em class="sig-param">bound=1</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2.create_sum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a totalizer object encoding a cardinality
+constraint on the new list of relaxation literals obtained
+in <a class="reference internal" href="#examples.rc2.RC2.process_sels" title="examples.rc2.RC2.process_sels"><code class="xref py py-func docutils literal notranslate"><span class="pre">process_sels()</span></code></a> and <a class="reference internal" href="#examples.rc2.RC2.process_sums" title="examples.rc2.RC2.process_sums"><code class="xref py py-func docutils literal notranslate"><span class="pre">process_sums()</span></code></a>. The
+clauses encoding the sum of the relaxation literals are
+added to the SAT oracle. The sum of the totalizer object
+is encoded up to the value of the input parameter
+<code class="docutils literal notranslate"><span class="pre">bound</span></code>, which is set to <code class="docutils literal notranslate"><span class="pre">1</span></code> by default.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bound</strong> (<em>int</em>) – right-hand side for the sum to be created</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="../card.html#pysat.card.ITotalizer" title="pysat.card.ITotalizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ITotalizer</span></code></a></p>
+</dd>
+</dl>
+<p>Note that if Minicard is used as a SAT oracle, native
+cardinality constraints are used instead of
+<a class="reference internal" href="../card.html#pysat.card.ITotalizer" title="pysat.card.ITotalizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ITotalizer</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.rc2.RC2.delete">
+<code class="sig-name descname">delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Explicit destructor of the internal SAT oracle and all the
+totalizer objects creating during the solving process.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.rc2.RC2.enumerate">
+<code class="sig-name descname">enumerate</code><span class="sig-paren">(</span><em class="sig-param">block=0</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2.enumerate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enumerate top MaxSAT solutions (from best to worst). The
+method works as a generator, which iteratively calls
+<a class="reference internal" href="#examples.rc2.RC2.compute" title="examples.rc2.RC2.compute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute()</span></code></a> to compute a MaxSAT model, blocks it
+internally and returns it.</p>
+<p>An optional parameter can be used to enforce computation of MaxSAT
+models corresponding to different maximal satisfiable subsets
+(MSSes) or minimal correction subsets (MCSes). To block MSSes, one
+should set the <code class="docutils literal notranslate"><span class="pre">block</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">1</span></code>. To block MCSes, set
+it to <code class="docutils literal notranslate"><span class="pre">-1</span></code>. By the default (for blocking MaxSAT models),
+<code class="docutils literal notranslate"><span class="pre">block</span></code> is set to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>block</strong> (<em>int</em>) – preferred way to block solutions when enumerating</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a MaxSAT model</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list(int)</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.rc2</span> <span class="kn">import</span> <span class="n">RC2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">WCNF</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rc2</span> <span class="o">=</span> <span class="n">RC2</span><span class="p">(</span><span class="n">WCNF</span><span class="p">())</span>  <span class="c1"># passing an empty WCNF() formula</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rc2</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">])</span>  <span class="c1"># adding clauses &quot;on the fly&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rc2</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rc2</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">])</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rc2</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rc2</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="mi">2</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rc2</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="mi">3</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">rc2</span><span class="o">.</span><span class="n">enumerate</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">rc2</span><span class="o">.</span><span class="n">cost</span><span class="p">)</span>
+<span class="go">[-1, -2, 3] 2</span>
+<span class="go">[1, -2, -3] 2</span>
+<span class="go">[-1, 2, -3] 2</span>
+<span class="go">[-1, -2, -3] 3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rc2</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.rc2.RC2.exhaust_core">
+<code class="sig-name descname">exhaust_core</code><span class="sig-paren">(</span><em class="sig-param">tobj</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2.exhaust_core" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exhaust core by increasing its bound as much as possible.
+Core exhaustion was originally referred to as <em>cover
+optimization</em> in <a class="footnote-reference brackets" href="#id13" id="id18">6</a>.</p>
+<p>Given a totalizer object <code class="docutils literal notranslate"><span class="pre">tobj</span></code> representing a sum of
+some <em>relaxation</em> variables <span class="math notranslate nohighlight">\(r\in R\)</span> that augment
+soft clauses <span class="math notranslate nohighlight">\(\mathcal{C}_r\)</span>, the idea is to
+increase the right-hand side of the sum (which is equal to
+1 by default) as much as possible, reaching a value
+<span class="math notranslate nohighlight">\(k\)</span> s.t. formula
+<span class="math notranslate nohighlight">\(\mathcal{H}\wedge\mathcal{C}_r\wedge(\sum_{r\in
+R}{r\leq k})\)</span> is still unsatisfiable while increasing it
+further makes the formula satisfiable (here
+<span class="math notranslate nohighlight">\(\mathcal{H}\)</span> denotes the hard part of the
+formula).</p>
+<p>The rationale is that calling an oracle incrementally on a
+series of slightly modified formulas focusing only on the
+recently computed unsatisfiable core and disregarding the
+rest of the formula may be practically effective.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.rc2.RC2.filter_assumps">
+<code class="sig-name descname">filter_assumps</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2.filter_assumps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter out unnecessary selectors and sums from the list of
+assumption literals. The corresponding values are also
+removed from the dictionaries of bounds and weights.</p>
+<p>Note that assumptions marked as garbage are collected in
+the core processing methods, i.e. in <a class="reference internal" href="#examples.rc2.RC2.process_core" title="examples.rc2.RC2.process_core"><code class="xref py py-func docutils literal notranslate"><span class="pre">process_core()</span></code></a>,
+<a class="reference internal" href="#examples.rc2.RC2.process_sels" title="examples.rc2.RC2.process_sels"><code class="xref py py-func docutils literal notranslate"><span class="pre">process_sels()</span></code></a>, and <a class="reference internal" href="#examples.rc2.RC2.process_sums" title="examples.rc2.RC2.process_sums"><code class="xref py py-func docutils literal notranslate"><span class="pre">process_sums()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.rc2.RC2.get_core">
+<code class="sig-name descname">get_core</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2.get_core" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract unsatisfiable core. The result of the procedure is
+stored in variable <code class="docutils literal notranslate"><span class="pre">self.core</span></code>. If necessary, core
+trimming and also heuristic core reduction is applied
+depending on the command-line options. A <em>minimum weight</em>
+of the core is computed and stored in <code class="docutils literal notranslate"><span class="pre">self.minw</span></code>.
+Finally, the core is divided into two parts:</p>
+<ol class="arabic simple">
+<li><p>clause selectors (<code class="docutils literal notranslate"><span class="pre">self.core_sels</span></code>),</p></li>
+<li><p>sum assumptions (<code class="docutils literal notranslate"><span class="pre">self.core_sums</span></code>).</p></li>
+</ol>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.rc2.RC2.init">
+<code class="sig-name descname">init</code><span class="sig-paren">(</span><em class="sig-param">formula</em>, <em class="sig-param">incr=False</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the internal SAT oracle. The oracle is used
+incrementally and so it is initialized only once when
+constructing an object of class <a class="reference internal" href="#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2</span></code></a>. Given an
+input <a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a> formula, the method bootstraps the
+oracle with its hard clauses. It also augments the soft
+clauses with “fresh” selectors and adds them to the oracle
+afterwards.</p>
+<p>Optional input parameter <code class="docutils literal notranslate"><span class="pre">incr</span></code> (<code class="docutils literal notranslate"><span class="pre">False</span></code> by default)
+regulates whether or not Glucose’s incremental mode <a class="footnote-reference brackets" href="#id17" id="id19">7</a>
+is turned on.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>formula</strong> (<a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a>) – input formula</p></li>
+<li><p><strong>incr</strong> (<em>bool</em>) – apply incremental mode of Glucose</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.rc2.RC2.minimize_core">
+<code class="sig-name descname">minimize_core</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2.minimize_core" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reduce a previously extracted core and compute an
+over-approximation of an MUS. This is done using the
+simple deletion-based MUS extraction algorithm.</p>
+<p>The idea is to try to deactivate soft clauses of the
+unsatisfiable core one by one while checking if the
+remaining soft clauses together with the hard part of the
+formula are unsatisfiable. Clauses that are necessary for
+preserving unsatisfiability comprise an MUS of the input
+formula (it is contained in the given unsatisfiable core)
+and are reported as a result of the procedure.</p>
+<p>During this core minimization procedure, all SAT calls are
+dropped after obtaining 1000 conflicts.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.rc2.RC2.oracle_time">
+<code class="sig-name descname">oracle_time</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2.oracle_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report the total SAT solving time.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.rc2.RC2.process_am1">
+<code class="sig-name descname">process_am1</code><span class="sig-paren">(</span><em class="sig-param">am1</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2.process_am1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process an AtMost1 relation detected by <a class="reference internal" href="#examples.rc2.RC2.adapt_am1" title="examples.rc2.RC2.adapt_am1"><code class="xref py py-func docutils literal notranslate"><span class="pre">adapt_am1()</span></code></a>.
+Note that given a set of soft clauses
+<span class="math notranslate nohighlight">\(\mathcal{S}'\)</span> at most one of which can be
+satisfied, one can immediately conclude that the formula
+has cost at least <span class="math notranslate nohighlight">\(|\mathcal{S}'|-1\)</span> (assuming
+<em>unweighted</em> MaxSAT). Furthermore, it is safe to replace
+all clauses of <span class="math notranslate nohighlight">\(\mathcal{S}'\)</span> with a single soft
+clause <span class="math notranslate nohighlight">\(\sum_{c\in\mathcal{S}'}{c}\)</span>.</p>
+<p>Here, input parameter <code class="docutils literal notranslate"><span class="pre">am1</span></code> plays the role of subset
+<span class="math notranslate nohighlight">\(\mathcal{S}'\)</span> mentioned above. The procedure bumps
+the MaxSAT cost by <code class="docutils literal notranslate"><span class="pre">self.minw</span> <span class="pre">*</span> <span class="pre">(len(am1)</span> <span class="pre">-</span> <span class="pre">1)</span></code>.</p>
+<p>All soft clauses involved in <code class="docutils literal notranslate"><span class="pre">am1</span></code> are replaced by a
+single soft clause, which is a disjunction of the
+selectors of clauses in <code class="docutils literal notranslate"><span class="pre">am1</span></code>. The weight of the new
+soft clause is set to <code class="docutils literal notranslate"><span class="pre">self.minw</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>am1</strong> (<em>list</em><em>(</em><em>int</em><em>)</em>) – a list of selectors connected by an AtMost1 constraint</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.rc2.RC2.process_core">
+<code class="sig-name descname">process_core</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2.process_core" title="Permalink to this definition">¶</a></dt>
+<dd><p>The method deals with a core found previously in
+<a class="reference internal" href="#examples.rc2.RC2.get_core" title="examples.rc2.RC2.get_core"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_core()</span></code></a>. Clause selectors <code class="docutils literal notranslate"><span class="pre">self.core_sels</span></code> and
+sum assumptions involved in the core are treated
+separately of each other. This is handled by calling
+methods <a class="reference internal" href="#examples.rc2.RC2.process_sels" title="examples.rc2.RC2.process_sels"><code class="xref py py-func docutils literal notranslate"><span class="pre">process_sels()</span></code></a> and <a class="reference internal" href="#examples.rc2.RC2.process_sums" title="examples.rc2.RC2.process_sums"><code class="xref py py-func docutils literal notranslate"><span class="pre">process_sums()</span></code></a>,
+respectively. Whenever necessary, both methods relax the
+core literals, which is followed by creating a new
+totalizer object encoding the sum of the new relaxation
+variables. The totalizer object can be “exhausted”
+depending on the option.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.rc2.RC2.process_sels">
+<code class="sig-name descname">process_sels</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2.process_sels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process soft clause selectors participating in a new core.
+The negation <span class="math notranslate nohighlight">\(\neg{s}\)</span> of each selector literal
+<span class="math notranslate nohighlight">\(s\)</span> participating in the unsatisfiable core is added
+to the list of relaxation literals, which will be later
+used to create a new totalizer object in
+<a class="reference internal" href="#examples.rc2.RC2.create_sum" title="examples.rc2.RC2.create_sum"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_sum()</span></code></a>.</p>
+<p>If the weight associated with a selector is equal to the
+minimal weight of the core, e.g. <code class="docutils literal notranslate"><span class="pre">self.minw</span></code>, the
+selector is marked as garbage and will be removed in
+<a class="reference internal" href="#examples.rc2.RC2.filter_assumps" title="examples.rc2.RC2.filter_assumps"><code class="xref py py-func docutils literal notranslate"><span class="pre">filter_assumps()</span></code></a>. Otherwise, the clause is split as
+described in <a class="footnote-reference brackets" href="#id6" id="id20">1</a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.rc2.RC2.process_sums">
+<code class="sig-name descname">process_sums</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2.process_sums" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process cardinality sums participating in a new core.
+Whenever necessary, some of the sum assumptions are
+removed or split (depending on the value of
+<code class="docutils literal notranslate"><span class="pre">self.minw</span></code>). Deleted sums are marked as garbage and are
+dealt with in <a class="reference internal" href="#examples.rc2.RC2.filter_assumps" title="examples.rc2.RC2.filter_assumps"><code class="xref py py-func docutils literal notranslate"><span class="pre">filter_assumps()</span></code></a>.</p>
+<p>In some cases, the process involves updating the
+right-hand sides of the existing cardinality sums (see the
+call to <a class="reference internal" href="#examples.rc2.RC2.update_sum" title="examples.rc2.RC2.update_sum"><code class="xref py py-func docutils literal notranslate"><span class="pre">update_sum()</span></code></a>). The overall procedure is
+detailed in <a class="footnote-reference brackets" href="#id6" id="id21">1</a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.rc2.RC2.set_bound">
+<code class="sig-name descname">set_bound</code><span class="sig-paren">(</span><em class="sig-param">tobj</em>, <em class="sig-param">rhs</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2.set_bound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a totalizer sum and its right-hand side to be
+enforced, the method creates a new sum assumption literal,
+which will be used in the following SAT oracle calls.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tobj</strong> (<a class="reference internal" href="../card.html#pysat.card.ITotalizer" title="pysat.card.ITotalizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ITotalizer</span></code></a>) – totalizer sum</p></li>
+<li><p><strong>rhs</strong> (<em>int</em>) – right-hand side</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.rc2.RC2.trim_core">
+<code class="sig-name descname">trim_core</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2.trim_core" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method trims a previously extracted unsatisfiable
+core at most a given number of times. If a fixed point is
+reached before that, the method returns.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.rc2.RC2.update_sum">
+<code class="sig-name descname">update_sum</code><span class="sig-paren">(</span><em class="sig-param">assump</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2.update_sum" title="Permalink to this definition">¶</a></dt>
+<dd><p>The method is used to increase the bound for a given
+totalizer sum. The totalizer object is identified by the
+input parameter <code class="docutils literal notranslate"><span class="pre">assump</span></code>, which is an assumption literal
+associated with the totalizer object.</p>
+<p>The method increases the bound for the totalizer sum,
+which involves adding the corresponding new clauses to the
+internal SAT oracle.</p>
+<p>The method returns the totalizer object followed by the
+new bound obtained.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>assump</strong> (<em>int</em>) – assumption literal associated with the sum</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="../card.html#pysat.card.ITotalizer" title="pysat.card.ITotalizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ITotalizer</span></code></a>, int</p>
+</dd>
+</dl>
+<p>Note that if Minicard is used as a SAT oracle, native
+cardinality constraints are used instead of
+<a class="reference internal" href="../card.html#pysat.card.ITotalizer" title="pysat.card.ITotalizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ITotalizer</span></code></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="examples.rc2.RC2Stratified">
+<em class="property">class </em><code class="sig-prename descclassname">examples.rc2.</code><code class="sig-name descname">RC2Stratified</code><span class="sig-paren">(</span><em class="sig-param">formula</em>, <em class="sig-param">solver='g3'</em>, <em class="sig-param">adapt=False</em>, <em class="sig-param">exhaust=False</em>, <em class="sig-param">incr=False</em>, <em class="sig-param">minz=False</em>, <em class="sig-param">nohard=False</em>, <em class="sig-param">trim=0</em>, <em class="sig-param">verbose=0</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2Stratified" title="Permalink to this definition">¶</a></dt>
+<dd><p>RC2 augmented with BLO and stratification techniques. Although
+class <a class="reference internal" href="#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2</span></code></a> can deal with weighted formulas, there are
+situations when it is necessary to apply additional heuristics
+to improve the performance of the solver on weighted MaxSAT
+formulas. This class extends capabilities of <a class="reference internal" href="#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2</span></code></a> with
+two heuristics, namely</p>
+<ol class="arabic simple">
+<li><p>Boolean lexicographic optimization (BLO) <a class="footnote-reference brackets" href="#id12" id="id22">5</a></p></li>
+<li><p>stratification <a class="footnote-reference brackets" href="#id13" id="id23">6</a></p></li>
+</ol>
+<p>There is no way to enable only one of them – both heuristics
+are applied at the same time. Except for the aforementioned
+additional techniques, every other component of the solver
+remains as in the base class <a class="reference internal" href="#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2</span></code></a>. Therefore, a user
+is referred to the documentation of <a class="reference internal" href="#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2</span></code></a> for details.</p>
+<dl class="method">
+<dt id="examples.rc2.RC2Stratified.activate_clauses">
+<code class="sig-name descname">activate_clauses</code><span class="sig-paren">(</span><em class="sig-param">beg</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2Stratified.activate_clauses" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used for activating the clauses that belong
+to optimization levels up to the newly computed level. It
+also reactivates previously deactivated clauses (see
+<a class="reference internal" href="#examples.rc2.RC2Stratified.process_sels" title="examples.rc2.RC2Stratified.process_sels"><code class="xref py py-func docutils literal notranslate"><span class="pre">process_sels()</span></code></a> and <a class="reference internal" href="#examples.rc2.RC2Stratified.process_sums" title="examples.rc2.RC2Stratified.process_sums"><code class="xref py py-func docutils literal notranslate"><span class="pre">process_sums()</span></code></a> for
+details).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.rc2.RC2Stratified.compute">
+<code class="sig-name descname">compute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2Stratified.compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method solves the MaxSAT problem iteratively. Each
+optimization level is tackled the standard way, i.e. by
+calling <code class="xref py py-func docutils literal notranslate"><span class="pre">compute_()</span></code>. A new level is started by
+calling <a class="reference internal" href="#examples.rc2.RC2Stratified.next_level" title="examples.rc2.RC2Stratified.next_level"><code class="xref py py-func docutils literal notranslate"><span class="pre">next_level()</span></code></a> and finished by calling
+<a class="reference internal" href="#examples.rc2.RC2Stratified.finish_level" title="examples.rc2.RC2Stratified.finish_level"><code class="xref py py-func docutils literal notranslate"><span class="pre">finish_level()</span></code></a>. Each new optimization level
+activates more soft clauses by invoking
+<a class="reference internal" href="#examples.rc2.RC2Stratified.activate_clauses" title="examples.rc2.RC2Stratified.activate_clauses"><code class="xref py py-func docutils literal notranslate"><span class="pre">activate_clauses()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.rc2.RC2Stratified.finish_level">
+<code class="sig-name descname">finish_level</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2Stratified.finish_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method does postprocessing of the current
+optimization level after it is solved. This includes
+<em>hardening</em> some of the soft clauses (depending on their
+remaining weights) and also garbage collection.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.rc2.RC2Stratified.init_wstr">
+<code class="sig-name descname">init_wstr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2Stratified.init_wstr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute and initialize optimization levels for BLO and
+stratification. This method is invoked once, from the
+constructor of an object of <a class="reference internal" href="#examples.rc2.RC2Stratified" title="examples.rc2.RC2Stratified"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2Stratified</span></code></a>. Given
+the weights of the soft clauses, the method divides the
+MaxSAT problem into several optimization levels.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.rc2.RC2Stratified.next_level">
+<code class="sig-name descname">next_level</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2Stratified.next_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the next optimization level (starting from the
+current one). The procedure represents a loop, each
+iteration of which checks whether or not one of the
+conditions holds:</p>
+<ul class="simple">
+<li><p>partial BLO condition</p></li>
+<li><p>stratification condition</p></li>
+</ul>
+<p>If any of these holds, the loop stops.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.rc2.RC2Stratified.process_am1">
+<code class="sig-name descname">process_am1</code><span class="sig-paren">(</span><em class="sig-param">am1</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2Stratified.process_am1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Due to the solving process involving multiple optimization
+levels to be treated individually, new soft clauses for
+the detected intrinsic AtMost1 constraints should be
+remembered. The method is a slightly modified version of
+the base method <a class="reference internal" href="#examples.rc2.RC2.process_am1" title="examples.rc2.RC2.process_am1"><code class="xref py py-func docutils literal notranslate"><span class="pre">RC2.process_am1()</span></code></a> taking care of
+this.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.rc2.RC2Stratified.process_sels">
+<code class="sig-name descname">process_sels</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2Stratified.process_sels" title="Permalink to this definition">¶</a></dt>
+<dd><p>A redefined version of <a class="reference internal" href="#examples.rc2.RC2.process_sels" title="examples.rc2.RC2.process_sels"><code class="xref py py-func docutils literal notranslate"><span class="pre">RC2.process_sels()</span></code></a>. The only
+modification affects the clauses whose weight after
+splitting becomes less than the weight of the current
+optimization level. Such clauses are deactivated and to be
+reactivated at a later stage.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.rc2.RC2Stratified.process_sums">
+<code class="sig-name descname">process_sums</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2Stratified.process_sums" title="Permalink to this definition">¶</a></dt>
+<dd><p>A redefined version of <a class="reference internal" href="#examples.rc2.RC2.process_sums" title="examples.rc2.RC2.process_sums"><code class="xref py py-func docutils literal notranslate"><span class="pre">RC2.process_sums()</span></code></a>. The only
+modification affects the clauses whose weight after
+splitting becomes less than the weight of the current
+optimization level. Such clauses are deactivated and to be
+reactivated at a later stage.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/pysat.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=pysathq&repo=pysat&type=star&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+
+<div class="sidebarblock">
+    <div class="tile">
+    <h4>Latest version:</h4>
+    0.1.7.dev2 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    </div>
+    </br>
+</div>
+<div class="sidebarblock">
+    <div class="tile">
+    <h4><a href="https://pysathq.github.io">Main webpage</a></h4>
+    </div>
+</div>
+</br>
+<div class="sidebarblock">
+<h4>Contact us:</h4>
+      <a class="reference external" href="https://github.com/pysathq/pysat/issues">
+            Issue tracker
+      </a>
+      |
+      <a class="reference external" href="mailto:pysathq@gmail.com">
+          Email
+      </a>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018-2021, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/api/examples/rc2.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

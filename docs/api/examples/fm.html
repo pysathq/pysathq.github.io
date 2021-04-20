@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Fu&amp;Malik MaxSAT algorithm (pysat.examples.fm) &#8212; PySAT 0.1.7.dev2 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Hard formula generator (pysat.examples.genhard)" href="genhard.html" />
+    <link rel="prev" title="SAT solvers’ API (pysat.solvers)" href="../solvers.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-examples.fm">
+<span id="fu-malik-maxsat-algorithm-pysat-examples-fm"></span><h1>Fu&amp;Malik MaxSAT algorithm (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.fm</span></code>)<a class="headerlink" href="#module-examples.fm" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="list-of-classes">
+<h2>List of classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#examples.fm.FM" title="examples.fm.FM"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FM</span></code></a></p></td>
+<td><p>A non-incremental implementation of the FM (Fu&amp;Malik, or WMSU1) algorithm.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-description">
+<h2>Module description<a class="headerlink" href="#module-description" title="Permalink to this headline">¶</a></h2>
+<p>This module implements a variant of the seminal core-guided MaxSAT
+algorithm originally proposed by <a class="footnote-reference brackets" href="#id7" id="id1">1</a> and then improved and modified
+further in <a class="footnote-reference brackets" href="#id8" id="id2">2</a> <a class="footnote-reference brackets" href="#id9" id="id3">3</a> <a class="footnote-reference brackets" href="#id10" id="id4">4</a> <a class="footnote-reference brackets" href="#id11" id="id5">5</a>. Namely, the implementation follows the
+WMSU1 variant <a class="footnote-reference brackets" href="#id11" id="id6">5</a> of the algorithm extended to the case of <em>weighted
+partial</em> formulas.</p>
+<dl class="footnote brackets">
+<dt class="label" id="id7"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Zhaohui Fu, Sharad Malik. <em>On Solving the Partial MAX-SAT Problem</em>.
+SAT 2006. pp. 252-265</p>
+</dd>
+<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>Joao Marques-Silva, Jordi Planes. <em>On Using Unsatisfiability for
+Solving Maximum Satisfiability</em>. CoRR abs/0712.1097. 2007</p>
+</dd>
+<dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dd><p>Joao Marques-Silva, Vasco M. Manquinho. <em>Towards More Effective
+Unsatisfiability-Based Maximum Satisfiability Algorithms</em>. SAT 2008.
+pp. 225-230</p>
+</dd>
+<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
+<dd><p>Carlos Ansótegui, Maria Luisa Bonet, Jordi Levy. <em>Solving
+(Weighted) Partial MaxSAT through Satisfiability Testing</em>. SAT 2009.
+pp. 427-440</p>
+</dd>
+<dt class="label" id="id11"><span class="brackets">5</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id6">2</a>,<a href="#id12">3</a>,<a href="#id13">4</a>)</span></dt>
+<dd><p>Vasco M. Manquinho, Joao Marques Silva, Jordi Planes. <em>Algorithms
+for Weighted Boolean Optimization</em>. SAT 2009. pp. 495-508</p>
+</dd>
+</dl>
+<p>The implementation can be used as an executable (the list of available
+command-line options can be shown using <code class="docutils literal notranslate"><span class="pre">fm.py</span> <span class="pre">-h</span></code>) in the following way:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xzcat formula.wcnf.xz
+p wcnf 3 6 4
+1 1 0
+1 2 0
+1 3 0
+4 -1 -2 0
+4 -1 -3 0
+4 -2 -3 0
+
+$ fm.py -c cardn -s glucose3 -vv formula.wcnf.xz
+c cost: 1; core sz: 2
+c cost: 2; core sz: 3
+s OPTIMUM FOUND
+o 2
+v -1 -2 3 0
+c oracle time: 0.0001
+</pre></div>
+</div>
+<p>Alternatively, the algorithm can be accessed and invoked through the
+standard <code class="docutils literal notranslate"><span class="pre">import</span></code> interface of Python, e.g.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.fm</span> <span class="kn">import</span> <span class="n">FM</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">WCNF</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;formula.wcnf.xz&#39;</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fm</span> <span class="o">=</span> <span class="n">FM</span><span class="p">(</span><span class="n">wcnf</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fm</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>  <span class="c1"># set of hard clauses should be satisfiable</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">fm</span><span class="o">.</span><span class="n">cost</span><span class="p">)</span> <span class="c1"># cost of MaxSAT solution should be 2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">fm</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
+<span class="go">[-1, -2, 3]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="module-details">
+<h2>Module details<a class="headerlink" href="#module-details" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="examples.fm.FM">
+<em class="property">class </em><code class="sig-prename descclassname">examples.fm.</code><code class="sig-name descname">FM</code><span class="sig-paren">(</span><em class="sig-param">formula</em>, <em class="sig-param">enc=0</em>, <em class="sig-param">solver='m22'</em>, <em class="sig-param">verbose=1</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.fm.FM" title="Permalink to this definition">¶</a></dt>
+<dd><p>A non-incremental implementation of the FM (Fu&amp;Malik, or WMSU1)
+algorithm. The algorithm (see details in <a class="footnote-reference brackets" href="#id11" id="id12">5</a>) is <em>core-guided</em>, i.e.
+it solves maximum satisfiability with a series of unsatisfiability
+oracle calls, each producing an unsatisfiable core. The clauses
+involved in an unsatisfiable core are <em>relaxed</em> and a new
+<span class="math notranslate nohighlight">\(\textsf{AtMost1}\)</span> constraint on the corresponding <em>relaxation
+variables</em> is added to the formula. The process gets a bit more
+sophisticated in the case of weighted formulas because of the <em>clause
+weight splitting</em> technique.</p>
+<p>The constructor of <a class="reference internal" href="#examples.fm.FM" title="examples.fm.FM"><code class="xref py py-class docutils literal notranslate"><span class="pre">FM</span></code></a> objects receives a target <a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a>
+MaxSAT formula, an identifier of the cardinality encoding to use, a SAT
+solver name, and a verbosity level. Note that the algorithm uses the
+<code class="docutils literal notranslate"><span class="pre">pairwise</span></code> (see <a class="reference internal" href="../card.html#pysat.card.EncType" title="pysat.card.EncType"><code class="xref py py-class docutils literal notranslate"><span class="pre">card.EncType</span></code></a>) cardinality encoding by
+default, while the default SAT solver is MiniSat22 (referred to as
+<code class="docutils literal notranslate"><span class="pre">'m22'</span></code>, see <a class="reference internal" href="../solvers.html#pysat.solvers.SolverNames" title="pysat.solvers.SolverNames"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolverNames</span></code></a> for details). The default
+verbosity level is <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>formula</strong> (<a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a>) – input MaxSAT formula</p></li>
+<li><p><strong>enc</strong> (<em>int</em>) – cardinality encoding to use</p></li>
+<li><p><strong>solver</strong> (<em>str</em>) – name of SAT solver</p></li>
+<li><p><strong>verbose</strong> (<em>int</em>) – verbosity level</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="examples.fm.FM._compute">
+<code class="sig-name descname">_compute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.fm.FM._compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method implements WMSU1 algorithm. The method is essentially a
+loop, which at each iteration calls the SAT oracle to decide
+whether the working formula is satisfiable. If it is, the method
+derives a model (stored in variable <code class="docutils literal notranslate"><span class="pre">self.model</span></code>) and returns.
+Otherwise, a new unsatisfiable core of the formula is extracted
+and processed (see <a class="reference internal" href="#examples.fm.FM.treat_core" title="examples.fm.FM.treat_core"><code class="xref py py-func docutils literal notranslate"><span class="pre">treat_core()</span></code></a>), and the algorithm proceeds.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.fm.FM.compute">
+<code class="sig-name descname">compute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.fm.FM.compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute a MaxSAT solution. First, the method checks whether or
+not the set of hard clauses is satisfiable. If not, the method
+returns <code class="docutils literal notranslate"><span class="pre">False</span></code>. Otherwise, add soft clauses to the oracle and
+call the MaxSAT algorithm (see <a class="reference internal" href="#examples.fm.FM._compute" title="examples.fm.FM._compute"><code class="xref py py-func docutils literal notranslate"><span class="pre">_compute()</span></code></a>).</p>
+<p>Note that the soft clauses are added to the oracles after being
+augmented with additional <em>selector</em> literals. The selectors
+literals are then used as <em>assumptions</em> when calling the SAT oracle
+and are needed for extracting unsatisfiable cores.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.fm.FM.delete">
+<code class="sig-name descname">delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.fm.FM.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Explicit destructor of the internal SAT oracle.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.fm.FM.init">
+<code class="sig-name descname">init</code><span class="sig-paren">(</span><em class="sig-param">with_soft=True</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.fm.FM.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>The method for the SAT oracle initialization. Since the oracle is
+is used non-incrementally, it is reinitialized at every iteration
+of the MaxSAT algorithm (see <a class="reference internal" href="#examples.fm.FM.reinit" title="examples.fm.FM.reinit"><code class="xref py py-func docutils literal notranslate"><span class="pre">reinit()</span></code></a>). An input parameter
+<code class="docutils literal notranslate"><span class="pre">with_soft</span></code> (<code class="docutils literal notranslate"><span class="pre">False</span></code> by default) regulates whether or not the
+formula’s soft clauses are copied to the oracle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>with_soft</strong> (<em>bool</em>) – copy formula’s soft clauses to the oracle or not</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.fm.FM.oracle_time">
+<code class="sig-name descname">oracle_time</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.fm.FM.oracle_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method for calculating and reporting the total SAT solving time.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.fm.FM.reinit">
+<code class="sig-name descname">reinit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.fm.FM.reinit" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method calls <a class="reference internal" href="#examples.fm.FM.delete" title="examples.fm.FM.delete"><code class="xref py py-func docutils literal notranslate"><span class="pre">delete()</span></code></a> and <a class="reference internal" href="#examples.fm.FM.init" title="examples.fm.FM.init"><code class="xref py py-func docutils literal notranslate"><span class="pre">init()</span></code></a> to reinitialize
+the internal SAT oracle. This is done at every iteration of the
+MaxSAT algorithm.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.fm.FM.relax_core">
+<code class="sig-name descname">relax_core</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.fm.FM.relax_core" title="Permalink to this definition">¶</a></dt>
+<dd><p>Relax and bound the core.</p>
+<p>After unsatisfiable core splitting, this method is called. If the
+core contains only one clause, i.e. this clause cannot be satisfied
+together with the hard clauses of the formula, the formula gets
+augmented with the negation of the clause (see
+<a class="reference internal" href="#examples.fm.FM.remove_unit_core" title="examples.fm.FM.remove_unit_core"><code class="xref py py-func docutils literal notranslate"><span class="pre">remove_unit_core()</span></code></a>).</p>
+<p>Otherwise (if the core contains more than one clause), every clause
+<span class="math notranslate nohighlight">\(c\)</span> of the core is <em>relaxed</em>. This means a new <em>relaxation
+literal</em> is added to the clause, i.e. <span class="math notranslate nohighlight">\(c\gets c\vee r\)</span>,
+where <span class="math notranslate nohighlight">\(r\)</span> is a fresh (unused) relaxation variable. After the
+clauses get relaxed, a new cardinality encoding is added to the
+formula enforcing the sum of the new relaxation variables to be not
+greater than 1, <span class="math notranslate nohighlight">\(\sum_{c\in\phi}{r\leq 1}\)</span>, where
+<span class="math notranslate nohighlight">\(\phi\)</span> denotes the unsatisfiable core.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.fm.FM.remove_unit_core">
+<code class="sig-name descname">remove_unit_core</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.fm.FM.remove_unit_core" title="Permalink to this definition">¶</a></dt>
+<dd><p>If an unsatisfiable core contains only one clause <span class="math notranslate nohighlight">\(c\)</span>, this
+method is invoked to add a bunch of new unit size hard clauses. As
+a result, the SAT oracle gets unit clauses <span class="math notranslate nohighlight">\((\neg{l})\)</span> for
+all literals <span class="math notranslate nohighlight">\(l\)</span> in clause <span class="math notranslate nohighlight">\(c\)</span>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.fm.FM.split_core">
+<code class="sig-name descname">split_core</code><span class="sig-paren">(</span><em class="sig-param">minw</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.fm.FM.split_core" title="Permalink to this definition">¶</a></dt>
+<dd><p>Split clauses in the core whenever necessary.</p>
+<p>Given a list of soft clauses in an unsatisfiable core, the method
+is used for splitting clauses whose weights are greater than the
+minimum weight of the core, i.e. the <code class="docutils literal notranslate"><span class="pre">minw</span></code> value computed in
+<a class="reference internal" href="#examples.fm.FM.treat_core" title="examples.fm.FM.treat_core"><code class="xref py py-func docutils literal notranslate"><span class="pre">treat_core()</span></code></a>. Each clause <span class="math notranslate nohighlight">\((c\vee\neg{s},w)\)</span>, s.t.
+<span class="math notranslate nohighlight">\(w&gt;minw\)</span> and <span class="math notranslate nohighlight">\(s\)</span> is its selector literal, is split into
+clauses (1) clause <span class="math notranslate nohighlight">\((c\vee\neg{s}, minw)\)</span> and (2) a
+residual clause <span class="math notranslate nohighlight">\((c\vee\neg{s}',w-minw)\)</span>. Note that the
+residual clause has a fresh selector literal <span class="math notranslate nohighlight">\(s'\)</span> different
+from <span class="math notranslate nohighlight">\(s\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>minw</strong> (<em>int</em>) – minimum weight of the core</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="examples.fm.FM.treat_core">
+<code class="sig-name descname">treat_core</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.fm.FM.treat_core" title="Permalink to this definition">¶</a></dt>
+<dd><p>Now that the previous SAT call returned UNSAT, a new unsatisfiable
+core should be extracted and relaxed. Core extraction is done
+through a call to the <a class="reference internal" href="../solvers.html#pysat.solvers.Solver.get_core" title="pysat.solvers.Solver.get_core"><code class="xref py py-func docutils literal notranslate"><span class="pre">pysat.solvers.Solver.get_core()</span></code></a> method,
+which returns a subset of the selector literals deemed responsible
+for unsatisfiability.</p>
+<p>After the core is extracted, its <em>minimum weight</em> <code class="docutils literal notranslate"><span class="pre">minw</span></code> is
+computed, i.e. it is the minimum weight among the weights of all
+soft clauses involved in the core (see <a class="footnote-reference brackets" href="#id11" id="id13">5</a>). Note that the cost of
+the MaxSAT solution is incremented by <code class="docutils literal notranslate"><span class="pre">minw</span></code>.</p>
+<p>Clauses that have weight larger than <code class="docutils literal notranslate"><span class="pre">minw</span></code> are split (see
+<a class="reference internal" href="#examples.fm.FM.split_core" title="examples.fm.FM.split_core"><code class="xref py py-func docutils literal notranslate"><span class="pre">split_core()</span></code></a>). Afterwards, all clauses of the unsatisfiable
+core are relaxed (see <a class="reference internal" href="#examples.fm.FM.relax_core" title="examples.fm.FM.relax_core"><code class="xref py py-func docutils literal notranslate"><span class="pre">relax_core()</span></code></a>).</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/pysat.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=pysathq&repo=pysat&type=star&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+
+<div class="sidebarblock">
+    <div class="tile">
+    <h4>Latest version:</h4>
+    0.1.7.dev2 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    </div>
+    </br>
+</div>
+<div class="sidebarblock">
+    <div class="tile">
+    <h4><a href="https://pysathq.github.io">Main webpage</a></h4>
+    </div>
+</div>
+</br>
+<div class="sidebarblock">
+<h4>Contact us:</h4>
+      <a class="reference external" href="https://github.com/pysathq/pysat/issues">
+            Issue tracker
+      </a>
+      |
+      <a class="reference external" href="mailto:pysathq@gmail.com">
+          Email
+      </a>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018-2021, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/api/examples/fm.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
