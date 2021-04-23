@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>OptUx optimal MUS enumerator (pysat.examples.optux) &#8212; PySAT 0.1.7.dev1 documentation</title>
+    <title>OptUx optimal MUS enumerator (pysat.examples.optux) &#8212; PySAT 0.1.7.dev2 documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -116,7 +116,7 @@ standard <code class="docutils literal notranslate"><span class="pre">import</sp
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;formula.wcnf.xz&#39;</span><span class="p">)</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">OptUx</span><span class="p">(</span><span class="n">wcnf</span><span class="p">)</span> <span class="k">as</span> <span class="n">optux</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">optux</span><span class="o">.</span><span class="n">enumerate</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="k">for</span> <span class="n">mus</span> <span class="ow">in</span> <span class="n">optux</span><span class="o">.</span><span class="n">enumerate</span><span class="p">():</span>
 <span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;mus </span><span class="si">{0}</span><span class="s1"> has cost </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mus</span><span class="p">,</span> <span class="n">optux</span><span class="o">.</span><span class="n">cost</span><span class="p">))</span>
 <span class="go">mus [1, 2] has cost 2</span>
 <span class="go">mus [1, 3] has cost 2</span>
@@ -305,7 +305,7 @@ involved.</p>
 <div class="sidebarblock">
     <div class="tile">
     <h4>Latest version:</h4>
-    0.1.7.dev1 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    0.1.7.dev2 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
     </div>
     </br>
 </div>
