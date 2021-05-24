@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>SAT solvers’ API (pysat.solvers) &#8212; PySAT 0.1.7.dev2 documentation</title>
+    <title>SAT solvers’ API (pysat.solvers) &#8212; PySAT 0.1.7.dev3 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -469,10 +469,17 @@ is to be removed. This is not needed inside an <code class="docutils literal not
 <dl class="method">
 <dt id="pysat.solvers.Solver.enum_models">
 <code class="sig-name descname">enum_models</code><span class="sig-paren">(</span><em class="sig-param">assumptions=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.enum_models" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method can be used to enumerate models of a CNF formula. It
-can be used as a standard Python iterator. The method can be used
-without arguments but also with an argument <code class="docutils literal notranslate"><span class="pre">assumptions</span></code>, which
-is a list of literals to “assume”.</p>
+<dd><p>This method can be used to enumerate models of a CNF formula and
+it performs as a standard Python iterator. The method can be
+called without arguments but also with an argument
+<code class="docutils literal notranslate"><span class="pre">assumptions</span></code>, which represents a list of literals to “assume”.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Once finished, model enumeration results in the target formula
+being <em>unsatisfiable</em>. This is because the enumeration process
+<em>blocks</em> each previously computed model by adding a new
+clause until no more models of the formula exist.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>assumptions</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – a list of assumption literals.</p>
@@ -1023,7 +1030,7 @@ also allowed</em>.</p>
 <div class="sidebarblock">
     <div class="tile">
     <h4>Latest version:</h4>
-    0.1.7.dev2 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    0.1.7.dev3 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
     </div>
     </br>
 </div>
