@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 0.1.7.dev6 documentation</title>
+    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 0.1.7.dev7 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -880,12 +880,13 @@ necessary the top variable ID can be accessed directly using the
 </dl>
 <dl class="method">
 <dt id="pysat.formula.IDPool.id">
-<code class="sig-name descname">id</code><span class="sig-paren">(</span><em class="sig-param">obj</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.IDPool.id" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">id</code><span class="sig-paren">(</span><em class="sig-param">obj=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.IDPool.id" title="Permalink to this definition">¶</a></dt>
 <dd><p>The method is to be used to assign an integer variable ID for a
 given new object. If the object already has an ID, no new ID is
 created and the old one is returned instead.</p>
 <p>An object can be anything. In some cases it is convenient to use
-string variable names.</p>
+string variable names. Note that if the object is not provided,
+the method will return a new id unassigned to any object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>obj</strong> – an object to assign an ID to.</p>
@@ -1563,7 +1564,7 @@ formula remain unchanged in the new (plain) formula.</p>
 <div class="sidebarblock">
     <div class="tile">
     <h4>Latest version:</h4>
-    0.1.7.dev6 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    0.1.7.dev7 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
     </div>
     </br>
 </div>
