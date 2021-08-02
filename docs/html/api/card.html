@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Cardinality encodings (pysat.card) &#8212; PySAT 0.1.7.dev8 documentation</title>
+    <title>Cardinality encodings (pysat.card) &#8212; PySAT 0.1.7.dev9 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -460,11 +460,26 @@ the description of <a class="reference internal" href="#pysat.card.ITotalizer" t
 <dl class="exception">
 <dt id="pysat.card.NoSuchEncodingError">
 <em class="property">exception </em><code class="sig-prename descclassname">pysat.card.</code><code class="sig-name descname">NoSuchEncodingError</code><a class="headerlink" href="#pysat.card.NoSuchEncodingError" title="Permalink to this definition">¶</a></dt>
-<dd><p>This exception is raised when creating an unknown an AtMostk, AtLeastK,
+<dd><p>This exception is raised when creating an unknown an AtMostK, AtLeastK,
 or EqualK constraint encoding.</p>
 <dl class="method">
 <dt id="pysat.card.NoSuchEncodingError.with_traceback">
 <code class="sig-name descname">with_traceback</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.card.NoSuchEncodingError.with_traceback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception.with_traceback(tb) –
+set self.__traceback__ to tb and return self.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="pysat.card.UnsupportedBound">
+<em class="property">exception </em><code class="sig-prename descclassname">pysat.card.</code><code class="sig-name descname">UnsupportedBound</code><a class="headerlink" href="#pysat.card.UnsupportedBound" title="Permalink to this definition">¶</a></dt>
+<dd><p>This exception is raised when creating a pairwise, or bitwise, or
+ladder encoding of AtMostK, AtLeastK, or EqualsK with the bound
+different from <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">-</span> <span class="pre">1</span></code>.</p>
+<dl class="method">
+<dt id="pysat.card.UnsupportedBound.with_traceback">
+<code class="sig-name descname">with_traceback</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.card.UnsupportedBound.with_traceback" title="Permalink to this definition">¶</a></dt>
 <dd><p>Exception.with_traceback(tb) –
 set self.__traceback__ to tb and return self.</p>
 </dd></dl>
@@ -506,7 +521,7 @@ set self.__traceback__ to tb and return self.</p>
 <div class="sidebarblock">
     <div class="tile">
     <h4>Latest version:</h4>
-    0.1.7.dev8 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    0.1.7.dev9 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
     </div>
     </br>
 </div>
