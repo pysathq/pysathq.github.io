@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>RC2 MaxSAT solver (pysat.examples.rc2) &#8212; PySAT 0.1.7.dev9 documentation</title>
+    <title>RC2 MaxSAT solver (pysat.examples.rc2) &#8212; PySAT 0.1.7.dev10 documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -648,7 +648,7 @@ cardinality constraints are used instead of
 
 <dl class="class">
 <dt id="examples.rc2.RC2Stratified">
-<em class="property">class </em><code class="sig-prename descclassname">examples.rc2.</code><code class="sig-name descname">RC2Stratified</code><span class="sig-paren">(</span><em class="sig-param">formula</em>, <em class="sig-param">solver='g3'</em>, <em class="sig-param">adapt=False</em>, <em class="sig-param">exhaust=False</em>, <em class="sig-param">incr=False</em>, <em class="sig-param">minz=False</em>, <em class="sig-param">nohard=False</em>, <em class="sig-param">trim=0</em>, <em class="sig-param">verbose=0</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2Stratified" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">examples.rc2.</code><code class="sig-name descname">RC2Stratified</code><span class="sig-paren">(</span><em class="sig-param">formula</em>, <em class="sig-param">solver='g3'</em>, <em class="sig-param">adapt=False</em>, <em class="sig-param">blo='div'</em>, <em class="sig-param">exhaust=False</em>, <em class="sig-param">incr=False</em>, <em class="sig-param">minz=False</em>, <em class="sig-param">nohard=False</em>, <em class="sig-param">trim=0</em>, <em class="sig-param">verbose=0</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2Stratified" title="Permalink to this definition">¶</a></dt>
 <dd><p>RC2 augmented with BLO and stratification techniques. Although
 class <a class="reference internal" href="#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2</span></code></a> can deal with weighted formulas, there are
 situations when it is necessary to apply additional heuristics
@@ -657,13 +657,21 @@ formulas. This class extends capabilities of <a class="reference internal" href=
 two heuristics, namely</p>
 <ol class="arabic simple">
 <li><p>Boolean lexicographic optimization (BLO) <a class="footnote-reference brackets" href="#id12" id="id22">5</a></p></li>
-<li><p>stratification <a class="footnote-reference brackets" href="#id13" id="id23">6</a></p></li>
+<li><p>diversity-based stratification <a class="footnote-reference brackets" href="#id13" id="id23">6</a></p></li>
+<li><p>cluster-based stratification</p></li>
 </ol>
-<p>There is no way to enable only one of them – both heuristics
-are applied at the same time. Except for the aforementioned
-additional techniques, every other component of the solver
-remains as in the base class <a class="reference internal" href="#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2</span></code></a>. Therefore, a user
-is referred to the documentation of <a class="reference internal" href="#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2</span></code></a> for details.</p>
+<p>To specify which heuristics to apply, a user can assign the <code class="docutils literal notranslate"><span class="pre">blo</span></code>
+parameter to one of the values (by default it is set to <code class="docutils literal notranslate"><span class="pre">'div'</span></code>):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'basic'</span></code> (‘BLO’ only)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">div</span></code> (‘BLO’ + diversity-based stratification)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cluster</span></code> (‘BLO’ + cluster-based stratification)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">full</span></code> (‘BLO’ + diversity- + cluster-based stratification)</p></li>
+</ul>
+<p>Except for the aforementioned additional techniques, every other
+component of the solver remains as in the base class <a class="reference internal" href="#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2</span></code></a>.
+Therefore, a user is referred to the documentation of <a class="reference internal" href="#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2</span></code></a> for
+details.</p>
 <dl class="method">
 <dt id="examples.rc2.RC2Stratified.activate_clauses">
 <code class="sig-name descname">activate_clauses</code><span class="sig-paren">(</span><em class="sig-param">beg</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2Stratified.activate_clauses" title="Permalink to this definition">¶</a></dt>
@@ -714,7 +722,8 @@ iteration of which checks whether or not one of the
 conditions holds:</p>
 <ul class="simple">
 <li><p>partial BLO condition</p></li>
-<li><p>stratification condition</p></li>
+<li><p>diversity-based stratification condition</p></li>
+<li><p>cluster-based stratification condition</p></li>
 </ul>
 <p>If any of these holds, the loop stops.</p>
 </dd></dl>
@@ -787,7 +796,7 @@ reactivated at a later stage.</p>
 <div class="sidebarblock">
     <div class="tile">
     <h4>Latest version:</h4>
-    0.1.7.dev9 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    0.1.7.dev10 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
     </div>
     </br>
 </div>
