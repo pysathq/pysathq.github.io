@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>LBX-like MCS enumerator (pysat.examples.lbx) &#8212; PySAT 0.1.7.dev16 documentation</title>
+    <title>LBX-like MCS enumerator (pysat.examples.lbx) &#8212; PySAT 0.1.7.dev17 documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -224,6 +224,9 @@ clauses are added incrementally, i.e. <em>on the fly</em>.</p>
 additional Boolean parameter <code class="docutils literal notranslate"><span class="pre">soft</span></code> can be set to <code class="docutils literal notranslate"><span class="pre">True</span></code>
 meaning the the clause being added is soft (note that parameter
 <code class="docutils literal notranslate"><span class="pre">soft</span></code> is set to <code class="docutils literal notranslate"><span class="pre">False</span></code> by default).</p>
+<p>Also note that besides pure clauses, the method can also expect
+native cardinality constraints represented as a pair <code class="docutils literal notranslate"><span class="pre">(lits,</span>
+<span class="pre">bound)</span></code>. Only hard cardinality constraints can be added.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -365,7 +368,7 @@ computed - this should be explicitly done by a user.</p>
 <div class="sidebarblock">
     <div class="tile">
     <h4>Latest version:</h4>
-    0.1.7.dev16 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    0.1.7.dev17 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
     </div>
     </br>
 </div>

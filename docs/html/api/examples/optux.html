@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>OptUx optimal MUS enumerator (pysat.examples.optux) &#8212; PySAT 0.1.7.dev16 documentation</title>
+    <title>OptUx optimal MUS enumerator (pysat.examples.optux) &#8212; PySAT 0.1.7.dev17 documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -131,7 +131,7 @@ number (or <em>all</em>) of its top optimal MUSes.</p>
 <h2>Module details<a class="headerlink" href="#module-details" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="examples.optux.OptUx">
-<em class="property">class </em><code class="sig-prename descclassname">examples.optux.</code><code class="sig-name descname">OptUx</code><span class="sig-paren">(</span><em class="sig-param">formula</em>, <em class="sig-param">solver='g3'</em>, <em class="sig-param">adapt=False</em>, <em class="sig-param">exhaust=False</em>, <em class="sig-param">minz=False</em>, <em class="sig-param">trim=False</em>, <em class="sig-param">verbose=0</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.optux.OptUx" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">examples.optux.</code><code class="sig-name descname">OptUx</code><span class="sig-paren">(</span><em class="sig-param">formula</em>, <em class="sig-param">solver='g3'</em>, <em class="sig-param">adapt=False</em>, <em class="sig-param">cover=None</em>, <em class="sig-param">dcalls=False</em>, <em class="sig-param">exhaust=False</em>, <em class="sig-param">minz=False</em>, <em class="sig-param">unsorted=False</em>, <em class="sig-param">trim=False</em>, <em class="sig-param">verbose=0</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.optux.OptUx" title="Permalink to this definition">¶</a></dt>
 <dd><p>A simple Python version of the implicit hitting set based optimal MUS
 extractor and enumerator. Given a (weighted) (partial) CNF formula,
 i.e. formula in the <a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a> format, this class can be used to
@@ -159,6 +159,17 @@ constraints, core exhaustion, and core reduction. Also, unsatisfiable
 cores can be trimmed if the <code class="docutils literal notranslate"><span class="pre">trim</span></code> parameter is set to a non-zero
 integer. Finally, verbosity level can be set using the <code class="docutils literal notranslate"><span class="pre">verbose</span></code>
 parameter.</p>
+<p>Two additional optional parameters <code class="docutils literal notranslate"><span class="pre">unsorted</span></code> and <code class="docutils literal notranslate"><span class="pre">dcalls</span></code> can be
+used to instruct the tool to enumerate MUSes in the unsorted fashion,
+i.e. optimal MUSes are not guaranteed to go first. For this,
+<a class="reference internal" href="#examples.optux.OptUx" title="examples.optux.OptUx"><code class="xref py py-class docutils literal notranslate"><span class="pre">OptUx</span></code></a> applies LBX-like MCS enumeration (it uses <a class="reference internal" href="lbx.html#examples.lbx.LBX" title="examples.lbx.LBX"><code class="xref py py-class docutils literal notranslate"><span class="pre">LBX</span></code></a>
+directly). Parameter <code class="docutils literal notranslate"><span class="pre">dcalls</span></code> can be applied to instruct the
+underlying MCS enumerator to apply clause D oracle calls.</p>
+<p>Finally, one more optional input parameter <code class="docutils literal notranslate"><span class="pre">cover</span></code> is to be used
+when exhaustive enumeration of MUSes is not necessary and the tool can
+stop as soon as a given formula is covered by the set of currently
+computed MUSes. This can be made to work if the soft clauses of
+<code class="docutils literal notranslate"><span class="pre">formula</span></code> are of size 1.</p>
 <dl class="footnote brackets">
 <dt class="label" id="id18"><span class="brackets"><a class="fn-backref" href="#id16">5</a></span></dt>
 <dd><p>Alexey Ignatiev, Antonio Morgado, Joao Marques-Silva. <em>RC2: an
@@ -175,11 +186,14 @@ pp. 309-317</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>formula</strong> (<a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a>) – (weighted) (partial) CNF formula</p></li>
+<li><p><strong>formula</strong> (<a class="reference internal" href="../formula.html#pysat.formula.WCNFPlus" title="pysat.formula.WCNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNFPlus</span></code></a>) – (weighted) (partial) CNFPlus formula</p></li>
 <li><p><strong>solver</strong> (<em>str</em>) – SAT oracle name</p></li>
 <li><p><strong>adapt</strong> (<em>bool</em>) – detect and adapt intrinsic AtMost1 constraints</p></li>
+<li><p><strong>cover</strong> (<a class="reference internal" href="../formula.html#pysat.formula.CNFPlus" title="pysat.formula.CNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNFPlus</span></code></a>) – CNFPlus formula to cover when doing MUS enumeration</p></li>
+<li><p><strong>dcalls</strong> (<em>bool</em>) – apply clause D oracle calls (for unsorted enumeration only)</p></li>
 <li><p><strong>exhaust</strong> (<em>bool</em>) – do core exhaustion</p></li>
 <li><p><strong>minz</strong> (<em>bool</em>) – do heuristic core reduction</p></li>
+<li><p><strong>unsorted</strong> (<em>bool</em>) – apply unsorted MUS enumeration</p></li>
 <li><p><strong>trim</strong> (<em>int</em>) – do core trimming at most this number of times</p></li>
 <li><p><strong>verbose</strong> (<em>int</em>) – verbosity level</p></li>
 </ul>
@@ -305,7 +319,7 @@ involved.</p>
 <div class="sidebarblock">
     <div class="tile">
     <h4>Latest version:</h4>
-    0.1.7.dev16 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
+    0.1.7.dev17 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
     </div>
     </br>
 </div>
