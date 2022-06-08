@@ -1,43 +1,180 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Minimum/minimal hitting set solver (pysat.examples.hitman) &#8212; PySAT 0.1.7.dev17 documentation</title>
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="LBX-like MCS enumerator (pysat.examples.lbx)" href="lbx.html" />
     <link rel="prev" title="Hard formula generator (pysat.examples.genhard)" href="genhard.html" />
-   
-  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
 
-  </head><body>
-  
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    
+    <div class="container-fluid" id="banner"></div>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="https://pysathq.github.io">
+  <img src="../../_static/logo-dark.svg" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <!-- This will display the version of the docs -->
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 0.1.7.dev17)</strong></a>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pysathq/pysat" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://pysathq.github.io/docs/pysat.pdf" rel="noopener" target="_blank" title="PDF"><span><i class="fas fa-file"></i></span>
+            <label class="sr-only">PDF</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pysathq/pysat/issues" rel="noopener" target="_blank" title="Issue tracker"><span><i class="fas fa-bug"></i></span>
+            <label class="sr-only">Issue tracker</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+              </div>
+              <div class="sidebar-end-items">
+              </div>
+            </div>
+            
           
 
-          <div class="body" role="main">
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
             
-  <div class="section" id="module-examples.hitman">
-<span id="minimum-minimal-hitting-set-solver-pysat-examples-hitman"></span><h1>Minimum/minimal hitting set solver (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.hitman</span></code>)<a class="headerlink" href="#module-examples.hitman" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="list-of-classes">
-<h2>List of classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">¶</a></h2>
-<table class="longtable docutils align-default">
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-of-classes">
+   List of classes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-description">
+   Module description
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-details">
+   Module details
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="module-examples.hitman">
+<span id="minimum-minimal-hitting-set-solver-pysat-examples-hitman"></span><h1>Minimum/minimal hitting set solver (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.hitman</span></code>)<a class="headerlink" href="#module-examples.hitman" title="Permalink to this headline">#</a></h1>
+<section id="list-of-classes">
+<h2>List of classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">#</a></h2>
+<table class="autosummary longtable table autosummary">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
@@ -48,9 +185,9 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="module-description">
-<h2>Module description<a class="headerlink" href="#module-description" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-description">
+<h2>Module description<a class="headerlink" href="#module-description" title="Permalink to this headline">#</a></h2>
 <p>A SAT-based implementation of an implicit minimal hitting set <a class="footnote-reference brackets" href="#id7" id="id1">1</a>
 enumerator. The implementation is capable of computing/enumerating
 cardinality- and subset-minimal hitting sets of a given set of sets.
@@ -175,19 +312,19 @@ algorithm for MaxSAT:</p>
 Sequence of Simpler SAT Instances</em>. CP 2011. pp. 225-239</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="module-details">
-<h2>Module details<a class="headerlink" href="#module-details" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="examples.hitman.Atom">
-<em class="property">class </em><code class="sig-prename descclassname">examples.hitman.</code><code class="sig-name descname">Atom</code><span class="sig-paren">(</span><em class="sig-param">obj</em>, <em class="sig-param">sign=True</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Atom" title="Permalink to this definition">¶</a></dt>
+</section>
+<section id="module-details">
+<h2>Module details<a class="headerlink" href="#module-details" title="Permalink to this headline">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="examples.hitman.Atom">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">examples.hitman.</span></span><span class="sig-name descname"><span class="pre">Atom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sign</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Atom" title="Permalink to this definition">#</a></dt>
 <dd><p>Atoms are elementary (signed) objects necessary when dealing with
 hitting sets subject to hard constraints.</p>
 </dd></dl>
 
-<dl class="class">
-<dt id="examples.hitman.Hitman">
-<em class="property">class </em><code class="sig-prename descclassname">examples.hitman.</code><code class="sig-name descname">Hitman</code><span class="sig-paren">(</span><em class="sig-param">bootstrap_with=[]</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">subject_to=[]</em>, <em class="sig-param">solver='g3'</em>, <em class="sig-param">htype='sorted'</em>, <em class="sig-param">mxs_adapt=False</em>, <em class="sig-param">mxs_exhaust=False</em>, <em class="sig-param">mxs_minz=False</em>, <em class="sig-param">mxs_trim=0</em>, <em class="sig-param">mcs_usecld=False</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="examples.hitman.Hitman">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">examples.hitman.</span></span><span class="sig-name descname"><span class="pre">Hitman</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bootstrap_with</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject_to</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'g3'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">htype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sorted'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mxs_adapt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mxs_exhaust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mxs_minz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mxs_trim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mcs_usecld</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman" title="Permalink to this definition">#</a></dt>
 <dd><p>A cardinality-/subset-minimal hitting set enumerator. The enumerator
 can be set up to use either a MaxSAT solver <a class="reference internal" href="rc2.html#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2</span></code></a> or an MCS
 enumerator (either <a class="reference internal" href="lbx.html#examples.lbx.LBX" title="examples.lbx.LBX"><code class="xref py py-class docutils literal notranslate"><span class="pre">LBX</span></code></a> or <a class="reference internal" href="mcsls.html#examples.mcsls.MCSls" title="examples.mcsls.MCSls"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCSls</span></code></a>). In the former
@@ -238,9 +375,9 @@ behaviour of the underlying solvers.</p>
 </ul>
 </dd>
 </dl>
-<dl class="method">
-<dt id="examples.hitman.Hitman.add_hard">
-<code class="sig-name descname">add_hard</code><span class="sig-paren">(</span><em class="sig-param">clause</em>, <em class="sig-param">weights=None</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.add_hard" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="examples.hitman.Hitman.add_hard">
+<span class="sig-name descname"><span class="pre">add_hard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.add_hard" title="Permalink to this definition">#</a></dt>
 <dd><p>Add a hard constraint, which can be either a pure clause or an
 AtMostK constraint.</p>
 <p>Note that an optional parameter that can be passed to this method
@@ -257,9 +394,9 @@ not change from one call of <a class="reference internal" href="#examples.hitman
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="examples.hitman.Hitman.block">
-<code class="sig-name descname">block</code><span class="sig-paren">(</span><em class="sig-param">to_block</em>, <em class="sig-param">weights=None</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.block" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="examples.hitman.Hitman.block">
+<span class="sig-name descname"><span class="pre">block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">to_block</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.block" title="Permalink to this definition">#</a></dt>
 <dd><p>The method serves for imposing a constraint forbidding the hitting
 set solver to compute a given hitting set. Each set to block is
 encoded as a hard clause in the MaxSAT problem formulation, which
@@ -278,15 +415,15 @@ not change from one call of <a class="reference internal" href="#examples.hitman
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="examples.hitman.Hitman.delete">
-<code class="sig-name descname">delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.delete" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="examples.hitman.Hitman.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.delete" title="Permalink to this definition">#</a></dt>
 <dd><p>Explicit destructor of the internal hitting set oracle.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="examples.hitman.Hitman.enumerate">
-<code class="sig-name descname">enumerate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.enumerate" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="examples.hitman.Hitman.enumerate">
+<span class="sig-name descname"><span class="pre">enumerate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.enumerate" title="Permalink to this definition">#</a></dt>
 <dd><p>The method can be used as a simple iterator computing and blocking
 the hitting sets on the fly. It essentially calls <a class="reference internal" href="#examples.hitman.Hitman.get" title="examples.hitman.Hitman.get"><code class="xref py py-func docutils literal notranslate"><span class="pre">get()</span></code></a>
 followed by <a class="reference internal" href="#examples.hitman.Hitman.block" title="examples.hitman.Hitman.block"><code class="xref py py-func docutils literal notranslate"><span class="pre">block()</span></code></a>. Each hitting set is reported as a list
@@ -300,9 +437,9 @@ underlying oracle.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="examples.hitman.Hitman.get">
-<code class="sig-name descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.get" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="examples.hitman.Hitman.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.get" title="Permalink to this definition">#</a></dt>
 <dd><p>This method computes and returns a hitting set. The hitting set is
 obtained using the underlying oracle operating the MaxSAT problem
 formulation. The computed solution is mapped back to objects of the
@@ -314,9 +451,9 @@ problem domain.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="examples.hitman.Hitman.hit">
-<code class="sig-name descname">hit</code><span class="sig-paren">(</span><em class="sig-param">to_hit</em>, <em class="sig-param">weights=None</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.hit" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="examples.hitman.Hitman.hit">
+<span class="sig-name descname"><span class="pre">hit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">to_hit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.hit" title="Permalink to this definition">#</a></dt>
 <dd><p>This method adds a new set to hit to the hitting set solver. This
 is done by translating the input iterable of objects into a list of
 Boolean variables in the MaxSAT problem formulation.</p>
@@ -334,9 +471,9 @@ not change from one call of <a class="reference internal" href="#examples.hitman
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="examples.hitman.Hitman.init">
-<code class="sig-name descname">init</code><span class="sig-paren">(</span><em class="sig-param">bootstrap_with</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">subject_to=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.init" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="examples.hitman.Hitman.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bootstrap_with</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject_to</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.init" title="Permalink to this definition">#</a></dt>
 <dd><p>This method serves for initializing the hitting set solver with a
 given list of sets to hit. Concretely, the hitting set problem is
 encoded into partial MaxSAT as outlined above, which is then fed
@@ -363,87 +500,63 @@ i.e. instances of class <a class="reference internal" href="#examples.hitman.Ato
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="examples.hitman.Hitman.oracle_time">
-<code class="sig-name descname">oracle_time</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.oracle_time" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="examples.hitman.Hitman.oracle_time">
+<span class="sig-name descname"><span class="pre">oracle_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.oracle_time" title="Permalink to this definition">#</a></dt>
 <dd><p>Report the total SAT solving time.</p>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
-          </div>
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="genhard.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Hard formula generator (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.genhard</span></code>)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="lbx.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">LBX-like MCS enumerator (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.lbx</span></code>)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+              
+          </main>
           
-        </div>
+
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<p class="logo">
-  <a href="../../index.html">
-    <img class="logo" src="../../_static/pysat.png" alt="Logo"/>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
     
-  </a>
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2018-2022, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.<br>
 </p>
-
-
-
-
-
-
-<p>
-<iframe src="https://ghbtns.com/github-btn.html?user=pysathq&repo=pysat&type=star&count=true&size=large&v=2"
-  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
 </p>
-
-
-
-
-
-
-<div class="sidebarblock">
-    <div class="tile">
-    <h4>Latest version:</h4>
-    0.1.7.dev17 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
     </div>
-    </br>
-</div>
-<div class="sidebarblock">
-    <div class="tile">
-    <h4><a href="https://pysathq.github.io">Main webpage</a></h4>
-    </div>
-</div>
-</br>
-<div class="sidebarblock">
-<h4>Contact us:</h4>
-      <a class="reference external" href="https://github.com/pysathq/pysat/issues">
-            Issue tracker
-      </a>
-      |
-      <a class="reference external" href="mailto:pysathq@gmail.com">
-          Email
-      </a>
-</div>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2018-2022, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="../../_sources/api/examples/hitman.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
-
     
-
-    
+  </div>
+</footer>
   </body>
 </html>

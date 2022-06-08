@@ -1,43 +1,180 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Pseudo-Boolean encodings (pysat.pb) &#8212; PySAT 0.1.7.dev17 documentation</title>
-    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="SAT solvers’ API (pysat.solvers)" href="solvers.html" />
     <link rel="prev" title="Boolean formula manipulation (pysat.formula)" href="formula.html" />
-   
-  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
 
-  </head><body>
-  
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    
+    <div class="container-fluid" id="banner"></div>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="https://pysathq.github.io">
+  <img src="../_static/logo-dark.svg" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <!-- This will display the version of the docs -->
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 0.1.7.dev17)</strong></a>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pysathq/pysat" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://pysathq.github.io/docs/pysat.pdf" rel="noopener" target="_blank" title="PDF"><span><i class="fas fa-file"></i></span>
+            <label class="sr-only">PDF</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pysathq/pysat/issues" rel="noopener" target="_blank" title="Issue tracker"><span><i class="fas fa-bug"></i></span>
+            <label class="sr-only">Issue tracker</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+              </div>
+              <div class="sidebar-end-items">
+              </div>
+            </div>
+            
           
 
-          <div class="body" role="main">
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
             
-  <div class="section" id="module-pysat.pb">
-<span id="pseudo-boolean-encodings-pysat-pb"></span><h1>Pseudo-Boolean encodings (<a class="reference internal" href="#module-pysat.pb" title="pysat.pb"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.pb</span></code></a>)<a class="headerlink" href="#module-pysat.pb" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="list-of-classes">
-<h2>List of classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">¶</a></h2>
-<table class="longtable docutils align-default">
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-of-classes">
+   List of classes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-description">
+   Module description
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-details">
+   Module details
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="module-pysat.pb">
+<span id="pseudo-boolean-encodings-pysat-pb"></span><h1>Pseudo-Boolean encodings (<a class="reference internal" href="#module-pysat.pb" title="pysat.pb"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.pb</span></code></a>)<a class="headerlink" href="#module-pysat.pb" title="Permalink to this headline">#</a></h1>
+<section id="list-of-classes">
+<h2>List of classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">#</a></h2>
+<table class="autosummary longtable table autosummary">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
@@ -51,9 +188,9 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="module-description">
-<h2>Module description<a class="headerlink" href="#module-description" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-description">
+<h2>Module description<a class="headerlink" href="#module-description" title="Permalink to this headline">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Functionality of this module is available only if the <cite>PyPBLib</cite>
@@ -116,12 +253,12 @@ Translation of Pseudo-Boolean Constraints into CNF Such That
 Generalized Arc Consistency Is Maintained</em>. KI. 2014. pp. 123-134</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="module-details">
-<h2>Module details<a class="headerlink" href="#module-details" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="pysat.pb.EncType">
-<em class="property">class </em><code class="sig-prename descclassname">pysat.pb.</code><code class="sig-name descname">EncType</code><a class="headerlink" href="#pysat.pb.EncType" title="Permalink to this definition">¶</a></dt>
+</section>
+<section id="module-details">
+<h2>Module details<a class="headerlink" href="#module-details" title="Permalink to this headline">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pysat.pb.EncType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.pb.</span></span><span class="sig-name descname"><span class="pre">EncType</span></span><a class="headerlink" href="#pysat.pb.EncType" title="Permalink to this definition">#</a></dt>
 <dd><p>This class represents a C-like <code class="docutils literal notranslate"><span class="pre">enum</span></code> type for choosing the
 pseudo-Boolean encoding to use. The values denoting the encodings are:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">best</span>       <span class="o">=</span> <span class="mi">0</span>
@@ -142,23 +279,23 @@ encoder selects one of the other encodings from the list (in most
 cases, this invokes the <code class="docutils literal notranslate"><span class="pre">bdd</span></code> encoder).</p>
 </dd></dl>
 
-<dl class="exception">
-<dt id="pysat.pb.NoSuchEncodingError">
-<em class="property">exception </em><code class="sig-prename descclassname">pysat.pb.</code><code class="sig-name descname">NoSuchEncodingError</code><a class="headerlink" href="#pysat.pb.NoSuchEncodingError" title="Permalink to this definition">¶</a></dt>
+<dl class="py exception">
+<dt class="sig sig-object py" id="pysat.pb.NoSuchEncodingError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.pb.</span></span><span class="sig-name descname"><span class="pre">NoSuchEncodingError</span></span><a class="headerlink" href="#pysat.pb.NoSuchEncodingError" title="Permalink to this definition">#</a></dt>
 <dd><p>This exception is raised when creating an unknown LEQ, GEQ, or Equals
 constraint encoding.</p>
-<dl class="method">
-<dt id="pysat.pb.NoSuchEncodingError.with_traceback">
-<code class="sig-name descname">with_traceback</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.NoSuchEncodingError.with_traceback" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.pb.NoSuchEncodingError.with_traceback">
+<span class="sig-name descname"><span class="pre">with_traceback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.NoSuchEncodingError.with_traceback" title="Permalink to this definition">#</a></dt>
 <dd><p>Exception.with_traceback(tb) –
 set self.__traceback__ to tb and return self.</p>
 </dd></dl>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="pysat.pb.PBEnc">
-<em class="property">class </em><code class="sig-prename descclassname">pysat.pb.</code><code class="sig-name descname">PBEnc</code><a class="headerlink" href="#pysat.pb.PBEnc" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="pysat.pb.PBEnc">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.pb.</span></span><span class="sig-name descname"><span class="pre">PBEnc</span></span><a class="headerlink" href="#pysat.pb.PBEnc" title="Permalink to this definition">#</a></dt>
 <dd><p>Abstract class responsible for the creation of pseudo-Boolean
 constraints encoded to a CNF formula. The class has three main <em>class
 methods</em> for creating LEQ, GEQ, and Equals constraints. Given (1)
@@ -179,30 +316,30 @@ e.g. <code class="docutils literal notranslate"><span class="pre">PBEnc.atmost(w
 <span class="go">[[4], [-5, -2], [-5, 2, -1], [-5, -1], [-6, 1], [-7, -2, 6], [-7, 2], [-7, 6], [-8, -3, 5], [-8, 3, 7], [-8, 5, 7], [8]]</span>
 </pre></div>
 </div>
-<dl class="method">
-<dt id="pysat.pb.PBEnc.atleast">
-<em class="property">classmethod </em><code class="sig-name descname">atleast</code><span class="sig-paren">(</span><em class="sig-param">lits</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">bound=1</em>, <em class="sig-param">top_id=None</em>, <em class="sig-param">vpool=None</em>, <em class="sig-param">encoding=0</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.PBEnc.atleast" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.pb.PBEnc.atleast">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">atleast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.PBEnc.atleast" title="Permalink to this definition">#</a></dt>
 <dd><p>A synonym for <a class="reference internal" href="#pysat.pb.PBEnc.geq" title="pysat.pb.PBEnc.geq"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PBEnc.geq()</span></code></a>.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="pysat.pb.PBEnc.atmost">
-<em class="property">classmethod </em><code class="sig-name descname">atmost</code><span class="sig-paren">(</span><em class="sig-param">lits</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">bound=1</em>, <em class="sig-param">top_id=None</em>, <em class="sig-param">vpool=None</em>, <em class="sig-param">encoding=0</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.PBEnc.atmost" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.pb.PBEnc.atmost">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">atmost</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.PBEnc.atmost" title="Permalink to this definition">#</a></dt>
 <dd><p>A synonim for <a class="reference internal" href="#pysat.pb.PBEnc.leq" title="pysat.pb.PBEnc.leq"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PBEnc.leq()</span></code></a>.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="pysat.pb.PBEnc.equals">
-<em class="property">classmethod </em><code class="sig-name descname">equals</code><span class="sig-paren">(</span><em class="sig-param">lits</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">bound=1</em>, <em class="sig-param">top_id=None</em>, <em class="sig-param">vpool=None</em>, <em class="sig-param">encoding=0</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.PBEnc.equals" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.pb.PBEnc.equals">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">equals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.PBEnc.equals" title="Permalink to this definition">#</a></dt>
 <dd><p>This method can be used for creating a CNF encoding of a weighted
 EqualsK constraint, i.e. of <span class="math notranslate nohighlight">\(\sum_{i=1}^{n}{a_i\cdot x_i}=
 k\)</span>. The method shares the arguments and the return type with
 method <a class="reference internal" href="#pysat.pb.PBEnc.leq" title="pysat.pb.PBEnc.leq"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PBEnc.leq()</span></code></a>. Please, see it for details.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="pysat.pb.PBEnc.geq">
-<em class="property">classmethod </em><code class="sig-name descname">geq</code><span class="sig-paren">(</span><em class="sig-param">lits</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">bound=1</em>, <em class="sig-param">top_id=None</em>, <em class="sig-param">vpool=None</em>, <em class="sig-param">encoding=0</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.PBEnc.geq" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.pb.PBEnc.geq">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">geq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.PBEnc.geq" title="Permalink to this definition">#</a></dt>
 <dd><p>This method can be used for creating a CNF encoding of a GEQ
 (weighted AtLeastK) constraint, i.e. of
 <span class="math notranslate nohighlight">\(\sum_{i=1}^{n}{a_i\cdot x_i}\geq k\)</span>. The method shares the
@@ -210,9 +347,9 @@ arguments and the return type with method <a class="reference internal" href="#p
 Please, see it for details.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="pysat.pb.PBEnc.leq">
-<em class="property">classmethod </em><code class="sig-name descname">leq</code><span class="sig-paren">(</span><em class="sig-param">lits</em>, <em class="sig-param">weights=None</em>, <em class="sig-param">bound=1</em>, <em class="sig-param">top_id=None</em>, <em class="sig-param">vpool=None</em>, <em class="sig-param">encoding=0</em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.PBEnc.leq" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.pb.PBEnc.leq">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">leq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.PBEnc.leq" title="Permalink to this definition">#</a></dt>
 <dd><p>This method can be used for creating a CNF encoding of a LEQ
 (weighted AtMostK) constraint, i.e. of
 <span class="math notranslate nohighlight">\(\sum_{i=1}^{n}{a_i\cdot x_i}\leq k\)</span>. The resulting set of
@@ -243,79 +380,55 @@ encoding type.</p>
 
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
-          </div>
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="formula.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Boolean formula manipulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.formula</span></code>)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="solvers.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">SAT solvers’ API (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.solvers</span></code>)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+              
+          </main>
           
-        </div>
+
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<p class="logo">
-  <a href="../index.html">
-    <img class="logo" src="../_static/pysat.png" alt="Logo"/>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
     
-  </a>
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2018-2022, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.<br>
 </p>
-
-
-
-
-
-
-<p>
-<iframe src="https://ghbtns.com/github-btn.html?user=pysathq&repo=pysat&type=star&count=true&size=large&v=2"
-  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
 </p>
-
-
-
-
-
-
-<div class="sidebarblock">
-    <div class="tile">
-    <h4>Latest version:</h4>
-    0.1.7.dev17 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
     </div>
-    </br>
-</div>
-<div class="sidebarblock">
-    <div class="tile">
-    <h4><a href="https://pysathq.github.io">Main webpage</a></h4>
-    </div>
-</div>
-</br>
-<div class="sidebarblock">
-<h4>Contact us:</h4>
-      <a class="reference external" href="https://github.com/pysathq/pysat/issues">
-            Issue tracker
-      </a>
-      |
-      <a class="reference external" href="mailto:pysathq@gmail.com">
-          Email
-      </a>
-</div>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2018-2022, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="../_sources/api/pb.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
-
     
-
-    
+  </div>
+</footer>
   </body>
 </html>

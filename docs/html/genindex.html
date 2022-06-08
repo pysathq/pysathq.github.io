@@ -1,37 +1,137 @@
 
-
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Index &#8212; PySAT 0.1.7.dev17 documentation</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
 
-  </head><body>
-  
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    
+    <div class="container-fluid" id="banner"></div>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="https://pysathq.github.io">
+  <img src="_static/logo-dark.svg" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <!-- This will display the version of the docs -->
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 0.1.7.dev17)</strong></a>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pysathq/pysat" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://pysathq.github.io/docs/pysat.pdf" rel="noopener" target="_blank" title="PDF"><span><i class="fas fa-file"></i></span>
+            <label class="sr-only">PDF</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pysathq/pysat/issues" rel="noopener" target="_blank" title="Issue tracker"><span><i class="fas fa-bug"></i></span>
+            <label class="sr-only">Issue tracker</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+              </div>
+              <div class="sidebar-end-items">
+              </div>
+            </div>
+            
           
 
-          <div class="body" role="main">
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
             
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
 
 <h1 id="index">Index</h1>
 
@@ -293,28 +393,78 @@
         <li><a href="api/pb.html#pysat.pb.PBEnc.equals">(pysat.pb.PBEnc class method)</a>
 </li>
       </ul></li>
-      <li><a href="api/examples/fm.html#module-examples.fm">examples.fm (module)</a>
+      <li>
+    examples.fm
+
+      <ul>
+        <li><a href="api/examples/fm.html#module-examples.fm">module</a>
 </li>
-      <li><a href="api/examples/genhard.html#module-examples.genhard">examples.genhard (module)</a>
+      </ul></li>
+      <li>
+    examples.genhard
+
+      <ul>
+        <li><a href="api/examples/genhard.html#module-examples.genhard">module</a>
 </li>
+      </ul></li>
+      <li>
+    examples.hitman
+
+      <ul>
+        <li><a href="api/examples/hitman.html#module-examples.hitman">module</a>
+</li>
+      </ul></li>
+      <li>
+    examples.lbx
+
+      <ul>
+        <li><a href="api/examples/lbx.html#module-examples.lbx">module</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/examples/hitman.html#module-examples.hitman">examples.hitman (module)</a>
+      <li>
+    examples.lsu
+
+      <ul>
+        <li><a href="api/examples/lsu.html#module-examples.lsu">module</a>
 </li>
-      <li><a href="api/examples/lbx.html#module-examples.lbx">examples.lbx (module)</a>
+      </ul></li>
+      <li>
+    examples.mcsls
+
+      <ul>
+        <li><a href="api/examples/mcsls.html#module-examples.mcsls">module</a>
 </li>
-      <li><a href="api/examples/lsu.html#module-examples.lsu">examples.lsu (module)</a>
+      </ul></li>
+      <li>
+    examples.models
+
+      <ul>
+        <li><a href="api/examples/models.html#module-examples.models">module</a>
 </li>
-      <li><a href="api/examples/mcsls.html#module-examples.mcsls">examples.mcsls (module)</a>
+      </ul></li>
+      <li>
+    examples.musx
+
+      <ul>
+        <li><a href="api/examples/musx.html#module-examples.musx">module</a>
 </li>
-      <li><a href="api/examples/models.html#module-examples.models">examples.models (module)</a>
+      </ul></li>
+      <li>
+    examples.optux
+
+      <ul>
+        <li><a href="api/examples/optux.html#module-examples.optux">module</a>
 </li>
-      <li><a href="api/examples/musx.html#module-examples.musx">examples.musx (module)</a>
+      </ul></li>
+      <li>
+    examples.rc2
+
+      <ul>
+        <li><a href="api/examples/rc2.html#module-examples.rc2">module</a>
 </li>
-      <li><a href="api/examples/optux.html#module-examples.optux">examples.optux (module)</a>
-</li>
-      <li><a href="api/examples/rc2.html#module-examples.rc2">examples.rc2 (module)</a>
-</li>
+      </ul></li>
       <li><a href="api/examples/rc2.html#examples.rc2.RC2.exhaust_core">exhaust_core() (examples.rc2.RC2 method)</a>
 </li>
       <li><a href="api/card.html#pysat.card.ITotalizer.extend">extend() (pysat.card.ITotalizer method)</a>
@@ -469,10 +619,43 @@
 </li>
       <li><a href="api/card.html#pysat.card.ITotalizer.merge_with">merge_with() (pysat.card.ITotalizer method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/examples/rc2.html#examples.rc2.RC2.minimize_core">minimize_core() (examples.rc2.RC2 method)</a>
 </li>
+      <li>
+    module
+
+      <ul>
+        <li><a href="api/examples/fm.html#module-examples.fm">examples.fm</a>
+</li>
+        <li><a href="api/examples/genhard.html#module-examples.genhard">examples.genhard</a>
+</li>
+        <li><a href="api/examples/hitman.html#module-examples.hitman">examples.hitman</a>
+</li>
+        <li><a href="api/examples/lbx.html#module-examples.lbx">examples.lbx</a>
+</li>
+        <li><a href="api/examples/lsu.html#module-examples.lsu">examples.lsu</a>
+</li>
+        <li><a href="api/examples/mcsls.html#module-examples.mcsls">examples.mcsls</a>
+</li>
+        <li><a href="api/examples/models.html#module-examples.models">examples.models</a>
+</li>
+        <li><a href="api/examples/musx.html#module-examples.musx">examples.musx</a>
+</li>
+        <li><a href="api/examples/optux.html#module-examples.optux">examples.optux</a>
+</li>
+        <li><a href="api/examples/rc2.html#module-examples.rc2">examples.rc2</a>
+</li>
+        <li><a href="api/card.html#module-pysat.card">pysat.card</a>
+</li>
+        <li><a href="api/formula.html#module-pysat.formula">pysat.formula</a>
+</li>
+        <li><a href="api/pb.html#module-pysat.pb">pysat.pb</a>
+</li>
+        <li><a href="api/solvers.html#module-pysat.solvers">pysat.solvers</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/examples/musx.html#examples.musx.MUSX">MUSX (class in examples.musx)</a>
 </li>
   </ul></td>
@@ -559,26 +742,46 @@
         <li><a href="api/examples/rc2.html#examples.rc2.RC2Stratified.process_sels">(examples.rc2.RC2Stratified method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/examples/rc2.html#examples.rc2.RC2.process_sums">process_sums() (examples.rc2.RC2 method)</a>
 
       <ul>
         <li><a href="api/examples/rc2.html#examples.rc2.RC2Stratified.process_sums">(examples.rc2.RC2Stratified method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/solvers.html#pysat.solvers.Solver.prop_budget">prop_budget() (pysat.solvers.Solver method)</a>
 </li>
       <li><a href="api/solvers.html#pysat.solvers.Solver.propagate">propagate() (pysat.solvers.Solver method)</a>
 </li>
-      <li><a href="api/card.html#module-pysat.card">pysat.card (module)</a>
+      <li>
+    pysat.card
+
+      <ul>
+        <li><a href="api/card.html#module-pysat.card">module</a>
 </li>
-      <li><a href="api/formula.html#module-pysat.formula">pysat.formula (module)</a>
+      </ul></li>
+      <li>
+    pysat.formula
+
+      <ul>
+        <li><a href="api/formula.html#module-pysat.formula">module</a>
 </li>
-      <li><a href="api/pb.html#module-pysat.pb">pysat.pb (module)</a>
+      </ul></li>
+      <li>
+    pysat.pb
+
+      <ul>
+        <li><a href="api/pb.html#module-pysat.pb">module</a>
 </li>
-      <li><a href="api/solvers.html#module-pysat.solvers">pysat.solvers (module)</a>
+      </ul></li>
+      <li>
+    pysat.solvers
+
+      <ul>
+        <li><a href="api/solvers.html#module-pysat.solvers">module</a>
 </li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -720,72 +923,37 @@
 
 
 
-          </div>
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+              
+          </main>
           
-        </div>
+
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<p class="logo">
-  <a href="index.html">
-    <img class="logo" src="_static/pysat.png" alt="Logo"/>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
     
-  </a>
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2018-2022, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.<br>
 </p>
-
-
-
-
-
-
-<p>
-<iframe src="https://ghbtns.com/github-btn.html?user=pysathq&repo=pysat&type=star&count=true&size=large&v=2"
-  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
 </p>
-
-
-
-
-
-
-<div class="sidebarblock">
-    <div class="tile">
-    <h4>Latest version:</h4>
-    0.1.7.dev17 (<a href="https://github.com/pysathq/pysat">GitHub</a>)
     </div>
-    </br>
-</div>
-<div class="sidebarblock">
-    <div class="tile">
-    <h4><a href="https://pysathq.github.io">Main webpage</a></h4>
-    </div>
-</div>
-</br>
-<div class="sidebarblock">
-<h4>Contact us:</h4>
-      <a class="reference external" href="https://github.com/pysathq/pysat/issues">
-            Issue tracker
-      </a>
-      |
-      <a class="reference external" href="mailto:pysathq@gmail.com">
-          Email
-      </a>
-</div>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2018-2022, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-    </div>
-
     
-
-    
+  </div>
+</footer>
   </body>
 </html>

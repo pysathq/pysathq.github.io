@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+
+<meta name="description" content="PySAT - the power of SAT technology in Python." />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+	inlineMath: [['$','$']], 
+	displayMath: [['$$','$$']], 
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+    <title>PySAT: SAT technology in Python - Updates</title>
+
+    
+    <link rel="icon" href="../images/favicon.ico" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,900">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+
+<link rel="stylesheet" type="text/css" href="../theme-css/fresh/core.min.3997f86943b5337a6aab5eac5003a41b9a03e1159a7e779d8e99f5c1353ad503.css" integrity="sha256-OZf4aUO1M3pqq16sUAOkG5oD4RWafnedjpn1wTU61QM=">
+<link rel="stylesheet" href="../css/theme-css/code-highlight.css.min.60358f6aca833402d029f1625f9d78ac9331cb988429c4541f68207cfe3894ed.css" integrity="sha256-YDWPasqDNALQKfFiX514rJMxy5iEKcRUH2ggfP44lO0=">
+<link rel="stylesheet" href="../css/theme-css/content.css.min.9cd6eb8cf77772925445b567376a88573a3e3760d10b6548bbb0d9d8fadee9f2.css" integrity="sha256-nNbrjPd3cpJURbVnN2qIVzo&#43;N2DRC2VIu7DZ2Pre6fI=">
+<link rel="stylesheet" href="../css/theme-css/keyfeatures.css.min.f1cec535025edc9c051477db79f3425c8f1a819ca95ddfe7c1aa7d00e67657bb.css" integrity="sha256-8c7FNQJe3JwFFHfbefNCXI8agZypXd/nwap9AOZ2V7s=">
+<link rel="stylesheet" href="../css/theme-css/news.css.min.4bffc1f3e8e1dfedfa26d21423b0f206b10be408002e80d7628649afd6bb6a9d.css" integrity="sha256-S//B8&#43;jh3&#43;36JtIUI7DyBrEL5AgALoDXYoZJr9a7ap0=">
+<link rel="stylesheet" href="../css/theme-css/notices.css.min.a1ba05c782ca3a59361d6e284f0c2e1ff14e5a17a87057974212c60aa30fed2c.css" integrity="sha256-oboFx4LKOlk2HW4oTwwuH/FOWheocFeXQhLGCqMP7Sw=">
+<link rel="stylesheet" href="../css/theme-css/panel.css.min.d42639c23c159bedb13ee97ac0c12439a6ff5bf2e557fc976b54856abe4a616b.css" integrity="sha256-1CY5wjwVm&#43;2xPul6wMEkOab/W/LlV/yXa1SFar5KYWs=">
+<link rel="stylesheet" href="../css/theme-css/posts.css.min.6d27826ef3e7467b2bc97db6a0068283b47dddb32f6bf29504911aea6c237dd7.css" integrity="sha256-bSeCbvPnRnsryX22oAaCg7R93bMva/KVBJEa6mwjfdc=">
+<link rel="stylesheet" href="../css/theme-css/shortcuts.css.min.be3212556604caeb9849fba8c3971af183b6cf8dbaa121509d756f51049b5b0c.css" integrity="sha256-vjISVWYEyuuYSfuow5ca8YO2z426oSFQnXVvUQSbWww=">
+<link rel="stylesheet" href="../css/theme-css/styles.css.min.f2547d534742323363c1716409b361bc024aa7fb1d6c1887d3e08dcdcf65c08b.css" integrity="sha256-8lR9U0dCMjNjwXFkCbNhvAJKp/sdbBiH0&#43;CNzc9lwIs=">
+<link rel="stylesheet" href="../css/theme-css/tables.css.min.fb97ebea26ca35733dddd7051622133c047b532bf1aa066155c69a118d445803.css" integrity="sha256-&#43;5fr6ibKNXM93dcFFiITPAR7UyvxqgZhVcaaEY1EWAM=">
+<link rel="stylesheet" href="../css/theme-css/teams.css.min.fcfb8db7476eab78560aefc0efcec4366740523e08279ec26c568590c69002fc.css" integrity="sha256-/PuNt0duq3hWCu/A787ENmdAUj4IJ57CbFaFkMaQAvw=">
+<link rel="stylesheet" href="../css/theme-css/vars.css.min.c6b7e18ba6d6d7386c70db767cc62e0fb4d85efe064c8a18ae748c06d2c6556e.css" integrity="sha256-xrfhi6bW1zhscNt2fMYuD7TYXv4GTIoYrnSMBtLGVW4=">
+<link rel="stylesheet" href="../css/theme-css/videos.css.min.a4b57fbdc20f9eef545905202e188c480604a56cb2e60febea38b297bf680c9c.css" integrity="sha256-pLV/vcIPnu9UWQUgLhiMSAYEpWyy5g/r6jiyl79oDJw=">
+<link rel="stylesheet" href="../css/css/code-highlight.css.min.d789390f5a3be5bbfbc6644f3e2032dd70e92f98fd731ee24ddb28a585754a56.css" integrity="sha256-14k5D1o75bv7xmRPPiAy3XDpL5j9cx7iTdsopYV1SlY=">
+<link rel="stylesheet" href="../css/css/shell.css.min.9d08034025c1e47df97be92db9c61d044d7367e064d02cb037fba4550ade2058.css" integrity="sha256-nQgDQCXB5H35e&#43;ktucYdBE1zZ&#43;Bk0CywN/ukVQreIFg=">
+<link rel="stylesheet" href="../css/css/vars.css.min.70254dc445a7ece6367d8cdcd3bbdf93308c7f1e73f807ce94eb237aee34ab83.css" integrity="sha256-cCVNxEWn7OY2fYzc07vfkzCMfx5z&#43;AfOlOsjeu40q4M=">
+    
+    </head>
+  <body>
+    
+    
+    
+<nav id="nav" class="navbar is-fresh is-transparent no-shadow" role="navigation" aria-label="main navigation">
+  <div class="container is-max-widescreen">
+    <div class="navbar-brand">
+      
+      <a class="navbar-item" href="../">
+        <img class="navbar-logo" src="../images/logo-dark.svg" alt="%!s(&lt;nil&gt;) logo">
+        <div class="navbar-logo-text">SAT technology in Python</div>
+      </a>
+      
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbar-menu" class="navbar-menu is-static">
+
+      <div class="navbar-end">
+        <a href="../installation/" class="navbar-item is-secondary">
+          Installation
+          
+        </a>
+        <a href="../docs/html/" class="navbar-item is-secondary">
+          Documentation
+          
+        </a>
+        <a href="../features/" class="navbar-item is-secondary">
+          Features
+          
+        </a>
+        <a href="../usage/" class="navbar-item is-secondary">
+          Usage
+          
+        </a>
+        <a href="../updates/" class="navbar-item is-secondary">
+          Updates
+          
+        </a>
+        <a href="../citation/" class="navbar-item is-secondary">
+          Citing PySAT
+          
+        </a>
+        <a href="../todo/" class="navbar-item is-secondary">
+          To-Do
+          
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<nav id="navbar-clone" class="navbar is-fresh is-transparent" role="navigation" aria-label="main navigation">
+  <div class="container is-max-widescreen">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../">
+        <img class="navbar-logo" src="../images/logo-dark.svg" alt="%!s(&lt;nil&gt;) logo">
+        <div class="navbar-logo-text">SAT technology in Python</div>
+      </a>
+
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="cloned-navbar-menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="cloned-navbar-menu" class="navbar-menu is-fixed">
+
+      <div class="navbar-end">
+        <a href="../installation/" class="navbar-item is-secondary">
+          Installation
+          
+        </a>
+        <a href="../docs/html/" class="navbar-item is-secondary">
+          Documentation
+          
+        </a>
+        <a href="../features/" class="navbar-item is-secondary">
+          Features
+          
+        </a>
+        <a href="../usage/" class="navbar-item is-secondary">
+          Usage
+          
+        </a>
+        <a href="../updates/" class="navbar-item is-secondary">
+          Updates
+          
+        </a>
+        <a href="../citation/" class="navbar-item is-secondary">
+          Citing PySAT
+          
+        </a>
+        <a href="../todo/" class="navbar-item is-secondary">
+          To-Do
+          
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+    
+<section class="content-padding flex-row">
+    <div class="shortcuts-container">
+        <div class="shortcuts-title"><img src="../images/icons/list-bulleted.svg"/>On this page</div>
+        <div id="shortcuts"></div>
+    </div>
+    <div class="content-container">
+        <div class="columns">
+            <div class="column is-centered-tablet-portrait">
+                <h1 class="title section-title">Updates</h1>
+                <h5 class="subtitle is-5 is-muted"></h5>
+                <div class="divider"></div>
+            </div>
+        </div>
+        <div class="post-meta">
+</div>
+
+        <div class="post-content">
+          <p>PySAT is being developed with the <em>rolling release</em> model, which means we do
+not deliver major releases from time to time. Instead, many small (sometimes
+tiny) and frequent updates are provided. As a result,
+<a href="../installation">upgrading</a> your installation of the toolkit every now to
+keep it up to date and then is good idea.</p>
+<!-- raw HTML omitted -->
+<h2 id="03062022-017dev17">03.06.2022 (<em>0.1.7.dev17</em>)</h2>
+<ul>
+<li>Addition of AtMostK constraints on the fly is added to RC2, LBX and
+MCSls.</li>
+<li>Added support for additional hard constraints in Hitman, both in the
+form of clauses and AtMostK constraints.</li>
+<li>Added the eMUS mode to OptUx, i.e. it can enumerate subset-minimal
+MUSes.</li>
+<li>Added support for additional formula to be used in OptUx for
+stopping MUS enumeration as soon as the additional formula is
+covered by the set of MUSes.</li>
+</ul>
+<h2 id="22022022-017dev16">22.02.2022 (<em>0.1.7.dev16</em>)</h2>
+<ul>
+<li>Fixed a minor issue in RC2 related to making useless iterations in
+core minimization.</li>
+<li>Added support for WCNF+ formulas in OptUx.</li>
+</ul>
+<h2 id="04122021-017dev15">04.12.2021 (<em>0.1.7.dev15</em>)</h2>
+<ul>
+<li>Fixed a minor bug in stratified RC2 related to model enumeration for
+empty formulas.</li>
+<li>Updated Hitman so that it opts for plain RC2 if all weights are the
+same.</li>
+<li>Fixed cost MUS computation in OptUx.</li>
+</ul>
+<h2 id="24112021-017dev14">24.11.2021 (<em>0.1.7.dev14</em>)</h2>
+<ul>
+<li>Another attempt to fix the bug in topw handling if unspecified.</li>
+</ul>
+<h2 id="24112021-017dev13">24.11.2021 (<em>0.1.7.dev13</em>)</h2>
+<ul>
+<li>Fixed a minor issue in fm.py related to handling native AM1
+constraints.</li>
+<li>Fixed a bug in WCNF parser, which caused incorrect top weight
+computation if not specified in the preamble of the file explicitly.</li>
+</ul>
+<h2 id="09112021-017dev12">09.11.2021 (<em>0.1.7.dev12</em>)</h2>
+<ul>
+<li>Fixed a bug related to handling CNF formulas and improper updating
+IDPool for PB constraints in the case of no auxiliary variables.</li>
+</ul>
+<h2 id="12102021-017dev11">12.10.2021 (<em>0.1.7.dev11</em>)</h2>
+<ul>
+<li>Fixed a bug related to meaningless bounds in cardinality constraints
+(both AtMost and AtLeast).</li>
+</ul>
+<h2 id="17082021-017dev10">17.08.2021 (<em>0.1.7.dev10</em>)</h2>
+<ul>
+<li>Added cluster-based stratification to <code>RC2</code>.</li>
+<li>Made the selection of stratification strategy in
+<code>RC2</code> optional.</li>
+</ul>
+<h2 id="02082021-017dev9">02.08.2021 (<em>0.1.7.dev9</em>)</h2>
+<ul>
+<li>Added proper handling of border cases when creating cardinality
+constraints. Done for all encodings, and both AtMostK and AtLeastK
+constraints.</li>
+<li>Added an <code>UnsupportedBound</code> exception to be raised whenever
+<em>pairwise</em>, <em>bitwise</em>, or <em>ladder</em> encodings are created with the
+bound in $(1, N
+<ul>
+<li>1)$.</li>
+</ul>
+</li>
+</ul>
+<h2 id="30072021-017dev8">30.07.2021 (<em>0.1.7.dev8</em>)</h2>
+<ul>
+<li>Fixed a bug in <code>IDPool</code> introduced
+in <code>0.1.7.dev7</code>, related to <code>None</code> handling.</li>
+</ul>
+<h2 id="28072021-017dev7">28.07.2021 (<em>0.1.7.dev7</em>)</h2>
+<ul>
+<li>Updated <code>IDPool</code> to return a new variable ID without an object.</li>
+<li>Updated <code>RC2</code> to support IDPool instead of <code>self.topv</code>.</li>
+</ul>
+<h2 id="17072021-017dev6">17.07.2021 (<em>0.1.7.dev6</em>)</h2>
+<ul>
+<li>Modified the implemention of the am1 heuristic in
+<code>RC2</code>.</li>
+</ul>
+<h2 id="26062021-017dev5">26.06.2021 (<em>0.1.7.dev5</em>)</h2>
+<ul>
+<li>Got rid of relaxation variables in <code>RC2</code> - minor issue, which might still
+have affected the performance.</li>
+</ul>
+<h2 id="11062021-017dev4">11.06.2021 (<em>0.1.7.dev4</em>)</h2>
+<ul>
+<li>Fixed compilation issues occurring for cadical on macOS &gt;= 11.3
+with the most recent version of clang. Thanks to András Salamon.</li>
+</ul>
+<h2 id="24052021-017dev3">24.05.2021 (<em>0.1.7.dev3</em>)</h2>
+<ul>
+<li>Added a warning in <code>enum_models()</code> regarding
+unsatisfiability of the formula after model enumeration is finished.</li>
+<li>Fixed a couple of bugs in <code>FM</code>.</li>
+<li>Similar changes in other example implementations.</li>
+</ul>
+<h2 id="20042021-017dev2">20.04.2021 (<em>0.1.7.dev2</em>)</h2>
+<ul>
+<li>Improved the sequential counters encoding based on Donald Knuth's
+irredundant variant, following the suggestion of Alex Healy.</li>
+</ul>
+<h2 id="31032021-017dev1">31.03.2021 (<em>0.1.7.dev1</em>)</h2>
+<ul>
+<li>An attempt to fix compilation issues of Mergesat.</li>
+</ul>
+<h2 id="31032021-017dev0">31.03.2021 (<em>0.1.7.dev0</em>)</h2>
+<ul>
+<li>Added basic interface to <code>Mergesat3</code>.</li>
+<li>Ported <code>Minicard</code>'s native
+cardinality support to Glucose, which resulted in solvers
+<code>Gluecard3</code> and
+<code>Gluecard4</code>.</li>
+<li>Added translation of <code>Cadical</code>'s
+binary DRUP format to text-based.</li>
+</ul>
+<h2 id="25032021-016dev16">25.03.2021 (<em>0.1.6.dev16</em>)</h2>
+<ul>
+<li>A few minor corrections in <code>RC2</code>,
+<code>RC2Stratified</code>, and
+<code>Hitman</code> addressing the issues
+related to empty formulas.</li>
+</ul>
+<h2 id="23032021-016dev15">23.03.2021 (<em>0.1.6.dev15</em>)</h2>
+<ul>
+<li>A minor correction in <code>OptUx</code>
+related to MUS cost value.</li>
+</ul>
+<h2 id="23032021-016dev14">23.03.2021 (<em>0.1.6.dev14</em>)</h2>
+<ul>
+<li>A minor correction in the <code>setup.py</code> script.</li>
+</ul>
+<h2 id="23032021-016dev13">23.03.2021 (<em>0.1.6.dev13</em>)</h2>
+<ul>
+<li>Added a way to bootstrap <code>LBX</code> and
+<code>MCSls</code> for computing MCSes that
+include a specified subset of clauses.</li>
+<li>Updated <code>Hitman</code> to support
+<em>weighted</em> hitting set problems.</li>
+<li>Added <code>OptUx</code>, which is an
+smallest/optimal MUS extractor and enumerator that aims to replicate
+the performance of Forqes.</li>
+</ul>
+<h2 id="13022021-016dev12">13.02.2021 (<em>0.1.6.dev12</em>)</h2>
+<ul>
+<li>Fixed formula dumping in other formats (see
+<code>to_alien</code>).</li>
+</ul>
+<h2 id="24112020-016dev11">24.11.2020 (<em>0.1.6.dev11</em>)</h2>
+<ul>
+<li>Added formula dumping in SMT-LIB2 (see <code>to_alien</code>).</li>
+</ul>
+<h2 id="19112020-016dev10">19.11.2020 (<em>0.1.6.dev10</em>)</h2>
+<ul>
+<li>Fixed the number of propagations ins MapleChrono.</li>
+</ul>
+<h2 id="27092020-016dev9">27.09.2020 (<em>0.1.6.dev9</em>)</h2>
+<ul>
+<li>Fixed a bug in copying of <code>CNFPlus</code>
+and <code>WCNFPlus</code> objects.</li>
+<li>Added an attempt to write down OPB and LP formats (likely to be
+buggy!).</li>
+</ul>
+<h2 id="26092020-016dev8">26.09.2020 (<em>0.1.6.dev8</em>)</h2>
+<ul>
+<li>Fixed a bug in <code>solvers.py</code> related to the
+<code>CNFPlus</code> iterator.</li>
+</ul>
+<h2 id="25092020-016dev7">25.09.2020 (<em>0.1.6.dev7</em>)</h2>
+<ul>
+<li>Added an example for accum_stats().</li>
+<li>Fixed a minor bug in musx example.</li>
+<li>A few fixes in <code>pysat.formula</code>.</li>
+<li>Fixed an issue in <code>pysat.card</code> related
+to non-list literals.</li>
+</ul>
+<h2 id="09082020-016dev6">09.08.2020 (<em>0.1.6.dev6</em>)</h2>
+<ul>
+<li>Using int64_t for accum_stats().</li>
+</ul>
+<h2 id="03082020-016dev5">03.08.2020 (<em>0.1.6.dev5</em>)</h2>
+<ul>
+<li>Fixed the bug of wrong top_id when no cardinality encoding is
+created.</li>
+</ul>
+<h2 id="26072020-016dev4">26.07.2020 (<em>0.1.6.dev4</em>)</h2>
+<ul>
+<li>Accumulated stats for other solvers.</li>
+<li>More enumeration-related fixes in RC2Stratified.</li>
+</ul>
+<h2 id="07072020-016dev3">07.07.2020 (<em>0.1.6.dev3</em>)</h2>
+<ul>
+<li>Fixed RC2's enumeration of MSSes.</li>
+<li>Minor changes to the patch for CaDiCaL</li>
+</ul>
+<h2 id="06072020-016dev2">06.07.2020 (<em>0.1.6.dev2</em>)</h2>
+<ul>
+<li>Forgot to manifest the solver archives. :)</li>
+</ul>
+<h2 id="06072020-016dev1">06.07.2020 (<em>0.1.6.dev1</em>)</h2>
+<ul>
+<li>Solver archive files are now shipped with PySAT.</li>
+<li>A bit cleaner signal handling.</li>
+<li>Got rid of the segmentation faults when CTRL+C'ing limited SAT
+calls.</li>
+<li>Accumulated stats for Glucose4.1 (by Chris Jefferson)</li>
+</ul>
+<h2 id="04072020-015dev17">04.07.2020 (<em>0.1.5.dev17</em>)</h2>
+<ul>
+<li>Removed dependency for zlib.</li>
+</ul>
+<h2 id="23062020-015dev16">23.06.2020 (<em>0.1.5.dev16</em>)</h2>
+<ul>
+<li>Fixed a minor bug in top id handling in
+<code>pysat.card</code> reported by Pedro
+Bonilla.</li>
+</ul>
+<h2 id="15062020-015dev15">15.06.2020 (<em>0.1.5.dev15</em>)</h2>
+<ul>
+<li>A few more minor changes in RC2 to fulfill the requirements of MSE
+2020.</li>
+</ul>
+<h2 id="18052020-015dev14">18.05.2020 (<em>0.1.5.dev14</em>)</h2>
+<ul>
+<li>A few minor changes in RC2 addressing a new v-line format and the
+top-k track.</li>
+</ul>
+<h2 id="05052020-015dev13">05.05.2020 (<em>0.1.5.dev13</em>)</h2>
+<ul>
+<li>A few minor issues related to non-deterministic behavior of sets in
+Python3.</li>
+</ul>
+<h2 id="12042020-015dev12">12.04.2020 (<em>0.1.5.dev12</em>)</h2>
+<ul>
+<li>Fixed a minor bug in garbage collector of RC2.</li>
+<li>Fixed an empty-core bug in RC2 appearing in solution enumeration.</li>
+</ul>
+<h2 id="19032020-015dev10">19.03.2020 (<em>0.1.5.dev10</em>)</h2>
+<ul>
+<li>Floating point arithmetic is now done through the
+<code>decimal</code> module to avoid precision
+issues.</li>
+</ul>
+<h2 id="19032020-015dev9">19.03.2020 (<em>0.1.5.dev9</em>)</h2>
+<ul>
+<li>Minor issue fixed in <code>RC2Stratified</code>.</li>
+</ul>
+<h2 id="17032020-015dev8">17.03.2020 (<em>0.1.5.dev8</em>)</h2>
+<ul>
+<li>Added support of floating point weights in <code>WCNF</code> and <code>WCNFPlus</code>.</li>
+<li>Added support of negative weights.</li>
+</ul>
+<h2 id="14032020-015dev7">14.03.2020 (<em>0.1.5.dev7</em>)</h2>
+<ul>
+<li>Another minor fix in <code>pysat.formula</code>
+related to importing py-aiger-cnf.</li>
+</ul>
+<h2 id="24012020-015dev6">24.01.2020 (<em>0.1.5.dev6</em>)</h2>
+<ul>
+<li>Fixed a minor bug related to unknown keyword arguments passed to the
+constructor of <code>Solver</code>.</li>
+</ul>
+<h2 id="08012020-015dev5">08.01.2020 (<em>0.1.5.dev5</em>)</h2>
+<ul>
+<li>Added support of copying <code>CNFPlus</code>
+and <code>WCNFPlus</code> formulas.</li>
+</ul>
+<h2 id="04122019-015dev2">04.12.2019 (<em>0.1.5.dev2</em>)</h2>
+<ul>
+<li>Fixed yet another issue related to
+<code>pysat.formula.CNFPlus</code> and
+<code>pysat.solvers.Minicard</code>.</li>
+<li>Replaced <code>time.clock()</code> with
+<code>time.process_time()</code> for Python 3.8
+and newer.</li>
+</ul>
+<h2 id="04122019-015dev1">04.12.2019 (<em>0.1.5.dev1</em>)</h2>
+<ul>
+<li>Added Windows support (<strong>many</strong> thanks to <a href="https://github.com/rjungbeck">Rüdiger
+Jungbeck</a>!).</li>
+<li>Fixed a few more issues related to
+<code>pysat.formula.CNFPlus</code> and
+<code>pysat.formula.WCNFPlus</code>.</li>
+</ul>
+<h2 id="02122019-014dev25">02.12.2019 (<em>0.1.4.dev25</em>)</h2>
+<ul>
+<li>Fixed the parser of <code>pysat.formula.WCNFPlus</code> formulas.</li>
+<li>Fixed a bug in method <code>append_formula</code> for <code>pysat.solvers.Minicard</code>.</li>
+</ul>
+<h2 id="28112019-014dev24">28.11.2019 (<em>0.1.4.dev24</em>)</h2>
+<ul>
+<li>Fixed signal handling in the multithreaded use of PySAT. Multiple
+oracles can be used at a time now.</li>
+</ul>
+<h2 id="14112019-014dev23">14.11.2019 (<em>0.1.4.dev23</em>)</h2>
+<ul>
+<li>Fixed a minor bug in <code>pysat.examples.lsu</code>.</li>
+</ul>
+<h2 id="07112019-014dev22">07.11.2019 (<em>0.1.4.dev22</em>)</h2>
+<ul>
+<li>A minor fix in <code>pysat.formula</code> related
+to importing py-aiger-cnf.</li>
+</ul>
+<h2 id="30102019-014dev21">30.10.2019 (<em>0.1.4.dev21</em>)</h2>
+<ul>
+<li>Marked py-aiger-cnf as an optional dependency.</li>
+</ul>
+<h2 id="29102019-014dev20">29.10.2019 (<em>0.1.4.dev20</em>)</h2>
+<ul>
+<li>The use of py-aiger is replaced by py-aiger-cnf to incapsulate the
+internals of py-aiger.</li>
+</ul>
+<h2 id="09102019-014dev19">09.10.2019 (<em>0.1.4.dev19</em>)</h2>
+<ul>
+<li>Added solution optimality check in
+<code>pysat.examples.lsu</code>.</li>
+<li>Added a way to update the used variable identifiers using
+<code>pysat.formula.IDPool</code> when working
+with <code>pysat.card.CardEnc.*</code> and
+<code>pysat.pb.PBEnc.*</code>.</li>
+<li>Minor cosmetic changes.</li>
+<li>New logo.</li>
+</ul>
+<h2 id="30092019-014dev18">30.09.2019 (<em>0.1.4.dev18</em>)</h2>
+<ul>
+<li>Fixed a bug related to using py-aiger on Python 2.</li>
+</ul>
+<h2 id="28082019-014dev17">28.08.2019 (<em>0.1.4.dev17</em>)</h2>
+<ul>
+<li>Updated the minimum version of py-aiger required for installation.</li>
+</ul>
+<h2 id="28082019-014dev16">28.08.2019 (<em>0.1.4.dev16</em>)</h2>
+<ul>
+<li>CNF formulas can now be bootstrapped by Tseitin-encoding AIGER
+circuits. This is done with the use of the <a href="https://github.com/mvcisback/py-aiger">py-aiger
+package</a>.</li>
+</ul>
+<h2 id="21082019-014dev15">21.08.2019 (<em>0.1.4.dev15</em>)</h2>
+<ul>
+<li>Added rudimentary support of CaDiCaL.</li>
+</ul>
+<h2 id="04062019-014dev13">04.06.2019 (<em>0.1.4.dev13</em>)</h2>
+<ul>
+<li>Fixed the wrong number of variables after calling methods of
+<code>CardEnc</code>.</li>
+<li>Added clause iterator to <code>CNF</code>.</li>
+<li>Calling <code>CardEnc.*([])</code> returns an
+empty CNF formula.</li>
+</ul>
+<h2 id="25062019-014dev12">25.06.2019 (<em>0.1.4.dev12</em>)</h2>
+<ul>
+<li>Corrected a typo in the method name
+<code>WCNF.unweighted</code>.</li>
+</ul>
+<h2 id="17062019-014dev11">17.06.2019 (<em>0.1.4.dev11</em>)</h2>
+<ul>
+<li>Added top weight update when adding soft clauses into a WCNF.</li>
+</ul>
+<h2 id="26052019-014dev10">26.05.2019 (<em>0.1.4.dev10</em>)</h2>
+<ul>
+<li>Added support for non-deterministic interruption, e.g. based on a
+timer.</li>
+</ul>
+<h2 id="17052019-014dev9">17.05.2019 (<em>0.1.4.dev9</em>)</h2>
+<ul>
+<li>Minor fixes related to the WCNF+ support in
+<code>pysat.examples.lsu</code>,
+<code>pysat.examples.lbx</code>, and
+<code>pysat.examples.mcsls</code>.</li>
+</ul>
+<h2 id="27042019-014dev8">27.04.2019 (<em>0.1.4.dev8</em>)</h2>
+<ul>
+<li>Made an attempt to fix the C++ library issue on MacOS.</li>
+</ul>
+<h2 id="19042019-014dev7">19.04.2019 (<em>0.1.4.dev7</em>)</h2>
+<ul>
+<li>Fixed a couple of minor issues in
+<code>pysat.examples.hitman</code> and
+<code>pysat.example.mcsls</code>.</li>
+</ul>
+<h2 id="21032019-014dev6">21.03.2019 (<em>0.1.4.dev6</em>)</h2>
+<ul>
+<li>Fixed a potential bug related to &quot;deallocating None&quot;.</li>
+</ul>
+<h2 id="19032019-014dev5">19.03.2019 (<em>0.1.4.dev5</em>)</h2>
+<ul>
+<li>Fixed an issue in <code>propagate</code> for
+the MapleChrono solver.</li>
+</ul>
+<h2 id="18032019-014dev3">18.03.2019 (<em>0.1.4.dev3</em>)</h2>
+<ul>
+<li>Some fixes in the assumption handling of the Maple* solvers.</li>
+</ul>
+<h2 id="17032019-014dev2">17.03.2019 (<em>0.1.4.dev2</em>)</h2>
+<ul>
+<li>Added three solvers of the Maple family: Maplesat (i.e.
+MapleCOMSPS_LRB), MapleCM, and MapleChrono (i.e.
+MapleLCMDistChronoBT).</li>
+<li>A few minor fixes.</li>
+</ul>
+<h2 id="13032019-014dev1">13.03.2019 (<em>0.1.4.dev1</em>)</h2>
+<ul>
+<li>Added <code>pysat.pb</code> providing access to a
+few PB constraints with the use of PyPBLib.</li>
+<li>A number of small fixes.</li>
+</ul>
+<h2 id="28122018-013dev25">28.12.2018 (<em>0.1.3.dev25</em>)</h2>
+<ul>
+<li>Fixed model enumerator in <code>pysat.examples.rc2</code>.</li>
+<li>Documented <code>pysat.examples.rc2</code>.</li>
+</ul>
+<h2 id="01112018-013dev24">01.11.2018 (<em>0.1.3.dev24</em>)</h2>
+<ul>
+<li>Documented a few example modules including
+<code>pysat.examples.lbx</code>,
+<code>pysat.examples.mcsls</code>, and
+<code>pysat.examples.lsu</code>.</li>
+</ul>
+<h2 id="22092018-013dev23">22.09.2018 (<em>0.1.3.dev23</em>)</h2>
+<ul>
+<li>Added the image of the FLOC medals to the webpage.</li>
+<li>Added the news section to the webpage.</li>
+<li>Removed unused source code.</li>
+</ul>
+<h2 id="20092018-013dev22">20.09.2018 (<em>0.1.3.dev22</em>)</h2>
+<ul>
+<li>Added better support for iterables in <code>pysat.card</code> and <code>pysat.solvers</code>.</li>
+<li>Added documentation for <code>examples/fm.py</code>, <code>examples/genhard.py</code>,
+<code>examples/hitman.py</code> and <code>examples/musx.py</code>.</li>
+</ul>
+<h2 id="06092018-013dev21">06.09.2018 (<em>0.1.3.dev21</em>)</h2>
+<ul>
+<li>Fixed a typo in the project description on
+<a href="https://pypi.org/project/python-sat/">PyPI</a>.</li>
+</ul>
+<h2 id="30082018-013dev20">30.08.2018 (<em>0.1.3.dev20</em>)</h2>
+<ul>
+<li>Added an implementation of the LSU algorithm for MaxSAT.</li>
+<li>Fixed a bug in <code>pysat._fileio</code>
+appearing when LZMA is not present.</li>
+</ul>
+<h2 id="25082018-013dev19">25.08.2018 (<em>0.1.3.dev19</em>)</h2>
+<ul>
+<li>Solvers can receive <code>iterables</code> as clauses (besides <code>lists</code>).</li>
+<li>Fixed a minor issue in <code>examples/hitman.py</code>.</li>
+</ul>
+<h2 id="25082018-013dev18">25.08.2018 (<em>0.1.3.dev18</em>)</h2>
+<ul>
+<li>Cosmetic changes in the documentation.</li>
+</ul>
+<h2 id="25082018-013dev17">25.08.2018 (<em>0.1.3.dev17</em>)</h2>
+<ul>
+<li>More incremental functionality in RC2, LBX, and MCSls.</li>
+<li>Added a minimal hitting set enumerator as another example.</li>
+</ul>
+<h2 id="20082018-013dev16">20.08.2018 (<em>0.1.3.dev16</em>)</h2>
+<ul>
+<li>Fixed a problem appearing when no model exists.</li>
+</ul>
+<h2 id="19082018-013dev15">19.08.2018 (<em>0.1.3.dev15</em>)</h2>
+<ul>
+<li>Added support for reading and writing with *zipped files.</li>
+<li>Added the corresponding capabilities to the examples.</li>
+</ul>
+<h2 id="17082018-013dev14">17.08.2018 (<em>0.1.3.dev14</em>)</h2>
+<ul>
+<li>Fixed a couple of minor issues related to Python 3 (in RC2 and
+iterative totalizer).</li>
+</ul>
+<h2 id="27072018-013dev13">27.07.2018 (<em>0.1.3.dev13</em>)</h2>
+<ul>
+<li>Added support for setting variable <em>phases</em> (<em>user-preferred
+polarities</em>).</li>
+</ul>
+<h2 id="16072018-013dev12">16.07.2018 (<em>0.1.3.dev12</em>)</h2>
+<ul>
+<li>Added incremetal model enumeration to RC2.</li>
+<li>Fixed a couple of minor issues in LBX and MCSls.</li>
+<li>Added mutilated chessboard princimple formulas for
+<code>examples/genhard.py</code>.</li>
+</ul>
+<h2 id="12072018-rc2">12.07.2018 (RC2)</h2>
+<p>MaxSAT solver RC2 won both <em>unweighted</em> and <em>weighted</em> categories of the
+main track of <a href="https://maxsat-evaluations.github.io/2018/rankings.html">MaxSAT Evaluation
+2018</a> and got
+two medals at <a href="https://www.floc2018.org/floc-olympic-games/">FLOC 2018 Olympic
+Games</a>!</p>
+<p><img src="../medals.svg" alt="image: width=270px"></p>
+<h2 id="20062018-013dev11">20.06.2018 (<em>0.1.3.dev11</em>)</h2>
+<ul>
+<li>Added the webpage for the toolkit.</li>
+<li>The first draft of the documentation.</li>
+</ul>
+<h2 id="07062018-013dev10">07.06.2018 (<em>0.1.3.dev10</em>)</h2>
+<ul>
+<li>Fixed a minor bug in iterative totalizer.</li>
+<li>Added modes A and B to RC2 for MaxSAT evaluation 2018.</li>
+</ul>
+<h2 id="28052018-013dev9">28.05.2018 (<em>0.1.3.dev9</em>)</h2>
+<ul>
+<li>Added a way to manually set off a previously set budget on the
+number of clauses or propagations.</li>
+<li>Added an optional core minimization in RC2.</li>
+</ul>
+<h2 id="25052018-013dev8">25.05.2018 (<em>0.1.3.dev8</em>)</h2>
+<ul>
+<li>Fixed <em>long_description</em> of the project. Corrected the GitHub
+reference.</li>
+<li>Implemented hidden AtMost1 constraint detection in RC2.</li>
+<li>Improved support for Python 3 in RC2.</li>
+<li>A few more minor issues in RC2 got fixed.</li>
+</ul>
+<h2 id="23052018-013dev7">23.05.2018 (<em>0.1.3.dev7</em>)</h2>
+<ul>
+<li>Added optional <em>phase saving</em> in literal propagation.</li>
+<li>Fixed a bug in literal propagation.</li>
+</ul>
+<h2 id="22052018-013dev6">22.05.2018 (<em>0.1.3.dev6</em>)</h2>
+<ul>
+<li>More fixes in literal propagation and its interface.</li>
+</ul>
+<h2 id="21052018-013dev5">21.05.2018 (<em>0.1.3.dev5</em>)</h2>
+<ul>
+<li>A minor modification of literal propagation.</li>
+</ul>
+<h2 id="21052018-013dev4">21.05.2018 (<em>0.1.3.dev4</em>)</h2>
+<ul>
+<li>Added <em>literal propagation</em> in MiniSat-like solvers, i.e.
+<code>Minisat22</code>, <code>MinisatGH</code>, <code>Minicard</code>, <code>Glucose3</code>, and <code>Glucose41</code>.</li>
+</ul>
+<h2 id="15052018-013dev3">15.05.2018 (<em>0.1.3.dev3</em>)</h2>
+<ul>
+<li>Another attempt to fix installation. Mirrored GitHub-hosted solvers.</li>
+</ul>
+<h2 id="02052018-013dev2">02.05.2018 (<em>0.1.3.dev2</em>)</h2>
+<ul>
+<li>Modified signal handling in <code>pysolvers</code> and <code>pycard</code>.</li>
+<li>Fixed a couple of minor issues in iterative totalizer.</li>
+<li>Reimplemented <code>examples/genhard.py</code>. Each family of formulas is not
+a class.</li>
+</ul>
+<h2 id="10042018-013dev1">10.04.2018 (<em>0.1.3.dev1</em>)</h2>
+<ul>
+<li>Fixed a bug in <em>limited</em> SAT solving, i.e. in solving within a given
+<em>budget</em> on the number of conflicts or the number of propagations.</li>
+</ul>
+<h2 id="09042018-013dev0">09.04.2018 (<em>0.1.3.dev0</em>)</h2>
+<ul>
+<li>Improved <code>README.rst</code>.</li>
+<li>Minor modifications in <code>examples/genhard.py</code>.</li>
+<li>Added example scripts installation as executables.</li>
+</ul>
+<h2 id="08042018-012dev9">08.04.2018 (<em>0.1.2.dev9</em>)</h2>
+<ul>
+<li>Fixed a couple of minor bugs in <code>pysat.card</code> and <code>pysat.formula</code>.</li>
+</ul>
+<h2 id="06042018-012dev8">06.04.2018 (<em>0.1.2.dev8</em>)</h2>
+<ul>
+<li>Added a couple of optimizations to <code>examples/rc2.py</code> including
+<em>unsatisfiable core trimming</em> and <em>core exhaustion</em>.</li>
+<li>Added <code>SolverNames</code> to simplify a
+solver selection.</li>
+<li>An attempt to make the installation process less fragile.</li>
+</ul>
+<h2 id="03042018-012dev7">03.04.2018 (<em>0.1.2.dev7</em>)</h2>
+<ul>
+<li>Fixed incremental mode of Glucose 4.1.</li>
+<li>Added support for Minicard's native cardinality constraints in
+<code>examples/fm.py</code>.</li>
+<li>Added RC2 as an example of a MaxSAT solver.</li>
+<li>Fixed a minor issue in iterative totalizer.</li>
+</ul>
+<h2 id="29032018-012dev6">29.03.2018 (<em>0.1.2.dev6</em>)</h2>
+<ul>
+<li>Fixed a bug in iterative totalizer, which led to clause duplication.</li>
+</ul>
+<h2 id="28032018-012dev5">28.03.2018 (<em>0.1.2.dev5</em>)</h2>
+<ul>
+<li>Added iterative totalizer to <code>pysat.card</code>.</li>
+<li>Added solver download caching (i.e. a solver is not downloaded more
+than once).</li>
+</ul>
+<h2 id="25032018-012dev4">25.03.2018 (<em>0.1.2.dev4</em>)</h2>
+<ul>
+<li>Added support for Glucose 4.1.</li>
+</ul>
+<h2 id="06032018-012dev3">06.03.2018 (<em>0.1.2.dev3</em>)</h2>
+<ul>
+<li>Added <code>examples/genhard.py</code> illustrating the work with the
+<code>pysat.formula</code> module.</li>
+<li>Added <code>pysat.formula.IDPool</code>, a
+simple manager of <em>variable identifiers</em>.</li>
+</ul>
+<h2 id="04032018-012dev2">04.03.2018 (<em>0.1.2.dev2</em>)</h2>
+<ul>
+<li>Fixed a bug related to SAT oracle's timer.</li>
+</ul>
+<h2 id="02032018-012dev1">02.03.2018 (<em>0.1.2.dev1</em>)</h2>
+<ul>
+<li>Fixed a number of issues in <code>examples/fm.py</code>, <code>examples/lbx.py</code>, and
+<code>examples/musx.py</code> for a better support of Python 3.</li>
+</ul>
+<h2 id="01032018-011dev9">01.03.2018 (<em>0.1.1.dev9</em>)</h2>
+<ul>
+<li>Minor fixes in <code>README.rst</code>.</li>
+</ul>
+<h2 id="22022018-011dev8">22.02.2018 (<em>0.1.1.dev8</em>)</h2>
+<ul>
+<li>Minor changes in <code>pysat.card</code>.</li>
+<li>A few typos in <code>pysat.examples.fm</code>.</li>
+<li>Fixed <em>author_email</em> in <code>setup.py</code>.</li>
+</ul>
+<h2 id="11022018-011dev7">11.02.2018 (<em>0.1.1.dev7</em>)</h2>
+<ul>
+<li>Initial commit accompanying the <a href="../citation">corresponding SAT
+submission</a>.</li>
+</ul>
+
+        </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+    
+    <div id="backtotop"><a href="#" id="backtotop-color"></a></div>
+
+    
+    
+
+<footer id="footer" class="footer">
+  <div class="container is-max-widescreen">
+    <div id="footer-columns" class="columns">
+      <div class="footer-logo-column">
+        <img id="footer-logo" src="../images/logo-light.svg" alt=" logo. ">
+      </div>
+        <div class="link-column">
+          <div class="footer-column">
+            <div class="footer-header">
+            </div>
+            <ul class="link-list">
+              <li class="link-list">
+                <a class="footer-link" href="../installation/">
+                  Installation
+                </a>
+              </li>
+              <li class="link-list">
+                <a class="footer-link" href="../docs/html/">
+                  Documentation
+                </a>
+              </li>
+              <li class="link-list">
+                <a class="footer-link" href="../features/">
+                  Features
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="link-column">
+          <div class="footer-column">
+            <div class="footer-header">
+            </div>
+            <ul class="link-list">
+              <li class="link-list">
+                <a class="footer-link" href="../usage/">
+                  Usage
+                </a>
+              </li>
+              <li class="link-list">
+                <a class="footer-link" href="../updates/">
+                  Updates
+                </a>
+              </li>
+              <li class="link-list">
+                <a class="footer-link" href="../citation/">
+                  Citing PySAT
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-actions">
+          
+
+          <nav class="level is-mobile">
+            <div class="social-media-icons">
+              <a class="level-item" href="https://github.com/pysathq/pysat" aria-label="https://github.com/pysathq/pysat">
+                
+
+
+
+
+
+<svg class="icon github-icon" viewBox="0 0 24 24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+
+              </a>
+              <a class="level-item" href="https://github.com/pysathq/pysat/issues" aria-label="https://github.com/pysathq/pysat/issues">
+                
+
+
+
+
+
+<svg class="icon bug-report-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M12 21Q10.375 21 8.988 20.2Q7.6 19.4 6.8 18H4V16H6.1Q6.025 15.5 6.013 15Q6 14.5 6 14H4V12H6Q6 11.5 6.013 11Q6.025 10.5 6.1 10H4V8H6.8Q7.15 7.425 7.588 6.925Q8.025 6.425 8.6 6.05L7 4.4L8.4 3L10.55 5.15Q11.25 4.925 11.975 4.925Q12.7 4.925 13.4 5.15L15.6 3L17 4.4L15.35 6.05Q15.925 6.425 16.388 6.912Q16.85 7.4 17.2 8H20V10H17.9Q17.975 10.5 17.988 11Q18 11.5 18 12H20V14H18Q18 14.5 17.988 15Q17.975 15.5 17.9 16H20V18H17.2Q16.4 19.4 15.013 20.2Q13.625 21 12 21ZM12 19Q13.65 19 14.825 17.825Q16 16.65 16 15V11Q16 9.35 14.825 8.175Q13.65 7 12 7Q10.35 7 9.175 8.175Q8 9.35 8 11V15Q8 16.65 9.175 17.825Q10.35 19 12 19ZM10 16H14V14H10ZM10 12H14V10H10ZM12 13Q12 13 12 13Q12 13 12 13Q12 13 12 13Q12 13 12 13Q12 13 12 13Q12 13 12 13Q12 13 12 13Q12 13 12 13Z"/></svg>
+
+              </a>
+              <a class="level-item" href="mailto:pysathq@gmail.com" aria-label="mailto:pysathq@gmail.com">
+                
+
+
+
+
+
+<svg class="icon mail-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5l-8-5h16zm0 12H4V8l8 5l8-5v10z"/></svg>
+
+              </a>
+            </div>
+          </nav>
+          <div class="copyright">&copy; 2018-2022 Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.
+            </div>
+        </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+<script type="text/javascript" src=../js/bundle.min.js></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.7.6/dist/js/uikit.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.7.6/dist/css/uikit.min.css" />
+
+<script type="text/javascript">setupShortcuts(maxLevel= 2 );</script>
+<script defer data-domain="pysathq.github.io" src="https://views.scientific-python.org/js/script.js"></script>
+
+</body>
+</html>
