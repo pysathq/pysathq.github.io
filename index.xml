@@ -82,7 +82,7 @@ more SAT solvers to support (e.g. CryptoMiniSat, RISS among many others) formula
       
       <guid>https://pysathq.github.io/updates/</guid>
       <description>PySAT is being developed with the rolling release model, which means we do not deliver major releases from time to time. Instead, many small (sometimes tiny) and frequent updates are provided. As a result, upgrading your installation of the toolkit every now to keep it up to date and then is good idea.
-03.06.2022 (0.1.7.dev17) Addition of AtMostK constraints on the fly is added to RC2, LBX and MCSls. Added support for additional hard constraints in Hitman, both in the form of clauses and AtMostK constraints.</description>
+18.06.2022 (0.1.7.dev18) Fixed a couple of minor bugs in pysat.card and pysat.pb related to variable ID update. 03.</description>
     </item>
     
     <item>
