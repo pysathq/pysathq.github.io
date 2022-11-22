@@ -82,7 +82,7 @@ more SAT solvers to support (e.g. CryptoMiniSat, RISS among many others) formula
       
       <guid>https://pysathq.github.io/updates/</guid>
       <description>PySAT is being developed with the rolling release model, which means we do not deliver major releases from time to time. Instead, many small (sometimes tiny) and frequent updates are provided. As a result, upgrading your installation of the toolkit every now to keep it up to date and then is good idea.
-18.11.2022 (0.1.7.dev20) Fixed the patch issue on macOS Ventura. 06.07.2022 (0.1.7.dev19) An attempt to fix statistics report when running in WebAssembly (type cast to Py_ssize_t).</description>
+22.11.2022 (0.1.7.dev21) Made a number of minor tweaks in formula parsing. 18.11.2022 (0.1.7.dev20) Fixed the patch issue on macOS Ventura.</description>
     </item>
     
     <item>
