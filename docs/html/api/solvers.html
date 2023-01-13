@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>SAT solvers’ API (pysat.solvers) &#8212; PySAT 0.1.7.dev21 documentation</title>
+    <title>SAT solvers’ API (pysat.solvers) &#8212; PySAT 0.1.7.dev22 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 0.1.7.dev21)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 0.1.7.dev22)</strong></a>
       </div>
       
     </div>
@@ -444,6 +444,17 @@ additional arguments of Glucose are:</p>
 <dd><p>Gilles Audemard, Jean-Marie Lagniez, Laurent Simon. <em>Improving
 Glucose for Incremental SAT Solving with Assumptions: Application
 to MUS Extraction</em>. SAT 2013. pp. 309-317</p>
+</dd>
+</dl>
+<p>Finally, most MiniSat-based solvers can be exploited in the
+“warm-start” mode in the case of <em>satisfiable</em> formulas. This may come
+in handy in various model enumeration settings. Note that warm-start
+mode is disabled in the case of limited solving with <em>“unknown”</em>
+outcomes. Warm-start mode can be set with the use of the <cite>warm_start</cite>
+parameter:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>warm_start</strong> (<em>bool</em>) – use the solver in the “warm-start” mode</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -1113,7 +1124,7 @@ string name. This allows for using several possible names for
 specifying a solver.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cadical</span>     <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;cd&#39;</span><span class="p">,</span> <span class="s1">&#39;cdl&#39;</span><span class="p">,</span> <span class="s1">&#39;cadical&#39;</span><span class="p">)</span>
 <span class="n">gluecard3</span>   <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;gc3&#39;</span><span class="p">,</span> <span class="s1">&#39;gc30&#39;</span><span class="p">,</span> <span class="s1">&#39;gluecard3&#39;</span><span class="p">,</span> <span class="s1">&#39;gluecard30&#39;</span><span class="p">)</span>
-<span class="n">gluecard41</span>  <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;gc3&#39;</span><span class="p">,</span> <span class="s1">&#39;gc41&#39;</span><span class="p">,</span> <span class="s1">&#39;gluecard4&#39;</span><span class="p">,</span> <span class="s1">&#39;gluecard41&#39;</span><span class="p">)</span>
+<span class="n">gluecard41</span>  <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;gc4&#39;</span><span class="p">,</span> <span class="s1">&#39;gc41&#39;</span><span class="p">,</span> <span class="s1">&#39;gluecard4&#39;</span><span class="p">,</span> <span class="s1">&#39;gluecard41&#39;</span><span class="p">)</span>
 <span class="n">glucose3</span>    <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;g3&#39;</span><span class="p">,</span> <span class="s1">&#39;g30&#39;</span><span class="p">,</span> <span class="s1">&#39;glucose3&#39;</span><span class="p">,</span> <span class="s1">&#39;glucose30&#39;</span><span class="p">)</span>
 <span class="n">glucose4</span>    <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;g4&#39;</span><span class="p">,</span> <span class="s1">&#39;g41&#39;</span><span class="p">,</span> <span class="s1">&#39;glucose4&#39;</span><span class="p">,</span> <span class="s1">&#39;glucose41&#39;</span><span class="p">)</span>
 <span class="n">lingeling</span>   <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;lgl&#39;</span><span class="p">,</span> <span class="s1">&#39;lingeling&#39;</span><span class="p">)</span>
@@ -1128,8 +1139,8 @@ specifying a solver.</p>
 </div>
 <p>As a result, in order to select Glucose3, a user can specify the
 solver’s name: either <code class="docutils literal notranslate"><span class="pre">'g3'</span></code>, <code class="docutils literal notranslate"><span class="pre">'g30'</span></code>, <code class="docutils literal notranslate"><span class="pre">'glucose3'</span></code>, or
-<code class="docutils literal notranslate"><span class="pre">'glucose30'</span></code>. <em>Note that the capitalized versions of these names are
-also allowed</em>.</p>
+<code class="docutils literal notranslate"><span class="pre">'glucose30'</span></code>. <em>Note that the capitalized versions of these names
+are also allowed</em>.</p>
 </dd></dl>
 
 </section>
