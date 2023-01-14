@@ -82,7 +82,7 @@ more SAT solvers to support (e.g. CryptoMiniSat, RISS among many others) formula
       
       <guid>https://pysathq.github.io/updates/</guid>
       <description>PySAT is being developed with the rolling release model, which means we do not deliver major releases from time to time. Instead, many small (sometimes tiny) and frequent updates are provided. As a result, upgrading your installation of the toolkit every now to keep it up to date and then is good idea.
-13.01.2023 (0.1.7.dev23) Fixed a typo in examples/models.py. 13.01.2023 (0.1.7.dev22) Fixed a time computation bug in examples/models.py. Added warm start mode to &amp;lsquo;m22&amp;rsquo;, &amp;lsquo;mgh&amp;rsquo;, &amp;lsquo;mc&amp;rsquo;, &amp;lsquo;mpl&amp;rsquo;, &amp;lsquo;g30&amp;rsquo;, &amp;lsquo;g41&amp;rsquo;, &amp;lsquo;gc30&amp;rsquo;, &amp;lsquo;gc41&amp;rsquo;.</description>
+15.01.2023 (0.1.7.dev24) Added warm start mode to MapleCM. 13.01.2023 (0.1.7.dev23) Fixed a typo in examples/models.py. 13.01.2023 (0.1.7.dev22) Fixed a time computation bug in examples/models.</description>
     </item>
     
     <item>

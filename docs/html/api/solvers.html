@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>SAT solvers’ API (pysat.solvers) &#8212; PySAT 0.1.7.dev23 documentation</title>
+    <title>SAT solvers’ API (pysat.solvers) &#8212; PySAT 0.1.7.dev24 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 0.1.7.dev23)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 0.1.7.dev24)</strong></a>
       </div>
       
     </div>
@@ -1033,6 +1033,35 @@ inside a Python script. See the <a class="reference internal" href="#pysat.solve
         <span class="n">core</span> <span class="o">=</span> <span class="n">to_test</span>
     <span class="k">else</span><span class="p">:</span>  <span class="c1"># True or *unknown*</span>
         <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.solvers.Solver.start_mode">
+<span class="sig-name descname"><span class="pre">start_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">warm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.start_mode" title="Permalink to this definition">#</a></dt>
+<dd><p>Set start mode: either warm or standard. Warm start mode can be
+beneficial if one is interested in efficient model enumeration.</p>
+<p>Note that warm start mode is disabled in the case of limited
+solving with <em>“unknown”</em> outcomes. Moreover, warm start mode may
+lead to unexpected results in case of assumption-based solving
+with a <em>varying</em> list of assumption literals.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">model_count</span><span class="p">(</span><span class="n">solver</span><span class="p">,</span> <span class="n">formula</span><span class="p">,</span> <span class="n">vlimit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">warm_start</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">with</span> <span class="n">Solver</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">solver</span><span class="p">,</span> <span class="n">bootstrap_with</span><span class="o">=</span><span class="n">formula</span><span class="p">,</span> <span class="n">use_timer</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">warm_start</span><span class="o">=</span><span class="n">warm_start</span><span class="p">)</span> <span class="k">as</span> <span class="n">oracle</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">... </span>        <span class="k">while</span> <span class="n">oracle</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+<span class="gp">... </span>            <span class="n">model</span> <span class="o">=</span> <span class="n">oracle</span><span class="o">.</span><span class="n">get_model</span><span class="p">()</span>
+<span class="gp">... </span>            <span class="k">if</span> <span class="n">vlimit</span><span class="p">:</span>
+<span class="gp">... </span>                <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="p">[:</span><span class="n">vlimit</span><span class="p">]</span>
+<span class="gp">... </span>            <span class="n">oracle</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="o">-</span><span class="n">l</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">model</span><span class="p">])</span>
+<span class="gp">... </span>            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> models in </span><span class="si">{1:.4f}</span><span class="s1">s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="n">oracle</span><span class="o">.</span><span class="n">time_accum</span><span class="p">()))</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model_count</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">,</span> <span class="n">cnf</span><span class="p">,</span> <span class="n">vlimit</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">warm_start</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">58651 models in 7.9903s</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model_count</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">,</span> <span class="n">cnf</span><span class="p">,</span> <span class="n">vlimit</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">warm_start</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">58651 models in 0.3951s</span>
 </pre></div>
 </div>
 </dd></dl>
