@@ -82,7 +82,7 @@ more SAT solvers to support (e.g. CryptoMiniSat, RISS among many others) formula
       
       <guid>https://pysathq.github.io/updates/</guid>
       <description>PySAT is being developed with the rolling release model, which means we do not deliver major releases from time to time. Instead, many small (sometimes tiny) and frequent updates are provided. As a result, upgrading your installation of the toolkit every now to keep it up to date and then is good idea.
-15.01.2023 (0.1.7.dev24) Added warm start mode to MapleCM. 13.01.2023 (0.1.7.dev23) Fixed a typo in examples/models.py. 13.01.2023 (0.1.7.dev22) Fixed a time computation bug in examples/models.</description>
+17.01.2023 (0.1.7.dev25) Fixed a bug related to missing keyword arguments for Minisat22, MinisatGH, and Minicard. Updated documentation of methods solve(), solve_limited(), propagate(), and enum_models() saying that duplicate assumption literals are forbidden.</description>
     </item>
     
     <item>
