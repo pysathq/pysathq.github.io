@@ -82,7 +82,7 @@ more SAT solvers to support (e.g. CryptoMiniSat, RISS among many others) formula
       
       <guid>https://pysathq.github.io/updates/</guid>
       <description>PySAT is being developed with the rolling release model, which means we do not deliver major releases from time to time. Instead, many small (sometimes tiny) and frequent updates are provided. As a result, upgrading your installation of the toolkit every now to keep it up to date and then is good idea.
-23.01.2023 (0.1.7.dev26) Added a few more warning messages for various solvers, related to missing keyword arguments. 17.01.2023 (0.</description>
+05.03.2023 (0.1.8.dev1) Added CaDiCaL 1.5.3 (thanks to Christos Karamanos). Added the process module (thanks to Christos Karamanos). Added a build for Python 3.</description>
     </item>
     
     <item>

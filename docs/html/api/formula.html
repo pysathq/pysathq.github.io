@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 0.1.7.dev26 documentation</title>
+    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 0.1.8.dev1 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 0.1.7.dev26)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 0.1.8.dev1)</strong></a>
       </div>
       
     </div>
@@ -605,7 +605,9 @@ specific comment lines.</p>
 formula <span class="math notranslate nohighlight">\(\neg{\mathcal{F}}\)</span>. The negation of the formula is
 encoded to CNF with the use of <em>auxiliary</em> Tseitin variables <a class="footnote-reference brackets" href="#id2" id="id1">1</a>.
 A new CNF formula is returned keeping all the newly introduced
-variables that can be accessed through the <code class="docutils literal notranslate"><span class="pre">auxvars</span></code> variable.</p>
+variables that can be accessed through the <code class="docutils literal notranslate"><span class="pre">auxvars</span></code> variable.
+All the literals used to encode the negation of the original
+clauses can be accessed through the <code class="docutils literal notranslate"><span class="pre">enclits</span></code> variable.</p>
 <p><strong>Note</strong> that the negation of each clause is encoded with one
 auxiliary variable if it is not unit size. Otherwise, no auxiliary
 variable is introduced.</p>
@@ -630,6 +632,8 @@ Mathematical Logic, Part II. pp.  115–125, 1968</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">neg</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[1, -4], [-2, -4], [-1, 2, 4], [4, -3]]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">neg</span><span class="o">.</span><span class="n">auxvars</span><span class="p">)</span>
+<span class="go">[4]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">neg</span><span class="o">.</span><span class="n">enclits</span><span class="p">)</span>  <span class="c1"># literals encoding the negation of clauses</span>
 <span class="go">[4, -3]</span>
 </pre></div>
 </div>
