@@ -72,7 +72,7 @@ cp -r scientific-python-hugo-theme-main/doc ./my-website cd my-website Initializ
       
       <guid>https://pysathq.github.io/todo/</guid>
       <description>PySAT toolkit is a work in progress. Although it can already be helpful in many practical settings (and it was successfully applied by its authors for a number of times), it would be great if some of the following additional features were implemented:
-more SAT solvers to support (e.g. CryptoMiniSat, RISS among many others) formula (pre-)processing lower level access to some of the solvers&#39; internal parameters (e.g. variable activities, etc.) high-level support for arbitrary Boolean formulas (e.</description>
+more SAT solvers to support (e.g. CryptoMiniSat, RISS among many others) lower level access to some of the solvers&#39; internal parameters (e.g. variable activities, etc.) high-level support for arbitrary Boolean formulas (e.</description>
     </item>
     
     <item>
