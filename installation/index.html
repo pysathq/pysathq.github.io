@@ -202,11 +202,11 @@ on Linux!</em></p>
 <p>Once all the prerequisites are installed, the simplest way to get and
 start using PySAT is to install the latest stable release of the toolkit
 from <a href="https://pypi.org/project/python-sat/">PyPI</a>:<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip install python-sat<span class="o">[</span>pblib,aiger<span class="o">]</span>
-</span></span></code></pre></div><p>We encourage you to install the <em>optional</em> dependencies <em>pblib</em> and <em>aiger</em>,
-as shown in the previous command. However, if it cannot be done (e.g. if their
-installation fails), you can install PySAT with the functionality of <em>aiger</em>
-and <em>pblib</em> disabled:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip install python-sat<span class="o">[</span>aiger,approxmc,pblib<span class="o">]</span>
+</span></span></code></pre></div><p>We encourage you to install the <em>optional</em> dependencies <em>pblib</em>, <em>aiger</em>, and
+<em>approxmc</em>, as shown in the previous command. However, if it cannot be done
+(e.g. if their installation fails), you can install PySAT with the
+functionality of <em>aiger</em>, <em>approxmc</em>, and <em>pblib</em> disabled:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip install python-sat
 </span></span></code></pre></div><p>Once installed from PyPI, the toolkit at a later stage can be updated in
 the following way:</p>
@@ -226,7 +226,7 @@ installation of PySAT.</p>
 <ol>
 <li id="fn:1">
 <p><strong>NOTE:</strong> For some shells, e.g. <em>zsh</em>, you may need to put the package
-names into single quotes, i.e. use <code>pip install 'python-sat[pblib,aiger]'</code>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+names into single quotes, i.e. use <code>pip install 'python-sat[aiger,approxmc,pblib]'</code>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
