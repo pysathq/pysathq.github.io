@@ -193,14 +193,22 @@
 basic information on what PySAT is, please, see <a class="reference external" href="https://pysathq.github.io">the main project website</a>.</p>
 <section id="api-documentation">
 <h2>API documentation<a class="headerlink" href="#api-documentation" title="Permalink to this headline">#</a></h2>
-<p>The PySAT toolkit has four core modules: <a class="reference internal" href="api/card.html#module-pysat.card" title="pysat.card"><code class="xref py py-mod docutils literal notranslate"><span class="pre">card</span></code></a>, <a class="reference internal" href="api/formula.html#module-pysat.formula" title="pysat.formula"><code class="xref py py-mod docutils literal notranslate"><span class="pre">formula</span></code></a>,
-<a class="reference internal" href="api/pb.html#module-pysat.pb" title="pysat.pb"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pb</span></code></a> and <a class="reference internal" href="api/solvers.html#module-pysat.solvers" title="pysat.solvers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">solvers</span></code></a>. The three of them (<a class="reference internal" href="api/card.html#module-pysat.card" title="pysat.card"><code class="xref py py-mod docutils literal notranslate"><span class="pre">card</span></code></a>, <a class="reference internal" href="api/pb.html#module-pysat.pb" title="pysat.pb"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pb</span></code></a>
-and <a class="reference internal" href="api/solvers.html#module-pysat.solvers" title="pysat.solvers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">solvers</span></code></a>) are Python wrappers for the code originally implemented
-in the C/C++ languages while the <a class="reference internal" href="api/formula.html#module-pysat.formula" title="pysat.formula"><code class="xref py py-mod docutils literal notranslate"><span class="pre">formula</span></code></a> module is a <em>pure</em> Python
-module. Version <em>0.1.4.dev0</em> of PySAT brings a new module called <code class="xref py py-mod docutils literal notranslate"><span class="pre">pb</span></code>,
-which is a wrapper for the basic functionality of a third-party library
-<a class="reference external" href="https://pypi.org/project/pypblib/">PyPBLib</a> developed by the <a class="reference external" href="http://ulog.udl.cat/">Logic
-Optimization Group</a> of the University of Lleida.</p>
+<p>The PySAT toolkit has five core modules: <a class="reference internal" href="api/card.html#module-pysat.card" title="pysat.card"><code class="xref py py-mod docutils literal notranslate"><span class="pre">card</span></code></a>, <a class="reference internal" href="api/formula.html#module-pysat.formula" title="pysat.formula"><code class="xref py py-mod docutils literal notranslate"><span class="pre">formula</span></code></a>,
+<a class="reference internal" href="api/pb.html#module-pysat.pb" title="pysat.pb"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pb</span></code></a>, <a class="reference internal" href="api/process.html#module-pysat.process" title="pysat.process"><code class="xref py py-mod docutils literal notranslate"><span class="pre">process</span></code></a> and <a class="reference internal" href="api/solvers.html#module-pysat.solvers" title="pysat.solvers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">solvers</span></code></a>. The four of them
+(<a class="reference internal" href="api/card.html#module-pysat.card" title="pysat.card"><code class="xref py py-mod docutils literal notranslate"><span class="pre">card</span></code></a>, <a class="reference internal" href="api/pb.html#module-pysat.pb" title="pysat.pb"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pb</span></code></a>, <a class="reference internal" href="api/process.html#module-pysat.process" title="pysat.process"><code class="xref py py-mod docutils literal notranslate"><span class="pre">process</span></code></a> and <a class="reference internal" href="api/solvers.html#module-pysat.solvers" title="pysat.solvers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">solvers</span></code></a>) are Python
+wrappers for the code originally implemented in the C/C++ languages while the
+<a class="reference internal" href="api/formula.html#module-pysat.formula" title="pysat.formula"><code class="xref py py-mod docutils literal notranslate"><span class="pre">formula</span></code></a> module is a <em>pure</em> Python module. Version <em>0.1.4.dev0</em> of
+PySAT brings a new module called <a class="reference internal" href="api/pb.html#module-pysat.pb" title="pysat.pb"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pb</span></code></a>, which is a wrapper for the basic
+functionality of a third-party library <a class="reference external" href="https://pypi.org/project/pypblib/">PyPBLib</a> developed by the <a class="reference external" href="http://ulog.udl.cat/">Logic Optimization
+Group</a> of the University of Lleida.</p>
+<p>A supplementary sixth module <code class="xref py py-mod docutils literal notranslate"><span class="pre">examples</span></code> presents a list of scripts,
+which are supposed to demonstrate how the toolkit can be used for practical
+problem solving. The module includes a formula generator, several MaxSAT
+solvers including an award-winning RC2, a few (S)MUS extractors and
+enumerators as well as MCS enumerators, among other scripts.</p>
+<p>Finally, an additional seventh module <code class="xref py py-mod docutils literal notranslate"><span class="pre">allies</span></code> brought by version
+<em>0.1.8.dev3</em> is meant to provide access to a number of third-party tools
+important for practical SAT-based problem solving.</p>
 <section id="core-pysat-modules">
 <h3>Core PySAT modules<a class="headerlink" href="#core-pysat-modules" title="Permalink to this headline">#</a></h3>
 <div class="toctree-wrapper compound">
@@ -308,7 +316,8 @@ Optimization Group</a> of the University of Lleida.</p>
 <section id="supplementary-allies-package">
 <h3>Supplementary <code class="xref py py-mod docutils literal notranslate"><span class="pre">allies</span></code> package<a class="headerlink" href="#supplementary-allies-package" title="Permalink to this headline">#</a></h3>
 <p>This module provides interface to a list of external tools useful in practical
-SAT-based problem solving.</p>
+SAT-based problem solving. Although only ApproxMCv4 is currently present here,
+the list of tools will grow.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api/allies/approxmc.html">ApproxMC model counter (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.allies.approxmc</span></code>)</a><ul>
