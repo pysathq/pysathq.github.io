@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 0.1.8.dev3 documentation</title>
+    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 0.1.8.dev4 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 0.1.8.dev3)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 0.1.8.dev4)</strong></a>
       </div>
       
     </div>
@@ -669,6 +669,31 @@ comment lines can be specified in the <code class="docutils literal notranslate"
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="pysat.formula.CNF.to_dimacs">
+<span class="sig-name descname"><span class="pre">to_dimacs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.CNF.to_dimacs" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the current state of the object in DIMACS format.</p>
+<p>For example, if ‘some-file.cnf’ contains:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="n">Example</span>
+<span class="n">p</span> <span class="n">cnf</span> <span class="mi">3</span> <span class="mi">3</span>
+<span class="o">-</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">0</span>
+<span class="o">-</span><span class="mi">2</span> <span class="mi">3</span> <span class="mi">0</span>
+<span class="o">-</span><span class="mi">3</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Then you can obtain the DIMACS with:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">CNF</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;some-file.cnf&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">to_dimacs</span><span class="p">())</span>
+<span class="go">c Example</span>
+<span class="go">p cnf 3 3</span>
+<span class="go">-1 2 0</span>
+<span class="go">-2 3 0</span>
+<span class="go">-3 0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="pysat.formula.CNF.to_file">
 <span class="sig-name descname"><span class="pre">to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comments</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compress_with</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'use_ext'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.CNF.to_file" title="Permalink to this definition">#</a></dt>
 <dd><p>The method is for saving a CNF formula into a file in the DIMACS
@@ -937,6 +962,31 @@ You may want to use Z3’s API instead (see its PB interface).</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># the formula is filled with a bunch of clauses</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;some-file.lp&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">cnf</span><span class="o">.</span><span class="n">to_alien</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;lp&#39;</span><span class="p">)</span>  <span class="c1"># writing to the file pointer</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.formula.CNFPlus.to_dimacs">
+<span class="sig-name descname"><span class="pre">to_dimacs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.CNFPlus.to_dimacs" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the current state of the object in extended DIMACS format.</p>
+<p>For example, if ‘some-file.cnf’ contains:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="n">Example</span>
+<span class="n">p</span> <span class="n">cnf</span><span class="o">+</span> <span class="mi">7</span> <span class="mi">3</span>
+<span class="mi">1</span> <span class="o">-</span><span class="mi">2</span> <span class="mi">3</span> <span class="mi">5</span> <span class="o">-</span><span class="mi">7</span> <span class="o">&lt;=</span> <span class="mi">3</span>
+<span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="o">-</span><span class="mi">7</span> <span class="o">&gt;=</span> <span class="mi">2</span>
+<span class="mi">3</span> <span class="mi">5</span> <span class="mi">7</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Then you can obtain the DIMACS with:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">CNFPlus</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNFPlus</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;some-file.cnf&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">to_dimacs</span><span class="p">())</span>
+<span class="go">c Example</span>
+<span class="go">p cnf+ 7 3</span>
+<span class="go">3 5 7 0</span>
+<span class="go">1 -2 3 5 -7 &lt;= 3</span>
+<span class="go">-4 -5 -6 7 &lt;= 2</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1351,6 +1401,31 @@ comment lines can be specified in the <code class="docutils literal notranslate"
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="pysat.formula.WCNF.to_dimacs">
+<span class="sig-name descname"><span class="pre">to_dimacs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.WCNF.to_dimacs" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the current state of the object in extended DIMACS format.</p>
+<p>For example, if ‘some-file.cnf’ contains:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="n">Example</span>
+<span class="n">p</span> <span class="n">wcnf</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">10</span>
+<span class="mi">1</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">0</span>
+<span class="mi">2</span> <span class="o">-</span><span class="mi">2</span> <span class="mi">0</span>
+<span class="mi">10</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Then you can obtain the DIMACS with:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">WCNF</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;some-file.cnf&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">to_dimacs</span><span class="p">())</span>
+<span class="go">c Example</span>
+<span class="go">p wcnf 2 3 10</span>
+<span class="go">10 1 2 0</span>
+<span class="go">1 -1 0</span>
+<span class="go">2 -2 0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="pysat.formula.WCNF.to_file">
 <span class="sig-name descname"><span class="pre">to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comments</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compress_with</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'use_ext'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.WCNF.to_file" title="Permalink to this definition">#</a></dt>
 <dd><p>The method is for saving a WCNF formula into a file in the DIMACS
@@ -1607,6 +1682,32 @@ You may want to use Z3’s API instead (see its PB interface).</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># the formula is filled with a bunch of clauses</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;some-file.lp&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">cnf</span><span class="o">.</span><span class="n">to_alien</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;lp&#39;</span><span class="p">)</span>  <span class="c1"># writing to the file pointer</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.formula.WCNFPlus.to_dimacs">
+<span class="sig-name descname"><span class="pre">to_dimacs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.WCNFPlus.to_dimacs" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the current state of the object in extended DIMACS format.</p>
+<p>For example, if ‘some-file.cnf’ contains:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="n">Example</span>
+<span class="n">p</span> <span class="n">wcnf</span><span class="o">+</span> <span class="mi">7</span> <span class="mi">3</span> <span class="mi">10</span>
+<span class="mi">10</span> <span class="mi">1</span> <span class="o">-</span><span class="mi">2</span> <span class="mi">3</span> <span class="mi">5</span> <span class="o">-</span><span class="mi">7</span> <span class="o">&lt;=</span> <span class="mi">3</span>
+<span class="mi">10</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="o">-</span><span class="mi">7</span> <span class="o">&gt;=</span> <span class="mi">2</span>
+<span class="mi">5</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">7</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Then you can obtain the DIMACS with:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">WCNFPlus</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">WCNFPlus</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;some-file.cnf&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">to_dimacs</span><span class="p">())</span>
+<span class="go">c Example</span>
+<span class="go">p wcnf+ 7 4 10</span>
+<span class="go">10 -1 3 5 0</span>
+<span class="go">5 3 5 7 0</span>
+<span class="go">10 1 -2 3 5 -7 &lt;= 3</span>
+<span class="go">10 -4 -5 -6 7 &lt;= 2</span>
 </pre></div>
 </div>
 </dd></dl>

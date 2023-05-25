@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>RC2 MaxSAT solver (pysat.examples.rc2) &#8212; PySAT 0.1.8.dev3 documentation</title>
+    <title>RC2 MaxSAT solver (pysat.examples.rc2) &#8212; PySAT 0.1.8.dev4 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 0.1.8.dev3)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 0.1.8.dev4)</strong></a>
       </div>
       
     </div>
@@ -738,7 +738,7 @@ detailed in <a class="footnote-reference brackets" href="#id6" id="id21">1</a>.<
 
 <dl class="py method">
 <dt class="sig sig-object py" id="examples.rc2.RC2.set_bound">
-<span class="sig-name descname"><span class="pre">set_bound</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tobj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rhs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2.set_bound" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_bound</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tobj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rhs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2.set_bound" title="Permalink to this definition">#</a></dt>
 <dd><p>Given a totalizer sum and its right-hand side to be
 enforced, the method creates a new sum assumption literal,
 which will be used in the following SAT oracle calls.</p>
@@ -842,15 +842,6 @@ activates more soft clauses by invoking
 optimization level after it is solved. This includes
 <em>hardening</em> some of the soft clauses (depending on their
 remaining weights) and also garbage collection.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="examples.rc2.RC2Stratified.inflate_sum">
-<span class="sig-name descname"><span class="pre">inflate_sum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2Stratified.inflate_sum" title="Permalink to this definition">#</a></dt>
-<dd><p>Bump up the weight for a next-bound sum literal if it already
-exists while the previous-bound sum literal is split up such that
-<code class="docutils literal notranslate"><span class="pre">lit</span></code> gets an additional weight. If the literal was inactive
-earlier, it is activated at the current level.</p>
 </dd></dl>
 
 <dl class="py method">
