@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Minimum/minimal hitting set solver (pysat.examples.hitman) &#8212; PySAT 0.1.8.dev4 documentation</title>
+    <title>Minimum/minimal hitting set solver (pysat.examples.hitman) &#8212; PySAT 0.1.8.dev5 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 0.1.8.dev4)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 0.1.8.dev5)</strong></a>
       </div>
       
     </div>
@@ -188,7 +188,7 @@
 </section>
 <section id="module-description">
 <h2>Module description<a class="headerlink" href="#module-description" title="Permalink to this headline">#</a></h2>
-<p>A SAT-based implementation of an implicit minimal hitting set <a class="footnote-reference brackets" href="#id7" id="id1">1</a>
+<p>A SAT-based implementation of an implicit minimal hitting set <a class="footnote-reference brackets" href="#id8" id="id1">1</a>
 enumerator. The implementation is capable of computing/enumerating
 cardinality- and subset-minimal hitting sets of a given set of sets.
 Cardinality-minimal hitting set enumeration can be seen as ordered (sorted
@@ -204,36 +204,43 @@ comprises unit clauses of the form <span class="math notranslate nohighlight">\(
 <span class="math notranslate nohighlight">\(e_{j}\in E\)</span>, each having weight 1.</p>
 <p>Taking into account this problem formulation as MaxSAT, ordered hitting
 enumeration is done with the use of the state-of-the-art MaxSAT solver
-called <a class="reference internal" href="rc2.html#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2</span></code></a> <a class="footnote-reference brackets" href="#id8" id="id2">2</a> <a class="footnote-reference brackets" href="#id9" id="id3">3</a> <a class="footnote-reference brackets" href="#id10" id="id4">4</a> while unordered hitting set enumeration
+called <a class="reference internal" href="rc2.html#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2</span></code></a> <a class="footnote-reference brackets" href="#id9" id="id2">2</a> <a class="footnote-reference brackets" href="#id10" id="id3">3</a> <a class="footnote-reference brackets" href="#id11" id="id4">4</a> while unordered hitting set enumeration
 is done through the <em>minimal correction subset</em> (MCS) enumeration, e.g.
-using the <a class="reference internal" href="lbx.html#examples.lbx.LBX" title="examples.lbx.LBX"><code class="xref py py-class docutils literal notranslate"><span class="pre">LBX</span></code></a>- <a class="footnote-reference brackets" href="#id11" id="id5">5</a> or <a class="reference internal" href="mcsls.html#examples.mcsls.MCSls" title="examples.mcsls.MCSls"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCSls</span></code></a>-like <a class="footnote-reference brackets" href="#id12" id="id6">6</a> MCS enumerators.</p>
+using the <a class="reference internal" href="lbx.html#examples.lbx.LBX" title="examples.lbx.LBX"><code class="xref py py-class docutils literal notranslate"><span class="pre">LBX</span></code></a>- <a class="footnote-reference brackets" href="#id12" id="id5">5</a> or <a class="reference internal" href="mcsls.html#examples.mcsls.MCSls" title="examples.mcsls.MCSls"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCSls</span></code></a>-like <a class="footnote-reference brackets" href="#id13" id="id6">6</a> MCS enumerators.</p>
+<p>Note that this implementation additionally supports <em>pure</em> SAT-based
+minimal hitting set enumeration with the use of preferred variable
+polarity setting following the approach of <a class="footnote-reference brackets" href="#id14" id="id7">7</a>.</p>
 <dl class="footnote brackets">
-<dt class="label" id="id7"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>Erick Moreno-Centeno, Richard M. Karp. <em>The Implicit Hitting Set
 Approach to Solve Combinatorial Optimization Problems with an
 Application to Multigenome Alignment</em>. Operations Research 61(2). 2013.
 pp. 453-468</p>
 </dd>
-<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
 <dd><p>António Morgado, Carmine Dodaro, Joao Marques-Silva. <em>Core-Guided
 MaxSAT with Soft Cardinality Constraints</em>. CP 2014. pp. 564-573</p>
 </dd>
-<dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
 <dd><p>António Morgado, Alexey Ignatiev, Joao Marques-Silva. <em>MSCG: Robust
 Core-Guided MaxSAT Solving</em>. JSAT 9. 2014. pp. 129-134</p>
 </dd>
-<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
+<dt class="label" id="id11"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
 <dd><p>Alexey Ignatiev, António Morgado, Joao Marques-Silva. <em>RC2: a
 Python-based MaxSAT Solver</em>. MaxSAT Evaluation 2018. p. 22</p>
 </dd>
-<dt class="label" id="id11"><span class="brackets"><a class="fn-backref" href="#id5">5</a></span></dt>
+<dt class="label" id="id12"><span class="brackets"><a class="fn-backref" href="#id5">5</a></span></dt>
 <dd><p>Carlos Mencía, Alessandro Previti, Joao Marques-Silva.
 <em>Literal-Based MCS Extraction</em>. IJCAI. 2015. pp. 1973-1979</p>
 </dd>
-<dt class="label" id="id12"><span class="brackets"><a class="fn-backref" href="#id6">6</a></span></dt>
+<dt class="label" id="id13"><span class="brackets"><a class="fn-backref" href="#id6">6</a></span></dt>
 <dd><p>Joao Marques-Silva, Federico Heras, Mikolás Janota,
 Alessandro Previti, Anton Belov. <em>On Computing Minimal Correction
 Subsets</em>. IJCAI. 2013. pp. 615-622</p>
+</dd>
+<dt class="label" id="id14"><span class="brackets"><a class="fn-backref" href="#id7">7</a></span></dt>
+<dd><p>Enrico Giunchiglia, Marco Maratea. <em>Solving Optimization Problems
+with DLL</em>. ECAI 2006. pp. 377-381</p>
 </dd>
 </dl>
 <p><a class="reference internal" href="#examples.hitman.Hitman" title="examples.hitman.Hitman"><code class="xref py py-class docutils literal notranslate"><span class="pre">Hitman</span></code></a> supports hitting set enumeration in the <em>implicit</em> manner,
@@ -281,7 +288,7 @@ enumeration.</p>
 </pre></div>
 </div>
 <p>Finally, implicit hitting set enumeration can be used in practical problem
-solving. As an example, let us show the basic flow of a MaxHS-like <a class="footnote-reference brackets" href="#id14" id="id13">7</a>
+solving. As an example, let us show the basic flow of a MaxHS-like <a class="footnote-reference brackets" href="#id16" id="id15">8</a>
 algorithm for MaxSAT:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.hitman</span> <span class="kn">import</span> <span class="n">Hitman</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Solver</span>
@@ -307,7 +314,7 @@ algorithm for MaxSAT:</p>
 </pre></div>
 </div>
 <dl class="footnote brackets">
-<dt class="label" id="id14"><span class="brackets"><a class="fn-backref" href="#id13">7</a></span></dt>
+<dt class="label" id="id16"><span class="brackets"><a class="fn-backref" href="#id15">8</a></span></dt>
 <dd><p>Jessica Davies, Fahiem Bacchus. <em>Solving MAXSAT by Solving a
 Sequence of Simpler SAT Instances</em>. CP 2011. pp. 225-239</p>
 </dd>
@@ -331,17 +338,22 @@ enumerator (either <a class="reference internal" href="lbx.html#examples.lbx.LBX
 case, the hitting sets enumerated are ordered by size (smallest size
 hitting sets are computed first), i.e. <em>sorted</em>. In the latter case,
 subset-minimal hitting are enumerated in an arbitrary order, i.e.
-<em>unsorted</em>.</p>
-<p>This is handled with the use of parameter <code class="docutils literal notranslate"><span class="pre">htype</span></code>, which is set to be
-<code class="docutils literal notranslate"><span class="pre">'sorted'</span></code> by default. The MaxSAT-based enumerator can be chosen by
-setting <code class="docutils literal notranslate"><span class="pre">htype</span></code> to one of the following values: <code class="docutils literal notranslate"><span class="pre">'maxsat'</span></code>,
-<code class="docutils literal notranslate"><span class="pre">'mxsat'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'rc2'</span></code>. Alternatively, by setting it to <code class="docutils literal notranslate"><span class="pre">'mcs'</span></code> or
-<code class="docutils literal notranslate"><span class="pre">'lbx'</span></code>, a user can enforce using the <a class="reference internal" href="lbx.html#examples.lbx.LBX" title="examples.lbx.LBX"><code class="xref py py-class docutils literal notranslate"><span class="pre">LBX</span></code></a> MCS enumerator.
-If <code class="docutils literal notranslate"><span class="pre">htype</span></code> is set to <code class="docutils literal notranslate"><span class="pre">'mcsls'</span></code>, the <a class="reference internal" href="mcsls.html#examples.mcsls.MCSls" title="examples.mcsls.MCSls"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCSls</span></code></a> enumerator is
-used.</p>
-<p>In either case, an underlying problem solver can use a SAT oracle
-specified as an input parameter <code class="docutils literal notranslate"><span class="pre">solver</span></code>. The default SAT solver is
-Glucose3 (specified as <code class="docutils literal notranslate"><span class="pre">g3</span></code>, see <a class="reference internal" href="../solvers.html#pysat.solvers.SolverNames" title="pysat.solvers.SolverNames"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolverNames</span></code></a> for details).</p>
+<em>unsorted</em>. Additionally, Hitman supports pure SAT-based minimal
+hitting set enumeration with the use of polarity preferences.</p>
+<p>This is handled with the use of parameter <code class="docutils literal notranslate"><span class="pre">htype</span></code>, which is set to
+be <code class="docutils literal notranslate"><span class="pre">'sorted'</span></code> by default. The MaxSAT-based enumerator can be chosen
+by setting <code class="docutils literal notranslate"><span class="pre">htype</span></code> to one of the following values: <code class="docutils literal notranslate"><span class="pre">'maxsat'</span></code>,
+<code class="docutils literal notranslate"><span class="pre">'mxsat'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'rc2'</span></code>. Alternatively, by setting it to <code class="docutils literal notranslate"><span class="pre">'mcs'</span></code>
+or <code class="docutils literal notranslate"><span class="pre">'lbx'</span></code>, a user can enforce using the <a class="reference internal" href="lbx.html#examples.lbx.LBX" title="examples.lbx.LBX"><code class="xref py py-class docutils literal notranslate"><span class="pre">LBX</span></code></a> MCS
+enumerator. If <code class="docutils literal notranslate"><span class="pre">htype</span></code> is set to <code class="docutils literal notranslate"><span class="pre">'mcsls'</span></code>, the <a class="reference internal" href="mcsls.html#examples.mcsls.MCSls" title="examples.mcsls.MCSls"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCSls</span></code></a>
+enumerator is used. Finally, value <code class="docutils literal notranslate"><span class="pre">'sat'</span></code> can be given, in which
+case minimal hitting set enumeration will performed by means of a SAT
+solver (can be either MiniSat-GH or Lingeling) with polarity setting.</p>
+<p>In either case, unless pure SAT-based hitting set enumeration is
+selected, an underlying problem solver can use a SAT oracle specified
+as an input parameter <code class="docutils literal notranslate"><span class="pre">solver</span></code>. The default SAT solver is Glucose3
+(specified as <code class="docutils literal notranslate"><span class="pre">g3</span></code>, see <a class="reference internal" href="../solvers.html#pysat.solvers.SolverNames" title="pysat.solvers.SolverNames"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolverNames</span></code></a> for details). For
+SAT-based enumeration, MinisatGH is used as an underlying SAT solver.</p>
 <p>Objects of class <a class="reference internal" href="#examples.hitman.Hitman" title="examples.hitman.Hitman"><code class="xref py py-class docutils literal notranslate"><span class="pre">Hitman</span></code></a> can be bootstrapped with an iterable
 of iterables, e.g. a list of lists. This is handled using the
 <code class="docutils literal notranslate"><span class="pre">bootstrap_with</span></code> parameter. Each set to hit can comprise elements of

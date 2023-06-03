@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>SAT solvers’ API (pysat.solvers) &#8212; PySAT 0.1.8.dev4 documentation</title>
+    <title>SAT solvers’ API (pysat.solvers) &#8212; PySAT 0.1.8.dev5 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 0.1.8.dev4)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 0.1.8.dev5)</strong></a>
       </div>
       
     </div>
@@ -611,6 +611,36 @@ the number of conflicts is disabled.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="pysat.solvers.Solver.dec_budget">
+<span class="sig-name descname"><span class="pre">dec_budget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">budget</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.dec_budget" title="Permalink to this definition">#</a></dt>
+<dd><p>Set limit (i.e. the upper bound) on the number of decisions in
+the next limited SAT call (see <a class="reference internal" href="#pysat.solvers.Solver.solve_limited" title="pysat.solvers.Solver.solve_limited"><code class="xref py py-meth docutils literal notranslate"><span class="pre">solve_limited()</span></code></a>). The limit
+value is given as a <code class="docutils literal notranslate"><span class="pre">budget</span></code> variable and is an integer greater
+than <code class="docutils literal notranslate"><span class="pre">0</span></code>. If the budget is set to <code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">-1</span></code>, the upper
+bound on the number of decisions is disabled.</p>
+<p>Note that this functionality is supported by <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical103</span></code>
+and <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical153</span></code> only!</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>budget</strong> (<em>int</em>) – the upper bound on the number of decisions.</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Cadical153</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.genhard</span> <span class="kn">import</span> <span class="n">Parity</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">Parity</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># too hard for a SAT solver</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">Cadical153</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">dec_budget</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>  <span class="c1"># doing at most 500 decisions</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">solve_limited</span><span class="p">())</span>  <span class="c1"># making a limited oracle call</span>
+<span class="go">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.delete">
 <span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.delete" title="Permalink to this definition">#</a></dt>
 <dd><p>Solver destructor, which must be called explicitly if the solver
@@ -844,7 +874,7 @@ the formula given to the solver.</p>
 the next limited SAT call (see <a class="reference internal" href="#pysat.solvers.Solver.solve_limited" title="pysat.solvers.Solver.solve_limited"><code class="xref py py-meth docutils literal notranslate"><span class="pre">solve_limited()</span></code></a>). The limit
 value is given as a <code class="docutils literal notranslate"><span class="pre">budget</span></code> variable and is an integer greater
 than <code class="docutils literal notranslate"><span class="pre">0</span></code>. If the budget is set to <code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">-1</span></code>, the upper
-bound on the number of conflicts is disabled.</p>
+bound on the number of propagations is disabled.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>budget</strong> (<em>int</em>) – the upper bound on the number of propagations.</p>
