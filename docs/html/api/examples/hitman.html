@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Minimum/minimal hitting set solver (pysat.examples.hitman) &#8212; PySAT 0.1.8.dev5 documentation</title>
+    <title>Minimum/minimal hitting set solver (pysat.examples.hitman) &#8212; PySAT 0.1.8.dev6 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 0.1.8.dev5)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 0.1.8.dev6)</strong></a>
       </div>
       
     </div>
@@ -348,7 +348,8 @@ or <code class="docutils literal notranslate"><span class="pre">'lbx'</span></co
 enumerator. If <code class="docutils literal notranslate"><span class="pre">htype</span></code> is set to <code class="docutils literal notranslate"><span class="pre">'mcsls'</span></code>, the <a class="reference internal" href="mcsls.html#examples.mcsls.MCSls" title="examples.mcsls.MCSls"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCSls</span></code></a>
 enumerator is used. Finally, value <code class="docutils literal notranslate"><span class="pre">'sat'</span></code> can be given, in which
 case minimal hitting set enumeration will performed by means of a SAT
-solver (can be either MiniSat-GH or Lingeling) with polarity setting.</p>
+solver (can be either MiniSat-GH, or Lingeling, or CaDiCaL 153) with
+polarity setting.</p>
 <p>In either case, unless pure SAT-based hitting set enumeration is
 selected, an underlying problem solver can use a SAT oracle specified
 as an input parameter <code class="docutils literal notranslate"><span class="pre">solver</span></code>. The default SAT solver is Glucose3
@@ -516,6 +517,15 @@ i.e. instances of class <a class="reference internal" href="#examples.hitman.Ato
 <dt class="sig sig-object py" id="examples.hitman.Hitman.oracle_time">
 <span class="sig-name descname"><span class="pre">oracle_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.oracle_time" title="Permalink to this definition">#</a></dt>
 <dd><p>Report the total SAT solving time.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="examples.hitman.Hitman.switch_phase">
+<span class="sig-name descname"><span class="pre">switch_phase</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.switch_phase" title="Permalink to this definition">#</a></dt>
+<dd><p>If a pure SAT-based hitting set enumeration is used, it is
+possible to instruct it to switch from enumerating target sets to
+enumerating dual sets, by polarity switching. This is what this
+method enables a user to do.</p>
 </dd></dl>
 
 </dd></dl>

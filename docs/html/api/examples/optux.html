@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>OptUx optimal MUS enumerator (pysat.examples.optux) &#8212; PySAT 0.1.8.dev5 documentation</title>
+    <title>OptUx optimal MUS enumerator (pysat.examples.optux) &#8212; PySAT 0.1.8.dev6 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -70,7 +70,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 0.1.8.dev5)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 0.1.8.dev6)</strong></a>
       </div>
       
     </div>
@@ -267,7 +267,7 @@ number (or <em>all</em>) of its top optimal MUSes.</p>
 <h2>Module details<a class="headerlink" href="#module-details" title="Permalink to this headline">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="examples.optux.OptUx">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">examples.optux.</span></span><span class="sig-name descname"><span class="pre">OptUx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formula</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'g3'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adapt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cover</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dcalls</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exhaust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unsorted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.optux.OptUx" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">examples.optux.</span></span><span class="sig-name descname"><span class="pre">OptUx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formula</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'g3'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adapt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cover</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dcalls</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exhaust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">puresat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unsorted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.optux.OptUx" title="Permalink to this definition">#</a></dt>
 <dd><p>A simple Python version of the implicit hitting set based optimal MUS
 extractor and enumerator. Given a (weighted) (partial) CNF formula,
 i.e. formula in the <a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a> format, this class can be used to
@@ -277,7 +277,7 @@ implementation of Forqes <a class="footnote-reference brackets" href="#id7" id="
 which however aren’t applied in Forqes by default.</p>
 <p>As a result, OptUx applies exhaustive <em>disjoint</em> minimal correction
 subset (MCS) enumeration <a class="footnote-reference brackets" href="#id7" id="id12">1</a>, <a class="footnote-reference brackets" href="#id8" id="id13">2</a>, <a class="footnote-reference brackets" href="#id9" id="id14">3</a>, <a class="footnote-reference brackets" href="#id10" id="id15">4</a> with the incremental
-use of RC2 <a class="footnote-reference brackets" href="#id18" id="id16">5</a> as an underlying MaxSAT solver. Once disjoint MCSes
+use of RC2 <a class="footnote-reference brackets" href="#id20" id="id16">5</a> as an underlying MaxSAT solver. Once disjoint MCSes
 are enumerated, they are used to bootstrap a hitting set solver. This
 implementation uses <a class="reference internal" href="hitman.html#examples.hitman.Hitman" title="examples.hitman.Hitman"><code class="xref py py-class docutils literal notranslate"><span class="pre">Hitman</span></code></a> as a hitting set solver, which is
 again based on RC2.</p>
@@ -287,7 +287,7 @@ subsets detected to minimal correction subsets. As a result,
 correction subsets computed in the main loop are added to
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Hitman</span></code> <em>unreduced</em>.</p>
 <p><a class="reference internal" href="#examples.optux.OptUx" title="examples.optux.OptUx"><code class="xref py py-class docutils literal notranslate"><span class="pre">OptUx</span></code></a> can use any SAT solver available in PySAT. The default
-SAT solver to use is <code class="docutils literal notranslate"><span class="pre">g3</span></code>, which stands for Glucose 3 <a class="footnote-reference brackets" href="#id19" id="id17">6</a> (see
+SAT solver to use is <code class="docutils literal notranslate"><span class="pre">g3</span></code>, which stands for Glucose 3 <a class="footnote-reference brackets" href="#id21" id="id17">6</a> (see
 <a class="reference internal" href="../solvers.html#pysat.solvers.SolverNames" title="pysat.solvers.SolverNames"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolverNames</span></code></a>). Boolean parameters <code class="docutils literal notranslate"><span class="pre">adapt</span></code>, <code class="docutils literal notranslate"><span class="pre">exhaust</span></code>, and
 <code class="docutils literal notranslate"><span class="pre">minz</span></code> control whether or not the underlying <a class="reference internal" href="rc2.html#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2</span></code></a> oracles
 should apply detection and adaptation of intrinsic AtMost1
@@ -301,22 +301,37 @@ i.e. optimal MUSes are not guaranteed to go first. For this,
 <a class="reference internal" href="#examples.optux.OptUx" title="examples.optux.OptUx"><code class="xref py py-class docutils literal notranslate"><span class="pre">OptUx</span></code></a> applies LBX-like MCS enumeration (it uses <a class="reference internal" href="lbx.html#examples.lbx.LBX" title="examples.lbx.LBX"><code class="xref py py-class docutils literal notranslate"><span class="pre">LBX</span></code></a>
 directly). Parameter <code class="docutils literal notranslate"><span class="pre">dcalls</span></code> can be applied to instruct the
 underlying MCS enumerator to apply clause D oracle calls.</p>
+<p>Another optional paramater <code class="docutils literal notranslate"><span class="pre">puresat</span></code> can be used to instruct OptUx
+to run a purely SAT-based minimal hitting set enumerator, following
+the ideas of <a class="footnote-reference brackets" href="#id22" id="id18">7</a>. The value of <code class="docutils literal notranslate"><span class="pre">puresat</span></code> can be either <code class="docutils literal notranslate"><span class="pre">False</span></code>,
+meaning that no pure SAT enumeration is to be done or be equal to
+<code class="docutils literal notranslate"><span class="pre">'mgh'</span></code>, <code class="docutils literal notranslate"><span class="pre">'cd15'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'lgl'</span></code> - these are the solvers that
+support <em>hard</em> phase setting, i.e. user preferences will not be
+overwritten by the <em>phase saving</em> heuristic <a class="footnote-reference brackets" href="#id23" id="id19">8</a>.</p>
 <p>Finally, one more optional input parameter <code class="docutils literal notranslate"><span class="pre">cover</span></code> is to be used
 when exhaustive enumeration of MUSes is not necessary and the tool can
 stop as soon as a given formula is covered by the set of currently
 computed MUSes. This can be made to work if the soft clauses of
 <code class="docutils literal notranslate"><span class="pre">formula</span></code> are of size 1.</p>
 <dl class="footnote brackets">
-<dt class="label" id="id18"><span class="brackets"><a class="fn-backref" href="#id16">5</a></span></dt>
+<dt class="label" id="id20"><span class="brackets"><a class="fn-backref" href="#id16">5</a></span></dt>
 <dd><p>Alexey Ignatiev, Antonio Morgado, Joao Marques-Silva. <em>RC2: an
 Efficient MaxSAT Solver</em>. J. Satisf. Boolean Model. Comput. 11(1).
 2019. pp. 53-64</p>
 </dd>
-<dt class="label" id="id19"><span class="brackets"><a class="fn-backref" href="#id17">6</a></span></dt>
+<dt class="label" id="id21"><span class="brackets"><a class="fn-backref" href="#id17">6</a></span></dt>
 <dd><p>Gilles Audemard, Jean-Marie Lagniez, Laurent Simon.
 <em>Improving Glucose for Incremental SAT Solving with
 Assumptions: Application to MUS Extraction</em>. SAT 2013.
 pp. 309-317</p>
+</dd>
+<dt class="label" id="id22"><span class="brackets"><a class="fn-backref" href="#id18">7</a></span></dt>
+<dd><p>Enrico Giunchiglia, Marco Maratea. <em>Solving Optimization
+Problems with DLL</em>. ECAI 2006. pp. 377-381</p>
+</dd>
+<dt class="label" id="id23"><span class="brackets"><a class="fn-backref" href="#id19">8</a></span></dt>
+<dd><p>Knot Pipatsrisawat, Adnan Darwiche. <em>A Lightweight Component
+Caching Scheme for Satisfiability Solvers</em>. SAT 2007. pp. 294-299</p>
 </dd>
 </dl>
 <dl class="field-list simple">
@@ -329,6 +344,7 @@ pp. 309-317</p>
 <li><p><strong>dcalls</strong> (<em>bool</em>) – apply clause D oracle calls (for unsorted enumeration only)</p></li>
 <li><p><strong>exhaust</strong> (<em>bool</em>) – do core exhaustion</p></li>
 <li><p><strong>minz</strong> (<em>bool</em>) – do heuristic core reduction</p></li>
+<li><p><strong>puresat</strong> (<em>str</em>) – use pure SAT-based hitting set enumeration</p></li>
 <li><p><strong>unsorted</strong> (<em>bool</em>) – apply unsorted MUS enumeration</p></li>
 <li><p><strong>trim</strong> (<em>int</em>) – do core trimming at most this number of times</p></li>
 <li><p><strong>verbose</strong> (<em>int</em>) – verbosity level</p></li>

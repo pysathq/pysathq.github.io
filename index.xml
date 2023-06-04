@@ -82,7 +82,7 @@ more SAT solvers to support (e.g. CryptoMiniSat, RISS among many others) lower l
       
       <guid>https://pysathq.github.io/updates/</guid>
       <description>PySAT is being developed with the rolling release model, which means we do not deliver major releases from time to time. Instead, many small (sometimes tiny) and frequent updates are provided. As a result, upgrading your installation of the toolkit every now to keep it up to date and then is good idea.
-03.06.2023 (0.1.8.dev5) Exposed cadical&amp;rsquo;s limited solving capability. Added pure SAT-based minimal hitting set enumeration through the use of phase preferences.</description>
+04.06.2023 (0.1.8.dev6) Added parameter setting for CaDiCaL 153. Added an interface for preferred polarity setting in CaDiCaL 153.</description>
     </item>
     
     <item>

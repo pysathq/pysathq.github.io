@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>SAT solvers’ API (pysat.solvers) &#8212; PySAT 0.1.8.dev5 documentation</title>
+    <title>SAT solvers’ API (pysat.solvers) &#8212; PySAT 0.1.8.dev6 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 0.1.8.dev5)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 0.1.8.dev6)</strong></a>
       </div>
       
     </div>
@@ -608,6 +608,24 @@ the number of conflicts is disabled.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
 </pre></div>
 </div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.solvers.Solver.configure">
+<span class="sig-name descname"><span class="pre">configure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.configure" title="Permalink to this definition">#</a></dt>
+<dd><p>Configure <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical153</span></code> by setting some of the predefined
+parameters to selected values. Note that this method can be
+invoked only for <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical153</span></code> – no other solvers support
+this for now.</p>
+<p>Also note that this call must follow the creation of the new
+solver object; otherwise, an exception may be thrown.</p>
+<p>The list of available options of <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical153</span></code> and the
+corresponding values they can be assigned to is provided <a class="reference external" href="https://github.com/arminbiere/cadical/blob/master/src/options.hpp">here</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>parameters</strong> (<em>dict</em>) – parameter names mapped to integer values</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
