@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>SAT solvers’ API (pysat.solvers) &#8212; PySAT 0.1.8.dev7 documentation</title>
+    <title>SAT solvers’ API (pysat.solvers) &#8212; PySAT 0.1.8.dev8 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 0.1.8.dev7)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 0.1.8.dev8)</strong></a>
       </div>
       
     </div>
@@ -204,28 +204,31 @@
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Glucose4</span></code></p></td>
 <td><p>Glucose 4.1 SAT solver.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Lingeling</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Glucose42</span></code></p></td>
+<td><p>Glucose 4.2.1 SAT solver.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Lingeling</span></code></p></td>
 <td><p>Lingeling SAT solver.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MapleChrono</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MapleChrono</span></code></p></td>
 <td><p>MapleLCMDistChronoBT SAT solver.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MapleCM</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MapleCM</span></code></p></td>
 <td><p>MapleCM SAT solver.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Maplesat</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Maplesat</span></code></p></td>
 <td><p>MapleCOMSPS_LRB SAT solver.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mergesat3</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mergesat3</span></code></p></td>
 <td><p>MergeSat 3 SAT solver.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Minicard</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Minicard</span></code></p></td>
 <td><p>Minicard SAT solver.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Minisat22</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Minisat22</span></code></p></td>
 <td><p>MiniSat 2.2 SAT solver.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MinisatGH</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">MinisatGH</span></code></p></td>
 <td><p>MiniSat SAT solver (version from github).</p></td>
 </tr>
 </tbody>
@@ -239,6 +242,7 @@ solvers supported by PySAT are:</p>
 <li><p>CaDiCaL (<a class="reference external" href="https://github.com/arminbiere/cadical">rel-1.0.3</a>)</p></li>
 <li><p>Glucose (<a class="reference external" href="http://www.labri.fr/perso/lsimon/glucose/">3.0</a>)</p></li>
 <li><p>Glucose (<a class="reference external" href="http://www.labri.fr/perso/lsimon/glucose/">4.1</a>)</p></li>
+<li><p>Glucose (<a class="reference external" href="http://www.labri.fr/perso/lsimon/glucose/">4.2.1</a>)</p></li>
 <li><p>Lingeling (<a class="reference external" href="http://fmv.jku.at/lingeling/">bbc-9230380-160707</a>)</p></li>
 <li><p>MapleLCMDistChronoBT (<a class="reference external" href="http://sat2018.forsyte.tuwien.ac.at/solvers/main_and_glucose_hack/">SAT competition 2018 version</a>)</p></li>
 <li><p>MapleCM (<a class="reference external" href="http://sat2018.forsyte.tuwien.ac.at/solvers/main_and_glucose_hack/">SAT competition 2018 version</a>)</p></li>
@@ -333,11 +337,12 @@ literals), which makes the SAT calls harder.</p>
 <p>In order to shorten the description of the module, the classes providing
 direct access to the individual solvers, i.e. classes <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical103</span></code>,
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical153</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Gluecard3</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Gluecard4</span></code>,
-<code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose3</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose4</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Lingeling</span></code>,
-<code class="xref py py-class docutils literal notranslate"><span class="pre">MapleChrono</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">MapleCM</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Maplesat</span></code>,
-<code class="xref py py-class docutils literal notranslate"><span class="pre">Mergesat3</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Minicard</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Minisat22</span></code>, and
-<code class="xref py py-class docutils literal notranslate"><span class="pre">MinisatGH</span></code>, are <strong>omitted</strong>. They replicate the interface of
-the base class <a class="reference internal" href="#pysat.solvers.Solver" title="pysat.solvers.Solver"><code class="xref py py-class docutils literal notranslate"><span class="pre">Solver</span></code></a> and, thus, can be used the same exact way.</p>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose3</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose4</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose42</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Lingeling</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">MapleChrono</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">MapleCM</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Maplesat</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Mergesat3</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Minicard</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Minisat22</span></code>, and <code class="xref py py-class docutils literal notranslate"><span class="pre">MinisatGH</span></code>, are <strong>omitted</strong>. They
+replicate the interface of the base class <a class="reference internal" href="#pysat.solvers.Solver" title="pysat.solvers.Solver"><code class="xref py py-class docutils literal notranslate"><span class="pre">Solver</span></code></a> and, thus, can
+be used the same exact way.</p>
 </section>
 <section id="module-details">
 <h2>Module details<a class="headerlink" href="#module-details" title="Permalink to this headline">#</a></h2>
@@ -347,7 +352,7 @@ the base class <a class="reference internal" href="#pysat.solvers.Solver" title=
 <dd><p>This exception is raised when creating a new SAT solver whose name
 does not match any name in <a class="reference internal" href="#pysat.solvers.SolverNames" title="pysat.solvers.SolverNames"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolverNames</span></code></a>. The list of <em>known</em>
 solvers includes the names <cite>‘cadical103’</cite>, <cite>‘cadical153’</cite>,
-<cite>‘gluecard3’</cite>, <cite>‘gluecard4’</cite>, <cite>‘glucose3’</cite>, <cite>‘glucose4’</cite>,
+<cite>‘gluecard3’</cite>, <cite>‘gluecard4’</cite>, <cite>‘glucose3’</cite>, <cite>‘glucose4’</cite>, <cite>glucose42</cite>,
 <cite>‘lingeling’</cite>, <cite>‘maplechrono’</cite>, <cite>‘maplecm’</cite>, <cite>‘maplesat’</cite>,
 <cite>‘mergesat3’</cite>, <cite>‘minicard’</cite>, <cite>‘minisat22’</cite>, and <cite>‘minisatgh’</cite>.</p>
 <dl class="py method">
@@ -412,9 +417,9 @@ following:</p>
 arguments <code class="docutils literal notranslate"><span class="pre">bootstrap_with</span></code> and <code class="docutils literal notranslate"><span class="pre">use_timer</span></code>, solvers
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical103</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical153</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Lingeling</span></code>,
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Gluecard3</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Gluecard4</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose3</span></code>,
-<code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose4</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">MapleChrono</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">MapleCM</span></code>, and
-<code class="xref py py-class docutils literal notranslate"><span class="pre">Maplesat</span></code> can have additional default arguments. One such
-argument supported by is <a class="reference external" href="http://www.cs.utexas.edu/~marijn/drup/">DRUP proof</a> logging. This can be
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose4</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose42</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">MapleChrono</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">MapleCM</span></code>, and <code class="xref py py-class docutils literal notranslate"><span class="pre">Maplesat</span></code> can have additional default
+arguments. One such argument supported by is <a class="reference external" href="http://www.cs.utexas.edu/~marijn/drup/">DRUP proof</a> logging. This can be
 enabled by setting the <code class="docutils literal notranslate"><span class="pre">with_proof</span></code> argument to <code class="docutils literal notranslate"><span class="pre">True</span></code> (<code class="docutils literal notranslate"><span class="pre">False</span></code>
 by default):</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Lingeling</span>
@@ -430,10 +435,10 @@ by default):</p>
 </pre></div>
 </div>
 <p>Additionally, Glucose-based solvers, namely <code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose3</span></code>,
-<code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose4</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Gluecard3</span></code>, and <code class="xref py py-class docutils literal notranslate"><span class="pre">Gluecard4</span></code> have one
-more default argument <code class="docutils literal notranslate"><span class="pre">incr</span></code> (<code class="docutils literal notranslate"><span class="pre">False</span></code> by default), which enables
-incrementality features introduced in Glucose3 <a class="footnote-reference brackets" href="#id8" id="id6">3</a>. To summarize, the
-additional arguments of Glucose are:</p>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose4</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose42</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Gluecard3</span></code>, and
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Gluecard4</span></code> have one more default argument <code class="docutils literal notranslate"><span class="pre">incr</span></code> (<code class="docutils literal notranslate"><span class="pre">False</span></code>
+by default), which enables incrementality features introduced in
+Glucose3 <a class="footnote-reference brackets" href="#id8" id="id6">3</a>. To summarize, the additional arguments of Glucose are:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1234,6 +1239,7 @@ specifying a solver.</p>
 <span class="n">gluecard41</span>  <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;gc4&#39;</span><span class="p">,</span> <span class="s1">&#39;gc41&#39;</span><span class="p">,</span> <span class="s1">&#39;gluecard4&#39;</span><span class="p">,</span> <span class="s1">&#39;gluecard41&#39;</span><span class="p">)</span>
 <span class="n">glucose3</span>    <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;g3&#39;</span><span class="p">,</span> <span class="s1">&#39;g30&#39;</span><span class="p">,</span> <span class="s1">&#39;glucose3&#39;</span><span class="p">,</span> <span class="s1">&#39;glucose30&#39;</span><span class="p">)</span>
 <span class="n">glucose4</span>    <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;g4&#39;</span><span class="p">,</span> <span class="s1">&#39;g41&#39;</span><span class="p">,</span> <span class="s1">&#39;glucose4&#39;</span><span class="p">,</span> <span class="s1">&#39;glucose41&#39;</span><span class="p">)</span>
+<span class="n">glucose42</span>   <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;g42&#39;</span><span class="p">,</span> <span class="s1">&#39;g421&#39;</span><span class="p">,</span> <span class="s1">&#39;glucose42&#39;</span><span class="p">,</span> <span class="s1">&#39;glucose421&#39;</span><span class="p">)</span>
 <span class="n">lingeling</span>   <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;lgl&#39;</span><span class="p">,</span> <span class="s1">&#39;lingeling&#39;</span><span class="p">)</span>
 <span class="n">maplechrono</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;mcb&#39;</span><span class="p">,</span> <span class="s1">&#39;chrono&#39;</span><span class="p">,</span> <span class="s1">&#39;maplechrono&#39;</span><span class="p">)</span>
 <span class="n">maplecm</span>     <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;mcm&#39;</span><span class="p">,</span> <span class="s1">&#39;maplecm&#39;</span><span class="p">)</span>
