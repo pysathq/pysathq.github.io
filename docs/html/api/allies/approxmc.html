@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>ApproxMC model counter (pysat.allies.approxmc) &#8212; PySAT 0.1.8.dev10 documentation</title>
+    <title>ApproxMC model counter (pysat.allies.approxmc) &#8212; PySAT 0.1.8.dev11 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -33,6 +33,7 @@
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="UniGen almost-uniform sampler (pysat.allies.unigen)" href="unigen.html" />
     <link rel="prev" title="RC2 MaxSAT solver (pysat.examples.rc2)" href="../examples/rc2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -70,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 0.1.8.dev10)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 0.1.8.dev11)</strong></a>
       </div>
       
     </div>
@@ -187,11 +188,11 @@
 </section>
 <section id="module-description">
 <h2>Module description<a class="headerlink" href="#module-description" title="Permalink to this headline">#</a></h2>
-<p>This module provides interface <a class="reference external" href="https://github.com/meelgroup/approxmc/">ApproxMCv4</a>, a state-of-the-art
+<p>This module provides interface to <a class="reference external" href="https://github.com/meelgroup/approxmc/">ApproxMCv4</a>, a state-of-the-art
 <em>approximate</em> model counter utilising an improved version of CryptoMiniSat
-give approximate model counts to problems of size and complexity that are
-out of reach for earlier approximate model counters. The original work on
-ApproxMCv4 has been published in <a class="footnote-reference brackets" href="#id3" id="id1">1</a> and <a class="footnote-reference brackets" href="#id4" id="id2">2</a>.</p>
+to give approximate model counts to problems of size and complexity that
+are out of reach for earlier approximate model counters. The original work
+on ApproxMCv4 has been published in <a class="footnote-reference brackets" href="#id3" id="id1">1</a> and <a class="footnote-reference brackets" href="#id4" id="id2">2</a>.</p>
 <dl class="footnote brackets">
 <dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>Mate Soos, Kuldeep S. Meel. <em>BIRD: Engineering an Efficient CNF-XOR
@@ -287,7 +288,7 @@ used by ApproxMC. The value of <code class="docutils literal notranslate"><span 
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>formula</strong> (<a class="reference internal" href="../formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a>) – CNF formula</p></li>
-<li><p><strong>seed</strong> (<em>int</em>) – do core trimming at most this number of times</p></li>
+<li><p><strong>seed</strong> (<em>int</em>) – integer seed value</p></li>
 <li><p><strong>epsilon</strong> (<em>float</em>) – tolerance factor</p></li>
 <li><p><strong>delta</strong> (<em>float</em>) – confidence parameter</p></li>
 <li><p><strong>verbose</strong> (<em>int</em>) – verbosity level</p></li>
@@ -389,6 +390,13 @@ Delete the actual counter object and sets it to <code class="docutils literal no
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">RC2 MaxSAT solver (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.rc2</span></code>)</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="unigen.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">UniGen almost-uniform sampler (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.allies.unigen</span></code>)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
               

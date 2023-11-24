@@ -5,40 +5,34 @@
     <link>https://pysathq.github.io/</link>
     <description>Recent content on PySAT: SAT technology in Python</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://pysathq.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <atom:link href="https://pysathq.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Citing PySAT</title>
       <link>https://pysathq.github.io/citation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://pysathq.github.io/citation/</guid>
       <description>If PySAT has been significant to a project that leads to an academic publication, please, acknowledge that fact by citing PySAT:
 @inproceedings{imms-sat18, author = {Alexey Ignatiev and Antonio Morgado and Joao Marques{-}Silva}, title = {{PySAT:} {A} {Python} Toolkit for Prototyping with {SAT} Oracles}, booktitle = {SAT}, pages = {428--437}, year = {2018}, url = {https://doi.org/10.1007/978-3-319-94144-8_26}, doi = {10.1007/978-3-319-94144-8_26} } </description>
     </item>
-    
     <item>
       <title>Features</title>
       <link>https://pysathq.github.io/features/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://pysathq.github.io/features/</guid>
       <description>PySAT integrates a number of widely used state-of-the-art SAT solvers. All the provided solvers are the original low-level implementations installed along with PySAT. Note that the solvers&#39; source code is not a part of the project&#39;s source tree and is downloaded and patched at every PySAT installation. Note that originally the solvers&#39; source code was not distributed with PySAT, which resulted in sequence of download and patch operations for each solver during each installation of PySAT.</description>
     </item>
-    
     <item>
       <title>Get Help</title>
       <link>https://pysathq.github.io/gethelp/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://pysathq.github.io/gethelp/</guid>
       <description>Please see our issue tracker.</description>
     </item>
-    
     <item>
       <title>Get Started</title>
       <link>https://pysathq.github.io/getstarted/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://pysathq.github.io/getstarted/</guid>
       <description>The Scientific Python theme for Hugo The Scientific Python Hugo Theme is a theme for the Hugo static site generator based on the Fresh theme.
 To use the theme, you will need to download hugo and place it on your path.
@@ -46,55 +40,44 @@ Download and install Download the theme ZIP file and extract it.
 Copy the doc folder as a template of your new website:
 cp -r scientific-python-hugo-theme-main/doc ./my-website cd my-website Initialize git and add scientific-python-hugo-theme as a submodule:</description>
     </item>
-    
     <item>
       <title>Installation</title>
       <link>https://pysathq.github.io/installation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://pysathq.github.io/installation/</guid>
       <description>There are several ways to install PySAT. At this point, either way assumes you are using a POSIX-compliant operating system with GNU make and patch installed and available from the command line. Installation also relies on a C/C++ compiler supporting C++11, e.g. GCC or Clang, as well as the six Python package. Finally, in order to compile &amp;quot;C extensions&amp;quot; included as modules, the installer requires the headers of Python and zlib.</description>
     </item>
-    
     <item>
       <title>Shortcodes summary placeholder</title>
       <link>https://pysathq.github.io/shortcodes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://pysathq.github.io/shortcodes/</guid>
       <description>Please refer to the theme shortcode description list.</description>
     </item>
-    
     <item>
       <title>To-Do</title>
       <link>https://pysathq.github.io/todo/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://pysathq.github.io/todo/</guid>
       <description>PySAT toolkit is a work in progress. Although it can already be helpful in many practical settings (and it was successfully applied by its authors for a number of times), it would be great if some of the following additional features were implemented:
 more SAT solvers to support (e.g. CryptoMiniSat, RISS among many others) lower level access to some of the solvers&#39; internal parameters (e.g. variable activities, etc.) high-level support for arbitrary Boolean formulas (e.</description>
     </item>
-    
     <item>
       <title>Updates</title>
       <link>https://pysathq.github.io/updates/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://pysathq.github.io/updates/</guid>
       <description>PySAT is being developed with the rolling release model, which means we do not deliver major releases from time to time. Instead, many small (sometimes tiny) and frequent updates are provided. As a result, upgrading your installation of the toolkit every now to keep it up to date and then is good idea.
-13.10.2023 (0.1.8.dev10) Added assumption-based propagation functionality to CaDiCaL 1.5.3 (thanks to Zi Li Tan). 12.07.2023 (0.1.8.dev9) Updated proof logging in Glucose 4.</description>
+24.11.2023 (0.1.8.dev11) Added another external tool (UniGen3) to the module pysat.allies. 13.10.2023 (0.1.8.dev10) Added assumption-based propagation functionality to CaDiCaL 1.</description>
     </item>
-    
     <item>
       <title>Usage</title>
       <link>https://pysathq.github.io/usage/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://pysathq.github.io/usage/</guid>
       <description>Boolean variables in PySAT are represented as natural identifiers, e.g. numbers from $\mathbb{N}_{&amp;gt;0}$. A literal in PySAT is assumed to be an integer, e.g. -1 represents a literal $\neg{x_1}$ while $5$ represents a literal $x_5$. A clause is a list of literals, e.g. [-3, -2] is a clause $(\neg{x_3} \vee \neg{x_2})$.
 The following is a trivial example of PySAT usage:
 &amp;gt;&amp;gt;&amp;gt; from pysat.solvers import Glucose3 &amp;gt;&amp;gt;&amp;gt; &amp;gt;&amp;gt;&amp;gt; g = Glucose3() &amp;gt;&amp;gt;&amp;gt; g.</description>
     </item>
-    
   </channel>
 </rss>
