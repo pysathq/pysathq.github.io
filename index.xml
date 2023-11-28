@@ -60,7 +60,7 @@ cp -r scientific-python-hugo-theme-main/doc ./my-website cd my-website Initializ
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://pysathq.github.io/todo/</guid>
       <description>PySAT toolkit is a work in progress. Although it can already be helpful in many practical settings (and it was successfully applied by its authors for a number of times), it would be great if some of the following additional features were implemented:
-more SAT solvers to support (e.g. CryptoMiniSat, RISS among many others) lower level access to some of the solvers&#39; internal parameters (e.g. variable activities, etc.) high-level support for arbitrary Boolean formulas (e.</description>
+more SAT solvers to support (e.g. RISS, Intel (R) SAT Solver among many others) lower level access to some of the solvers&#39; internal parameters (e.g. variable activities, etc.</description>
     </item>
     <item>
       <title>Updates</title>
@@ -68,7 +68,7 @@ more SAT solvers to support (e.g. CryptoMiniSat, RISS among many others) lower l
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://pysathq.github.io/updates/</guid>
       <description>PySAT is being developed with the rolling release model, which means we do not deliver major releases from time to time. Instead, many small (sometimes tiny) and frequent updates are provided. As a result, upgrading your installation of the toolkit every now to keep it up to date and then is good idea.
-24.11.2023 (0.1.8.dev11) Added another external tool (UniGen3) to the module pysat.allies. 13.10.2023 (0.1.8.dev10) Added assumption-based propagation functionality to CaDiCaL 1.</description>
+28.11.2023 (0.1.8.dev12) Added (rudimentary) support of CryptoMiniSat5 by means of the pycryptosat package&amp;rsquo;s interface. 24.11.2023 (0.1.8.dev11) Added another external tool (UniGen3) to the module pysat.</description>
     </item>
     <item>
       <title>Usage</title>
