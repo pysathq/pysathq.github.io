@@ -61,7 +61,7 @@
       <link>https://pysathq.github.io/updates/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://pysathq.github.io/updates/</guid>
-      <description>PySAT is being developed with the rolling release model, which means we do not deliver major releases from time to time. Instead, many small (sometimes tiny) and frequent updates are provided. As a result, upgrading your installation of the toolkit every now to keep it up to date and then is good idea.&#xA;28.11.2023 (0.1.8.dev12) Added (rudimentary) support of CryptoMiniSat5 by means of the pycryptosat package&amp;rsquo;s interface. 24.11.2023 (0.1.8.dev11) Added another external tool (UniGen3) to the module pysat.</description>
+      <description>PySAT is being developed with the rolling release model, which means we do not deliver major releases from time to time. Instead, many small (sometimes tiny) and frequent updates are provided. As a result, upgrading your installation of the toolkit every now to keep it up to date and then is good idea.&#xA;09.01.2024 (0.1.8.dev13) Fixed the issue of a missing variable in CaDiCaL&amp;rsquo;s unsatisfiable core handling after a limited SAT call.</description>
     </item>
     <item>
       <title>Usage</title>
