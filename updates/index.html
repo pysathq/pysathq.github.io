@@ -180,9 +180,15 @@ MathJax.Hub.Config({
           <p>PySAT is being developed with the <em>rolling release</em> model, which means we do
 not deliver major releases from time to time. Instead, many small (sometimes
 tiny) and frequent updates are provided. As a result,
-<a href="../installation">upgrading</a> your installation of the toolkit every now to
-keep it up to date and then is good idea.</p>
+<a href="../installation">upgrading</a> your installation of the toolkit every now and
+then to keep it up-to-date is good idea.</p>
 <!-- raw HTML omitted -->
+<h2 id="31012024-018dev14">31.01.2024 (<em>0.1.8.dev14</em>)</h2>
+<ul>
+<li>Added a standard Python destructor for each solver so that the garbage
+collector manages to destroy the objects, if this is not done by the user
+explicitly.</li>
+</ul>
 <h2 id="09012024-018dev13">09.01.2024 (<em>0.1.8.dev13</em>)</h2>
 <ul>
 <li>Fixed the issue of a missing variable in CaDiCaL&rsquo;s unsatisfiable core
