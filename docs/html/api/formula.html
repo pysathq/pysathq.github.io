@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 0.1.8.dev15 documentation</title>
+    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 0.1.8.dev16 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 0.1.8.dev15)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 0.1.8.dev16)</strong></a>
       </div>
       
     </div>
@@ -360,7 +360,7 @@ formula encoder is shown below (the implementation can also be found in
 <h2>Module details<a class="headerlink" href="#module-details" title="Permalink to this headline">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.CNF">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">CNF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_fp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_clauses</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_aiger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment_lead</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['c']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.CNF" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">CNF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_fp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_clauses</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_aiger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment_lead</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['c']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by_ref</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.CNF" title="Permalink to this definition">#</a></dt>
 <dd><p>Class for manipulating CNF formulas. It can be used for creating
 formulas, reading them from a file, or writing them to a file. The
 <code class="docutils literal notranslate"><span class="pre">comment_lead</span></code> parameter can be helpful when one needs to parse
@@ -375,6 +375,7 @@ another character or a string.</p>
 <li><p><strong>from_clauses</strong> (<em>list</em><em>(</em><em>list</em><em>(</em><em>int</em><em>)</em><em>)</em>) – a list of clauses to bootstrap the formula with</p></li>
 <li><p><strong>from_aiger</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">aiger.AIG</span></code> (see <a class="reference external" href="https://github.com/mvcisback/py-aiger">py-aiger package</a>)) – an AIGER circuit to bootstrap the formula with</p></li>
 <li><p><strong>comment_lead</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – a list of characters leading comment lines</p></li>
+<li><p><strong>by_ref</strong> (<em>bool</em>) – flag to indicate how to copy clauses - by reference or deep-copy</p></li>
 </ul>
 </dd>
 </dl>
@@ -491,11 +492,18 @@ string to parse. (Classes <code class="xref py py-class docutils literal notrans
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.formula.CNF.from_clauses">
-<span class="sig-name descname"><span class="pre">from_clauses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clauses</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.CNF.from_clauses" title="Permalink to this definition">#</a></dt>
-<dd><p>This methods copies a list of clauses into a CNF object.</p>
+<span class="sig-name descname"><span class="pre">from_clauses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clauses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by_ref</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.CNF.from_clauses" title="Permalink to this definition">#</a></dt>
+<dd><p>This methods copies a list of clauses into a CNF object. The
+optional keyword argument <code class="docutils literal notranslate"><span class="pre">by_ref</span></code>, which is by default set to
+<code class="docutils literal notranslate"><span class="pre">False</span></code>, signifies whether the clauses should be deep-copied or
+copied by reference (by default, deep-copying is applied although
+it is slower).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>clauses</strong> (<em>list</em><em>(</em><em>list</em><em>(</em><em>int</em><em>)</em><em>)</em>) – a list of clauses</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>clauses</strong> (<em>list</em><em>(</em><em>list</em><em>(</em><em>int</em><em>)</em><em>)</em>) – a list of clauses</p></li>
+<li><p><strong>by_ref</strong> (<em>bool</em>) – a flag to indicate whether to deep-copy the clauses or copy them by reference</p></li>
+</ul>
 </dd>
 </dl>
 <p>Example:</p>

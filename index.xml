@@ -61,7 +61,7 @@
       <link>https://pysathq.github.io/updates/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://pysathq.github.io/updates/</guid>
-      <description>PySAT is being developed with the rolling release model, which means we do not deliver major releases from time to time. Instead, many small (sometimes tiny) and frequent updates are provided. As a result, upgrading your installation of the toolkit every now and then to keep it up-to-date is good idea.&#xA;07.02.2024 (0.1.8.dev15) Corrected polarities of core literals if extracted from CryptoMiniSat. 31.01.2024 (0.1.8.dev14) Added a standard Python destructor for each solver so that the garbage collector manages to destroy the objects, if this is not done by the user explicitly.</description>
+      <description>PySAT is being developed with the rolling release model, which means we do not deliver major releases from time to time. Instead, many small (sometimes tiny) and frequent updates are provided. As a result, upgrading your installation of the toolkit every now and then to keep it up-to-date is good idea.&#xA;18.02.2024 (0.1.8.dev16) Added an option in CNF constructor to copy clauses by reference instead of deep-copying them (if the CNF is constructed from clauses).</description>
     </item>
     <item>
       <title>Usage</title>
