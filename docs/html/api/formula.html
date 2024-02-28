@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 1.8.dev2 documentation</title>
+    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 1.8.dev3 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev2)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev3)</strong></a>
       </div>
       
     </div>
@@ -430,7 +430,7 @@ formula encoder is shown below (the implementation can also be found in
 <dd><p>Conjunction. Given a list of operands (subformulas) <span class="math notranslate nohighlight">\(f_i\)</span>,
 <span class="math notranslate nohighlight">\(i \in \{1,\ldots,n\}, n \in \mathbb{N}\)</span>, it creates a formula
 <span class="math notranslate nohighlight">\(\bigwedge_{i=1}^{n}{f_i}\)</span>. The list of operands <em>of size at
-least 2</em> should be passed as arguments to the constructor.</p>
+least 1</em> should be passed as arguments to the constructor.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
@@ -1932,7 +1932,7 @@ simplified subformula.</p>
 <dd><p>Disjunction. Given a list of operands (subformulas) <span class="math notranslate nohighlight">\(f_i\)</span>,
 <span class="math notranslate nohighlight">\(i \in \{1,\ldots,n\}, n \in \mathbb{N}\)</span>, it creates a formula
 <span class="math notranslate nohighlight">\(\bigvee_{i=1}^{n}{f_i}\)</span>. The list of operands <em>of size at
-least 2</em> should be passed as arguments to the constructor.</p>
+least 1</em> should be passed as arguments to the constructor.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
