@@ -61,7 +61,7 @@
       <link>https://pysathq.github.io/updates/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://pysathq.github.io/updates/</guid>
-      <description>PySAT is being developed with the rolling release model, which means we do not deliver major releases from time to time. Instead, many small (sometimes tiny) and frequent updates are provided. As a result, upgrading your installation of the toolkit every now and then to keep it up-to-date is good idea.&#xA;25.02.2024 (1.8.dev1) Changed versioning scheme. Added functionality to manipulate arbitrary Boolean formulas. 20.02.2024 (0.1.8.dev17) Fixed a minor bug once in a while manifesting itself in the solvers&#39; destructors.</description>
+      <description>PySAT is being developed with the rolling release model, which means we do not deliver major releases from time to time. Instead, many small (sometimes tiny) and frequent updates are provided. As a result, upgrading your installation of the toolkit every now and then to keep it up-to-date is good idea.&#xA;29.02.2024 (1.8.dev2) Fixed a bug/typo in implication clausification. Added checks for the number of arguments in And, Or, Equals, and XOR constraints.</description>
     </item>
     <item>
       <title>Usage</title>

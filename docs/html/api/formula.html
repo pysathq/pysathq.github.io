@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 1.8.dev1 documentation</title>
+    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 1.8.dev2 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev1)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev2)</strong></a>
       </div>
       
     </div>
@@ -429,8 +429,8 @@ formula encoder is shown below (the implementation can also be found in
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">And</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.And" title="Permalink to this definition">#</a></dt>
 <dd><p>Conjunction. Given a list of operands (subformulas) <span class="math notranslate nohighlight">\(f_i\)</span>,
 <span class="math notranslate nohighlight">\(i \in \{1,\ldots,n\}, n \in \mathbb{N}\)</span>, it creates a formula
-<span class="math notranslate nohighlight">\(\bigwedge_{i=1}^{n}{f_i}\)</span>. The list of operands should be
-passed as arguments to the constructor.</p>
+<span class="math notranslate nohighlight">\(\bigwedge_{i=1}^{n}{f_i}\)</span>. The list of operands <em>of size at
+least 2</em> should be passed as arguments to the constructor.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
@@ -1294,8 +1294,8 @@ remains unchanged.</p>
 <dd><p>Equivalence. Given a list of operands (subformulas) <span class="math notranslate nohighlight">\(f_i\)</span>,
 <span class="math notranslate nohighlight">\(i \in \{1,\ldots,n\}, n \in \mathbb{N}\)</span>, it creates a formula
 <span class="math notranslate nohighlight">\(f_1 \leftrightarrow f_2 \leftrightarrow\ldots\leftrightarrow
-f_n\)</span>. The list of operands should be passed as arguments to the
-constructor.</p>
+f_n\)</span>. The list of operands <em>of size at least 2</em> should be passed as
+arguments to the constructor.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
@@ -1931,8 +1931,8 @@ simplified subformula.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">Or</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Or" title="Permalink to this definition">#</a></dt>
 <dd><p>Disjunction. Given a list of operands (subformulas) <span class="math notranslate nohighlight">\(f_i\)</span>,
 <span class="math notranslate nohighlight">\(i \in \{1,\ldots,n\}, n \in \mathbb{N}\)</span>, it creates a formula
-<span class="math notranslate nohighlight">\(\bigvee_{i=1}^{n}{f_i}\)</span>. The list of operands should be passed
-as arguments to the constructor.</p>
+<span class="math notranslate nohighlight">\(\bigvee_{i=1}^{n}{f_i}\)</span>. The list of operands <em>of size at
+least 2</em> should be passed as arguments to the constructor.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
@@ -2625,7 +2625,8 @@ formula remain unchanged in the new (plain) formula.</p>
 <dd><p>Exclusive disjunction. Given a list of operands (subformulas)
 <span class="math notranslate nohighlight">\(f_i\)</span>, <span class="math notranslate nohighlight">\(i \in \{1,\ldots,n\}, n \in \mathbb{N}\)</span>, it
 creates a formula <span class="math notranslate nohighlight">\(f_1 \oplus f_2 \oplus\ldots\oplus f_n\)</span>. The
-list of operands should be passed as arguments to the constructor.</p>
+list of operands <em>of size at least 2</em> should be passed as arguments to
+the constructor.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
