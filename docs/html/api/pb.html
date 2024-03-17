@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Pseudo-Boolean encodings (pysat.pb) &#8212; PySAT 1.8.dev3 documentation</title>
+    <title>Pseudo-Boolean encodings (pysat.pb) &#8212; PySAT 1.8.dev4 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -34,7 +34,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Formula processing (pysat.process)" href="process.html" />
-    <link rel="prev" title="Boolean formula manipulation (pysat.formula)" href="formula.html" />
+    <link rel="prev" title="External engines (pysat.engines)" href="engines.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev3)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev4)</strong></a>
       </div>
       
     </div>
@@ -267,13 +267,14 @@ pseudo-Boolean encoding to use. The values denoting the encodings are:</p>
 <span class="n">sortnetwrk</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">adder</span>      <span class="o">=</span> <span class="mi">4</span>
 <span class="n">binmerge</span>   <span class="o">=</span> <span class="mi">5</span>
+<span class="n">native</span>     <span class="o">=</span> <span class="mi">6</span>
 </pre></div>
 </div>
 <p>The desired encoding can be selected either directly by its integer
 identifier, e.g. <code class="docutils literal notranslate"><span class="pre">2</span></code>, or by its alphabetical name, e.g.
 <code class="docutils literal notranslate"><span class="pre">EncType.seqcounter</span></code>.</p>
 <p>All the encodings are produced and returned as a list of clauses in
-the <a class="reference internal" href="formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">pysat.formula.CNF</span></code></a> format.</p>
+the <a class="reference internal" href="formula.html#pysat.formula.CNFPlus" title="pysat.formula.CNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">pysat.formula.CNFPlus</span></code></a> format.</p>
 <p>Note that the encoding type can be set to <code class="docutils literal notranslate"><span class="pre">best</span></code>, in which case the
 encoder selects one of the other encodings from the list (in most
 cases, this invokes the <code class="docutils literal notranslate"><span class="pre">bdd</span></code> encoder).</p>
@@ -302,7 +303,7 @@ methods</em> for creating LEQ, GEQ, and Equals constraints. Given (1)
 either a list of weighted literals or a list of unweighted literals
 followed by a list of weights, (2) an integer bound and an encoding
 type, each of these methods returns an object of class
-<a class="reference internal" href="formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">pysat.formula.CNF</span></code></a> representing the resulting CNF formula.</p>
+<a class="reference internal" href="formula.html#pysat.formula.CNFPlus" title="pysat.formula.CNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">pysat.formula.CNFPlus</span></code></a> representing the resulting CNF formula.</p>
 <p>Since the class is abstract, there is no need to create an object of
 it. Instead, the methods should be called directly as class methods,
 e.g. <code class="docutils literal notranslate"><span class="pre">PBEnc.atmost(wlits,</span> <span class="pre">bound)</span></code> or <code class="docutils literal notranslate"><span class="pre">PBEnc.equals(lits,</span> <span class="pre">weights,</span>
@@ -373,7 +374,7 @@ encoding type.</p>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">pysat.formula.CNF</span></code></a></p>
+<dd class="field-even"><p><a class="reference internal" href="formula.html#pysat.formula.CNFPlus" title="pysat.formula.CNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">pysat.formula.CNFPlus</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -389,11 +390,11 @@ encoding type.</p>
               
               <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="formula.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="engines.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Boolean formula manipulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.formula</span></code>)</p>
+            <p class="prev-next-title">External engines (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.engines</span></code>)</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="process.html" title="next page">

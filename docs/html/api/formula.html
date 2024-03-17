@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 1.8.dev3 documentation</title>
+    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 1.8.dev4 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -33,7 +33,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Pseudo-Boolean encodings (pysat.pb)" href="pb.html" />
+    <link rel="next" title="External engines (pysat.engines)" href="engines.html" />
     <link rel="prev" title="Cardinality encodings (pysat.card)" href="card.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev3)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev4)</strong></a>
       </div>
       
     </div>
@@ -1023,12 +1023,24 @@ is equal to <code class="docutils literal notranslate"><span class="pre">1</span
 <p>This class inherits most of the functionality of the <a class="reference internal" href="#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a>
 class. The only difference between the two is that <a class="reference internal" href="#pysat.formula.CNFPlus" title="pysat.formula.CNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNFPlus</span></code></a>
 supports <em>native</em> cardinality constraints of <a class="reference external" href="https://github.com/liffiton/minicard">MiniCard</a>.</p>
-<p>The parser of input DIMACS files of <a class="reference internal" href="#pysat.formula.CNFPlus" title="pysat.formula.CNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNFPlus</span></code></a> assumes the syntax
-of AtMostK and AtLeastK constraints defined in the <a class="reference external" href="https://github.com/liffiton/minicard">description</a> of MiniCard:</p>
+<p>The parser of input DIMACS files of <a class="reference internal" href="#pysat.formula.CNFPlus" title="pysat.formula.CNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNFPlus</span></code></a> assumes the
+syntax of AtMostK and AtLeastK constraints defined in the <a class="reference external" href="https://github.com/liffiton/minicard">description</a> of MiniCard:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="n">Example</span><span class="p">:</span> <span class="n">Two</span> <span class="n">cardinality</span> <span class="n">constraints</span> <span class="n">followed</span> <span class="n">by</span> <span class="n">a</span> <span class="n">clause</span>
 <span class="n">p</span> <span class="n">cnf</span><span class="o">+</span> <span class="mi">7</span> <span class="mi">3</span>
 <span class="mi">1</span> <span class="o">-</span><span class="mi">2</span> <span class="mi">3</span> <span class="mi">5</span> <span class="o">-</span><span class="mi">7</span> <span class="o">&lt;=</span> <span class="mi">3</span>
 <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="o">-</span><span class="mi">7</span> <span class="o">&gt;=</span> <span class="mi">2</span>
+<span class="mi">3</span> <span class="mi">5</span> <span class="mi">7</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Additionally, <a class="reference internal" href="#pysat.formula.CNFPlus" title="pysat.formula.CNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNFPlus</span></code></a> support pseudo-Boolean constraints,
+i.e. weighted linear constraints by extending the above format.
+Basically, a pseudo-Boolean constraint needs to specify all the
+summands as <code class="docutils literal notranslate"><span class="pre">weight*literal</span></code> with the entire constraint being
+prepended with character <code class="docutils literal notranslate"><span class="pre">w</span></code> as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="n">Example</span><span class="p">:</span> <span class="n">One</span> <span class="n">cardinality</span> <span class="n">constraint</span> <span class="ow">and</span> <span class="n">one</span> <span class="n">PB</span> <span class="n">constraint</span> <span class="n">followed</span> <span class="n">by</span> <span class="n">a</span> <span class="n">clause</span>
+<span class="n">p</span> <span class="n">cnf</span><span class="o">+</span> <span class="mi">7</span> <span class="mi">3</span>
+<span class="mi">1</span> <span class="o">-</span><span class="mi">2</span> <span class="mi">3</span> <span class="mi">5</span> <span class="o">-</span><span class="mi">7</span> <span class="o">&lt;=</span> <span class="mi">3</span>
+<span class="n">w</span> <span class="mi">1</span><span class="o">*</span><span class="mi">4</span> <span class="mi">2</span><span class="o">*</span><span class="mi">5</span> <span class="mi">1</span><span class="o">*</span><span class="mi">6</span> <span class="mi">3</span><span class="o">*-</span><span class="mi">7</span> <span class="o">&gt;=</span> <span class="mi">2</span>
 <span class="mi">3</span> <span class="mi">5</span> <span class="mi">7</span> <span class="mi">0</span>
 </pre></div>
 </div>
@@ -2377,6 +2389,18 @@ for <a class="reference internal" href="#pysat.formula.CNFPlus" title="pysat.for
 <span class="mi">5</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">7</span> <span class="mi">0</span>
 </pre></div>
 </div>
+<p>Additionally, <a class="reference internal" href="#pysat.formula.WCNFPlus" title="pysat.formula.WCNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNFPlus</span></code></a> support pseudo-Boolean constraints,
+i.e. weighted linear constraints by extending the above format.
+Basically, a pseudo-Boolean constraint needs to specify all the
+summands as <code class="docutils literal notranslate"><span class="pre">weight*literal</span></code> with the entire constraint being
+prepended with character <code class="docutils literal notranslate"><span class="pre">w</span></code> as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="n">Example</span><span class="p">:</span> <span class="n">One</span> <span class="n">cardinality</span> <span class="n">constraint</span> <span class="ow">and</span> <span class="n">one</span> <span class="n">PB</span> <span class="n">constraint</span> <span class="n">followed</span> <span class="n">by</span> <span class="n">a</span> <span class="n">soft</span> <span class="n">clause</span>
+<span class="n">p</span> <span class="n">wcnf</span><span class="o">+</span> <span class="mi">7</span> <span class="mi">3</span> <span class="mi">10</span>
+<span class="mi">10</span> <span class="mi">1</span> <span class="o">-</span><span class="mi">2</span> <span class="mi">3</span> <span class="mi">5</span> <span class="o">-</span><span class="mi">7</span> <span class="o">&lt;=</span> <span class="mi">3</span>
+<span class="mi">10</span> <span class="n">w</span> <span class="mi">1</span><span class="o">*</span><span class="mi">4</span> <span class="mi">2</span><span class="o">*</span><span class="mi">5</span> <span class="mi">1</span><span class="o">*</span><span class="mi">6</span> <span class="mi">3</span><span class="o">*-</span><span class="mi">7</span> <span class="o">&gt;=</span> <span class="mi">2</span>
+<span class="mi">5</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">7</span> <span class="mi">0</span>
+</pre></div>
+</div>
 <p><strong>Note</strong> that every cardinality constraint is assumed to be <em>hard</em>,
 i.e. soft cardinality constraints are currently <em>not supported</em>.</p>
 <p>Each AtLeastK constraint is translated into an AtMostK constraint in
@@ -2714,10 +2738,10 @@ subformulas and creates a new formula.</p>
             <p class="prev-next-title">Cardinality encodings (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.card</span></code>)</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="pb.html" title="next page">
+    <a class='right-next' id="next-link" href="engines.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Pseudo-Boolean encodings (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.pb</span></code>)</p>
+        <p class="prev-next-title">External engines (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.engines</span></code>)</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

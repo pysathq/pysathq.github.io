@@ -1,0 +1,841 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>External engines (pysat.engines) &#8212; PySAT 1.8.dev4 documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Pseudo-Boolean encodings (pysat.pb)" href="pb.html" />
+    <link rel="prev" title="Boolean formula manipulation (pysat.formula)" href="formula.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="https://pysathq.github.io">
+  <img src="../_static/logo-dark.svg" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <!-- This will display the version of the docs -->
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev4)</strong></a>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pysathq/pysat" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://pysathq.github.io/docs/pysat.pdf" rel="noopener" target="_blank" title="PDF"><span><i class="fas fa-file"></i></span>
+            <label class="sr-only">PDF</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pysathq/pysat/issues" rel="noopener" target="_blank" title="Issue tracker"><span><i class="fas fa-bug"></i></span>
+            <label class="sr-only">Issue tracker</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+              </div>
+              <div class="sidebar-end-items">
+              </div>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-of-classes">
+   List of classes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-description">
+   Module description
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-details">
+   Module details
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="module-pysat.engines">
+<span id="external-engines-pysat-engines"></span><h1>External engines (<a class="reference internal" href="#module-pysat.engines" title="pysat.engines"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.engines</span></code></a>)<a class="headerlink" href="#module-pysat.engines" title="Permalink to this headline">#</a></h1>
+<section id="list-of-classes">
+<h2>List of classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">#</a></h2>
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pysat.engines.Propagator" title="pysat.engines.Propagator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Propagator</span></code></a></p></td>
+<td><p>An abstract class for creating external user-defined propagators / reasoning engines to be used with solver <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code> through the IPASIR-UP interface.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pysat.engines.BooleanEngine" title="pysat.engines.BooleanEngine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BooleanEngine</span></code></a></p></td>
+<td><p>A simple <em>example</em> Boolean constraint propagator inheriting from the class <a class="reference internal" href="#pysat.engines.Propagator" title="pysat.engines.Propagator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Propagator</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pysat.engines.LinearConstraint" title="pysat.engines.LinearConstraint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearConstraint</span></code></a></p></td>
+<td><p>A possible implementation of linear constraints over Boolean variables, including cardinality and pseudo-Boolean constraints.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pysat.engines.ParityConstraint" title="pysat.engines.ParityConstraint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ParityConstraint</span></code></a></p></td>
+<td><p>A possible implementation of parity constraints, i.e. constraints of the form <span class="math notranslate nohighlight">\(l_1 \oplus l_2 \oplus \ldots \oplus l_n = b\)</span> where each <span class="math notranslate nohighlight">\(l_i\)</span> is a Boolean literal while <span class="math notranslate nohighlight">\(b\)</span> is a Boolean constant.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-description">
+<h2>Module description<a class="headerlink" href="#module-description" title="Permalink to this headline">#</a></h2>
+<p>This module provides a user with the possibility to define their own
+propagation engines, i.e. constraint propagators, attachable to a SAT
+solver. The implementation of this functionality builds on the use of the
+IPASIR-UP interface <a class="footnote-reference brackets" href="#id2" id="id1">1</a>. This may come in handy when it is beneficial to
+reason over non-clausal constraints, for example, in the settings of
+satisfiability modulo theories (SMT), constraint programming (CP) and lazy
+clause generation (LCG).</p>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Katalin Fazekas, Aina Niemetz, Mathias Preiner, Markus Kirchweger,
+Stefan Szeider, Armin Biere. <em>IPASIR-UP: User Propagators for CDCL</em>.
+SAT. 2023. pp. 8:1-8:13</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Currently, the only SAT solver available in PySAT supporting the
+interface is CaDiCaL 1.9.5.</p>
+</div>
+<p>The interface allows a user to attach a single reasoning engine to the
+solver. This means that if one needs to support multiple kinds of
+constraints simultaneously, the implementation of the engine may need to
+be sophisticated enough to make it work.</p>
+<p>It is imperative that any propagator a user defines must inherit the
+interface of the abstract class <a class="reference internal" href="#pysat.engines.Propagator" title="pysat.engines.Propagator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Propagator</span></code></a> and defines all the
+required methods for the correct operation of the engine.</p>
+<p>An example propagator is shown in the class <a class="reference internal" href="#pysat.engines.BooleanEngine" title="pysat.engines.BooleanEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">BooleanEngine</span></code></a>. It
+currently supports two kinds of example constraints: linear (cardinality
+and pseudo-Boolean) constraints and parity (exclusive OR, XOR)
+constraints. The engine can run in the <em>adaptive mode</em>, i.e. it can enable
+and disable itself on the fly.</p>
+<p>Once an engine is implemented, it should be attached to a solver object by
+calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">connect_propagator()</span></code> of <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code>. The propagator
+will then need to inform the solver what variable it requires to observe.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span> <span class="o">=</span> <span class="n">Solver</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;cadical195&#39;</span><span class="p">,</span> <span class="n">bootstrap_with</span><span class="o">=</span><span class="n">some_formula</span><span class="p">)</span>
+
+<span class="n">engine</span> <span class="o">=</span> <span class="n">MyPowerfulEngine</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">connect_propagator</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="c1"># attached propagator wants to observe these variables</span>
+<span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">some_variables</span><span class="p">):</span>
+    <span class="n">solver</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+
+<span class="o">...</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A user is encouraged to examine the source code of
+<a class="reference internal" href="#pysat.engines.BooleanEngine" title="pysat.engines.BooleanEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">BooleanEngine</span></code></a> in order to see how an external reasoning
+engine can be implemented and attached to CaDiCaL 1.9.5. Also consult
+the implementation of the corresponding methods of
+<a class="reference internal" href="solvers.html#pysat.solvers.Cadical195" title="pysat.solvers.Cadical195"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code></a>.</p>
+</div>
+</section>
+<section id="module-details">
+<h2>Module details<a class="headerlink" href="#module-details" title="Permalink to this headline">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pysat.engines.BooleanEngine">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.engines.</span></span><span class="sig-name descname"><span class="pre">BooleanEngine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bootstrap_with</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adaptive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.BooleanEngine" title="Permalink to this definition">#</a></dt>
+<dd><p>A simple <em>example</em> Boolean constraint propagator inheriting from the
+class <a class="reference internal" href="#pysat.engines.Propagator" title="pysat.engines.Propagator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Propagator</span></code></a>. The idea is to exemplify the use of
+external reasoning engines. The engine should be general enough to
+support various constraints over Boolean variables.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that this is not meant to be a model implementation of an
+external engine. One can devise a more efficient implementation
+with the same functionality.</p>
+</div>
+<p>The initialiser of of the class object may be provided with a list of
+constraints, each being a tuple (‘type’, constraint), as a value for
+parameter <code class="docutils literal notranslate"><span class="pre">bootstrap_with</span></code>.</p>
+<p>Currently, there are two types of constraints supported (to be
+specified) in the constraints passed in: <code class="docutils literal notranslate"><span class="pre">'linear'</span></code> and <code class="docutils literal notranslate"><span class="pre">'parity'</span></code>
+(exclusive OR). The former will be handled as objects of class
+<a class="reference internal" href="#pysat.engines.LinearConstraint" title="pysat.engines.LinearConstraint"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearConstraint</span></code></a> while the latter will be transformed into
+objects of <a class="reference internal" href="#pysat.engines.ParityConstraint" title="pysat.engines.ParityConstraint"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParityConstraint</span></code></a>.</p>
+<p>Here, each type of constraint is meant to have a list of literals
+stored in variable <code class="docutils literal notranslate"><span class="pre">.lits</span></code>. This is required to set up watched lists
+properly.</p>
+<p>The second keyword argument <code class="docutils literal notranslate"><span class="pre">adaptive</span></code> (set to <code class="docutils literal notranslate"><span class="pre">True</span></code> by default)
+denotes the fact that the engine should check its own efficiency and
+disable or enable itself on the fly. This functionality is meant to
+exemplify how adaptive external engines can be created. A user is
+referred to the source code of the implementation for the details.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.BooleanEngine.adaptive_constants">
+<span class="sig-name descname"><span class="pre">adaptive_constants</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pdecay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pbound</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mdecay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mbound</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.BooleanEngine.adaptive_constants" title="Permalink to this definition">#</a></dt>
+<dd><p>Set magic numeric constants used in adaptive mode.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.BooleanEngine.adaptive_update">
+<span class="sig-name descname"><span class="pre">adaptive_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">satisfied</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.BooleanEngine.adaptive_update" title="Permalink to this definition">#</a></dt>
+<dd><p>Update adaptive mode: either enable or disable the engine. This
+depends on the statistics accumulated in the current run and
+whether or not the previous assignment found by the solver
+satisfied the constraints.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.BooleanEngine.add_clause">
+<span class="sig-name descname"><span class="pre">add_clause</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.BooleanEngine.add_clause" title="Permalink to this definition">#</a></dt>
+<dd><p>Extract a new clause to add to the solver if one exists; return an
+empty clause <code class="docutils literal notranslate"><span class="pre">[]</span></code> otherwise.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.BooleanEngine.add_constraint">
+<span class="sig-name descname"><span class="pre">add_constraint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constraint</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.BooleanEngine.add_constraint" title="Permalink to this definition">#</a></dt>
+<dd><p>Add a new constraint to the engine and integrate it to the
+internal structures, i.e. watched lists. Also, return the newly
+added constraint to the callee.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.BooleanEngine.check_model">
+<span class="sig-name descname"><span class="pre">check_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.BooleanEngine.check_model" title="Permalink to this definition">#</a></dt>
+<dd><p>Check if a given model satisfies all the constraints.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.BooleanEngine.cleanup_watched">
+<span class="sig-name descname"><span class="pre">cleanup_watched</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">garbage</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.BooleanEngine.cleanup_watched" title="Permalink to this definition">#</a></dt>
+<dd><p>Garbage collect holes in the watched list for +lit
+(and potentially for -lit).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.BooleanEngine.disable">
+<span class="sig-name descname"><span class="pre">disable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.BooleanEngine.disable" title="Permalink to this definition">#</a></dt>
+<dd><p>Notify the solver that the propagator should become inactive as it
+does not contribute much to the inference process. From now on, it
+will only be called to check complete models obtained by the
+solver (see <a class="reference internal" href="#pysat.engines.BooleanEngine.check_model" title="pysat.engines.BooleanEngine.check_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">check_model()</span></code></a>).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.BooleanEngine.enable">
+<span class="sig-name descname"><span class="pre">enable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.BooleanEngine.enable" title="Permalink to this definition">#</a></dt>
+<dd><p>Notify the solver that the propagator is willing to become active
+from now on.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.BooleanEngine.is_active">
+<span class="sig-name descname"><span class="pre">is_active</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.BooleanEngine.is_active" title="Permalink to this definition">#</a></dt>
+<dd><p>Return engine’s status. It is deemed active if the method returns
+<code class="docutils literal notranslate"><span class="pre">True</span></code> and passive otherwise.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.BooleanEngine.on_assignment">
+<span class="sig-name descname"><span class="pre">on_assignment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixed</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.BooleanEngine.on_assignment" title="Permalink to this definition">#</a></dt>
+<dd><p>Update the propagator’s state given a new assignment.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.BooleanEngine.on_backtrack">
+<span class="sig-name descname"><span class="pre">on_backtrack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">to</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.BooleanEngine.on_backtrack" title="Permalink to this definition">#</a></dt>
+<dd><p>Cancel all the decisions up to a certain level.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.BooleanEngine.on_new_level">
+<span class="sig-name descname"><span class="pre">on_new_level</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.BooleanEngine.on_new_level" title="Permalink to this definition">#</a></dt>
+<dd><p>Keep track of decision level updates.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.BooleanEngine.preprocess">
+<span class="sig-name descname"><span class="pre">preprocess</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.BooleanEngine.preprocess" title="Permalink to this definition">#</a></dt>
+<dd><p>Run some (naive) preprocessing techniques if available for the
+types of constraints under considerations. Each type of
+constraints is handled separately of the rest of constraints.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.BooleanEngine.process_linear">
+<span class="sig-name descname"><span class="pre">process_linear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.BooleanEngine.process_linear" title="Permalink to this definition">#</a></dt>
+<dd><p>Process linear constraints. Here we apply simple pairwise
+summation of constraints. As the number of result constraints is
+quadratic, we stop the process as soon as we get 100 new
+constraints. Also, if a result of the sum is longer than each of
+the summands, the result constraint is ignored.</p>
+<p>This is trivial procedure is made to illustrate how constraint
+processing can be done. It can be made dependent on user-specified
+parameters, e.g. the number of rounds or a numeric value
+indicating when a pair of constraints should be added and when
+they should not be added. For consideration in the future.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.BooleanEngine.process_parity">
+<span class="sig-name descname"><span class="pre">process_parity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.BooleanEngine.process_parity" title="Permalink to this definition">#</a></dt>
+<dd><p>Process parity/XOR constraints. Basically, this runs Gaussian
+elimination and see if anything can be derived from it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.BooleanEngine.propagate">
+<span class="sig-name descname"><span class="pre">propagate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.BooleanEngine.propagate" title="Permalink to this definition">#</a></dt>
+<dd><p>Run the propagator given the current assignment.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.BooleanEngine.provide_reason">
+<span class="sig-name descname"><span class="pre">provide_reason</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.BooleanEngine.provide_reason" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the reason clause for a given literal.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.BooleanEngine.setup_observe">
+<span class="sig-name descname"><span class="pre">setup_observe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.BooleanEngine.setup_observe" title="Permalink to this definition">#</a></dt>
+<dd><p>Inform the solver about all the variables the engine is interested
+in. The solver will mark them as observed by the propagator.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pysat.engines.LinearConstraint">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.engines.</span></span><span class="sig-name descname"><span class="pre">LinearConstraint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.LinearConstraint" title="Permalink to this definition">#</a></dt>
+<dd><p>A possible implementation of linear constraints over Boolean
+variables, including cardinality and pseudo-Boolean constraints. Each
+such constraint is meant to be in the less-than form, i.e. a user
+should transform the literals, weights and the right-hand side of the
+constraint into this form before creating an object of
+<a class="reference internal" href="#pysat.engines.LinearConstraint" title="pysat.engines.LinearConstraint"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearConstraint</span></code></a>. The class is designed to work with
+<a class="reference internal" href="#pysat.engines.BooleanEngine" title="pysat.engines.BooleanEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">BooleanEngine</span></code></a>.</p>
+<p>The implementation of linear constraint propagation builds on the use
+of counters. Basically, each time a literal is assigned to a positive
+value, it is assumed to contribute to the total weight on the
+left-hand side of the constraint, which is calculated and compared to
+the right-hand side.</p>
+<p>The constructor receives three arguments: <code class="docutils literal notranslate"><span class="pre">lits</span></code>, <code class="docutils literal notranslate"><span class="pre">weights</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">bound</span></code>. Argument <code class="docutils literal notranslate"><span class="pre">lits</span></code> represents a list of literals on the
+left-hand side of the constraint while argument <code class="docutils literal notranslate"><span class="pre">weights</span></code> contains
+either a list of their weights or a dictionary mapping literals to
+weights. Finally, argument <code class="docutils literal notranslate"><span class="pre">bound</span></code> is the right-hand side of the
+constraint.</p>
+<p>Note that if no weights are provided, each occurrence of a literal is
+assumed to have weight 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lits</strong> – list of literals (left-hand side)</p></li>
+<li><p><strong>weights</strong> (<em>list</em><em> or </em><em>dict</em>) – weights of the literals</p></li>
+<li><p><strong>bound</strong> (<em>int</em><em> or </em><em>float</em>) – right-hand side of the constraint</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.LinearConstraint.abandon_unweighted">
+<span class="sig-name descname"><span class="pre">abandon_unweighted</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dummy_lit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.LinearConstraint.abandon_unweighted" title="Permalink to this definition">#</a></dt>
+<dd><p>Clear the reason of a given literal.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.LinearConstraint.abandon_weighted">
+<span class="sig-name descname"><span class="pre">abandon_weighted</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.LinearConstraint.abandon_weighted" title="Permalink to this definition">#</a></dt>
+<dd><p>Clear the reason of a given literal.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.LinearConstraint.attach_values">
+<span class="sig-name descname"><span class="pre">attach_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.LinearConstraint.attach_values" title="Permalink to this definition">#</a></dt>
+<dd><p>Give the constraint access to centralised values exposed from
+<a class="reference internal" href="#pysat.engines.BooleanEngine" title="pysat.engines.BooleanEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">BooleanEngine</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.LinearConstraint.explain_failure">
+<span class="sig-name descname"><span class="pre">explain_failure</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.LinearConstraint.explain_failure" title="Permalink to this definition">#</a></dt>
+<dd><p>Provide a reason clause for why the previous model falsified
+the constraint. This will clause will be added to the solver.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.LinearConstraint.falsified_by">
+<span class="sig-name descname"><span class="pre">falsified_by</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.LinearConstraint.falsified_by" title="Permalink to this definition">#</a></dt>
+<dd><p>Check if the constraint is violated by a given assignment. Upon
+receiving such an input assignment, the method counts the sum of
+the weights of all satisfied literals and checks if it exceeds the
+right-hand side.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.LinearConstraint.justify_unweighted">
+<span class="sig-name descname"><span class="pre">justify_unweighted</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dummy_lit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.LinearConstraint.justify_unweighted" title="Permalink to this definition">#</a></dt>
+<dd><p>Provide a reason for a literal propagated by this constraint. In
+the unweighted case, all the literals propagated by this
+constraint share the same reason.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.LinearConstraint.justify_weighted">
+<span class="sig-name descname"><span class="pre">justify_weighted</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.LinearConstraint.justify_weighted" title="Permalink to this definition">#</a></dt>
+<dd><p>Provide a reason for a literal propagated by this constraint. In
+the case of weighted constraints, a literal may have a reason
+different from the other literals propagated by the same
+constraint.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.LinearConstraint.propagate_unweighted">
+<span class="sig-name descname"><span class="pre">propagate_unweighted</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.LinearConstraint.propagate_unweighted" title="Permalink to this definition">#</a></dt>
+<dd><p>Get all the consequences of a given literal in the unweighted
+case. The implementation <em>counts</em> how many literals on the
+left-hand side are assigned to true.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.LinearConstraint.propagate_weighted">
+<span class="sig-name descname"><span class="pre">propagate_weighted</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.LinearConstraint.propagate_weighted" title="Permalink to this definition">#</a></dt>
+<dd><p>Get all the consequences of a given literal in the weighted case.
+The implementation counts the weights of all the literals assigned
+to true and propagates all the other literals (yet unassigned)
+such that adding their weights to the total sum would exceed the
+right-hand side of the constraint.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.LinearConstraint.register_watched">
+<span class="sig-name descname"><span class="pre">register_watched</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">to_watch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.LinearConstraint.register_watched" title="Permalink to this definition">#</a></dt>
+<dd><p>Add self to the centralised watched literals lists in
+<a class="reference internal" href="#pysat.engines.BooleanEngine" title="pysat.engines.BooleanEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">BooleanEngine</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.LinearConstraint.unassign">
+<span class="sig-name descname"><span class="pre">unassign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.LinearConstraint.unassign" title="Permalink to this definition">#</a></dt>
+<dd><p>Unassign a given literal, which is done by decrementing the
+literal’s contribution to the total sum of the weights of assigned
+literals.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pysat.engines.ParityConstraint">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.engines.</span></span><span class="sig-name descname"><span class="pre">ParityConstraint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.ParityConstraint" title="Permalink to this definition">#</a></dt>
+<dd><p>A possible implementation of parity constraints, i.e. constraints of
+the form <span class="math notranslate nohighlight">\(l_1 \oplus l_2 \oplus \ldots \oplus l_n = b\)</span> where
+each <span class="math notranslate nohighlight">\(l_i\)</span> is a Boolean literal while <span class="math notranslate nohighlight">\(b\)</span> is a Boolean
+constant. The class is designed to exemplify the work with
+<a class="reference internal" href="#pysat.engines.BooleanEngine" title="pysat.engines.BooleanEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">BooleanEngine</span></code></a>.</p>
+<p>The implementation is pretty naive. It propagates a last unassigned
+literal if all but one literals got their values. The value the
+propagated literals is assigned to depends on the other values in the
+constraint as well as on the right-hand side value.</p>
+<p>The constructor receives two arguments: <code class="docutils literal notranslate"><span class="pre">lits</span></code> and <code class="docutils literal notranslate"><span class="pre">value</span></code>.
+Argument <code class="docutils literal notranslate"><span class="pre">lits</span></code> represents a list of literals on the left-hand side
+of the constraint while argument <code class="docutils literal notranslate"><span class="pre">value</span></code> represents the right-hand
+side. By default, <code class="docutils literal notranslate"><span class="pre">value</span></code> equals <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lits</strong> – list of literals (left-hand side)</p></li>
+<li><p><strong>value</strong> (<em>bool</em>) – right-hand side of the constraint</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.ParityConstraint.abandon">
+<span class="sig-name descname"><span class="pre">abandon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dummy_lit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.ParityConstraint.abandon" title="Permalink to this definition">#</a></dt>
+<dd><p>Clear the reason of a given literal.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.ParityConstraint.attach_values">
+<span class="sig-name descname"><span class="pre">attach_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.ParityConstraint.attach_values" title="Permalink to this definition">#</a></dt>
+<dd><p>Give the constraint access to centralised values exposed from
+<a class="reference internal" href="#pysat.engines.BooleanEngine" title="pysat.engines.BooleanEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">BooleanEngine</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.ParityConstraint.explain_failure">
+<span class="sig-name descname"><span class="pre">explain_failure</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.ParityConstraint.explain_failure" title="Permalink to this definition">#</a></dt>
+<dd><p>Provide a reason clause for why the previous model falsified
+the constraint. This will clause will be added to the solver.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.ParityConstraint.falsified_by">
+<span class="sig-name descname"><span class="pre">falsified_by</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.ParityConstraint.falsified_by" title="Permalink to this definition">#</a></dt>
+<dd><p>Check if the constraint is violated by a given assignment, which
+is done by xor’ing up all the values on the left-hand side (given
+a model) and comparing with the right-hand side value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.ParityConstraint.justify">
+<span class="sig-name descname"><span class="pre">justify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dummy_lit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.ParityConstraint.justify" title="Permalink to this definition">#</a></dt>
+<dd><p>Provide a reason for the literal propagated from here.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.ParityConstraint.propagate">
+<span class="sig-name descname"><span class="pre">propagate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.ParityConstraint.propagate" title="Permalink to this definition">#</a></dt>
+<dd><p>Get all the consequences of a given literal. Propagation here
+should be similar to that of normal clauses (2-watched scheme).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.ParityConstraint.register_watched">
+<span class="sig-name descname"><span class="pre">register_watched</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">to_watch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.ParityConstraint.register_watched" title="Permalink to this definition">#</a></dt>
+<dd><p>Add self to the centralised watched literals lists in
+<a class="reference internal" href="#pysat.engines.BooleanEngine" title="pysat.engines.BooleanEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">BooleanEngine</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.ParityConstraint.replace_watched">
+<span class="sig-name descname"><span class="pre">replace_watched</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">old</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.ParityConstraint.replace_watched" title="Permalink to this definition">#</a></dt>
+<dd><p>Register this constraint as to be watched for a new literal.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.ParityConstraint.unassign">
+<span class="sig-name descname"><span class="pre">unassign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.ParityConstraint.unassign" title="Permalink to this definition">#</a></dt>
+<dd><p>Unassign a given literal. A dummy method, which does nothing.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pysat.engines.Propagator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.engines.</span></span><span class="sig-name descname"><span class="pre">Propagator</span></span><a class="headerlink" href="#pysat.engines.Propagator" title="Permalink to this definition">#</a></dt>
+<dd><p>An abstract class for creating external user-defined propagators /
+reasoning engines to be used with solver <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code> through
+the IPASIR-UP interface. All user-defined propagators should inherit
+the interface of this abstract class, i.e. all the below methods need
+to be properly defined. The interface is as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Propagator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">on_assignment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lit</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">fixed</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">pass</span>      <span class="c1"># receive a new literal assigned by the solver</span>
+
+    <span class="k">def</span> <span class="nf">on_new_level</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">pass</span>      <span class="c1"># get notified about a new decision level</span>
+
+    <span class="k">def</span> <span class="nf">on_backtrack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">to</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">pass</span>      <span class="c1"># process backtracking to a given level</span>
+
+    <span class="k">def</span> <span class="nf">check_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">pass</span>      <span class="c1"># check if a given assignment is indeed a model</span>
+
+    <span class="k">def</span> <span class="nf">decide</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>  <span class="c1"># make a decision and (if any) inform the solver</span>
+
+    <span class="k">def</span> <span class="nf">propagate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="p">[]</span> <span class="c1"># propagate and return inferred literals (if any)</span>
+
+    <span class="k">def</span> <span class="nf">provide_reason</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lit</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="k">pass</span>      <span class="c1"># explain why a given literal was propagated</span>
+
+    <span class="k">def</span> <span class="nf">add_clause</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="p">[]</span> <span class="c1"># add an(y) external clause to the solver</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.Propagator.add_clause">
+<span class="sig-name descname"><span class="pre">add_clause</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#pysat.engines.Propagator.add_clause" title="Permalink to this definition">#</a></dt>
+<dd><p>The method is called by the solver to add an external clause if
+there is any. The clause can be arbitrary but if it is
+root-satisfied or tautological, the solver will ignore it without
+learning it.</p>
+<p>Root-falsified literals are eagerly removed from the clause.
+Falsified clauses trigger conflict analysis, propagating clauses
+trigger propagation. Unit clauses always (unless root-satisfied,
+see above) trigger backtracking to level 0.</p>
+<p>An empty clause (or root falsified clause, see above) makes the
+formula unsatisfiable and stops the search immediately.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>iterable(int)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.Propagator.check_model">
+<span class="sig-name descname"><span class="pre">check_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#pysat.engines.Propagator.check_model" title="Permalink to this definition">#</a></dt>
+<dd><p>The method is used for checking if a given (complete) truth
+assignment satisfies the constraint managed by the propagator.
+Receives a single argument storing the truth assignment found by
+the solver.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If this method returns <code class="docutils literal notranslate"><span class="pre">False</span></code>, the propagator must be ready
+to provide an external clause in the following callback.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – a list of integers representing the current model</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.Propagator.decide">
+<span class="sig-name descname"><span class="pre">decide</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#pysat.engines.Propagator.decide" title="Permalink to this definition">#</a></dt>
+<dd><p>This method allows the propagator to influence the decision
+process. Namely, it is used when the solver asks the propagator
+for the next decision literal (if any). If the method returns
+<code class="docutils literal notranslate"><span class="pre">0</span></code>, the solver will make its own choice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.Propagator.on_assignment">
+<span class="sig-name descname"><span class="pre">on_assignment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pysat.engines.Propagator.on_assignment" title="Permalink to this definition">#</a></dt>
+<dd><p>The method is called to notify the propagator about an assignment
+made for one of the observed variables. An assignment is set to be
+“fixed” if it is permanent, i.e. the propagator is not allowed to
+undo it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lit</strong> (<em>int</em>) – assigned literal</p></li>
+<li><p><strong>fixed</strong> (<em>bool</em>) – a flag to mark the assignment as “fixed”</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.Propagator.on_backtrack">
+<span class="sig-name descname"><span class="pre">on_backtrack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">to</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pysat.engines.Propagator.on_backtrack" title="Permalink to this definition">#</a></dt>
+<dd><p>The method for notifying the propagator about backtracking to a
+given decision level. Accepts a single argument <code class="docutils literal notranslate"><span class="pre">to</span></code> signifying
+the backtrack level.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>to</strong> (<em>int</em>) – backtrack level</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.Propagator.on_new_level">
+<span class="sig-name descname"><span class="pre">on_new_level</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#pysat.engines.Propagator.on_new_level" title="Permalink to this definition">#</a></dt>
+<dd><p>The method called to notify the propagator about a new decision
+level created by the solver.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.Propagator.propagate">
+<span class="sig-name descname"><span class="pre">propagate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#pysat.engines.Propagator.propagate" title="Permalink to this definition">#</a></dt>
+<dd><p>The method should invoke propagation under the current assignment.
+It can return either a list of literals propagated or an empty
+list <code class="docutils literal notranslate"><span class="pre">[]</span></code>, informing the solver that no propagation is made
+under the current assignment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.Propagator.provide_reason">
+<span class="sig-name descname"><span class="pre">provide_reason</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#pysat.engines.Propagator.provide_reason" title="Permalink to this definition">#</a></dt>
+<dd><p>The method is called by the solver when asking the propagator for
+the reason / antecedent clause for a literal the propagator
+previously inferred. This clause will be used in the following
+conflict analysis.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The clause must contain the propagated literal.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>lit</strong> (<em>int</em>) – literal to provide reason for</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>iterable(int)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="formula.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Boolean formula manipulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.formula</span></code>)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="pb.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Pseudo-Boolean encodings (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.pb</span></code>)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2018-2024, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>
