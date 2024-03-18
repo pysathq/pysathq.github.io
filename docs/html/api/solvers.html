@@ -192,7 +192,7 @@
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Cadical153</span></code></p></td>
 <td><p>CaDiCaL 1.5.3 SAT solver.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#pysat.solvers.Cadical195" title="pysat.solvers.Cadical195"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Cadical195</span></code></a></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Cadical195</span></code></p></td>
 <td><p>CaDiCaL 1.9.5 SAT solver.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">CryptoMinisat</span></code></p></td>
@@ -288,7 +288,7 @@ Solvers to Cryptographic Problems</em>. SAT 2009. pp. 244-257</p>
 </dl>
 <p>The module provides direct access to all supported solvers using the
 corresponding classes <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical103</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical153</span></code>,
-<a class="reference internal" href="#pysat.solvers.Cadical195" title="pysat.solvers.Cadical195"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">CryptoMinisat</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Gluecard3</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">CryptoMinisat</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Gluecard3</span></code>,
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Gluecard4</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose3</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose4</span></code>,
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Lingeling</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">MapleChrono</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">MapleCM</span></code>,
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Maplesat</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Mergesat3</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Minicard</span></code>,
@@ -297,10 +297,10 @@ be accessed through the common base class <a class="reference internal" href="#p
 <code class="docutils literal notranslate"><span class="pre">name</span></code> argument. For example, both of the following pieces of code
 create a copy of the <code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose3</span></code> solver:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Glucose3</span><span class="p">,</span> <span class="n">Solver</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">Glucose3</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Solver</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;g3&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
 </pre></div>
@@ -338,12 +338,12 @@ literals), which makes the SAT calls harder.</p>
 <code class="docutils literal notranslate"><span class="pre">solve()</span></code> method:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Solver</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Solver</span><span class="p">()</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">... </span><span class="c1"># assume that solver s is fed with a formula</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="go">... # assume that solver s is fed with a formula</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>  <span class="c1"># a simple SAT call</span>
 <span class="go">True</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>  <span class="c1"># a SAT call with assumption literals</span>
 <span class="go">False</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">get_core</span><span class="p">()</span>  <span class="c1"># extracting an unsatisfiable core</span>
@@ -352,7 +352,7 @@ literals), which makes the SAT calls harder.</p>
 </div>
 <p>In order to shorten the description of the module, the classes providing
 direct access to the individual solvers, i.e. classes <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical103</span></code>,
-<code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical153</span></code>, <a class="reference internal" href="#pysat.solvers.Cadical195" title="pysat.solvers.Cadical195"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">CryptoMinisat</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical153</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">CryptoMinisat</span></code>,
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Gluecard3</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Gluecard4</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose3</span></code>,
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose4</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose42</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Lingeling</span></code>,
 <code class="xref py py-class docutils literal notranslate"><span class="pre">MapleChrono</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">MapleCM</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Maplesat</span></code>,
@@ -362,275 +362,6 @@ base class <a class="reference internal" href="#pysat.solvers.Solver" title="pys
 </section>
 <section id="module-details">
 <h2>Module details<a class="headerlink" href="#module-details" title="Permalink to this headline">#</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.solvers.</span></span><span class="sig-name descname"><span class="pre">Cadical195</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bootstrap_with</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_timer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">incr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_proof</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">warm_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">native_card</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195" title="Permalink to this definition">#</a></dt>
-<dd><p>CaDiCaL 1.9.5 SAT solver.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.accum_stats">
-<span class="sig-name descname"><span class="pre">accum_stats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.accum_stats" title="Permalink to this definition">#</a></dt>
-<dd><p>Get accumulated low-level stats from the solver. This includes
-the number of restarts, conflicts, decisions and propagations.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.activate_atmost">
-<span class="sig-name descname"><span class="pre">activate_atmost</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.activate_atmost" title="Permalink to this definition">#</a></dt>
-<dd><p>This method enable native cardinality mode. Note that it is
-impossible to disable this mode once it’s activated. (This would
-require the engine to support cleaning constraints and reencoding
-them to CNF on the fly).</p>
-<p>Note that activating native AtMost constraints support makes it
-impossible to add another user-defined propagator.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.add_atmost">
-<span class="sig-name descname"><span class="pre">add_atmost</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_return</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.add_atmost" title="Permalink to this definition">#</a></dt>
-<dd><p>This method is responsible for adding a new <em>native</em> AtMostK (see
-<a class="reference internal" href="card.html#module-pysat.card" title="pysat.card"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.card</span></code></a>) constraint.</p>
-<p><strong>Note that :class:`Cadical195` supports this by means of an
-external propagator :class:`BooleanEngine`.</strong></p>
-<p>Before calling this method, make sure native cardinality support
-is activated.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.add_clause">
-<span class="sig-name descname"><span class="pre">add_clause</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_return</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.add_clause" title="Permalink to this definition">#</a></dt>
-<dd><p>Add a new clause to solver’s internal formula.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.append_formula">
-<span class="sig-name descname"><span class="pre">append_formula</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formula</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_return</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.append_formula" title="Permalink to this definition">#</a></dt>
-<dd><p>Appends list of clauses to solver’s internal formula.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.clear_interrupt">
-<span class="sig-name descname"><span class="pre">clear_interrupt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.clear_interrupt" title="Permalink to this definition">#</a></dt>
-<dd><p>Clears an interruption.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.conf_budget">
-<span class="sig-name descname"><span class="pre">conf_budget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">budget</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.conf_budget" title="Permalink to this definition">#</a></dt>
-<dd><p>Set limit on the number of conflicts.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.configure">
-<span class="sig-name descname"><span class="pre">configure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.configure" title="Permalink to this definition">#</a></dt>
-<dd><p>Configure Cadical195 by setting some of the predefined parameters.
-This call must follow the creation of the new solver object;
-otherwise, an exception will be thrown.</p>
-<p>The list of available options and the corresponding
-values they can be assigned to is provided <a class="reference external" href="https://github.com/arminbiere/cadical/blob/master/src/options.hpp">here</a>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>parameters</strong> (<em>dict</em>) – parameter names mapped to integer values</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.connect_propagator">
-<span class="sig-name descname"><span class="pre">connect_propagator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">propagator</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.connect_propagator" title="Permalink to this definition">#</a></dt>
-<dd><p>Attach an external propagator through the IPASIR-UP interface.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.dec_budget">
-<span class="sig-name descname"><span class="pre">dec_budget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">budget</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.dec_budget" title="Permalink to this definition">#</a></dt>
-<dd><p>Set limit on the number of decisions.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.delete">
-<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.delete" title="Permalink to this definition">#</a></dt>
-<dd><p>Destructor.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.disable_propagator">
-<span class="sig-name descname"><span class="pre">disable_propagator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.disable_propagator" title="Permalink to this definition">#</a></dt>
-<dd><p>Disable the propagator on the fly. (Put it in passive mode.)</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.disconnect_propagator">
-<span class="sig-name descname"><span class="pre">disconnect_propagator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.disconnect_propagator" title="Permalink to this definition">#</a></dt>
-<dd><p>Disconnect the propagator. This also reset the observed variables.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.enable_propagator">
-<span class="sig-name descname"><span class="pre">enable_propagator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.enable_propagator" title="Permalink to this definition">#</a></dt>
-<dd><p>Enable the propagator on the fly. (Put it in active mode.)</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.enum_models">
-<span class="sig-name descname"><span class="pre">enum_models</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assumptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.enum_models" title="Permalink to this definition">#</a></dt>
-<dd><p>Iterate over models of the internal formula.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.get_core">
-<span class="sig-name descname"><span class="pre">get_core</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.get_core" title="Permalink to this definition">#</a></dt>
-<dd><p>Get an unsatisfiable core if the formula was previously
-unsatisfied.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.get_model">
-<span class="sig-name descname"><span class="pre">get_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.get_model" title="Permalink to this definition">#</a></dt>
-<dd><p>Get a model if the formula was previously satisfied.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.get_proof">
-<span class="sig-name descname"><span class="pre">get_proof</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.get_proof" title="Permalink to this definition">#</a></dt>
-<dd><p>Get a proof produced when deciding the formula.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.get_status">
-<span class="sig-name descname"><span class="pre">get_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.get_status" title="Permalink to this definition">#</a></dt>
-<dd><p>Returns solver’s status.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.ignore">
-<span class="sig-name descname"><span class="pre">ignore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.ignore" title="Permalink to this definition">#</a></dt>
-<dd><p>Inform the solver that a given variable is ignored by the
-propagator.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.interrupt">
-<span class="sig-name descname"><span class="pre">interrupt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.interrupt" title="Permalink to this definition">#</a></dt>
-<dd><p>Interrupt solver execution.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.is_decision">
-<span class="sig-name descname"><span class="pre">is_decision</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.is_decision" title="Permalink to this definition">#</a></dt>
-<dd><p>Check whether a current observed literal is a assigned by
-branching or by propagation (decision or not).</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.new">
-<span class="sig-name descname"><span class="pre">new</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bootstrap_with</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_timer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_proof</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">native_card</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.new" title="Permalink to this definition">#</a></dt>
-<dd><p>Actual constructor of the solver.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.nof_clauses">
-<span class="sig-name descname"><span class="pre">nof_clauses</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.nof_clauses" title="Permalink to this definition">#</a></dt>
-<dd><p>Get number of clauses currently used by the solver.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.nof_vars">
-<span class="sig-name descname"><span class="pre">nof_vars</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.nof_vars" title="Permalink to this definition">#</a></dt>
-<dd><p>Get number of variables currently used by the solver.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.observe">
-<span class="sig-name descname"><span class="pre">observe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.observe" title="Permalink to this definition">#</a></dt>
-<dd><p>Inform the solver that a given variable is observed by the
-propagator.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.process">
-<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cover</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decompose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">probe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">probehbr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subsume</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vivify</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.process" title="Permalink to this definition">#</a></dt>
-<dd><p>Apply the preprocessor for the internal formula. See the
-documentation for the <code class="docutils literal notranslate"><span class="pre">process</span></code> module for details.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.prop_budget">
-<span class="sig-name descname"><span class="pre">prop_budget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">budget</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.prop_budget" title="Permalink to this definition">#</a></dt>
-<dd><p>Set limit on the number of propagations.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.propagate">
-<span class="sig-name descname"><span class="pre">propagate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assumptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phase_saving</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.propagate" title="Permalink to this definition">#</a></dt>
-<dd><p>Propagate a given set of assumption literals.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.propagator_active">
-<span class="sig-name descname"><span class="pre">propagator_active</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.propagator_active" title="Permalink to this definition">#</a></dt>
-<dd><p>Check if the propagator is currently active or passive.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.reset_observed">
-<span class="sig-name descname"><span class="pre">reset_observed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.reset_observed" title="Permalink to this definition">#</a></dt>
-<dd><p>Reset all observed variables.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.restore">
-<span class="sig-name descname"><span class="pre">restore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.restore" title="Permalink to this definition">#</a></dt>
-<dd><p>Given a model for the processed formula, reconstruct a model for
-the original formula. See the documentation for the <code class="docutils literal notranslate"><span class="pre">process</span></code>
-module for details.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.set_phases">
-<span class="sig-name descname"><span class="pre">set_phases</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">literals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.set_phases" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets polarities of a given list of variables.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.solve">
-<span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assumptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.solve" title="Permalink to this definition">#</a></dt>
-<dd><p>Solve internal formula.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.solve_limited">
-<span class="sig-name descname"><span class="pre">solve_limited</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assumptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expect_interrupt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.solve_limited" title="Permalink to this definition">#</a></dt>
-<dd><p>Solve internal formula using given budgets for conflicts and
-decisions.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.start_mode">
-<span class="sig-name descname"><span class="pre">start_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">warm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.start_mode" title="Permalink to this definition">#</a></dt>
-<dd><p>Set start mode: either warm or standard.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.supports_atmost">
-<span class="sig-name descname"><span class="pre">supports_atmost</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.supports_atmost" title="Permalink to this definition">#</a></dt>
-<dd><p>This method can be called to determine whether the solver supports
-native AtMostK (see <a class="reference internal" href="card.html#module-pysat.card" title="pysat.card"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.card</span></code></a>) constraints.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.time">
-<span class="sig-name descname"><span class="pre">time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.time" title="Permalink to this definition">#</a></dt>
-<dd><p>Get time spent for the last call to oracle.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.solvers.Cadical195.time_accum">
-<span class="sig-name descname"><span class="pre">time_accum</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Cadical195.time_accum" title="Permalink to this definition">#</a></dt>
-<dd><p>Get time accumulated for all calls to oracle.</p>
-</dd></dl>
-
-</dd></dl>
-
 <dl class="py exception">
 <dt class="sig sig-object py" id="pysat.solvers.NoSuchSolverError">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.solvers.</span></span><span class="sig-name descname"><span class="pre">NoSuchSolverError</span></span><a class="headerlink" href="#pysat.solvers.NoSuchSolverError" title="Permalink to this definition">#</a></dt>
@@ -682,7 +413,7 @@ reached.</p>
 <p>Given the above, a couple of examples of solver creation are the
 following:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Solver</span><span class="p">,</span> <span class="n">Minisat22</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Solver</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;g4&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">])</span>
@@ -691,17 +422,17 @@ following:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">get_model</span><span class="p">())</span>
 <span class="go">[-1, -2]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Minisat22</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]])</span> <span class="k">as</span> <span class="n">m</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">m</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
 <span class="go">True</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">get_model</span><span class="p">())</span>
+<span class="go">...     print(m.get_model())</span>
 <span class="go">[-1, -2]</span>
 </pre></div>
 </div>
 <p>Note that while all explicit solver classes necessarily have default
 arguments <code class="docutils literal notranslate"><span class="pre">bootstrap_with</span></code> and <code class="docutils literal notranslate"><span class="pre">use_timer</span></code>, solvers
-<code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical103</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical153</span></code>, <a class="reference internal" href="#pysat.solvers.Cadical195" title="pysat.solvers.Cadical195"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code></a>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical103</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical153</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code>,
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Lingeling</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Gluecard3</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Gluecard4</span></code>,
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose3</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose4</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose42</span></code>,
 <code class="xref py py-class docutils literal notranslate"><span class="pre">MapleChrono</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">MapleCM</span></code>, and <code class="xref py py-class docutils literal notranslate"><span class="pre">Maplesat</span></code> can have
@@ -711,13 +442,13 @@ enabled by setting the <code class="docutils literal notranslate"><span class="p
 by default):</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Lingeling</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.genhard</span> <span class="kn">import</span> <span class="n">PHP</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">PHP</span><span class="p">(</span><span class="n">nof_holes</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># pigeonhole principle for 3 pigeons</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Lingeling</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">,</span> <span class="n">with_proof</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">l</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">l</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
 <span class="go">False</span>
-<span class="gp">... </span>    <span class="n">l</span><span class="o">.</span><span class="n">get_proof</span><span class="p">()</span>
+<span class="go">...     l.get_proof()</span>
 <span class="go">[&#39;-5 0&#39;, &#39;6 0&#39;, &#39;-2 0&#39;, &#39;-4 0&#39;, &#39;1 0&#39;, &#39;3 0&#39;, &#39;0&#39;]</span>
 </pre></div>
 </div>
@@ -780,9 +511,13 @@ and propagations.</p>
 <dt class="sig sig-object py" id="pysat.solvers.Solver.activate_atmost">
 <span class="sig-name descname"><span class="pre">activate_atmost</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.activate_atmost" title="Permalink to this definition">#</a></dt>
 <dd><p>Activate native linear (cardinality or pseudo-Boolean) constraint
-reasoning. This is supported only by <a class="reference internal" href="#pysat.solvers.Cadical195" title="pysat.solvers.Cadical195"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code></a> by means
+reasoning. This is supported only by <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code> by means
 of its external propagators functionality and the use of
 <code class="xref py py-class docutils literal notranslate"><span class="pre">BooleanEngine</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>IPASIR-UP related. <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code> only.</p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -796,7 +531,7 @@ constraints</strong>.</p>
 native AtMostK constraint should be given as a pair <code class="docutils literal notranslate"><span class="pre">lits</span></code> and
 <code class="docutils literal notranslate"><span class="pre">k</span></code>, where <code class="docutils literal notranslate"><span class="pre">lits</span></code> is a list of literals in the sum.</p>
 <p>Also, besides <em>unweighted</em> AtMostK constraints, some solvers (see
-<a class="reference internal" href="#pysat.solvers.Cadical195" title="pysat.solvers.Cadical195"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code></a>) support their weighted counterparts, i.e.
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code>) support their weighted counterparts, i.e.
 pseudo-Boolean constraints of the form <span class="math notranslate nohighlight">\(\sum_{i=1}^{n}{w_i
 \cdot x_i}\leq k\)</span>. The weights of the literals can be specified
 using the argument <code class="docutils literal notranslate"><span class="pre">weights</span></code>.</p>
@@ -935,10 +670,10 @@ the number of conflicts is disabled.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">MinisatGH</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.genhard</span> <span class="kn">import</span> <span class="n">PHP</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">PHP</span><span class="p">(</span><span class="n">nof_holes</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>  <span class="c1"># PHP20 is too hard for a SAT solver</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">MinisatGH</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">conf_budget</span><span class="p">(</span><span class="mi">2000</span><span class="p">)</span>  <span class="c1"># getting at most 2000 conflicts</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">solve_limited</span><span class="p">())</span>  <span class="c1"># making a limited oracle call</span>
 <span class="go">None</span>
@@ -950,14 +685,14 @@ the number of conflicts is disabled.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.configure">
 <span class="sig-name descname"><span class="pre">configure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.configure" title="Permalink to this definition">#</a></dt>
-<dd><p>Configure <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical153</span></code> or <a class="reference internal" href="#pysat.solvers.Cadical195" title="pysat.solvers.Cadical195"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code></a> by setting
+<dd><p>Configure <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical153</span></code> or <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code> by setting
 some of the predefined parameters to selected values. Note that
 this method can be invoked only for <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical153</span></code> and
 <cite>Cadical195</cite> – no other solvers support this for now.</p>
 <p>Also note that this call must follow the creation of the new
 solver object; otherwise, an exception may be thrown.</p>
 <p>The list of available options of <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical153</span></code> and
-<a class="reference internal" href="#pysat.solvers.Cadical195" title="pysat.solvers.Cadical195"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code></a> and the corresponding values they can be
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code> and the corresponding values they can be
 assigned to is provided <a class="reference external" href="https://github.com/arminbiere/cadical/blob/master/src/options.hpp">here</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -971,7 +706,11 @@ assigned to is provided <a class="reference external" href="https://github.com/a
 <span class="sig-name descname"><span class="pre">connect_propagator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">propagator</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.connect_propagator" title="Permalink to this definition">#</a></dt>
 <dd><p>Attach an external propagator through the IPASIR-UP interface. The
 only expected argument is <code class="docutils literal notranslate"><span class="pre">propagator</span></code>, which must be an object
-of a class inheriting from the abstract class class:<cite>.Propagator</cite>.</p>
+of a class inheriting from the abstract class <a class="reference internal" href="engines.html#pysat.engines.Propagator" title="pysat.engines.Propagator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Propagator</span></code></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>IPASIR-UP related. <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code> only.</p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -983,7 +722,7 @@ value is given as a <code class="docutils literal notranslate"><span class="pre"
 than <code class="docutils literal notranslate"><span class="pre">0</span></code>. If the budget is set to <code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">-1</span></code>, the upper
 bound on the number of decisions is disabled.</p>
 <p>Note that this functionality is supported by <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical103</span></code>,
-<code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical153</span></code>, and <a class="reference internal" href="#pysat.solvers.Cadical195" title="pysat.solvers.Cadical195"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code></a> only!</p>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical153</span></code>, and <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code> only!</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>budget</strong> (<em>int</em>) – the upper bound on the number of decisions.</p>
@@ -992,10 +731,10 @@ bound on the number of decisions is disabled.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Cadical153</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.genhard</span> <span class="kn">import</span> <span class="n">Parity</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">Parity</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># too hard for a SAT solver</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">Cadical153</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">dec_budget</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>  <span class="c1"># doing at most 500 decisions</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">solve_limited</span><span class="p">())</span>  <span class="c1"># making a limited oracle call</span>
 <span class="go">None</span>
@@ -1017,6 +756,10 @@ is to be removed. This is not needed inside an <code class="docutils literal not
 <dd><p>Ask the solver to disable the propagator on the fly. This will it
 in passive mode, i.e. it will be invoked only to check assignments
 found by the solver.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>IPASIR-UP related. <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code> only.</p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -1025,6 +768,10 @@ found by the solver.</p>
 <dd><p>Disconnect the previously attached propagator. This will also
 reset all the variables marked in the solver as observed by the
 propagator.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>IPASIR-UP related. <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code> only.</p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -1032,6 +779,10 @@ propagator.</p>
 <span class="sig-name descname"><span class="pre">enable_propagator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.enable_propagator" title="Permalink to this definition">#</a></dt>
 <dd><p>Ask the solver to enable the propagator on the fly. This will put
 it in active mode.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>IPASIR-UP related. <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code> only.</p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -1070,7 +821,7 @@ clause until no more models of the formula exist.</p>
 <span class="go">[-1, -2, 3]</span>
 <span class="go">[-1, 2, 3]</span>
 <span class="go">[1, 2, 3]</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Solver</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">enum_models</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
 <span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
@@ -1147,13 +898,13 @@ set up to provide a proof. Otherwise, the method returns <code class="docutils l
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Solver</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.genhard</span> <span class="kn">import</span> <span class="n">PHP</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">PHP</span><span class="p">(</span><span class="n">nof_holes</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Solver</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;g4&#39;</span><span class="p">,</span> <span class="n">with_proof</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">g</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">g</span><span class="o">.</span><span class="n">append_formula</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="n">g</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
 <span class="go">False</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">get_proof</span><span class="p">())</span>
+<span class="go">...     print(g.get_proof())</span>
 <span class="go">[&#39;-8 4 1 0&#39;, &#39;-10 0&#39;, &#39;-2 0&#39;, &#39;-4 0&#39;, &#39;-8 0&#39;, &#39;-6 0&#39;, &#39;0&#39;]</span>
 </pre></div>
 </div>
@@ -1177,6 +928,10 @@ variable and can be later obtained using this method.</p>
 <span class="sig-name descname"><span class="pre">ignore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.ignore" title="Permalink to this definition">#</a></dt>
 <dd><p>Inform the solver that a given variable is ignored by the
 propagator attached to it.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>IPASIR-UP related. <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code> only.</p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -1194,16 +949,16 @@ SAT call (see <a class="reference internal" href="#pysat.solvers.Solver.solve" t
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">MinisatGH</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.genhard</span> <span class="kn">import</span> <span class="n">PHP</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Timer</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">PHP</span><span class="p">(</span><span class="n">nof_holes</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>  <span class="c1"># PHP20 is too hard for a SAT solver</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">MinisatGH</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">interrupt</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">s</span><span class="o">.</span><span class="n">interrupt</span><span class="p">()</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">timer</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">interrupt</span><span class="p">,</span> <span class="p">[</span><span class="n">m</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">solve_limited</span><span class="p">(</span><span class="n">expect_interrupt</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 <span class="go">None</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
@@ -1219,6 +974,10 @@ attached propagator is a assigned a value by branching or by
 propagation, i.e. whether it is decision or not. In the former
 case, the method returns <code class="docutils literal notranslate"><span class="pre">True</span></code>; otherwise, it returns
 <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>IPASIR-UP related. <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code> only.</p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -1276,6 +1035,10 @@ the formula given to the solver.</p>
 <span class="sig-name descname"><span class="pre">observe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.observe" title="Permalink to this definition">#</a></dt>
 <dd><p>Inform the solver that a given variable is observed by the
 propagator attached to it.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>IPASIR-UP related. <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code> only.</p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -1294,10 +1057,10 @@ bound on the number of propagations is disabled.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">MinisatGH</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.genhard</span> <span class="kn">import</span> <span class="n">Parity</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">Parity</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># too hard for a SAT solver</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">MinisatGH</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">prop_budget</span><span class="p">(</span><span class="mi">100000</span><span class="p">)</span>  <span class="c1"># doing at most 100000 propagations</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">solve_limited</span><span class="p">())</span>  <span class="c1"># making a limited oracle call</span>
 <span class="go">None</span>
@@ -1325,7 +1088,7 @@ before calling <a class="reference internal" href="#pysat.solvers.Solver.solve" 
 <a class="reference internal" href="#pysat.solvers.Solver.propagate" title="pysat.solvers.Solver.propagate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">propagate()</span></code></a>, or <a class="reference internal" href="#pysat.solvers.Solver.enum_models" title="pysat.solvers.Solver.enum_models"><code class="xref py py-meth docutils literal notranslate"><span class="pre">enum_models()</span></code></a>.</p>
 <p><strong>Note</strong> that only MiniSat-like solvers support this functionality
 (e.g. <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical103</span></code>, class:<cite>Cadical153</cite>,
-<a class="reference internal" href="#pysat.solvers.Cadical195" title="pysat.solvers.Cadical195"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code></a>, and <code class="xref py py-class docutils literal notranslate"><span class="pre">Lingeling</span></code> do not support it).</p>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code>, and <code class="xref py py-class docutils literal notranslate"><span class="pre">Lingeling</span></code> do not support it).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1341,17 +1104,17 @@ before calling <a class="reference internal" href="#pysat.solvers.Solver.solve" 
 <p>Usage example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Glucose3</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.card</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CardEnc</span><span class="o">.</span><span class="n">atmost</span><span class="p">(</span><span class="n">lits</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">bound</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">EncType</span><span class="o">.</span><span class="n">pairwise</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">Glucose3</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">propagate</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="go">(True, [1, -2, -3, -4, -5])</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="mi">2</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">propagate</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="go">(False, [])</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1363,12 +1126,20 @@ before calling <a class="reference internal" href="#pysat.solvers.Solver.solve" 
 <dd><p>Check if the propagator is currently active or passive. In the
 former case, the method will return <code class="docutils literal notranslate"><span class="pre">True</span></code>; otherwise, it will
 return <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>IPASIR-UP related. <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code> only.</p>
+</div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.reset_observed">
 <span class="sig-name descname"><span class="pre">reset_observed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.reset_observed" title="Permalink to this definition">#</a></dt>
 <dd><p>Ask the solver to reset all observed variables.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>IPASIR-UP related. <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code> only.</p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -1387,7 +1158,7 @@ when branching on these variables. However, solvers
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Minicard</span></code> can redefine the preferences in any of the
 following SAT calls due to the phase saving heuristic.</p>
 <p>Also <strong>note</strong> that <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical103</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical153</span></code>, and
-<a class="reference internal" href="#pysat.solvers.Cadical195" title="pysat.solvers.Cadical195"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code></a> do not support this functionality.</p>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code> do not support this functionality.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>literals</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – a list of literals.</p>
@@ -1395,16 +1166,16 @@ following SAT calls due to the phase saving heuristic.</p>
 </dl>
 <p>Usage example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Glucose3</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">Glucose3</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># the formula has 3 models: [-1, 2], [1, -2], [1, 2]</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">set_phases</span><span class="p">(</span><span class="n">literals</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
 <span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">get_model</span><span class="p">()</span>
 <span class="go">[1, 2]</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1465,7 +1236,7 @@ is interrupted by SIGINT. Otherwise, the method returns <code class="docutils li
 <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 <p><strong>Note</strong> that only MiniSat-like solvers support this functionality
 (e.g. <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical103</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical153</span></code>,
-<a class="reference internal" href="#pysat.solvers.Cadical195" title="pysat.solvers.Cadical195"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code></a>, and <code class="xref py py-class docutils literal notranslate"><span class="pre">Lingeling</span></code> do not support it).</p>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code>, and <code class="xref py py-class docutils literal notranslate"><span class="pre">Lingeling</span></code> do not support it).</p>
 <p>Incremental SAT calls can be made with the use of assumption
 literals. (<strong>Note</strong> that the <code class="docutils literal notranslate"><span class="pre">assumptions</span></code> argument is optional
 and disabled by default.)</p>
@@ -1541,7 +1312,7 @@ with a <em>varying</em> list of assumption literals.</p>
 <span class="gp">... </span>            <span class="n">oracle</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="o">-</span><span class="n">l</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">model</span><span class="p">])</span>
 <span class="gp">... </span>            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
 <span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> models in </span><span class="si">{1:.4f}</span><span class="s1">s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="n">oracle</span><span class="o">.</span><span class="n">time_accum</span><span class="p">()))</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model_count</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">,</span> <span class="n">cnf</span><span class="p">,</span> <span class="n">vlimit</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">warm_start</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="go">58651 models in 7.9903s</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model_count</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">,</span> <span class="n">cnf</span><span class="p">,</span> <span class="n">vlimit</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">warm_start</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1584,12 +1355,12 @@ details).</p>
 <p>Example usage:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Solver</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.genhard</span> <span class="kn">import</span> <span class="n">PHP</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">PHP</span><span class="p">(</span><span class="n">nof_holes</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Solver</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">,</span> <span class="n">use_timer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">solve</span><span class="p">())</span>
 <span class="go">False</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0:.2f}</span><span class="s1">s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">time</span><span class="p">()))</span>
+<span class="go">...     print(&#39;{0:.2f}s&#39;.format(s.time()))</span>
 <span class="go">150.16s</span>
 </pre></div>
 </div>
@@ -1610,18 +1381,18 @@ previously set to <code class="docutils literal notranslate"><span class="pre">T
 <p>Example usage:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Solver</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.genhard</span> <span class="kn">import</span> <span class="n">PHP</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">PHP</span><span class="p">(</span><span class="n">nof_holes</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Solver</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">,</span> <span class="n">use_timer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
 <span class="go">False</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0:.2f}</span><span class="s1">s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">time</span><span class="p">()))</span>
+<span class="go">...     print(&#39;{0:.2f}s&#39;.format(s.time()))</span>
 <span class="go">1.76s</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+<span class="go">...     print(s.solve(assumptions=[-1]))</span>
 <span class="go">False</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0:.2f}</span><span class="s1">s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">time</span><span class="p">()))</span>
+<span class="go">...     print(&#39;{0:.2f}s&#39;.format(s.time()))</span>
 <span class="go">113.58s</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0:.2f}</span><span class="s1">s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">time_accum</span><span class="p">()))</span>
+<span class="go">...     print(&#39;{0:.2f}s&#39;.format(s.time_accum()))</span>
 <span class="go">115.34s</span>
 </pre></div>
 </div>

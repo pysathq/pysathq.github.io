@@ -29,7 +29,6 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -189,8 +188,8 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#pysat.engines.LinearConstraint" title="pysat.engines.LinearConstraint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearConstraint</span></code></a></p></td>
 <td><p>A possible implementation of linear constraints over Boolean variables, including cardinality and pseudo-Boolean constraints.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#pysat.engines.ParityConstraint" title="pysat.engines.ParityConstraint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ParityConstraint</span></code></a></p></td>
-<td><p>A possible implementation of parity constraints, i.e. constraints of the form <span class="math notranslate nohighlight">\(l_1 \oplus l_2 \oplus \ldots \oplus l_n = b\)</span> where each <span class="math notranslate nohighlight">\(l_i\)</span> is a Boolean literal while <span class="math notranslate nohighlight">\(b\)</span> is a Boolean constant.</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ParityConstraint</span></code></p></td>
+<td><p>A possible implementation of parity constraints.</p></td>
 </tr>
 </tbody>
 </table>
@@ -249,7 +248,7 @@ will then need to inform the solver what variable it requires to observe.</p>
 <a class="reference internal" href="#pysat.engines.BooleanEngine" title="pysat.engines.BooleanEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">BooleanEngine</span></code></a> in order to see how an external reasoning
 engine can be implemented and attached to CaDiCaL 1.9.5. Also consult
 the implementation of the corresponding methods of
-<a class="reference internal" href="solvers.html#pysat.solvers.Cadical195" title="pysat.solvers.Cadical195"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code></a>.</p>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code>.</p>
 </div>
 </section>
 <section id="module-details">
@@ -274,7 +273,7 @@ parameter <code class="docutils literal notranslate"><span class="pre">bootstrap
 specified) in the constraints passed in: <code class="docutils literal notranslate"><span class="pre">'linear'</span></code> and <code class="docutils literal notranslate"><span class="pre">'parity'</span></code>
 (exclusive OR). The former will be handled as objects of class
 <a class="reference internal" href="#pysat.engines.LinearConstraint" title="pysat.engines.LinearConstraint"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearConstraint</span></code></a> while the latter will be transformed into
-objects of <a class="reference internal" href="#pysat.engines.ParityConstraint" title="pysat.engines.ParityConstraint"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParityConstraint</span></code></a>.</p>
+objects of <code class="xref py py-class docutils literal notranslate"><span class="pre">ParityConstraint</span></code>.</p>
 <p>Here, each type of constraint is meant to have a list of literals
 stored in variable <code class="docutils literal notranslate"><span class="pre">.lits</span></code>. This is required to set up watched lists
 properly.</p>
@@ -324,6 +323,20 @@ added constraint to the callee.</p>
 <span class="sig-name descname"><span class="pre">cleanup_watched</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">garbage</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.BooleanEngine.cleanup_watched" title="Permalink to this definition">#</a></dt>
 <dd><p>Garbage collect holes in the watched list for +lit
 (and potentially for -lit).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.engines.BooleanEngine.decide">
+<span class="sig-name descname"><span class="pre">decide</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#pysat.engines.BooleanEngine.decide" title="Permalink to this definition">#</a></dt>
+<dd><p>This method allows the propagator to influence the decision
+process. Namely, it is used when the solver asks the propagator
+for the next decision literal (if any). If the method returns
+<code class="docutils literal notranslate"><span class="pre">0</span></code>, the solver will make its own choice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -533,92 +546,6 @@ right-hand side of the constraint.</p>
 <dd><p>Unassign a given literal, which is done by decrementing the
 literal’s contribution to the total sum of the weights of assigned
 literals.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="pysat.engines.ParityConstraint">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.engines.</span></span><span class="sig-name descname"><span class="pre">ParityConstraint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.ParityConstraint" title="Permalink to this definition">#</a></dt>
-<dd><p>A possible implementation of parity constraints, i.e. constraints of
-the form <span class="math notranslate nohighlight">\(l_1 \oplus l_2 \oplus \ldots \oplus l_n = b\)</span> where
-each <span class="math notranslate nohighlight">\(l_i\)</span> is a Boolean literal while <span class="math notranslate nohighlight">\(b\)</span> is a Boolean
-constant. The class is designed to exemplify the work with
-<a class="reference internal" href="#pysat.engines.BooleanEngine" title="pysat.engines.BooleanEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">BooleanEngine</span></code></a>.</p>
-<p>The implementation is pretty naive. It propagates a last unassigned
-literal if all but one literals got their values. The value the
-propagated literals is assigned to depends on the other values in the
-constraint as well as on the right-hand side value.</p>
-<p>The constructor receives two arguments: <code class="docutils literal notranslate"><span class="pre">lits</span></code> and <code class="docutils literal notranslate"><span class="pre">value</span></code>.
-Argument <code class="docutils literal notranslate"><span class="pre">lits</span></code> represents a list of literals on the left-hand side
-of the constraint while argument <code class="docutils literal notranslate"><span class="pre">value</span></code> represents the right-hand
-side. By default, <code class="docutils literal notranslate"><span class="pre">value</span></code> equals <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>lits</strong> – list of literals (left-hand side)</p></li>
-<li><p><strong>value</strong> (<em>bool</em>) – right-hand side of the constraint</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.engines.ParityConstraint.abandon">
-<span class="sig-name descname"><span class="pre">abandon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dummy_lit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.ParityConstraint.abandon" title="Permalink to this definition">#</a></dt>
-<dd><p>Clear the reason of a given literal.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.engines.ParityConstraint.attach_values">
-<span class="sig-name descname"><span class="pre">attach_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.ParityConstraint.attach_values" title="Permalink to this definition">#</a></dt>
-<dd><p>Give the constraint access to centralised values exposed from
-<a class="reference internal" href="#pysat.engines.BooleanEngine" title="pysat.engines.BooleanEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">BooleanEngine</span></code></a>.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.engines.ParityConstraint.explain_failure">
-<span class="sig-name descname"><span class="pre">explain_failure</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.ParityConstraint.explain_failure" title="Permalink to this definition">#</a></dt>
-<dd><p>Provide a reason clause for why the previous model falsified
-the constraint. This will clause will be added to the solver.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.engines.ParityConstraint.falsified_by">
-<span class="sig-name descname"><span class="pre">falsified_by</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.ParityConstraint.falsified_by" title="Permalink to this definition">#</a></dt>
-<dd><p>Check if the constraint is violated by a given assignment, which
-is done by xor’ing up all the values on the left-hand side (given
-a model) and comparing with the right-hand side value.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.engines.ParityConstraint.justify">
-<span class="sig-name descname"><span class="pre">justify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dummy_lit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.ParityConstraint.justify" title="Permalink to this definition">#</a></dt>
-<dd><p>Provide a reason for the literal propagated from here.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.engines.ParityConstraint.propagate">
-<span class="sig-name descname"><span class="pre">propagate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.ParityConstraint.propagate" title="Permalink to this definition">#</a></dt>
-<dd><p>Get all the consequences of a given literal. Propagation here
-should be similar to that of normal clauses (2-watched scheme).</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.engines.ParityConstraint.register_watched">
-<span class="sig-name descname"><span class="pre">register_watched</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">to_watch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.ParityConstraint.register_watched" title="Permalink to this definition">#</a></dt>
-<dd><p>Add self to the centralised watched literals lists in
-<a class="reference internal" href="#pysat.engines.BooleanEngine" title="pysat.engines.BooleanEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">BooleanEngine</span></code></a>.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.engines.ParityConstraint.replace_watched">
-<span class="sig-name descname"><span class="pre">replace_watched</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">old</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.ParityConstraint.replace_watched" title="Permalink to this definition">#</a></dt>
-<dd><p>Register this constraint as to be watched for a new literal.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="pysat.engines.ParityConstraint.unassign">
-<span class="sig-name descname"><span class="pre">unassign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.engines.ParityConstraint.unassign" title="Permalink to this definition">#</a></dt>
-<dd><p>Unassign a given literal. A dummy method, which does nothing.</p>
 </dd></dl>
 
 </dd></dl>

@@ -228,9 +228,9 @@ c oracle time: 0.0002
 standard <code class="docutils literal notranslate"><span class="pre">import</span></code> interface of Python, e.g.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.mcsls</span> <span class="kn">import</span> <span class="n">MCSls</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">WCNF</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;formula.wcnf.xz&#39;</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mcsls</span> <span class="o">=</span> <span class="n">MCSls</span><span class="p">(</span><span class="n">wcnf</span><span class="p">,</span> <span class="n">use_cld</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">solver_name</span><span class="o">=</span><span class="s1">&#39;g3&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">mcs</span> <span class="ow">in</span> <span class="n">mcsls</span><span class="o">.</span><span class="n">enumerate</span><span class="p">():</span>
 <span class="gp">... </span>    <span class="n">mcsls</span><span class="o">.</span><span class="n">block</span><span class="p">(</span><span class="n">mcs</span><span class="p">)</span>

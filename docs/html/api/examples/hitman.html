@@ -250,27 +250,27 @@ be blocked on demand.</p>
 is shown below. Here we target unordered subset-minimal hitting set
 enumeration.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.hitman</span> <span class="kn">import</span> <span class="n">Hitman</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="n">Hitman</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;m22&#39;</span><span class="p">,</span> <span class="n">htype</span><span class="o">=</span><span class="s1">&#39;lbx&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># adding sets to hit</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">.</span><span class="n">hit</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">.</span><span class="n">hit</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">.</span><span class="n">hit</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
 <span class="go">[1, 5]</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">.</span><span class="n">block</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
 <span class="go">[2, 4, 5]</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Enumerating cardinality-minimal hitting sets can be done as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.hitman</span> <span class="kn">import</span> <span class="n">Hitman</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sets</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Hitman</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">sets</span><span class="p">,</span> <span class="n">htype</span><span class="o">=</span><span class="s1">&#39;sorted&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">hitman</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">for</span> <span class="n">hs</span> <span class="ow">in</span> <span class="n">hitman</span><span class="o">.</span><span class="n">enumerate</span><span class="p">():</span>
@@ -292,10 +292,10 @@ solving. As an example, let us show the basic flow of a MaxHS-like <a class="foo
 algorithm for MaxSAT:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.hitman</span> <span class="kn">import</span> <span class="n">Hitman</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Solver</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hitman</span> <span class="o">=</span> <span class="n">Hitman</span><span class="p">(</span><span class="n">htype</span><span class="o">=</span><span class="s1">&#39;sorted&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">oracle</span> <span class="o">=</span> <span class="n">Solver</span><span class="p">()</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># here we assume that the SAT oracle</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># is initialized with a MaxSAT formula,</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># whose soft clauses are extended with</span>

@@ -248,9 +248,9 @@ c oracle time: 0.0001
 standard <code class="docutils literal notranslate"><span class="pre">import</span></code> interface of Python, e.g.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.optux</span> <span class="kn">import</span> <span class="n">OptUx</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">WCNF</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;formula.wcnf.xz&#39;</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">OptUx</span><span class="p">(</span><span class="n">wcnf</span><span class="p">)</span> <span class="k">as</span> <span class="n">optux</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">for</span> <span class="n">mus</span> <span class="ow">in</span> <span class="n">optux</span><span class="o">.</span><span class="n">enumerate</span><span class="p">():</span>
 <span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;mus </span><span class="si">{0}</span><span class="s1"> has cost </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mus</span><span class="p">,</span> <span class="n">optux</span><span class="o">.</span><span class="n">cost</span><span class="p">))</span>
