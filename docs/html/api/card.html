@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Cardinality encodings (pysat.card) &#8212; PySAT 1.8.dev4 documentation</title>
+    <title>Cardinality encodings (pysat.card) &#8212; PySAT 1.8.dev5 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev4)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev5)</strong></a>
       </div>
       
     </div>
@@ -431,7 +431,7 @@ this case, the object is deleted automatically:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">ITotalizer</span><span class="p">(</span><span class="n">lits</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">ubound</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">as</span> <span class="n">t</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[-2, 4], [-1, 4], [-1, -2, 5], [-4, 6], [-5, 7], [-3, 6], [-3, -4, 7]]</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">rhs</span><span class="p">)</span>
+<span class="go">...     print(t.rhs)</span>
 <span class="go">[6, 7]</span>
 </pre></div>
 </div>
@@ -475,7 +475,7 @@ is updated with new values.</p>
 <span class="go">[[-2, 3], [-1, 3], [-1, -2, 4]]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">rhs</span><span class="p">)</span>
 <span class="go">[3, 4]</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">lits</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">ubound</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[-2, 3], [-1, 3], [-1, -2, 4], [-5, 6], [-3, 6], [-4, 7], [-3, -5, 7], [-4, -5, 8]]</span>
@@ -517,7 +517,7 @@ becomes <code class="docutils literal notranslate"><span class="pre">ubound+1</s
 <span class="go">[[-2, 4], [-1, 4], [-1, -2, 5], [-4, 6], [-5, 7], [-3, 6], [-3, -4, 7]]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">rhs</span><span class="p">)</span>
 <span class="go">[6, 7]</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">increase</span><span class="p">(</span><span class="n">ubound</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[-2, 4], [-1, 4], [-1, -2, 5], [-4, 6], [-5, 7], [-3, 6], [-3, -4, 7], [-3, -5, 8]]</span>
@@ -563,24 +563,24 @@ is updated with new values.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">ITotalizer</span><span class="p">(</span><span class="n">lits</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">ubound</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">as</span> <span class="n">t1</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[-2, 3], [-1, 3], [-1, -2, 4]]</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">rhs</span><span class="p">)</span>
+<span class="go">...     print(t1.rhs)</span>
 <span class="go">[3, 4]</span>
-<span class="gp">...</span>
-<span class="gp">... </span>    <span class="n">t2</span> <span class="o">=</span> <span class="n">ITotalizer</span><span class="p">(</span><span class="n">lits</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">ubound</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
+<span class="go">...</span>
+<span class="go">...     t2 = ITotalizer(lits=[5, 6], ubound=1)</span>
+<span class="go">...     print(t1.cnf.clauses)</span>
 <span class="go">[[-6, 7], [-5, 7], [-5, -6, 8]]</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">rhs</span><span class="p">)</span>
+<span class="go">...     print(t1.rhs)</span>
 <span class="go">[7, 8]</span>
-<span class="gp">...</span>
-<span class="gp">... </span>    <span class="n">t1</span><span class="o">.</span><span class="n">merge_with</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
+<span class="go">...</span>
+<span class="go">...     t1.merge_with(t2)</span>
+<span class="go">...     print(t1.cnf.clauses)</span>
 <span class="go">[[-2, 3], [-1, 3], [-1, -2, 4], [-6, 7], [-5, 7], [-5, -6, 8], [-7, 9], [-8, 10], [-3, 9], [-4, 10], [-3, -7, 10]]</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">[</span><span class="o">-</span><span class="n">t1</span><span class="o">.</span><span class="n">nof_new</span><span class="p">:])</span>
+<span class="go">...     print(t1.cnf.clauses[-t1.nof_new:])</span>
 <span class="go">[[-6, 7], [-5, 7], [-5, -6, 8], [-7, 9], [-8, 10], [-3, 9], [-4, 10], [-3, -7, 10]]</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">rhs</span><span class="p">)</span>
+<span class="go">...     print(t1.rhs)</span>
 <span class="go">[9, 10]</span>
-<span class="gp">...</span>
-<span class="gp">... </span>    <span class="n">t2</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+<span class="go">...</span>
+<span class="go">...     t2.delete()</span>
 </pre></div>
 </div>
 </dd></dl>

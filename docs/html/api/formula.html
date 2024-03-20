@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 1.8.dev4 documentation</title>
+    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 1.8.dev5 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev4)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev5)</strong></a>
       </div>
       
     </div>
@@ -285,13 +285,13 @@ following way:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">CNF</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f1</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;some-file-name.cnf&#39;</span><span class="p">)</span>  <span class="c1"># reading from file</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f1</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s1">&#39;another-file-name.cnf&#39;</span><span class="p">)</span>  <span class="c1"># writing to a file</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;some-file-name.cnf&#39;</span><span class="p">,</span> <span class="s1">&#39;r+&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">f2</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_fp</span><span class="o">=</span><span class="n">fp</span><span class="p">)</span>  <span class="c1"># reading from a file pointer</span>
 <span class="gp">...</span>
 <span class="gp">... </span>    <span class="n">fp</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="n">f2</span><span class="o">.</span><span class="n">to_fp</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>  <span class="c1"># writing to a file pointer</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f3</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_string</span><span class="o">=</span><span class="s1">&#39;p cnf 3 3</span><span class="se">\n</span><span class="s1">-1 2 0</span><span class="se">\n</span><span class="s1">-2 3 0</span><span class="se">\n</span><span class="s1">-3 0</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">f3</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[-1, 2], [-2, 3], [-3]]</span>
@@ -318,12 +318,12 @@ the sum of weights of satisfied soft clauses, i.e. maximizing the value of
 soft clauses of the corresponding formula: <code class="docutils literal notranslate"><span class="pre">hard</span></code> and <code class="docutils literal notranslate"><span class="pre">soft</span></code>. The
 weights of soft clauses are stored in variable <code class="docutils literal notranslate"><span class="pre">wght</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">WCNF</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">2</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># the formula becomes unsatisfiable</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">wcnf</span><span class="o">.</span><span class="n">hard</span><span class="p">)</span>
 <span class="go">[[-1, -2]]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">wcnf</span><span class="o">.</span><span class="n">soft</span><span class="p">)</span>
@@ -379,7 +379,7 @@ demand.</p>
 <span class="gp">... </span>   <span class="c1"># setting Atom(3) to false results in only one model</span>
 <span class="gp">... </span>   <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">solver</span><span class="o">.</span><span class="n">enum_models</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="n">Formula</span><span class="o">.</span><span class="n">literals</span><span class="p">([</span><span class="o">~</span><span class="n">Atom</span><span class="p">(</span><span class="mi">3</span><span class="p">)])):</span>
 <span class="gp">... </span>       <span class="nb">print</span><span class="p">(</span><span class="n">Formula</span><span class="o">.</span><span class="n">formulas</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">atoms_only</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>  <span class="c1"># translating the model back to atoms</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="go">[Neg(Atom(1)), Neg(Atom(2)), Neg(Atom(3)), Atom(4)]</span>
 </pre></div>
 </div>
@@ -451,17 +451,17 @@ used to create <code class="docutils literal notranslate"><span class="pre">And<
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a1</span> <span class="o">=</span> <span class="n">And</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a2</span> <span class="o">=</span> <span class="n">And</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">),</span> <span class="n">merge</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a3</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">repr</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span>
 <span class="go">&quot;And[And[Atom(&#39;x&#39;), Atom(&#39;y&#39;)], Atom(&#39;z&#39;)]&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">repr</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
 <span class="go">&quot;And[Atom(&#39;x&#39;), Atom(&#39;y&#39;), Atom(&#39;z&#39;)]&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">repr</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
 <span class="go">&quot;And[Atom(&#39;x&#39;), Atom(&#39;y&#39;), Atom(&#39;z&#39;)]&quot;</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
 <span class="go">False</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span>
 <span class="go">True  # formulas a2 and a3 refer to the same object</span>
 </pre></div>
@@ -491,7 +491,7 @@ subformulas and creates a new formula.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&amp;</span> <span class="n">y</span> <span class="o">&amp;</span> <span class="n">z</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">simplified</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="n">y</span><span class="p">]))</span>
 <span class="go">x &amp; z</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">simplified</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="o">~</span><span class="n">y</span><span class="p">]))</span>
@@ -544,10 +544,10 @@ through the constants <code class="docutils literal notranslate"><span class="pr
 respectively.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">PYSAT_TRUE</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="n">PYSAT_TRUE</span><span class="p">))</span>
 <span class="go">T Atom(True)</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">PYSAT_FALSE</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="n">PYSAT_FALSE</span><span class="p">))</span>
 <span class="go">F Atom(False)</span>
 </pre></div>
@@ -694,7 +694,7 @@ string to parse. (Classes <code class="xref py py-class docutils literal notrans
 <span class="go">i1 x</span>
 <span class="go">i2 z</span>
 <span class="go">o0 6c454aea-c9e1-11e9-bbe3-3af9d34370a9</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">CNF</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_aiger</span><span class="o">=</span><span class="n">expr</span><span class="o">.</span><span class="n">aig</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">nv</span><span class="p">)</span>
@@ -762,7 +762,7 @@ package to be additionally installed.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">CNF</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf1</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf1</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s1">&#39;some-file.cnf.gz&#39;</span><span class="p">,</span> <span class="n">compressed_with</span><span class="o">=</span><span class="s1">&#39;gzip&#39;</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf2</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;another-file.cnf&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -787,7 +787,7 @@ lines.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;some-file.cnf&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">cnf1</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="n">cnf1</span><span class="o">.</span><span class="n">from_fp</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;another-file.cnf&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">cnf2</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_fp</span><span class="o">=</span><span class="n">fp</span><span class="p">)</span>
 </pre></div>
@@ -815,7 +815,7 @@ specific comment lines.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf1</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="s1">&#39;p cnf 2 2</span><span class="se">\n</span><span class="s1">-1 2 0</span><span class="se">\n</span><span class="s1">1 -2 0&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf1</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[-1, 2], [1, -2]]</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf2</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_string</span><span class="o">=</span><span class="s1">&#39;p cnf 3 3</span><span class="se">\n</span><span class="s1">-1 2 0</span><span class="se">\n</span><span class="s1">-2 3 0</span><span class="se">\n</span><span class="s1">-3 0</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf2</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[-1, 2], [-2, 3], [-3]]</span>
@@ -1002,7 +1002,7 @@ is equal to <code class="docutils literal notranslate"><span class="pre">1</span
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">CNF</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_clauses</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span> <span class="o">=</span> <span class="n">cnf</span><span class="o">.</span><span class="n">weighted</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">wcnf</span><span class="o">.</span><span class="n">hard</span><span class="p">)</span>
 <span class="go">[]</span>
@@ -1169,7 +1169,7 @@ lines.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;some-file.cnf+&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">cnf1</span> <span class="o">=</span> <span class="n">CNFPlus</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="n">cnf1</span><span class="o">.</span><span class="n">from_fp</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;another-file.cnf+&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">cnf2</span> <span class="o">=</span> <span class="n">CNFPlus</span><span class="p">(</span><span class="n">from_fp</span><span class="o">=</span><span class="n">fp</span><span class="p">)</span>
 </pre></div>
@@ -1284,7 +1284,7 @@ remains unchanged.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">1</span><span class="p">],</span> <span class="n">is_atmost</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span> <span class="o">=</span> <span class="n">cnf</span><span class="o">.</span><span class="n">weighted</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">wcnf</span><span class="o">.</span><span class="n">hard</span><span class="p">)</span>
 <span class="go">[]</span>
@@ -1328,17 +1328,17 @@ bitwise operations are used to create <code class="docutils literal notranslate"
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a1</span> <span class="o">=</span> <span class="n">Equals</span><span class="p">(</span><span class="n">Equals</span><span class="p">(</span><span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a2</span> <span class="o">=</span> <span class="n">Equals</span><span class="p">(</span><span class="n">Equals</span><span class="p">(</span><span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">),</span> <span class="n">merge</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a3</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span>
 <span class="go">(x @ y) @ z</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
 <span class="go">x @ y @ z</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span>
 <span class="go">x @ y @ z</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
 <span class="go">False</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span>
 <span class="go">True  # formulas a2 and a3 refer to the same object</span>
 </pre></div>
@@ -1368,7 +1368,7 @@ subformulas and creates a new formula.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="o">@</span> <span class="n">y</span> <span class="o">@</span> <span class="n">z</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">simplified</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="n">y</span><span class="p">]))</span>
 <span class="go">x &amp; z    # x and z must also be True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">simplified</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="o">~</span><span class="n">y</span><span class="p">]))</span>
@@ -1401,7 +1401,7 @@ is encoded exactly once, despite it may be potentially used multiple
 times as part of one of more complex formulas.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
 <span class="go">True  # x1 and x2 refer to the same atom</span>
@@ -1468,9 +1468,9 @@ formula).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">@</span> <span class="n">y</span><span class="p">)</span> <span class="o">|</span> <span class="n">z</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">clausify</span><span class="p">()</span>  <span class="c1"># clausifying formula a</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># let&#39;s what clauses represent the root logic connective</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">clauses</span>
 <span class="go">[[3, 4]]  # 4 corresponds to z while 3 represents the equality x @ y</span>
@@ -1545,10 +1545,10 @@ list will be included in the result.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Solver</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">@</span> <span class="n">y</span><span class="p">)</span> <span class="o">^</span> <span class="n">z</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Solver</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">a</span><span class="p">)</span> <span class="k">as</span> <span class="n">solver</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">solver</span><span class="o">.</span><span class="n">enum_models</span><span class="p">():</span>
 <span class="gp">... </span>        <span class="c1"># using method formulas to map the model back to atoms</span>
@@ -1579,17 +1579,17 @@ opposite to <a class="reference internal" href="#pysat.formula.Formula.formulas"
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Solver</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">@</span> <span class="n">y</span><span class="p">)</span> <span class="o">^</span> <span class="n">z</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># applying Tseitin transformation to formula a</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">clausify</span><span class="p">()</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># checking what facts the internal vpool knows</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">Formula</span><span class="o">.</span><span class="n">export_vpool</span><span class="p">()</span><span class="o">.</span><span class="n">id2obj</span><span class="p">)</span>
 <span class="go">{1: Atom(&#39;x&#39;), 2: Atom(&#39;y&#39;), 3: Equals[Atom(&#39;x&#39;), Atom(&#39;y&#39;)], 4: Atom(&#39;z&#39;)}</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># now, mapping two atoms to their integer id representations</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Formula</span><span class="o">.</span><span class="n">literals</span><span class="p">(</span><span class="n">forms</span><span class="o">=</span><span class="p">[</span><span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="o">~</span><span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)])</span>
 <span class="go">[1, -4]</span>
@@ -1614,10 +1614,10 @@ falsified, and <code class="docutils literal notranslate"><span class="pre">None
 </dl>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">@</span> <span class="n">y</span><span class="p">)</span> <span class="o">|</span> <span class="n">z</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">satisfied</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="p">[</span><span class="n">z</span><span class="p">])</span>
 <span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">satisfied</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="p">[</span><span class="o">~</span><span class="n">z</span><span class="p">])</span>
@@ -1656,18 +1656,18 @@ object is returned.</p>
 </dl>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">@</span> <span class="n">y</span><span class="p">)</span> <span class="o">|</span> <span class="n">z</span>  <span class="c1"># a formula over 3 variables: x, y, and z</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">simplified</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="n">z</span><span class="p">])</span>
 <span class="go">Atom(True)</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">simplified</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="o">~</span><span class="n">z</span><span class="p">])</span>
 <span class="go">Equals[Atom(&#39;x&#39;), Atom(&#39;y&#39;)]</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">^</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>  <span class="c1"># a more complex formula</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">simplified</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="o">~</span><span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)])</span>
 <span class="go">Or[Atom(&#39;y&#39;), Atom(&#39;z&#39;)]</span>
 </pre></div>
@@ -1735,7 +1735,7 @@ the method will return a new id unassigned to any object.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">IDPool</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vpool</span> <span class="o">=</span> <span class="n">IDPool</span><span class="p">(</span><span class="n">occupied</span><span class="o">=</span><span class="p">[[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">18</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">]])</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># creating 5 unique variables for the following strings</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
 <span class="gp">... </span>   <span class="nb">print</span><span class="p">(</span><span class="n">vpool</span><span class="o">.</span><span class="n">id</span><span class="p">(</span><span class="s1">&#39;v</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)))</span>
@@ -1813,7 +1813,7 @@ arguments to the constructor.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ite</span> <span class="o">=</span> <span class="n">ITE</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">ite</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="n">y</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="o">~</span><span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="n">z</span><span class="p">)</span>
 </pre></div>
@@ -1835,7 +1835,7 @@ subformulas and creates a new formula.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ite</span> <span class="o">=</span> <span class="n">ITE</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">ite</span><span class="o">.</span><span class="n">simplified</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="n">y</span><span class="p">]))</span>
 <span class="go">x | z</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">ite</span><span class="o">.</span><span class="n">simplified</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="o">~</span><span class="n">y</span><span class="p">]))</span>
@@ -1879,7 +1879,7 @@ formula with these simplified subformulas.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="n">y</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">simplified</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="n">y</span><span class="p">]))</span>
 <span class="go">T</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">simplified</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="o">~</span><span class="n">y</span><span class="p">]))</span>
@@ -1927,7 +1927,7 @@ simplified subformula.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&amp;</span> <span class="n">y</span> <span class="o">|</span> <span class="n">z</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="o">~</span><span class="n">a</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">simplified</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="n">y</span><span class="p">]))</span>
 <span class="go">~(x | z)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">simplified</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="o">~</span><span class="n">y</span><span class="p">]))</span>
@@ -1965,17 +1965,17 @@ create <code class="docutils literal notranslate"><span class="pre">Or</span></c
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a1</span> <span class="o">=</span> <span class="n">Or</span><span class="p">(</span><span class="n">Or</span><span class="p">(</span><span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a2</span> <span class="o">=</span> <span class="n">Or</span><span class="p">(</span><span class="n">Or</span><span class="p">(</span><span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">),</span> <span class="n">merge</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a3</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">repr</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span>
 <span class="go">&quot;Or[Or[Atom(&#39;x&#39;), Atom(&#39;y&#39;)], Atom(&#39;z&#39;)]&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">repr</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
 <span class="go">&quot;Or[Atom(&#39;x&#39;), Atom(&#39;y&#39;), Atom(&#39;z&#39;)]&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">repr</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
 <span class="go">&quot;Or[Atom(&#39;x&#39;), Atom(&#39;y&#39;), Atom(&#39;z&#39;)]&quot;</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
 <span class="go">False</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span>
 <span class="go">True  # formulas a2 and a3 refer to the same object</span>
 </pre></div>
@@ -2005,7 +2005,7 @@ subformulas and creates a new formula.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="o">|</span> <span class="n">y</span> <span class="o">|</span> <span class="n">z</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">simplified</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="n">y</span><span class="p">]))</span>
 <span class="go">T  # True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">simplified</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="o">~</span><span class="n">y</span><span class="p">]))</span>
@@ -2080,7 +2080,7 @@ the <em>deepcopy</em> functionality to copy both hard and soft clauses.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cnf1</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf1</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf1</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf2</span> <span class="o">=</span> <span class="n">cnf1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf2</span><span class="o">.</span><span class="n">hard</span><span class="p">)</span>
 <span class="go">[[-1, 2]]</span>
@@ -2152,7 +2152,7 @@ package to be additionally installed.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">WCNF</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf1</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf1</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s1">&#39;some-file.wcnf.bz2&#39;</span><span class="p">,</span> <span class="n">compressed_with</span><span class="o">=</span><span class="s1">&#39;bzip2&#39;</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf2</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;another-file.wcnf&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2177,7 +2177,7 @@ lines.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;some-file.cnf&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">cnf1</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="n">cnf1</span><span class="o">.</span><span class="n">from_fp</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;another-file.cnf&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">cnf2</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">(</span><span class="n">from_fp</span><span class="o">=</span><span class="n">fp</span><span class="p">)</span>
 </pre></div>
@@ -2207,7 +2207,7 @@ specific comment lines.</p>
 <span class="go">[[-1, 2]]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf1</span><span class="o">.</span><span class="n">soft</span><span class="p">)</span>
 <span class="go">[[1, 2]]</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf2</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">(</span><span class="n">from_string</span><span class="o">=</span><span class="s1">&#39;p wcnf 3 3 2</span><span class="se">\n</span><span class="s1">2 -1 2 0</span><span class="se">\n</span><span class="s1">2 -2 3 0</span><span class="se">\n</span><span class="s1">1 -3 0</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf2</span><span class="o">.</span><span class="n">hard</span><span class="p">)</span>
 <span class="go">[[-1, 2], [-2, 3]]</span>
@@ -2362,7 +2362,7 @@ weights are discarded.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span><span class="o">.</span><span class="n">extend</span><span class="p">([[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span><span class="o">.</span><span class="n">extend</span><span class="p">([[</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">6</span><span class="p">]],</span> <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">wcnf</span><span class="o">.</span><span class="n">unweighted</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[-3, 4], [5, 6], [3], [-4], [-5], [-6]]</span>
@@ -2514,7 +2514,7 @@ lines.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;some-file.wcnf+&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">cnf1</span> <span class="o">=</span> <span class="n">WCNFPlus</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="n">cnf1</span><span class="o">.</span><span class="n">from_fp</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;another-file.wcnf+&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">cnf2</span> <span class="o">=</span> <span class="n">WCNFPlus</span><span class="p">(</span><span class="n">from_fp</span><span class="o">=</span><span class="n">fp</span><span class="p">)</span>
 </pre></div>
@@ -2631,7 +2631,7 @@ formula remain unchanged in the new (plain) formula.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span><span class="o">.</span><span class="n">extend</span><span class="p">([[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span><span class="o">.</span><span class="n">extend</span><span class="p">([[</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">6</span><span class="p">]],</span> <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">1</span><span class="p">],</span> <span class="n">is_atmost</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">wcnf</span><span class="o">.</span><span class="n">unweighted</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[-3, 4], [5, 6], [3], [-4], [-5], [-6]]</span>
@@ -2671,17 +2671,17 @@ used to create <code class="docutils literal notranslate"><span class="pre">XOr<
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a1</span> <span class="o">=</span> <span class="n">XOr</span><span class="p">(</span><span class="n">XOr</span><span class="p">(</span><span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a2</span> <span class="o">=</span> <span class="n">XOr</span><span class="p">(</span><span class="n">XOr</span><span class="p">(</span><span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">),</span> <span class="n">merge</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a3</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span> <span class="o">^</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span> <span class="o">^</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span>
 <span class="go">(x ^ y) ^ z</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
 <span class="go">x ^ y ^ z</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span>
 <span class="go">(x ^ y) ^ z</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
 <span class="go">False</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span>
 <span class="go">True  # formulas a1 and a3 refer to the same object</span>
 </pre></div>
@@ -2711,7 +2711,7 @@ subformulas and creates a new formula.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="o">^</span> <span class="n">y</span> <span class="o">^</span> <span class="n">z</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">simplified</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="n">y</span><span class="p">]))</span>
 <span class="go">~x ^ z</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">simplified</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="o">~</span><span class="n">y</span><span class="p">]))</span>

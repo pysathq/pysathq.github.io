@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>UniGen almost-uniform sampler (pysat.allies.unigen) &#8212; PySAT 1.8.dev4 documentation</title>
+    <title>UniGen almost-uniform sampler (pysat.allies.unigen) &#8212; PySAT 1.8.dev5 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -70,7 +70,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev4)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev5)</strong></a>
       </div>
       
     </div>
@@ -248,9 +248,9 @@ v -1 -2 -3 -4 +5 +6 0
 standard <code class="docutils literal notranslate"><span class="pre">import</span></code> interface of Python, e.g.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.allies.unigen</span> <span class="kn">import</span> <span class="n">Sampler</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">CNF</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;formula.cnf.xz&#39;</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Sampler</span><span class="p">(</span><span class="n">cnf</span><span class="p">)</span> <span class="k">as</span> <span class="n">sampler</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">sampler</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">nof_samples</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sample_over</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="go">[[1, 2, 3, 4, 5], [1, -2, -3, -4, -5], [1, -2, -3, -4, 5], [1, 2, -3, 4, 5]]</span>
@@ -291,7 +291,7 @@ probabilistic guarantees of almost-uniformity), confidence parameter
 </dl>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.allies.unigen</span> <span class="kn">import</span> <span class="n">Sampler</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">CNF</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;some-formula.cnf&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Sampler</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="n">cnf</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span> <span class="k">as</span> <span class="n">sampler</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">sampler</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">nof_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
@@ -312,7 +312,7 @@ helpful afterwards, <em>on the fly</em>.</p>
 </dd>
 </dl>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.allies.unigen</span> <span class="kn">import</span> <span class="n">Sampler</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Sampler</span><span class="p">()</span> <span class="k">as</span> <span class="n">sampler</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">sampler</span><span class="o">.</span><span class="n">add_clause</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="gp">... </span>    <span class="n">sampler</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
@@ -363,19 +363,19 @@ by ApproxMC.</p>
 </dl>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.allies.unigen</span> <span class="kn">import</span> <span class="n">Sampler</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.card</span> <span class="kn">import</span> <span class="n">CardEnc</span><span class="p">,</span> <span class="n">EncType</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># cardinality constraint with auxiliary variables</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># there are exactly 6 models for the constraint</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># over the 6 original variables</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CardEnc</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">lits</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">bound</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">EncType</span><span class="o">.</span><span class="n">totalizer</span><span class="p">)</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Sampler</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="n">cnf</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="mf">0.95</span><span class="p">)</span> <span class="k">as</span> <span class="n">sampler</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">sampler</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">nof_samples</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
 <span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 <span class="go">[1, -2, 3, -4, 5, 6, -7, -8, 9, -10, 11, -12, 13, 14, -15, 16, 17, -18, 19, -20]</span>
 <span class="go">[1, -2, -3, 4, 5, 6, -7, -8, 9, -10, 11, -12, 13, 14, -15, 16, 17, -18, 19, -20]</span>
 <span class="go">[1, 2, -3, -4, 5, 6, -7, 8, -9, -10, 11, 12, 13, 14, -15, 16, 17, 18, -19, -20]</span>
-<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># now, sampling over the original variables</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Sampler</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="n">cnf</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="mf">0.95</span><span class="p">)</span> <span class="k">as</span> <span class="n">sampler</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">sampler</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">nof_samples</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sample_over</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)):</span>
