@@ -4,9 +4,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>SAT solvers’ API (pysat.solvers) &#8212; PySAT 1.8.dev5 documentation</title>
+    <title>SAT solvers’ API (pysat.solvers) &#8212; PySAT 1.8.dev6 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev5)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev6)</strong></a>
       </div>
       
     </div>
@@ -175,10 +175,6 @@
 <section id="list-of-classes">
 <h2>List of classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">#</a></h2>
 <table class="autosummary longtable table autosummary">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#pysat.solvers.SolverNames" title="pysat.solvers.SolverNames"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SolverNames</span></code></a></p></td>
 <td><p>This class serves to determine the solver requested by a user given a string name.</p></td>
@@ -265,27 +261,31 @@ solvers supported by PySAT are:</p>
 <li><p>Gluecard3</p></li>
 <li><p>Gluecard4</p></li>
 </ul>
-<p>Finally, PySAT offers rudimentary support of CryptoMiniSat5 <a class="footnote-reference brackets" href="#id6" id="id1">3</a> through
+<p>Finally, PySAT offers rudimentary support of CryptoMiniSat5 <a class="footnote-reference brackets" href="#id6" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> through
 the interface provided by the <code class="docutils literal notranslate"><span class="pre">pycryptosat</span></code> package. The functionality
 is exposed via the class <code class="xref py py-class docutils literal notranslate"><span class="pre">CryptoMinisat</span></code>. Note that the solver
 currently implements only the basic functionality, i.e. adding clauses and
 XOR-clauses as well as making (incremental) SAT calls.</p>
-<p>All solvers can be accessed through a unified MiniSat-like <a class="footnote-reference brackets" href="#id4" id="id2">1</a> incremental
-<a class="footnote-reference brackets" href="#id5" id="id3">2</a> interface described below.</p>
-<dl class="footnote brackets">
-<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
-<dd><p>Niklas Eén, Niklas Sörensson. <em>An Extensible SAT-solver</em>. SAT 2003.
+<p>All solvers can be accessed through a unified MiniSat-like <a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> incremental
+<a class="footnote-reference brackets" href="#id5" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> interface described below.</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id4" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>Niklas Eén, Niklas Sörensson. <em>An Extensible SAT-solver</em>. SAT 2003.
 pp. 502-518</p>
-</dd>
-<dt class="label" id="id5"><span class="brackets">2</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id7">2</a>)</span></dt>
-<dd><p>Niklas Eén, Niklas Sörensson. <em>Temporal induction by incremental SAT
+</aside>
+<aside class="footnote brackets" id="id5" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id3">1</a>,<a role="doc-backlink" href="#id7">2</a>)</span>
+<p>Niklas Eén, Niklas Sörensson. <em>Temporal induction by incremental SAT
 solving</em>. Electr. Notes Theor. Comput. Sci. 89(4). 2003. pp. 543-560</p>
-</dd>
-<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id1">3</a></span></dt>
-<dd><p>Mate Soos, Karsten Nohl, Claude Castelluccia. <em>Extending SAT
+</aside>
+<aside class="footnote brackets" id="id6" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">3</a><span class="fn-bracket">]</span></span>
+<p>Mate Soos, Karsten Nohl, Claude Castelluccia. <em>Extending SAT
 Solvers to Cryptographic Problems</em>. SAT 2009. pp. 244-257</p>
-</dd>
-</dl>
+</aside>
+</aside>
 <p>The module provides direct access to all supported solvers using the
 corresponding classes <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical103</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical153</span></code>,
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">CryptoMinisat</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Gluecard3</span></code>,
@@ -322,7 +322,7 @@ with the following basic SAT solving functionality:</p>
 </ul>
 <p>PySAT supports both non-incremental and incremental SAT solving.
 Incrementality can be achieved with the use of the MiniSat-like
-<em>assumption-based</em> interface <a class="footnote-reference brackets" href="#id5" id="id7">2</a>. It can be helpful if multiple calls to a
+<em>assumption-based</em> interface <a class="footnote-reference brackets" href="#id5" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. It can be helpful if multiple calls to a
 SAT solver are needed for the same formula using different sets of
 “assumptions”, e.g. when doing consecutive SAT calls for formula
 <span class="math notranslate nohighlight">\(\mathcal{F}\land (a_{i_1}\land\ldots\land a_{i_1+j_1})\)</span> and
@@ -392,7 +392,7 @@ SAT solver can be accessed as an object of this class and so
 solver constructors, e.g. <code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose3</span></code> or <code class="xref py py-class docutils literal notranslate"><span class="pre">MinisatGH</span></code> etc.,
 have only default arguments.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> (<em>str</em>) – solver’s name (see <a class="reference internal" href="#pysat.solvers.SolverNames" title="pysat.solvers.SolverNames"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolverNames</span></code></a>).</p></li>
 <li><p><strong>bootstrap_with</strong> (<em>iterable</em><em>(</em><em>iterable</em><em>(</em><em>int</em><em>)</em><em>)</em>) – a list of clauses for solver initialization.</p></li>
@@ -456,22 +456,24 @@ by default):</p>
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose4</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose42</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Gluecard3</span></code>, and
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Gluecard4</span></code> have one more default argument <code class="docutils literal notranslate"><span class="pre">incr</span></code> (<code class="docutils literal notranslate"><span class="pre">False</span></code>
 by default), which enables incrementality features introduced in
-Glucose3 <a class="footnote-reference brackets" href="#id10" id="id8">4</a>. To summarize, the additional arguments of Glucose are:</p>
+Glucose3 <a class="footnote-reference brackets" href="#id10" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>. To summarize, the additional arguments of Glucose are:</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>incr</strong> (<em>bool</em>) – enable the incrementality features of Glucose3 <a class="footnote-reference brackets" href="#id10" id="id9">4</a>.</p></li>
+<li><p><strong>incr</strong> (<em>bool</em>) – enable the incrementality features of Glucose3 <a class="footnote-reference brackets" href="#id10" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>.</p></li>
 <li><p><strong>with_proof</strong> (<em>bool</em>) – enable proof logging in the <a class="reference external" href="http://www.cs.utexas.edu/~marijn/drup/">DRUP format</a>.</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="footnote brackets">
-<dt class="label" id="id10"><span class="brackets">4</span><span class="fn-backref">(<a href="#id8">1</a>,<a href="#id9">2</a>)</span></dt>
-<dd><p>Gilles Audemard, Jean-Marie Lagniez, Laurent Simon. <em>Improving
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id10" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id8">1</a>,<a role="doc-backlink" href="#id9">2</a>)</span>
+<p>Gilles Audemard, Jean-Marie Lagniez, Laurent Simon. <em>Improving
 Glucose for Incremental SAT Solving with Assumptions: Application
 to MUS Extraction</em>. SAT 2013. pp. 309-317</p>
-</dd>
-</dl>
+</aside>
+</aside>
 <p>Finally, most MiniSat-based solvers can be exploited in the
 “warm-start” mode in the case of <em>satisfiable</em> formulas. This may come
 in handy in various model enumeration settings. Note that warm-start
@@ -479,7 +481,7 @@ mode is disabled in the case of limited solving with <em>“unknown”</em>
 outcomes. Warm-start mode can be set with the use of the <cite>warm_start</cite>
 parameter:</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>warm_start</strong> (<em>bool</em>) – use the solver in the “warm-start” mode</p>
 </dd>
 </dl>
@@ -490,7 +492,7 @@ parameter:</p>
 statistics includes the number of restarts, conflicts, decisions,
 and propagations.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>dict.</p>
 </dd>
 </dl>
@@ -536,7 +538,7 @@ pseudo-Boolean constraints of the form <span class="math notranslate nohighlight
 \cdot x_i}\leq k\)</span>. The weights of the literals can be specified
 using the argument <code class="docutils literal notranslate"><span class="pre">weights</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>lits</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – a list of literals</p></li>
 <li><p><strong>k</strong> (<em>int</em>) – upper bound on the number of satisfied literals</p></li>
@@ -545,7 +547,7 @@ using the argument <code class="docutils literal notranslate"><span class="pre">
 result, if set to <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>bool if <code class="docutils literal notranslate"><span class="pre">no_return</span></code> is set to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 </dd>
 </dl>
@@ -565,14 +567,14 @@ result, if set to <code class="docutils literal notranslate"><span class="pre">F
 optional argument <code class="docutils literal notranslate"><span class="pre">no_return</span></code> controls whether or not to check
 the formula’s satisfiability after adding the new clause.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>clause</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – an iterable over literals.</p></li>
 <li><p><strong>no_return</strong> (<em>bool</em>) – check solver’s internal formula and return the
 result, if set to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>bool if <code class="docutils literal notranslate"><span class="pre">no_return</span></code> is set to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 </dd>
 </dl>
@@ -596,7 +598,7 @@ parameters include the list of literals and the right-hand side
 <p><strong>Note that XOR clauses are currently supported only by
 CryptoMinisat.</strong></p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>lits</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – list of literals in the clause (left-hand side)</p></li>
 <li><p><strong>value</strong> (<em>bool</em>) – value of the sum (right-hand-side)</p></li>
@@ -623,7 +625,7 @@ CryptoMinisat.</strong></p>
 <dd><p>This method can be used to add a given list of clauses into the
 solver.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>formula</strong> (<em>iterable</em><em>(</em><em>iterable</em><em>(</em><em>int</em><em>)</em><em>)</em>) – a list of clauses.</p></li>
 <li><p><strong>no_return</strong> (<em>bool</em>) – check solver’s internal formula and return the
@@ -633,7 +635,7 @@ result, if set to <code class="docutils literal notranslate"><span class="pre">F
 </dl>
 <p>The <code class="docutils literal notranslate"><span class="pre">no_return</span></code> argument is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> by default.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool if <code class="docutils literal notranslate"><span class="pre">no_return</span></code> is set to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 </dd>
 </dl>
@@ -663,7 +665,7 @@ is given as a <code class="docutils literal notranslate"><span class="pre">budge
 <code class="docutils literal notranslate"><span class="pre">0</span></code>.  If the budget is set to <code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">-1</span></code>, the upper bound on
 the number of conflicts is disabled.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>budget</strong> (<em>int</em>) – the upper bound on the number of conflicts.</p>
 </dd>
 </dl>
@@ -695,7 +697,7 @@ solver object; otherwise, an exception may be thrown.</p>
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code> and the corresponding values they can be
 assigned to is provided <a class="reference external" href="https://github.com/arminbiere/cadical/blob/master/src/options.hpp">here</a>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>parameters</strong> (<em>dict</em>) – parameter names mapped to integer values</p>
 </dd>
 </dl>
@@ -724,7 +726,7 @@ bound on the number of decisions is disabled.</p>
 <p>Note that this functionality is supported by <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical103</span></code>,
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical153</span></code>, and <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code> only!</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>budget</strong> (<em>int</em>) – the upper bound on the number of decisions.</p>
 </dd>
 </dl>
@@ -806,10 +808,10 @@ being <em>unsatisfiable</em>. This is because the enumeration process
 clause until no more models of the formula exist.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>assumptions</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – a list of assumption literals.</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>list(int).</p>
 </dd>
 </dl>
@@ -839,7 +841,7 @@ are responsible for unsatisfiability of the formula. This can be
 done only if the previous SAT call returned <code class="docutils literal notranslate"><span class="pre">False</span></code> (<em>UNSAT</em>).
 Otherwise, <code class="docutils literal notranslate"><span class="pre">None</span></code> is returned.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list(int) or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </dd>
 </dl>
@@ -866,7 +868,7 @@ a CNF formula given to the solver. A model is provided if a
 previous SAT call returned <code class="docutils literal notranslate"><span class="pre">True</span></code>. Otherwise, <code class="docutils literal notranslate"><span class="pre">None</span></code> is
 reported.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list(int) or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </dd>
 </dl>
@@ -891,7 +893,7 @@ reported.</p>
 <dd><p>A DRUP proof can be extracted using this method if the solver was
 set up to provide a proof. Otherwise, the method returns <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list(str) or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </dd>
 </dl>
@@ -916,7 +918,7 @@ set up to provide a proof. Otherwise, the method returns <code class="docutils l
 <dd><p>The result of a previous SAT call is stored in an internal
 variable and can be later obtained using this method.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Boolean or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </dd>
 </dl>
@@ -987,7 +989,7 @@ case, the method returns <code class="docutils literal notranslate"><span class=
 the solver to run, based on its name. See <a class="reference internal" href="#pysat.solvers.Solver" title="pysat.solvers.Solver"><code class="xref py py-class docutils literal notranslate"><span class="pre">Solver</span></code></a> for the
 parameters description.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Raises</dt>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#pysat.solvers.NoSuchSolverError" title="pysat.solvers.NoSuchSolverError"><strong>NoSuchSolverError</strong></a> – if there is no solver matching the given
 name.</p>
 </dd>
@@ -1000,7 +1002,7 @@ name.</p>
 <dd><p>This method returns the number of clauses currently appearing in
 the formula given to the solver.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int.</p>
 </dd>
 </dl>
@@ -1018,7 +1020,7 @@ the formula given to the solver.</p>
 <dd><p>This method returns the number of variables currently appearing in
 the formula given to the solver.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int.</p>
 </dd>
 </dl>
@@ -1050,7 +1052,7 @@ value is given as a <code class="docutils literal notranslate"><span class="pre"
 than <code class="docutils literal notranslate"><span class="pre">0</span></code>. If the budget is set to <code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">-1</span></code>, the upper
 bound on the number of propagations is disabled.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>budget</strong> (<em>int</em>) – the upper bound on the number of propagations.</p>
 </dd>
 </dl>
@@ -1090,14 +1092,14 @@ before calling <a class="reference internal" href="#pysat.solvers.Solver.solve" 
 (e.g. <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical103</span></code>, class:<cite>Cadical153</cite>,
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code>, and <code class="xref py py-class docutils literal notranslate"><span class="pre">Lingeling</span></code> do not support it).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>assumptions</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – a list of assumption literals.</p></li>
 <li><p><strong>phase_saving</strong> (<em>int</em>) – enable phase saving (can be <code class="docutils literal notranslate"><span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">1</span></code>, and
 <code class="docutils literal notranslate"><span class="pre">2</span></code>).</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>tuple(bool, list(int)).</p>
 </dd>
 </dl>
@@ -1160,7 +1162,7 @@ following SAT calls due to the phase saving heuristic.</p>
 <p>Also <strong>note</strong> that <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical103</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical153</span></code>, and
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code> do not support this functionality.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>literals</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – a list of literals.</p>
 </dd>
 </dl>
@@ -1198,10 +1200,10 @@ explicitly filter out duplicate literals from the assumptions list
 before calling <a class="reference internal" href="#pysat.solvers.Solver.solve" title="pysat.solvers.Solver.solve"><code class="xref py py-meth docutils literal notranslate"><span class="pre">solve()</span></code></a>, <a class="reference internal" href="#pysat.solvers.Solver.solve_limited" title="pysat.solvers.Solver.solve_limited"><code class="xref py py-meth docutils literal notranslate"><span class="pre">solve_limited()</span></code></a>,
 <a class="reference internal" href="#pysat.solvers.Solver.propagate" title="pysat.solvers.Solver.propagate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">propagate()</span></code></a>, or <a class="reference internal" href="#pysat.solvers.Solver.enum_models" title="pysat.solvers.Solver.enum_models"><code class="xref py py-meth docutils literal notranslate"><span class="pre">enum_models()</span></code></a>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>assumptions</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – a list of assumption literals.</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>Boolean or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </dd>
 </dl>
@@ -1255,13 +1257,13 @@ what kind of interruption may happen during the execution of
 assumed. If <code class="docutils literal notranslate"><span class="pre">expect_interrupt</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> and eventually
 a SIGINT is received, the behavior is <strong>undefined</strong>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>assumptions</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – a list of assumption literals.</p></li>
 <li><p><strong>expect_interrupt</strong> (<em>bool</em>) – whether <a class="reference internal" href="#pysat.solvers.Solver.interrupt" title="pysat.solvers.Solver.interrupt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">interrupt()</span></code></a> will be called</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>Boolean or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </dd>
 </dl>
@@ -1327,7 +1329,7 @@ with a <em>varying</em> list of assumption literals.</p>
 <dd><p>This method can be called to determine whether the solver supports
 native AtMostK (see <a class="reference internal" href="card.html#module-pysat.card" title="pysat.card"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.card</span></code></a>) constraints.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
@@ -1348,7 +1350,7 @@ time is measured only if the <code class="docutils literal notranslate"><span cl
 set to <code class="docutils literal notranslate"><span class="pre">True</span></code> when creating the solver (see <a class="reference internal" href="#pysat.solvers.Solver" title="pysat.solvers.Solver"><code class="xref py py-class docutils literal notranslate"><span class="pre">Solver</span></code></a> for
 details).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float.</p>
 </dd>
 </dl>
@@ -1374,7 +1376,7 @@ that the time is measured only if the <code class="docutils literal notranslate"
 previously set to <code class="docutils literal notranslate"><span class="pre">True</span></code> when creating the solver (see
 <a class="reference internal" href="#pysat.solvers.Solver" title="pysat.solvers.Solver"><code class="xref py py-class docutils literal notranslate"><span class="pre">Solver</span></code></a> for details).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float.</p>
 </dd>
 </dl>

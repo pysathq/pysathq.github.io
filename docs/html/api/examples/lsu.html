@@ -4,9 +4,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>LSU algorithm for MaxSAT (pysat.examples.lsu) &#8212; PySAT 1.8.dev5 documentation</title>
+    <title>LSU algorithm for MaxSAT (pysat.examples.lsu) &#8212; PySAT 1.8.dev6 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -70,7 +70,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev5)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev6)</strong></a>
       </div>
       
     </div>
@@ -174,13 +174,9 @@
 <section id="list-of-classes">
 <h2>List of classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">#</a></h2>
 <table class="autosummary longtable table autosummary">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#examples.lsu.LSU" title="examples.lsu.LSU"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LSU</span></code></a></p></td>
-<td><p>Linear SAT-UNSAT algorithm for MaxSAT <a class="footnote-reference brackets" href="#id4" id="id1">1</a>.</p></td>
+<td><p>Linear SAT-UNSAT algorithm for MaxSAT <a class="footnote-reference brackets" href="#id4" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#examples.lsu.LSUPlus" title="examples.lsu.LSUPlus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LSUPlus</span></code></a></p></td>
 <td><p>LSU-like algorithm extended for <a class="reference internal" href="../formula.html#pysat.formula.WCNFPlus" title="pysat.formula.WCNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNFPlus</span></code></a> formulas (using <code class="xref py py-class docutils literal notranslate"><span class="pre">Minicard</span></code>).</p></td>
@@ -191,22 +187,26 @@
 <section id="module-description">
 <h2>Module description<a class="headerlink" href="#module-description" title="Permalink to this headline">#</a></h2>
 <p>The module implements a prototype of the known <em>LSU/LSUS</em>, e.g. <em>linear
-(search) SAT-UNSAT</em>, algorithm for MaxSAT, e.g. see <a class="footnote-reference brackets" href="#id4" id="id2">1</a>.  The
+(search) SAT-UNSAT</em>, algorithm for MaxSAT, e.g. see <a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.  The
 implementation is improved by the use of the <em>iterative totalizer encoding</em>
-<a class="footnote-reference brackets" href="#id5" id="id3">2</a>. The encoding is used in an incremental fashion, i.e. it is created
+<a class="footnote-reference brackets" href="#id5" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. The encoding is used in an incremental fashion, i.e. it is created
 once and reused as many times as the number of iterations the algorithm
 makes.</p>
-<dl class="footnote brackets">
-<dt class="label" id="id4"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>,<a href="#id6">3</a>)</span></dt>
-<dd><p>António Morgado, Federico Heras, Mark H. Liffiton, Jordi Planes,
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id4" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>,<a role="doc-backlink" href="#id6">3</a>)</span>
+<p>António Morgado, Federico Heras, Mark H. Liffiton, Jordi Planes,
 Joao Marques-Silva. <em>Iterative and core-guided MaxSAT solving: A
 survey and assessment</em>. Constraints 18(4). 2013. pp. 478-534</p>
-</dd>
-<dt class="label" id="id5"><span class="brackets">2</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id7">2</a>)</span></dt>
-<dd><p>Ruben Martins, Saurabh Joshi, Vasco M. Manquinho, Inês Lynce.
+</aside>
+<aside class="footnote brackets" id="id5" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id3">1</a>,<a role="doc-backlink" href="#id7">2</a>)</span>
+<p>Ruben Martins, Saurabh Joshi, Vasco M. Manquinho, Inês Lynce.
 <em>Incremental Cardinality Constraints for MaxSAT</em>. CP 2014. pp. 531-548</p>
-</dd>
-</dl>
+</aside>
+</aside>
 <p>The implementation can be used as an executable (the list of available
 command-line options can be shown using <code class="docutils literal notranslate"><span class="pre">lsu.py</span> <span class="pre">-h</span></code>) in the following
 way:</p>
@@ -249,11 +249,11 @@ standard <code class="docutils literal notranslate"><span class="pre">import</sp
 <dl class="py class">
 <dt class="sig sig-object py" id="examples.lsu.LSU">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">examples.lsu.</span></span><span class="sig-name descname"><span class="pre">LSU</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formula</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'g4'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expect_interrupt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lsu.LSU" title="Permalink to this definition">#</a></dt>
-<dd><p>Linear SAT-UNSAT algorithm for MaxSAT <a class="footnote-reference brackets" href="#id4" id="id6">1</a>. The algorithm can be seen
+<dd><p>Linear SAT-UNSAT algorithm for MaxSAT <a class="footnote-reference brackets" href="#id4" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. The algorithm can be seen
 as a series of satisfiability oracle calls refining an upper bound on
 the MaxSAT cost, followed by one unsatisfiability call, which stops the
 algorithm. The implementation encodes the sum of all selector literals
-using the <em>iterative totalizer encoding</em> <a class="footnote-reference brackets" href="#id5" id="id7">2</a>. At every iteration, the
+using the <em>iterative totalizer encoding</em> <a class="footnote-reference brackets" href="#id5" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. At every iteration, the
 upper bound on the cost is reduced and enforced by adding the
 corresponding unit size clause to the working formula. No clauses are
 removed during the execution of the algorithm. As a result, the SAT
@@ -267,7 +267,7 @@ oracle is used incrementally.</p>
 SAT solver to use (see <a class="reference internal" href="../solvers.html#pysat.solvers.SolverNames" title="pysat.solvers.SolverNames"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolverNames</span></code></a> for details), and an
 integer verbosity level.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>formula</strong> (<a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a>) – input MaxSAT formula</p></li>
 <li><p><strong>solver</strong> (<em>str</em>) – name of SAT solver</p></li>
@@ -288,7 +288,7 @@ the upper bound on the created sum by adding the corresponding unit
 size clause. Each such clause is added on the fly with no restart
 of the underlying SAT oracle.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>cost</strong> (<em>int</em>) – the cost of the next MaxSAT solution is enforced to be
 <em>lower</em> than this current cost</p>
 </dd>
@@ -302,13 +302,13 @@ of the underlying SAT oracle.</p>
 cost of the model, i.e. the sum of weights of soft clauses that are
 unsatisfied by the model.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>formula</strong> (<a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a>) – an input MaxSAT formula</p></li>
 <li><p><strong>model</strong> (<em>list</em><em>(</em><em>int</em><em>)</em>) – a satisfying assignment</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>int</p>
 </dd>
 </dl>
@@ -323,7 +323,7 @@ clauses of the formula are augmented with selector literals and
 also added to the solver. The list of all introduced selectors is
 stored in variable <code class="docutils literal notranslate"><span class="pre">self.sels</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>formula</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code>) – input MaxSAT formula</p>
 </dd>
 </dl>
@@ -348,7 +348,7 @@ stored in variable <code class="docutils literal notranslate"><span class="pre">
 <dd><p>Checks if the optimum solution was found in a prior call to
 <a class="reference internal" href="#examples.lsu.LSU.solve" title="examples.lsu.LSU.solve"><code class="xref py py-func docutils literal notranslate"><span class="pre">solve()</span></code></a>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
@@ -360,7 +360,7 @@ stored in variable <code class="docutils literal notranslate"><span class="pre">
 <dd><p>This method returns a model obtained during a prior satisfiability
 oracle call made in <a class="reference internal" href="#examples.lsu.LSU.solve" title="examples.lsu.LSU.solve"><code class="xref py py-func docutils literal notranslate"><span class="pre">solve()</span></code></a>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list(int)</p>
 </dd>
 </dl>
@@ -393,7 +393,7 @@ becomes unsatisfiable.</p>
 satisfiable, i.e. if there is a MaxSAT solution, and <code class="docutils literal notranslate"><span class="pre">False</span></code>
 otherwise.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
@@ -407,7 +407,7 @@ otherwise.</p>
 <dd><p>LSU-like algorithm extended for <a class="reference internal" href="../formula.html#pysat.formula.WCNFPlus" title="pysat.formula.WCNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNFPlus</span></code></a> formulas (using
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Minicard</span></code>).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>formula</strong> (<a class="reference internal" href="../formula.html#pysat.formula.WCNFPlus" title="pysat.formula.WCNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNFPlus</span></code></a>) – input MaxSAT formula in WCNF+ format</p></li>
 <li><p><strong>expect_interrupt</strong> (<em>bool</em>) – whether or not an <code class="xref py py-meth docutils literal notranslate"><span class="pre">interrupt()</span></code> call is expected</p></li>
@@ -421,7 +421,7 @@ otherwise.</p>
 <dd><p>Overrides _assert_lt of <a class="reference internal" href="#examples.lsu.LSU" title="examples.lsu.LSU"><code class="xref py py-class docutils literal notranslate"><span class="pre">LSU</span></code></a> in order to use Minicard’s
 native support for cardinality constraints</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>cost</strong> (<em>int</em>) – the cost of the next MaxSAT solution is enforced to
 be <em>lower</em> than this current cost</p>
 </dd>

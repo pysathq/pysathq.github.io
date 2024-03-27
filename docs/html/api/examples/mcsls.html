@@ -4,9 +4,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>CLD-like MCS enumerator (pysat.examples.mcsls) &#8212; PySAT 1.8.dev5 documentation</title>
+    <title>CLD-like MCS enumerator (pysat.examples.mcsls) &#8212; PySAT 1.8.dev6 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev5)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev6)</strong></a>
       </div>
       
     </div>
@@ -175,10 +175,6 @@
 <section id="list-of-classes">
 <h2>List of classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">#</a></h2>
 <table class="autosummary longtable table autosummary">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#examples.mcsls.MCSls" title="examples.mcsls.MCSls"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MCSls</span></code></a></p></td>
 <td><p>Algorithm BLS for computing MCSes, augmented with &quot;clause <span class="math notranslate nohighlight">\(D\)</span>&quot; calls.</p></td>
@@ -193,15 +189,17 @@ computation of a <em>minimal correction subset</em> (MCS) and/or MCS enumeration
 More concretely, the implementation follows the <em>basic linear search</em> (BLS)
 for MCS exctraction augmented with <em>clause D</em> (CLD) oracle calls. As a
 result, the algorithm is not an implementation of the BLS or CLD algorithms
-as described in <a class="footnote-reference brackets" href="#id2" id="id1">1</a> but a mixture of both. Note that the corresponding
+as described in <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> but a mixture of both. Note that the corresponding
 original low-level implementations of both can be found <a class="reference external" href="https://reason.di.fc.ul.pt/wiki/doku.php?id=mcsls">online</a>.</p>
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id3">2</a>,<a href="#id4">3</a>,<a href="#id5">4</a>)</span></dt>
-<dd><p>Joao Marques-Silva, Federico Heras, Mikolas Janota, Alessandro
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id3">2</a>,<a role="doc-backlink" href="#id4">3</a>,<a role="doc-backlink" href="#id5">4</a>)</span>
+<p>Joao Marques-Silva, Federico Heras, Mikolas Janota, Alessandro
 Previti, Anton Belov. <em>On Computing Minimal Correction Subsets</em>.
 IJCAI 2013. pp.  615-622</p>
-</dd>
-</dl>
+</aside>
+</aside>
 <p>The implementation can be used as an executable (the list of available
 command-line options can be shown using <code class="docutils literal notranslate"><span class="pre">mcsls.py</span> <span class="pre">-h</span></code>) in the following
 way:</p>
@@ -250,7 +248,7 @@ standard <code class="docutils literal notranslate"><span class="pre">import</sp
 calls. Given an unsatisfiable partial CNF formula, i.e.  formula in the
 <a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a> format, this class can be used to compute a given number
 of MCSes of the formula. The implementation follows the description of
-the basic linear search (BLS) algorithm description in <a class="footnote-reference brackets" href="#id2" id="id3">1</a>. It can use
+the basic linear search (BLS) algorithm description in <a class="footnote-reference brackets" href="#id2" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. It can use
 any SAT solver available in PySAT. Additionally, the “clause <span class="math notranslate nohighlight">\(D\)</span>”
 heuristic can be used when enumerating MCSes.</p>
 <p>The default SAT solver to use is <code class="docutils literal notranslate"><span class="pre">m22</span></code> (see <a class="reference internal" href="../solvers.html#pysat.solvers.SolverNames" title="pysat.solvers.SolverNames"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolverNames</span></code></a>).
@@ -258,7 +256,7 @@ The “clause <span class="math notranslate nohighlight">\(D\)</span>” heurist
 <code class="docutils literal notranslate"><span class="pre">use_cld</span></code> is set to <code class="docutils literal notranslate"><span class="pre">False</span></code>. Internal SAT solver’s timer is also
 disabled by default, i.e. <code class="docutils literal notranslate"><span class="pre">use_timer</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>formula</strong> (<a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a>) – unsatisfiable partial CNF formula</p></li>
 <li><p><strong>use_cld</strong> (<em>bool</em>) – whether or not to use “clause <span class="math notranslate nohighlight">\(D\)</span>”</p></li>
@@ -279,7 +277,7 @@ unsatisfied by the previous model, i.e. the literals of
 <code class="docutils literal notranslate"><span class="pre">self.setd</span></code> and checking which literals can be satisfied. This
 process can be seen a refinement of the over-approximation of the
 MCS. The algorithm follows the pseudo-code of the BLS algorithm
-presented in <a class="footnote-reference brackets" href="#id2" id="id4">1</a>.</p>
+presented in <a class="footnote-reference brackets" href="#id2" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
 <p>Additionally, if <a class="reference internal" href="#examples.mcsls.MCSls" title="examples.mcsls.MCSls"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCSls</span></code></a> was constructed with the
 requirement to make “clause <span class="math notranslate nohighlight">\(D\)</span>” calls, the method calls
 <a class="reference internal" href="#examples.mcsls.MCSls.do_cld_check" title="examples.mcsls.MCSls.do_cld_check"><code class="xref py py-func docutils literal notranslate"><span class="pre">do_cld_check()</span></code></a> at every iteration of the loop using the
@@ -300,10 +298,10 @@ variables (see <a class="reference internal" href="#examples.mcsls.MCSls.add_cla
 <p>Given an integer literal, a fresh literal is returned. The returned
 integer has the same sign as the input literal.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>l</strong> (<em>int</em>) – literal to map</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>int</p>
 </dd>
 </dl>
@@ -338,7 +336,7 @@ meaning the the clause being added is soft (note that parameter
 native cardinality constraints represented as a pair <code class="docutils literal notranslate"><span class="pre">(lits,</span>
 <span class="pre">bound)</span></code>. Only hard cardinality constraints can be added.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>clause</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – a clause to add</p></li>
 <li><p><strong>soft</strong> (<em>bool</em>) – whether or not the clause is soft</p></li>
@@ -357,7 +355,7 @@ some of the MCSes conditionally depending on the needs. For
 example, one may want to compute disjoint MCSes only in which case
 this standard blocking is not appropriate.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>mcs</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – an MCS to block</p>
 </dd>
 </dl>
@@ -380,10 +378,10 @@ unsatisfiable oracle call, in which case <code class="docutils literal notransla
 as solution. Also, the smallest clause index is assumed to be
 <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>enable</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – a sequence of clause ids to enable</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>list(int)</p>
 </dd>
 </dl>
@@ -399,7 +397,7 @@ as solution. Also, the smallest clause index is assumed to be
 <dt class="sig sig-object py" id="examples.mcsls.MCSls.do_cld_check">
 <span class="sig-name descname"><span class="pre">do_cld_check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cld</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.mcsls.MCSls.do_cld_check" title="Permalink to this definition">#</a></dt>
 <dd><p>Do the “clause <span class="math notranslate nohighlight">\(D\)</span>” check. This method receives a list of
-literals, which serves a “clause <span class="math notranslate nohighlight">\(D\)</span>” <a class="footnote-reference brackets" href="#id2" id="id5">1</a>, and checks
+literals, which serves a “clause <span class="math notranslate nohighlight">\(D\)</span>” <a class="footnote-reference brackets" href="#id2" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, and checks
 whether the formula conjoined with <span class="math notranslate nohighlight">\(D\)</span> is satisfiable.</p>
 <p>If clause <span class="math notranslate nohighlight">\(D\)</span> cannot be satisfied together with the formula,
 then negations of all of its literals are backbones of the formula
@@ -412,7 +410,7 @@ by the new model refine the MCS further.</p>
 The <span class="math notranslate nohighlight">\(D\)</span> clause is then disabled by adding a hard clause
 <span class="math notranslate nohighlight">\((\neg{s})\)</span>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>cld</strong> (<em>list</em><em>(</em><em>int</em><em>)</em>) – clause <span class="math notranslate nohighlight">\(D\)</span> to check</p>
 </dd>
 </dl>

@@ -4,9 +4,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Pseudo-Boolean encodings (pysat.pb) &#8212; PySAT 1.8.dev5 documentation</title>
+    <title>Pseudo-Boolean encodings (pysat.pb) &#8212; PySAT 1.8.dev6 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev5)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev6)</strong></a>
       </div>
       
     </div>
@@ -175,10 +175,6 @@
 <section id="list-of-classes">
 <h2>List of classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">#</a></h2>
 <table class="autosummary longtable table autosummary">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#pysat.pb.EncType" title="pysat.pb.EncType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EncType</span></code></a></p></td>
 <td><p>This class represents a C-like <code class="docutils literal notranslate"><span class="pre">enum</span></code> type for choosing the pseudo-Boolean encoding to use.</p></td>
@@ -204,55 +200,62 @@ library</a> developed by the <a class="reference external" href="http://ulog.udl
 Optimization Group</a> of the University of Lleida.
 PyPBLib provides a user with an extensive Python API to the well-known
 <a class="reference external" href="http://tools.computational-logic.org/content/pblib.php">PBLib library</a>
-<a class="footnote-reference brackets" href="#id2" id="id1">1</a>. Note the PyPBLib has a number of <a class="reference external" href="http://hardlog.udl.cat/static/doc/pypblib/html/index.html">additional features</a> that cannot
+<a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. Note the PyPBLib has a number of <a class="reference external" href="http://hardlog.udl.cat/static/doc/pypblib/html/index.html">additional features</a> that cannot
 be accessed through PySAT <em>at this point</em>. (One concrete example is a
 range of cardinality encodings, which clash with the internal
 <a class="reference internal" href="card.html#module-pysat.card" title="pysat.card"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.card</span></code></a> module.) If a user needs some functionality of PyPBLib
 missing in this module, he/she may apply PyPBLib as a standalone library,
 when working with PySAT.</p>
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Tobias Philipp, Peter Steinke. <em>PBLib - A Library for Encoding
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Tobias Philipp, Peter Steinke. <em>PBLib - A Library for Encoding
 Pseudo-Boolean Constraints into CNF</em>. SAT 2015. pp. 9-16</p>
-</dd>
-</dl>
+</aside>
+</aside>
 <p>A <em>pseudo-Boolean constraint</em> is a constraint of the form:
 <span class="math notranslate nohighlight">\(\left(\sum_{i=1}^n{a_i\cdot x_i}\right)\circ k\)</span>, where
 <span class="math notranslate nohighlight">\(a_i\in\mathbb{N}\)</span>, <span class="math notranslate nohighlight">\(x_i\in\{y_i,\neg{y_i}\}\)</span>,
 <span class="math notranslate nohighlight">\(y_i\in\mathbb{B}\)</span>, and <span class="math notranslate nohighlight">\(\circ\in\{\leq,=,\geq\}\)</span>.
 Pseudo-Boolean constraints arise in a number of important practical
 applications. Thus, several <em>encodings</em> of pseudo-Boolean constraints into
-CNF formulas are known <a class="footnote-reference brackets" href="#id10" id="id3">2</a>. The list of pseudo-Boolean encodings
-supported by this module include BDD <a class="footnote-reference brackets" href="#id11" id="id4">3</a> <a class="footnote-reference brackets" href="#id12" id="id5">4</a>, sequential weight counters
-<a class="footnote-reference brackets" href="#id13" id="id6">5</a>, sorting networks <a class="footnote-reference brackets" href="#id11" id="id7">3</a>, adder networks <a class="footnote-reference brackets" href="#id11" id="id8">3</a>, and binary merge <a class="footnote-reference brackets" href="#id14" id="id9">6</a>.
+CNF formulas are known <a class="footnote-reference brackets" href="#id10" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. The list of pseudo-Boolean encodings
+supported by this module include BDD <a class="footnote-reference brackets" href="#id11" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> <a class="footnote-reference brackets" href="#id12" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>, sequential weight counters
+<a class="footnote-reference brackets" href="#id13" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>, sorting networks <a class="footnote-reference brackets" href="#id11" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>, adder networks <a class="footnote-reference brackets" href="#id11" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>, and binary merge <a class="footnote-reference brackets" href="#id14" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>.
 Access to all cardinality encodings can be made through the main class of
 this module, which is <a class="reference internal" href="#pysat.pb.PBEnc" title="pysat.pb.PBEnc"><code class="xref py py-class docutils literal notranslate"><span class="pre">PBEnc</span></code></a>.</p>
-<dl class="footnote brackets">
-<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
-<dd><p>Olivier Roussel, Vasco M. Manquinho. <em>Pseudo-Boolean and
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id10" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
+<p>Olivier Roussel, Vasco M. Manquinho. <em>Pseudo-Boolean and
 Cardinality Constraints</em>. Handbook of Satisfiability. 2009.
 pp. 695-733</p>
-</dd>
-<dt class="label" id="id11"><span class="brackets">3</span><span class="fn-backref">(<a href="#id4">1</a>,<a href="#id7">2</a>,<a href="#id8">3</a>)</span></dt>
-<dd><p>Niklas Eén, Niklas Sörensson. <em>Translating Pseudo-Boolean
+</aside>
+<aside class="footnote brackets" id="id11" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id4">1</a>,<a role="doc-backlink" href="#id7">2</a>,<a role="doc-backlink" href="#id8">3</a>)</span>
+<p>Niklas Eén, Niklas Sörensson. <em>Translating Pseudo-Boolean
 Constraints into SAT</em>. JSAT. vol. 2(1-4). 2006. pp. 1-26</p>
-</dd>
-<dt class="label" id="id12"><span class="brackets"><a class="fn-backref" href="#id5">4</a></span></dt>
-<dd><p>Ignasi Abío, Robert Nieuwenhuis, Albert Oliveras,
+</aside>
+<aside class="footnote brackets" id="id12" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">4</a><span class="fn-bracket">]</span></span>
+<p>Ignasi Abío, Robert Nieuwenhuis, Albert Oliveras,
 Enric Rodríguez-Carbonell. <em>BDDs for Pseudo-Boolean Constraints -
 Revisited</em>. SAT. 2011. pp. 61-75</p>
-</dd>
-<dt class="label" id="id13"><span class="brackets"><a class="fn-backref" href="#id6">5</a></span></dt>
-<dd><p>Steffen Hölldobler, Norbert Manthey, Peter Steinke. <em>A Compact
+</aside>
+<aside class="footnote brackets" id="id13" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">5</a><span class="fn-bracket">]</span></span>
+<p>Steffen Hölldobler, Norbert Manthey, Peter Steinke. <em>A Compact
 Encoding of Pseudo-Boolean Constraints into SAT</em>. KI. 2012.
 pp. 107-118</p>
-</dd>
-<dt class="label" id="id14"><span class="brackets"><a class="fn-backref" href="#id9">6</a></span></dt>
-<dd><p>Norbert Manthey, Tobias Philipp, Peter Steinke. <em>A More Compact
+</aside>
+<aside class="footnote brackets" id="id14" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">6</a><span class="fn-bracket">]</span></span>
+<p>Norbert Manthey, Tobias Philipp, Peter Steinke. <em>A More Compact
 Translation of Pseudo-Boolean Constraints into CNF Such That
 Generalized Arc Consistency Is Maintained</em>. KI. 2014. pp. 123-134</p>
-</dd>
-</dl>
+</aside>
+</aside>
 </section>
 <section id="module-details">
 <h2>Module details<a class="headerlink" href="#module-details" title="Permalink to this headline">#</a></h2>
@@ -363,7 +366,7 @@ using the <code class="docutils literal notranslate"><span class="pre">encoding<
 <code class="docutils literal notranslate"><span class="pre">EncType.best</span></code>, i.e. it is up to the PBLib encoder to choose the
 encoding type.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>lits</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – a list of literals in the sum.</p></li>
 <li><p><strong>weights</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – a list of weights</p></li>
@@ -373,7 +376,7 @@ encoding type.</p>
 <li><p><strong>encoding</strong> (<em>integer</em>) – identifier of the encoding to use.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="formula.html#pysat.formula.CNFPlus" title="pysat.formula.CNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">pysat.formula.CNFPlus</span></code></a></p>
 </dd>
 </dl>

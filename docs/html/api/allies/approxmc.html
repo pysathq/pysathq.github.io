@@ -4,9 +4,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>ApproxMC model counter (pysat.allies.approxmc) &#8212; PySAT 1.8.dev5 documentation</title>
+    <title>ApproxMC model counter (pysat.allies.approxmc) &#8212; PySAT 1.8.dev6 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev5)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev6)</strong></a>
       </div>
       
     </div>
@@ -175,10 +175,6 @@
 <section id="list-of-classes">
 <h2>List of classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">#</a></h2>
 <table class="autosummary longtable table autosummary">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#allies.approxmc.Counter" title="allies.approxmc.Counter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Counter</span></code></a></p></td>
 <td><p>A wrapper for <a class="reference external" href="https://github.com/meelgroup/approxmc/">ApproxMC</a>, a state-of-the-art <em>approximate</em> model counter.</p></td>
@@ -192,19 +188,21 @@
 <em>approximate</em> model counter utilising an improved version of CryptoMiniSat
 to give approximate model counts to problems of size and complexity that
 are out of reach for earlier approximate model counters. The original work
-on ApproxMCv4 has been published in <a class="footnote-reference brackets" href="#id3" id="id1">1</a> and <a class="footnote-reference brackets" href="#id4" id="id2">2</a>.</p>
-<dl class="footnote brackets">
-<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Mate Soos, Kuldeep S. Meel. <em>BIRD: Engineering an Efficient CNF-XOR
+on ApproxMCv4 has been published in <a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> and <a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id3" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Mate Soos, Kuldeep S. Meel. <em>BIRD: Engineering an Efficient CNF-XOR
 SAT Solver and Its Applications to Approximate Model Counting</em>. AAAI
 2019. pp. 1592-1599</p>
-</dd>
-<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p>Mate Soos, Stephan Gocht, Kuldeep S. Meel. <em>Tinted, Detached, and
+</aside>
+<aside class="footnote brackets" id="id4" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Mate Soos, Stephan Gocht, Kuldeep S. Meel. <em>Tinted, Detached, and
 Lazy CNF-XOR Solving and Its Applications to Counting and Sampling</em>.
 CAV 2020. pp. 463-484</p>
-</dd>
-</dl>
+</aside>
+</aside>
 <p>Note that to be functional, the module requires package <code class="docutils literal notranslate"><span class="pre">pyapproxmc</span></code> to
 be installed:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install pyapproxmc
@@ -252,15 +250,16 @@ variables in a given input formula, the counter supports <em>projected</em> mode
 counting, i.e. when one needs to approximate the number of models with
 respect to a given list of variables rather than with respect to all
 variables appearing in the formula. This feature comes in handy when the
-formula is obtained, for example, through Tseitin transformation <a class="footnote-reference brackets" href="#id6" id="id5">3</a> with
+formula is obtained, for example, through Tseitin transformation <a class="footnote-reference brackets" href="#id6" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> with
 a number of auxiliary variables introduced.</p>
-<dl class="footnote brackets">
-<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id5">3</a></span></dt>
-<dd><p>G. S. Tseitin. <em>On the complexity of derivations in the
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id6" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">3</a><span class="fn-bracket">]</span></span>
+<p>G. S. Tseitin. <em>On the complexity of derivations in the
 propositional calculus</em>. Studies in Mathematics and Mathematical
 Logic, Part II. pp. 115–125, 1968</p>
-</dd>
-</dl>
+</aside>
+</aside>
 </section>
 <section id="module-details">
 <h2>Module details<a class="headerlink" href="#module-details" title="Permalink to this headline">#</a></h2>
@@ -285,7 +284,7 @@ this case, a user is expected to add all the relevant clauses using
 <p>An additional parameter a user may want to specify is integer <code class="docutils literal notranslate"><span class="pre">seed</span></code>
 used by ApproxMC. The value of <code class="docutils literal notranslate"><span class="pre">seed</span></code> is set to <code class="docutils literal notranslate"><span class="pre">1</span></code> by default.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>formula</strong> (<a class="reference internal" href="../formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a>) – CNF formula</p></li>
 <li><p><strong>seed</strong> (<em>int</em>) – integer seed value</p></li>
@@ -312,7 +311,7 @@ constructor of <a class="reference internal" href="#allies.approxmc.Counter" tit
 helpful afterwards, <em>on the fly</em>.</p>
 <p>The clause to add can be any iterable over integer literals.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>clause</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – a clause to add</p>
 </dd>
 </dl>
@@ -343,7 +342,7 @@ model counting should be performed. If <code class="docutils literal notranslate
 <code class="docutils literal notranslate"><span class="pre">None</span></code>, approximate model counting is performed wrt. all the
 variables of the input formula.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>projection</strong> (<em>list</em><em>(</em><em>int</em><em>)</em>) – variables to project on</p>
 </dd>
 </dl>

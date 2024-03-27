@@ -4,9 +4,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Minimum/minimal hitting set solver (pysat.examples.hitman) &#8212; PySAT 1.8.dev5 documentation</title>
+    <title>Minimum/minimal hitting set solver (pysat.examples.hitman) &#8212; PySAT 1.8.dev6 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev5)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev6)</strong></a>
       </div>
       
     </div>
@@ -175,10 +175,6 @@
 <section id="list-of-classes">
 <h2>List of classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">#</a></h2>
 <table class="autosummary longtable table autosummary">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#examples.hitman.Hitman" title="examples.hitman.Hitman"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hitman</span></code></a></p></td>
 <td><p>A cardinality-/subset-minimal hitting set enumerator.</p></td>
@@ -188,7 +184,7 @@
 </section>
 <section id="module-description">
 <h2>Module description<a class="headerlink" href="#module-description" title="Permalink to this headline">#</a></h2>
-<p>A SAT-based implementation of an implicit minimal hitting set <a class="footnote-reference brackets" href="#id8" id="id1">1</a>
+<p>A SAT-based implementation of an implicit minimal hitting set <a class="footnote-reference brackets" href="#id8" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>
 enumerator. The implementation is capable of computing/enumerating
 cardinality- and subset-minimal hitting sets of a given set of sets.
 Cardinality-minimal hitting set enumeration can be seen as ordered (sorted
@@ -204,45 +200,52 @@ comprises unit clauses of the form <span class="math notranslate nohighlight">\(
 <span class="math notranslate nohighlight">\(e_{j}\in E\)</span>, each having weight 1.</p>
 <p>Taking into account this problem formulation as MaxSAT, ordered hitting
 enumeration is done with the use of the state-of-the-art MaxSAT solver
-called <a class="reference internal" href="rc2.html#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2</span></code></a> <a class="footnote-reference brackets" href="#id9" id="id2">2</a> <a class="footnote-reference brackets" href="#id10" id="id3">3</a> <a class="footnote-reference brackets" href="#id11" id="id4">4</a> while unordered hitting set enumeration
+called <a class="reference internal" href="rc2.html#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2</span></code></a> <a class="footnote-reference brackets" href="#id9" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> <a class="footnote-reference brackets" href="#id10" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> <a class="footnote-reference brackets" href="#id11" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> while unordered hitting set enumeration
 is done through the <em>minimal correction subset</em> (MCS) enumeration, e.g.
-using the <a class="reference internal" href="lbx.html#examples.lbx.LBX" title="examples.lbx.LBX"><code class="xref py py-class docutils literal notranslate"><span class="pre">LBX</span></code></a>- <a class="footnote-reference brackets" href="#id12" id="id5">5</a> or <a class="reference internal" href="mcsls.html#examples.mcsls.MCSls" title="examples.mcsls.MCSls"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCSls</span></code></a>-like <a class="footnote-reference brackets" href="#id13" id="id6">6</a> MCS enumerators.</p>
+using the <a class="reference internal" href="lbx.html#examples.lbx.LBX" title="examples.lbx.LBX"><code class="xref py py-class docutils literal notranslate"><span class="pre">LBX</span></code></a>- <a class="footnote-reference brackets" href="#id12" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> or <a class="reference internal" href="mcsls.html#examples.mcsls.MCSls" title="examples.mcsls.MCSls"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCSls</span></code></a>-like <a class="footnote-reference brackets" href="#id13" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a> MCS enumerators.</p>
 <p>Note that this implementation additionally supports <em>pure</em> SAT-based
 minimal hitting set enumeration with the use of preferred variable
-polarity setting following the approach of <a class="footnote-reference brackets" href="#id14" id="id7">7</a>.</p>
-<dl class="footnote brackets">
-<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Erick Moreno-Centeno, Richard M. Karp. <em>The Implicit Hitting Set
+polarity setting following the approach of <a class="footnote-reference brackets" href="#id14" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a>.</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id8" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Erick Moreno-Centeno, Richard M. Karp. <em>The Implicit Hitting Set
 Approach to Solve Combinatorial Optimization Problems with an
 Application to Multigenome Alignment</em>. Operations Research 61(2). 2013.
 pp. 453-468</p>
-</dd>
-<dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p>António Morgado, Carmine Dodaro, Joao Marques-Silva. <em>Core-Guided
+</aside>
+<aside class="footnote brackets" id="id9" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>António Morgado, Carmine Dodaro, Joao Marques-Silva. <em>Core-Guided
 MaxSAT with Soft Cardinality Constraints</em>. CP 2014. pp. 564-573</p>
-</dd>
-<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
-<dd><p>António Morgado, Alexey Ignatiev, Joao Marques-Silva. <em>MSCG: Robust
+</aside>
+<aside class="footnote brackets" id="id10" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>António Morgado, Alexey Ignatiev, Joao Marques-Silva. <em>MSCG: Robust
 Core-Guided MaxSAT Solving</em>. JSAT 9. 2014. pp. 129-134</p>
-</dd>
-<dt class="label" id="id11"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
-<dd><p>Alexey Ignatiev, António Morgado, Joao Marques-Silva. <em>RC2: a
+</aside>
+<aside class="footnote brackets" id="id11" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p>Alexey Ignatiev, António Morgado, Joao Marques-Silva. <em>RC2: a
 Python-based MaxSAT Solver</em>. MaxSAT Evaluation 2018. p. 22</p>
-</dd>
-<dt class="label" id="id12"><span class="brackets"><a class="fn-backref" href="#id5">5</a></span></dt>
-<dd><p>Carlos Mencía, Alessandro Previti, Joao Marques-Silva.
+</aside>
+<aside class="footnote brackets" id="id12" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">5</a><span class="fn-bracket">]</span></span>
+<p>Carlos Mencía, Alessandro Previti, Joao Marques-Silva.
 <em>Literal-Based MCS Extraction</em>. IJCAI. 2015. pp. 1973-1979</p>
-</dd>
-<dt class="label" id="id13"><span class="brackets"><a class="fn-backref" href="#id6">6</a></span></dt>
-<dd><p>Joao Marques-Silva, Federico Heras, Mikolás Janota,
+</aside>
+<aside class="footnote brackets" id="id13" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">6</a><span class="fn-bracket">]</span></span>
+<p>Joao Marques-Silva, Federico Heras, Mikolás Janota,
 Alessandro Previti, Anton Belov. <em>On Computing Minimal Correction
 Subsets</em>. IJCAI. 2013. pp. 615-622</p>
-</dd>
-<dt class="label" id="id14"><span class="brackets"><a class="fn-backref" href="#id7">7</a></span></dt>
-<dd><p>Enrico Giunchiglia, Marco Maratea. <em>Solving Optimization Problems
+</aside>
+<aside class="footnote brackets" id="id14" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">7</a><span class="fn-bracket">]</span></span>
+<p>Enrico Giunchiglia, Marco Maratea. <em>Solving Optimization Problems
 with DLL</em>. ECAI 2006. pp. 377-381</p>
-</dd>
-</dl>
+</aside>
+</aside>
 <p><a class="reference internal" href="#examples.hitman.Hitman" title="examples.hitman.Hitman"><code class="xref py py-class docutils literal notranslate"><span class="pre">Hitman</span></code></a> supports hitting set enumeration in the <em>implicit</em> manner,
 i.e. when sets to hit can be added on the fly as well as hitting sets can
 be blocked on demand.</p>
@@ -288,7 +291,7 @@ enumeration.</p>
 </pre></div>
 </div>
 <p>Finally, implicit hitting set enumeration can be used in practical problem
-solving. As an example, let us show the basic flow of a MaxHS-like <a class="footnote-reference brackets" href="#id16" id="id15">8</a>
+solving. As an example, let us show the basic flow of a MaxHS-like <a class="footnote-reference brackets" href="#id16" id="id15" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>
 algorithm for MaxSAT:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.hitman</span> <span class="kn">import</span> <span class="n">Hitman</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Solver</span>
@@ -313,12 +316,13 @@ algorithm for MaxSAT:</p>
 <span class="gp">... </span>        <span class="n">hitman</span><span class="o">.</span><span class="n">hit</span><span class="p">(</span><span class="n">core</span><span class="p">)</span>
 </pre></div>
 </div>
-<dl class="footnote brackets">
-<dt class="label" id="id16"><span class="brackets"><a class="fn-backref" href="#id15">8</a></span></dt>
-<dd><p>Jessica Davies, Fahiem Bacchus. <em>Solving MAXSAT by Solving a
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id16" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id15">8</a><span class="fn-bracket">]</span></span>
+<p>Jessica Davies, Fahiem Bacchus. <em>Solving MAXSAT by Solving a
 Sequence of Simpler SAT Instances</em>. CP 2011. pp. 225-239</p>
-</dd>
-</dl>
+</aside>
+</aside>
 </section>
 <section id="module-details">
 <h2>Module details<a class="headerlink" href="#module-details" title="Permalink to this headline">#</a></h2>
@@ -373,7 +377,7 @@ class <a class="reference internal" href="#examples.hitman.Atom" title="examples
 as well as for LBX- and MCSls-like MCS enumerators that control the
 behaviour of the underlying solvers.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>bootstrap_with</strong> (<em>iterable</em><em>(</em><em>iterable</em><em>(</em><em>obj</em><em>)</em><em>)</em>) – input set of sets to hit</p></li>
 <li><p><strong>weights</strong> (<em>dict</em><em>(</em><em>obj</em><em>)</em>) – a mapping from objects to their weights (if weighted)</p></li>
@@ -398,7 +402,7 @@ is <code class="docutils literal notranslate"><span class="pre">weights</span></
 question into weights. Also note that the weight of an object must
 not change from one call of <a class="reference internal" href="#examples.hitman.Hitman.hit" title="examples.hitman.Hitman.hit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">hit()</span></code></a> to another.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>clause</strong> (<em>iterable</em><em>(</em><em>obj</em><em>)</em>) – hard constraint (either a clause or a native AtMostK constraint)</p></li>
 <li><p><strong>weights</strong> (<em>dict</em><em>(</em><em>obj</em><em>)</em>) – a mapping from objects to weights</p></li>
@@ -419,7 +423,7 @@ is <code class="docutils literal notranslate"><span class="pre">weights</span></
 question into weights. Also note that the weight of an object must
 not change from one call of <a class="reference internal" href="#examples.hitman.Hitman.hit" title="examples.hitman.Hitman.hit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">hit()</span></code></a> to another.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>to_block</strong> (<em>iterable</em><em>(</em><em>obj</em><em>)</em>) – a set to block</p></li>
 <li><p><strong>weights</strong> (<em>dict</em><em>(</em><em>obj</em><em>)</em>) – a mapping from objects to weights</p></li>
@@ -444,7 +448,7 @@ of objects in the original problem domain, i.e. it is mapped back
 from the solutions over Boolean variables computed by the
 underlying oracle.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list(obj)</p>
 </dd>
 </dl>
@@ -458,7 +462,7 @@ obtained using the underlying oracle operating the MaxSAT problem
 formulation. The computed solution is mapped back to objects of the
 problem domain.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list(obj)</p>
 </dd>
 </dl>
@@ -475,7 +479,7 @@ is <code class="docutils literal notranslate"><span class="pre">weights</span></
 question into weights. Also note that the weight of an object must
 not change from one call of <a class="reference internal" href="#examples.hitman.Hitman.hit" title="examples.hitman.Hitman.hit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">hit()</span></code></a> to another.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>to_hit</strong> (<em>iterable</em><em>(</em><em>obj</em><em>)</em>) – a new set to hit</p></li>
 <li><p><strong>weights</strong> (<em>dict</em><em>(</em><em>obj</em><em>)</em>) – a mapping from objects to weights</p></li>
@@ -503,7 +507,7 @@ and/or native AtMostK constraints. Finally, note that these hard
 constraints must be defined over the set of signed atomic objects,
 i.e. instances of class <a class="reference internal" href="#examples.hitman.Atom" title="examples.hitman.Atom"><code class="xref py py-class docutils literal notranslate"><span class="pre">Atom</span></code></a>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>bootstrap_with</strong> (<em>iterable</em><em>(</em><em>iterable</em><em>(</em><em>obj</em><em>)</em><em>)</em>) – input set of sets to hit</p></li>
 <li><p><strong>weights</strong> (<em>dict</em><em>(</em><em>obj</em><em>)</em>) – weights of the objects in case the problem is weighted</p></li>

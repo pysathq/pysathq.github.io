@@ -4,9 +4,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>A deletion-based MUS extractor (pysat.examples.musx) &#8212; PySAT 1.8.dev5 documentation</title>
+    <title>A deletion-based MUS extractor (pysat.examples.musx) &#8212; PySAT 1.8.dev6 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev5)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev6)</strong></a>
       </div>
       
     </div>
@@ -175,10 +175,6 @@
 <section id="list-of-classes">
 <h2>List of classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">#</a></h2>
 <table class="autosummary longtable table autosummary">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#examples.musx.MUSX" title="examples.musx.MUSX"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MUSX</span></code></a></p></td>
 <td><p>MUS eXtractor using the deletion-based algorithm.</p></td>
@@ -188,16 +184,18 @@
 </section>
 <section id="module-description">
 <h2>Module description<a class="headerlink" href="#module-description" title="Permalink to this headline">#</a></h2>
-<p>This module implements a deletion-based algorithm <a class="footnote-reference brackets" href="#id2" id="id1">1</a> for extracting a
+<p>This module implements a deletion-based algorithm <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> for extracting a
 <em>minimal unsatisfiable subset</em> (<em>MUS</em>) of a given (unsafistiable) CNF
 formula. This simplistic implementation can deal with <em>plain</em> and <em>partial</em>
 CNF formulas, e.g. formulas in the DIMACS CNF and WCNF formats.</p>
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id3">2</a>)</span></dt>
-<dd><p>Joao Marques-Silva. <em>Minimal Unsatisfiability: Models, Algorithms
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id3">2</a>)</span>
+<p>Joao Marques-Silva. <em>Minimal Unsatisfiability: Models, Algorithms
 and Applications</em>. ISMVL 2010. pp. 9-14</p>
-</dd>
-</dl>
+</aside>
+</aside>
 <p>The following extraction procedure is implemented:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># oracle: SAT solver (initialized)</span>
 <span class="c1"># assump: full set of assumptions</span>
@@ -257,7 +255,7 @@ enumeration is not supported).</p>
 <dt class="sig sig-object py" id="examples.musx.MUSX">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">examples.musx.</span></span><span class="sig-name descname"><span class="pre">MUSX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formula</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'m22'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbosity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.musx.MUSX" title="Permalink to this definition">#</a></dt>
 <dd><p>MUS eXtractor using the deletion-based algorithm. The algorithm is
-described in <a class="footnote-reference brackets" href="#id2" id="id3">1</a> (also see the module description above). Essentially,
+described in <a class="footnote-reference brackets" href="#id2" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> (also see the module description above). Essentially,
 the algorithm can be seen as an iterative process, which tries to
 remove one soft clause at a time and check whether the remaining set of
 soft clauses is still unsatisfiable together with the hard clauses.</p>
@@ -267,7 +265,7 @@ that the default SAT solver is MiniSat22 (referred to as <code class="docutils l
 <a class="reference internal" href="../solvers.html#pysat.solvers.SolverNames" title="pysat.solvers.SolverNames"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolverNames</span></code></a> for details). The default verbosity level is
 <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>formula</strong> (<a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a>) – input WCNF formula</p></li>
 <li><p><strong>solver</strong> (<em>str</em>) – name of SAT solver</p></li>
@@ -285,21 +283,22 @@ removes a clause from the core and checks whether the remaining
 clauses of the approximation are unsatisfiable together with the
 hard clauses.</p>
 <p>Soft clauses are (de)activated using the standard MiniSat-like
-assumptions interface <a class="footnote-reference brackets" href="#id5" id="id4">2</a>. Each soft clause <span class="math notranslate nohighlight">\(c\)</span> is augmented
+assumptions interface <a class="footnote-reference brackets" href="#id5" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. Each soft clause <span class="math notranslate nohighlight">\(c\)</span> is augmented
 with a selector literal <span class="math notranslate nohighlight">\(s\)</span>, e.g. <span class="math notranslate nohighlight">\((c) \gets (c \vee
 \neg{s})\)</span>. As a result, clause <span class="math notranslate nohighlight">\(c\)</span> can be activated by
 assuming literal <span class="math notranslate nohighlight">\(s\)</span>. The over-approximation provided as an
 input is specified as a list of selector literals for clauses in
 the unsatisfiable core.</p>
-<dl class="footnote brackets">
-<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id4">2</a></span></dt>
-<dd><p>Niklas Eén, Niklas Sörensson. <em>Temporal induction by
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id5" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">2</a><span class="fn-bracket">]</span></span>
+<p>Niklas Eén, Niklas Sörensson. <em>Temporal induction by
 incremental SAT solving</em>. Electr. Notes Theor. Comput. Sci.
 89(4). 2003. pp. 543-560</p>
-</dd>
-</dl>
+</aside>
+</aside>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>approx</strong> (<em>list</em><em>(</em><em>int</em><em>)</em>) – an over-approximation of an MUS</p>
 </dd>
 </dl>

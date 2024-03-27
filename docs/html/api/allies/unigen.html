@@ -4,9 +4,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>UniGen almost-uniform sampler (pysat.allies.unigen) &#8212; PySAT 1.8.dev5 documentation</title>
+    <title>UniGen almost-uniform sampler (pysat.allies.unigen) &#8212; PySAT 1.8.dev6 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -70,7 +70,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev5)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev6)</strong></a>
       </div>
       
     </div>
@@ -174,10 +174,6 @@
 <section id="list-of-classes">
 <h2>List of classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">#</a></h2>
 <table class="autosummary longtable table autosummary">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#allies.unigen.Sampler" title="allies.unigen.Sampler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sampler</span></code></a></p></td>
 <td><p>A wrapper for UniGen3, a state-of-the-art almost-uniform sampler.</p></td>
@@ -190,24 +186,28 @@
 <p>This module provides interface to <a class="reference external" href="https://github.com/meelgroup/unigen/">UniGen3</a>, a state-of-the-art
 almost-uniform sampler utilising an improved version of CryptoMiniSat to
 handle problems of size and complexity that were not possible before. .
-The original work on UniGen3 has been published in <a class="footnote-reference brackets" href="#id4" id="id1">1</a>, <a class="footnote-reference brackets" href="#id5" id="id2">2</a>, and <a class="footnote-reference brackets" href="#id6" id="id3">3</a>.</p>
-<dl class="footnote brackets">
-<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Supratik Chakraborty, Kuldeep S. Meel, Moshe Y. Vardi. <em>Balancing
+The original work on UniGen3 has been published in <a class="footnote-reference brackets" href="#id4" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, <a class="footnote-reference brackets" href="#id5" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>, and <a class="footnote-reference brackets" href="#id6" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>.</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id4" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Supratik Chakraborty, Kuldeep S. Meel, Moshe Y. Vardi. <em>Balancing
 Scalability and Uniformity in SAT Witness Generator</em>. DAC 2014.
 pp. 60:1-60:6</p>
-</dd>
-<dt class="label" id="id5"><span class="brackets">2</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id7">2</a>)</span></dt>
-<dd><p>Supratik Chakraborty, Daniel J. Fremont, Kuldeep S. Meel, Sanjit A.
+</aside>
+<aside class="footnote brackets" id="id5" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id2">1</a>,<a role="doc-backlink" href="#id7">2</a>)</span>
+<p>Supratik Chakraborty, Daniel J. Fremont, Kuldeep S. Meel, Sanjit A.
 Seshia, Moshe Y. Vardi. <em>On Parallel Scalable Uniform SAT Witness
 Generation</em>. TACAS 2015. pp. 304-319</p>
-</dd>
-<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
-<dd><p>Mate Soos, Stephan Gocht, Kuldeep S. Meel. <em>Tinted, Detached, and
+</aside>
+<aside class="footnote brackets" id="id6" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>Mate Soos, Stephan Gocht, Kuldeep S. Meel. <em>Tinted, Detached, and
 Lazy CNF-XOR Solving and Its Applications to Counting and Sampling</em>.
 CAV 2020. pp. 463-484</p>
-</dd>
-</dl>
+</aside>
+</aside>
 <p>Note that to be functional, the module requires package <code class="docutils literal notranslate"><span class="pre">pyunigen</span></code> to be
 installed:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install pyunigen
@@ -276,9 +276,9 @@ case, a user is expected to add all the relevant clauses using
 <code class="docutils literal notranslate"><span class="pre">seed</span></code> (used by ApproxMC), tolerance factor <code class="docutils literal notranslate"><span class="pre">epsilon</span></code> (used in the
 probabilistic guarantees of almost-uniformity), confidence parameter
 <code class="docutils literal notranslate"><span class="pre">delta</span></code> (used by ApproxMC), and uniformity parameter <code class="docutils literal notranslate"><span class="pre">kappa</span></code> (see
-<a class="footnote-reference brackets" href="#id5" id="id7">2</a>).</p>
+<a class="footnote-reference brackets" href="#id5" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>formula</strong> (<a class="reference internal" href="../formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a>) – CNF formula</p></li>
 <li><p><strong>seed</strong> (<em>int</em>) – seed value</p></li>
@@ -307,7 +307,7 @@ constructor of <a class="reference internal" href="#allies.unigen.Sampler" title
 helpful afterwards, <em>on the fly</em>.</p>
 <p>The clause to add can be any iterable over integer literals.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>clause</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – a clause to add</p>
 </dd>
 </dl>
@@ -350,14 +350,14 @@ values: <em>cell count</em> and <em>hash count</em> (in this order) used during
 sampling. If left undefined (<code class="docutils literal notranslate"><span class="pre">None</span></code>), the values are determined
 by ApproxMC.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>nof_samples</strong> (<em>int</em>) – number of samples to output</p></li>
 <li><p><strong>sample_over</strong> (<em>list</em><em>(</em><em>int</em><em>)</em>) – variables to sample over</p></li>
 <li><p><strong>counts</strong> (<em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – cell count and hash count values</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>a list of samples</p>
 </dd>
 </dl>

@@ -4,9 +4,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Formula processing (pysat.process) &#8212; PySAT 1.8.dev5 documentation</title>
+    <title>Formula processing (pysat.process) &#8212; PySAT 1.8.dev6 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -70,7 +70,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev5)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev6)</strong></a>
       </div>
       
     </div>
@@ -174,10 +174,6 @@
 <section id="list-of-classes">
 <h2>List of classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">#</a></h2>
 <table class="autosummary longtable table autosummary">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#pysat.process.Processor" title="pysat.process.Processor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Processor</span></code></a></p></td>
 <td><p>This class provides interface to CaDiCaL's preprocessor.</p></td>
@@ -189,7 +185,7 @@
 <h2>Module description<a class="headerlink" href="#module-description" title="Permalink to this headline">#</a></h2>
 <p>This module provides access to the preprocessor functionality of <a class="reference external" href="https://github.com/arminbiere/cadical">CaDiCaL
 1.5.3</a>. It can be used to
-process <a class="footnote-reference brackets" href="#id2" id="id1">1</a> (also see references therein) a given CNF formula and output
+process <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> (also see references therein) a given CNF formula and output
 a another formula, which is guaranteed to be <em>equisatisfiable</em> with the
 original formula. The processor can be invoked for a user-provided number
 of rounds. Also, the following preprocessing techniques can be used when
@@ -205,12 +201,13 @@ running the processor:</p>
 <li><p>clause subsumption</p></li>
 <li><p>clause vivification</p></li>
 </ul>
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Armin Biere, Matti Järvisalo, Benjamin Kiesl. <em>Preprocessing in SAT
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Armin Biere, Matti Järvisalo, Benjamin Kiesl. <em>Preprocessing in SAT
 Solving</em>. In <em>Handbook of Satisfiability - Second Edition</em>. pp. 391-435</p>
-</dd>
-</dl>
+</aside>
+</aside>
 <p>Note that the numerous parameters used in CaDiCaL for tweaking the
 preprocessor’s behavior are currently unavailable here. (Default values
 are used.)</p>
@@ -248,7 +245,7 @@ are used.)</p>
 input parameter is <code class="docutils literal notranslate"><span class="pre">bootstrap_with</span></code>, which is expected to be a
 <a class="reference internal" href="formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a> formula or a list (or iterable) of clauses.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>bootstrap_with</strong> (<a class="reference internal" href="formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a> or iterable(iterable(int))) – a list of clauses for processor initialization.</p>
 </dd>
 </dl>
@@ -293,7 +290,7 @@ reconstruction is lost.)</p>
 <span class="sig-name descname"><span class="pre">add_clause</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.process.Processor.add_clause" title="Permalink to this definition">#</a></dt>
 <dd><p>Add a single clause to the processor.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>clause</strong> (<em>list</em><em>(</em><em>int</em><em>) or </em><em>any iterable</em><em>(</em><em>int</em><em>)</em>) – a clause to add</p>
 </dd>
 </dl>
@@ -308,7 +305,7 @@ reconstruction is lost.)</p>
 <span class="sig-name descname"><span class="pre">append_formula</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formula</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.process.Processor.append_formula" title="Permalink to this definition">#</a></dt>
 <dd><p>Add a given list of clauses into the solver.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>formula</strong> (iterable(iterable(int)), or <a class="reference internal" href="formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a>) – a list of clauses.</p>
 </dd>
 </dl>
@@ -334,7 +331,7 @@ reconstruction is lost.)</p>
 is found to be unsatisfiable by the preprocessor. Otherwise, the
 status equals <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
@@ -361,7 +358,7 @@ elimination is active. Subsumption elimination in turn may trigger
 vivification and transitive reduction if the corresponding flags
 are set.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>rounds</strong> (<em>int</em>) – number of preprocessing rounds</p></li>
 <li><p><strong>block</strong> (<em>bool</em>) – apply blocked clause elimination</p></li>
@@ -375,10 +372,10 @@ are set.</p>
 <li><p><strong>vivify</strong> (<em>bool</em>) – apply clause vivification</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>processed formula</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a></p>
 </dd>
 </dl>
@@ -408,13 +405,13 @@ are set.</p>
 processed formula. Done by using CaDiCaL’s extend() and
 reconstruction stack functionality.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>model</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – a model for the preprocessed formula</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>extended model satisfying the original formula</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list(int)</p>
 </dd>
 </dl>

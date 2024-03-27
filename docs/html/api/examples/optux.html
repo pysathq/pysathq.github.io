@@ -4,9 +4,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>OptUx optimal MUS enumerator (pysat.examples.optux) &#8212; PySAT 1.8.dev5 documentation</title>
+    <title>OptUx optimal MUS enumerator (pysat.examples.optux) &#8212; PySAT 1.8.dev6 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -70,7 +70,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev5)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev6)</strong></a>
       </div>
       
     </div>
@@ -174,10 +174,6 @@
 <section id="list-of-classes">
 <h2>List of classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">#</a></h2>
 <table class="autosummary longtable table autosummary">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#examples.optux.OptUx" title="examples.optux.OptUx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OptUx</span></code></a></p></td>
 <td><p>A simple Python version of the implicit hitting set based optimal MUS extractor and enumerator.</p></td>
@@ -188,39 +184,47 @@
 <section id="module-description">
 <h2>Module description<a class="headerlink" href="#module-description" title="Permalink to this headline">#</a></h2>
 <p>An implementation of an extractor of a smallest size minimal unsatisfiable
-subset (smallest MUS, or SMUS) <a class="footnote-reference brackets" href="#id7" id="id1">1</a> <a class="footnote-reference brackets" href="#id8" id="id2">2</a> <a class="footnote-reference brackets" href="#id9" id="id3">3</a> <a class="footnote-reference brackets" href="#id10" id="id4">4</a> and enumerator of
-SMUSes based on <em>implicit hitting set enumeration</em> <a class="footnote-reference brackets" href="#id7" id="id5">1</a>. This
+subset (smallest MUS, or SMUS) <a class="footnote-reference brackets" href="#id7" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> <a class="footnote-reference brackets" href="#id8" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> <a class="footnote-reference brackets" href="#id9" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> <a class="footnote-reference brackets" href="#id10" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> and enumerator of
+SMUSes based on <em>implicit hitting set enumeration</em> <a class="footnote-reference brackets" href="#id7" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. This
 implementation tries to replicate the well-known SMUS extractor Forqes
-<a class="footnote-reference brackets" href="#id7" id="id6">1</a>. In contrast to Forqes, this implementation supports not only plain
+<a class="footnote-reference brackets" href="#id7" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. In contrast to Forqes, this implementation supports not only plain
 DIMACS <a class="reference internal" href="../formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a> formulas but also weighted <a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a> formulas.
 As a result, the tool is able to compute and enumerate <em>optimal</em> MUSes in
 case of weighted formulas. On the other hand, this prototype lacks a
 number of command-line options used in Forqes and so it may be less
 efficient compared to Forqes but the performance difference should not be
 significant.</p>
-<dl class="footnote brackets">
-<dt class="label" id="id7"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id5">2</a>,<a href="#id6">3</a>,<a href="#id11">4</a>,<a href="#id12">5</a>)</span></dt>
-<dd><p>Alexey Ignatiev, Alessandro Previti, Mark H. Liffiton, Joao
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id7" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id5">2</a>,<a role="doc-backlink" href="#id6">3</a>,<a role="doc-backlink" href="#id11">4</a>,<a role="doc-backlink" href="#id12">5</a>)</span>
+<p>Alexey Ignatiev, Alessandro Previti, Mark H. Liffiton, Joao
 Marques-Silva. <em>Smallest MUS Extraction with Minimal Hitting Set
 Dualization</em>. CP 2015. pp. 173-182</p>
-</dd>
-<dt class="label" id="id8"><span class="brackets">2</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id13">2</a>)</span></dt>
-<dd><p>Mark H. Liffiton, Maher N. Mneimneh, Ines Lynce, Zaher S. Andraus,
+</aside>
+<aside class="footnote brackets" id="id8" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id2">1</a>,<a role="doc-backlink" href="#id13">2</a>)</span>
+<p>Mark H. Liffiton, Maher N. Mneimneh, Ines Lynce, Zaher S. Andraus,
 Joao Marques-Silva, Karem A. Sakallah. <em>A branch and bound algorithm
 for extracting smallest minimal unsatisfiable subformulas</em>.
 Constraints An Int. J. 14(4). 2009. pp. 415-442</p>
-</dd>
-<dt class="label" id="id9"><span class="brackets">3</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id14">2</a>)</span></dt>
-<dd><p>Alexey Ignatiev, Mikolas Janota, Joao Marques-Silva. <em>Quantified
+</aside>
+<aside class="footnote brackets" id="id9" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id3">1</a>,<a role="doc-backlink" href="#id14">2</a>)</span>
+<p>Alexey Ignatiev, Mikolas Janota, Joao Marques-Silva. <em>Quantified
 Maximum Satisfiability: A Core-Guided Approach</em>. SAT 2013.
 pp. 250-266</p>
-</dd>
-<dt class="label" id="id10"><span class="brackets">4</span><span class="fn-backref">(<a href="#id4">1</a>,<a href="#id15">2</a>)</span></dt>
-<dd><p>Alexey Ignatiev, Mikolas Janota, Joao Marques-Silva. <em>Quantified
+</aside>
+<aside class="footnote brackets" id="id10" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id4">1</a>,<a role="doc-backlink" href="#id15">2</a>)</span>
+<p>Alexey Ignatiev, Mikolas Janota, Joao Marques-Silva. <em>Quantified
 maximum satisfiability</em>. Constraints An Int. J. 21(2). 2016.
 pp. 277-302</p>
-</dd>
-</dl>
+</aside>
+</aside>
 <p>The file provides a class <a class="reference internal" href="#examples.optux.OptUx" title="examples.optux.OptUx"><code class="xref py py-class docutils literal notranslate"><span class="pre">OptUx</span></code></a>, which is the basic
 implementation of the algorithm. It can be applied to any formula in the
 <a class="reference internal" href="../formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a> or <a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a> format.</p>
@@ -273,11 +277,11 @@ extractor and enumerator. Given a (weighted) (partial) CNF formula,
 i.e. formula in the <a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a> format, this class can be used to
 compute a given number of optimal MUS (starting from the <em>best</em> one)
 of the input formula. <a class="reference internal" href="#examples.optux.OptUx" title="examples.optux.OptUx"><code class="xref py py-class docutils literal notranslate"><span class="pre">OptUx</span></code></a> roughly follows the
-implementation of Forqes <a class="footnote-reference brackets" href="#id7" id="id11">1</a> but lacks a few additional heuristics,
+implementation of Forqes <a class="footnote-reference brackets" href="#id7" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> but lacks a few additional heuristics,
 which however aren’t applied in Forqes by default.</p>
 <p>As a result, OptUx applies exhaustive <em>disjoint</em> minimal correction
-subset (MCS) enumeration <a class="footnote-reference brackets" href="#id7" id="id12">1</a>, <a class="footnote-reference brackets" href="#id8" id="id13">2</a>, <a class="footnote-reference brackets" href="#id9" id="id14">3</a>, <a class="footnote-reference brackets" href="#id10" id="id15">4</a> with the incremental
-use of RC2 <a class="footnote-reference brackets" href="#id20" id="id16">5</a> as an underlying MaxSAT solver. Once disjoint MCSes
+subset (MCS) enumeration <a class="footnote-reference brackets" href="#id7" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, <a class="footnote-reference brackets" href="#id8" id="id13" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>, <a class="footnote-reference brackets" href="#id9" id="id14" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>, <a class="footnote-reference brackets" href="#id10" id="id15" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> with the incremental
+use of RC2 <a class="footnote-reference brackets" href="#id20" id="id16" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> as an underlying MaxSAT solver. Once disjoint MCSes
 are enumerated, they are used to bootstrap a hitting set solver. This
 implementation uses <a class="reference internal" href="hitman.html#examples.hitman.Hitman" title="examples.hitman.Hitman"><code class="xref py py-class docutils literal notranslate"><span class="pre">Hitman</span></code></a> as a hitting set solver, which is
 again based on RC2.</p>
@@ -287,7 +291,7 @@ subsets detected to minimal correction subsets. As a result,
 correction subsets computed in the main loop are added to
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Hitman</span></code> <em>unreduced</em>.</p>
 <p><a class="reference internal" href="#examples.optux.OptUx" title="examples.optux.OptUx"><code class="xref py py-class docutils literal notranslate"><span class="pre">OptUx</span></code></a> can use any SAT solver available in PySAT. The default
-SAT solver to use is <code class="docutils literal notranslate"><span class="pre">g3</span></code>, which stands for Glucose 3 <a class="footnote-reference brackets" href="#id21" id="id17">6</a> (see
+SAT solver to use is <code class="docutils literal notranslate"><span class="pre">g3</span></code>, which stands for Glucose 3 <a class="footnote-reference brackets" href="#id21" id="id17" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a> (see
 <a class="reference internal" href="../solvers.html#pysat.solvers.SolverNames" title="pysat.solvers.SolverNames"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolverNames</span></code></a>). Boolean parameters <code class="docutils literal notranslate"><span class="pre">adapt</span></code>, <code class="docutils literal notranslate"><span class="pre">exhaust</span></code>, and
 <code class="docutils literal notranslate"><span class="pre">minz</span></code> control whether or not the underlying <a class="reference internal" href="rc2.html#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2</span></code></a> oracles
 should apply detection and adaptation of intrinsic AtMost1
@@ -303,39 +307,43 @@ directly). Parameter <code class="docutils literal notranslate"><span class="pre
 underlying MCS enumerator to apply clause D oracle calls.</p>
 <p>Another optional paramater <code class="docutils literal notranslate"><span class="pre">puresat</span></code> can be used to instruct OptUx
 to run a purely SAT-based minimal hitting set enumerator, following
-the ideas of <a class="footnote-reference brackets" href="#id22" id="id18">7</a>. The value of <code class="docutils literal notranslate"><span class="pre">puresat</span></code> can be either <code class="docutils literal notranslate"><span class="pre">False</span></code>,
+the ideas of <a class="footnote-reference brackets" href="#id22" id="id18" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a>. The value of <code class="docutils literal notranslate"><span class="pre">puresat</span></code> can be either <code class="docutils literal notranslate"><span class="pre">False</span></code>,
 meaning that no pure SAT enumeration is to be done or be equal to
 <code class="docutils literal notranslate"><span class="pre">'mgh'</span></code>, <code class="docutils literal notranslate"><span class="pre">'cd15'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'lgl'</span></code> - these are the solvers that
 support <em>hard</em> phase setting, i.e. user preferences will not be
-overwritten by the <em>phase saving</em> heuristic <a class="footnote-reference brackets" href="#id23" id="id19">8</a>.</p>
+overwritten by the <em>phase saving</em> heuristic <a class="footnote-reference brackets" href="#id23" id="id19" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>.</p>
 <p>Finally, one more optional input parameter <code class="docutils literal notranslate"><span class="pre">cover</span></code> is to be used
 when exhaustive enumeration of MUSes is not necessary and the tool can
 stop as soon as a given formula is covered by the set of currently
 computed MUSes. This can be made to work if the soft clauses of
 <code class="docutils literal notranslate"><span class="pre">formula</span></code> are of size 1.</p>
-<dl class="footnote brackets">
-<dt class="label" id="id20"><span class="brackets"><a class="fn-backref" href="#id16">5</a></span></dt>
-<dd><p>Alexey Ignatiev, Antonio Morgado, Joao Marques-Silva. <em>RC2: an
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id20" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id16">5</a><span class="fn-bracket">]</span></span>
+<p>Alexey Ignatiev, Antonio Morgado, Joao Marques-Silva. <em>RC2: an
 Efficient MaxSAT Solver</em>. J. Satisf. Boolean Model. Comput. 11(1).
 2019. pp. 53-64</p>
-</dd>
-<dt class="label" id="id21"><span class="brackets"><a class="fn-backref" href="#id17">6</a></span></dt>
-<dd><p>Gilles Audemard, Jean-Marie Lagniez, Laurent Simon.
+</aside>
+<aside class="footnote brackets" id="id21" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id17">6</a><span class="fn-bracket">]</span></span>
+<p>Gilles Audemard, Jean-Marie Lagniez, Laurent Simon.
 <em>Improving Glucose for Incremental SAT Solving with
 Assumptions: Application to MUS Extraction</em>. SAT 2013.
 pp. 309-317</p>
-</dd>
-<dt class="label" id="id22"><span class="brackets"><a class="fn-backref" href="#id18">7</a></span></dt>
-<dd><p>Enrico Giunchiglia, Marco Maratea. <em>Solving Optimization
+</aside>
+<aside class="footnote brackets" id="id22" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id18">7</a><span class="fn-bracket">]</span></span>
+<p>Enrico Giunchiglia, Marco Maratea. <em>Solving Optimization
 Problems with DLL</em>. ECAI 2006. pp. 377-381</p>
-</dd>
-<dt class="label" id="id23"><span class="brackets"><a class="fn-backref" href="#id19">8</a></span></dt>
-<dd><p>Knot Pipatsrisawat, Adnan Darwiche. <em>A Lightweight Component
+</aside>
+<aside class="footnote brackets" id="id23" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id19">8</a><span class="fn-bracket">]</span></span>
+<p>Knot Pipatsrisawat, Adnan Darwiche. <em>A Lightweight Component
 Caching Scheme for Satisfiability Solvers</em>. SAT 2007. pp. 294-299</p>
-</dd>
-</dl>
+</aside>
+</aside>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>formula</strong> (<a class="reference internal" href="../formula.html#pysat.formula.WCNFPlus" title="pysat.formula.WCNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNFPlus</span></code></a>) – (weighted) (partial) CNFPlus formula</p></li>
 <li><p><strong>solver</strong> (<em>str</em>) – SAT oracle name</p></li>
@@ -363,7 +371,7 @@ all the input parameters of the method, namely, <code class="docutils literal no
 <code class="docutils literal notranslate"><span class="pre">solver</span></code>, <code class="docutils literal notranslate"><span class="pre">adapt</span></code>, <cite>exhaust`</cite>, <code class="docutils literal notranslate"><span class="pre">minz</span></code>, and <code class="docutils literal notranslate"><span class="pre">trim</span></code> -
 represent the input and the options for the RC2 solver.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>formula</strong> (<a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a>) – input formula</p></li>
 <li><p><strong>solver</strong> (<em>str</em>) – SAT solver name</p></li>
@@ -383,7 +391,7 @@ represent the input and the options for the RC2 solver.</p>
 formula. Concretely, it checks which soft clauses must be relaxed
 by a unique selector literal and applies the relaxation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>formula</strong> (<a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a>) – input formula</p>
 </dd>
 </dl>
@@ -397,7 +405,7 @@ paradigm of Forqes to compute a best-cost MUS. The result MUS is
 returned as a list of integers, each representing a soft clause
 index.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list(int)</p>
 </dd>
 </dl>
@@ -416,7 +424,7 @@ index.</p>
 them until the formula has no more MUSes, or a user decides to
 stop the process.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list(int)</p>
 </dd>
 </dl>
@@ -428,7 +436,7 @@ stop the process.</p>
 <dd><p>This method computes and returns the total SAT solving time
 involved.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>

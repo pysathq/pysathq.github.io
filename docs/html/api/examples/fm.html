@@ -4,9 +4,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Fu&amp;Malik MaxSAT algorithm (pysat.examples.fm) &#8212; PySAT 1.8.dev5 documentation</title>
+    <title>Fu&amp;Malik MaxSAT algorithm (pysat.examples.fm) &#8212; PySAT 1.8.dev6 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev5)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev6)</strong></a>
       </div>
       
     </div>
@@ -175,10 +175,6 @@
 <section id="list-of-classes">
 <h2>List of classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">#</a></h2>
 <table class="autosummary longtable table autosummary">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#examples.fm.FM" title="examples.fm.FM"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FM</span></code></a></p></td>
 <td><p>A non-incremental implementation of the FM (Fu&amp;Malik, or WMSU1) algorithm.</p></td>
@@ -189,34 +185,40 @@
 <section id="module-description">
 <h2>Module description<a class="headerlink" href="#module-description" title="Permalink to this headline">#</a></h2>
 <p>This module implements a variant of the seminal core-guided MaxSAT
-algorithm originally proposed by <a class="footnote-reference brackets" href="#id7" id="id1">1</a> and then improved and modified
-further in <a class="footnote-reference brackets" href="#id8" id="id2">2</a> <a class="footnote-reference brackets" href="#id9" id="id3">3</a> <a class="footnote-reference brackets" href="#id10" id="id4">4</a> <a class="footnote-reference brackets" href="#id11" id="id5">5</a>. Namely, the implementation follows the
-WMSU1 variant <a class="footnote-reference brackets" href="#id11" id="id6">5</a> of the algorithm extended to the case of <em>weighted
+algorithm originally proposed by <a class="footnote-reference brackets" href="#id7" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> and then improved and modified
+further in <a class="footnote-reference brackets" href="#id8" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> <a class="footnote-reference brackets" href="#id9" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> <a class="footnote-reference brackets" href="#id10" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> <a class="footnote-reference brackets" href="#id11" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>. Namely, the implementation follows the
+WMSU1 variant <a class="footnote-reference brackets" href="#id11" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> of the algorithm extended to the case of <em>weighted
 partial</em> formulas.</p>
-<dl class="footnote brackets">
-<dt class="label" id="id7"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Zhaohui Fu, Sharad Malik. <em>On Solving the Partial MAX-SAT Problem</em>.
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id7" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Zhaohui Fu, Sharad Malik. <em>On Solving the Partial MAX-SAT Problem</em>.
 SAT 2006. pp. 252-265</p>
-</dd>
-<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p>Joao Marques-Silva, Jordi Planes. <em>On Using Unsatisfiability for
+</aside>
+<aside class="footnote brackets" id="id8" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Joao Marques-Silva, Jordi Planes. <em>On Using Unsatisfiability for
 Solving Maximum Satisfiability</em>. CoRR abs/0712.1097. 2007</p>
-</dd>
-<dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
-<dd><p>Joao Marques-Silva, Vasco M. Manquinho. <em>Towards More Effective
+</aside>
+<aside class="footnote brackets" id="id9" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>Joao Marques-Silva, Vasco M. Manquinho. <em>Towards More Effective
 Unsatisfiability-Based Maximum Satisfiability Algorithms</em>. SAT 2008.
 pp. 225-230</p>
-</dd>
-<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
-<dd><p>Carlos Ansótegui, Maria Luisa Bonet, Jordi Levy. <em>Solving
+</aside>
+<aside class="footnote brackets" id="id10" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p>Carlos Ansótegui, Maria Luisa Bonet, Jordi Levy. <em>Solving
 (Weighted) Partial MaxSAT through Satisfiability Testing</em>. SAT 2009.
 pp. 427-440</p>
-</dd>
-<dt class="label" id="id11"><span class="brackets">5</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id6">2</a>,<a href="#id12">3</a>,<a href="#id13">4</a>)</span></dt>
-<dd><p>Vasco M. Manquinho, Joao Marques Silva, Jordi Planes. <em>Algorithms
+</aside>
+<aside class="footnote brackets" id="id11" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id5">1</a>,<a role="doc-backlink" href="#id6">2</a>,<a role="doc-backlink" href="#id12">3</a>,<a role="doc-backlink" href="#id13">4</a>)</span>
+<p>Vasco M. Manquinho, Joao Marques Silva, Jordi Planes. <em>Algorithms
 for Weighted Boolean Optimization</em>. SAT 2009. pp. 495-508</p>
-</dd>
-</dl>
+</aside>
+</aside>
 <p>The implementation can be used as an executable (the list of available
 command-line options can be shown using <code class="docutils literal notranslate"><span class="pre">fm.py</span> <span class="pre">-h</span></code>) in the following way:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xzcat formula.wcnf.xz
@@ -260,7 +262,7 @@ standard <code class="docutils literal notranslate"><span class="pre">import</sp
 <dt class="sig sig-object py" id="examples.fm.FM">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">examples.fm.</span></span><span class="sig-name descname"><span class="pre">FM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formula</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'m22'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.fm.FM" title="Permalink to this definition">#</a></dt>
 <dd><p>A non-incremental implementation of the FM (Fu&amp;Malik, or WMSU1)
-algorithm. The algorithm (see details in <a class="footnote-reference brackets" href="#id11" id="id12">5</a>) is <em>core-guided</em>, i.e.
+algorithm. The algorithm (see details in <a class="footnote-reference brackets" href="#id11" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>) is <em>core-guided</em>, i.e.
 it solves maximum satisfiability with a series of unsatisfiability
 oracle calls, each producing an unsatisfiable core. The clauses
 involved in an unsatisfiable core are <em>relaxed</em> and a new
@@ -276,7 +278,7 @@ default, while the default SAT solver is MiniSat22 (referred to as
 <code class="docutils literal notranslate"><span class="pre">'m22'</span></code>, see <a class="reference internal" href="../solvers.html#pysat.solvers.SolverNames" title="pysat.solvers.SolverNames"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolverNames</span></code></a> for details). The default
 verbosity level is <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>formula</strong> (<a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a>) – input MaxSAT formula</p></li>
 <li><p><strong>enc</strong> (<em>int</em>) – cardinality encoding to use</p></li>
@@ -324,7 +326,7 @@ of the MaxSAT algorithm (see <a class="reference internal" href="#examples.fm.FM
 <code class="docutils literal notranslate"><span class="pre">with_soft</span></code> (<code class="docutils literal notranslate"><span class="pre">False</span></code> by default) regulates whether or not the
 formula’s soft clauses are copied to the oracle.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>with_soft</strong> (<em>bool</em>) – copy formula’s soft clauses to the oracle or not</p>
 </dd>
 </dl>
@@ -386,7 +388,7 @@ residual clause <span class="math notranslate nohighlight">\((c\vee\neg{s}',w-mi
 residual clause has a fresh selector literal <span class="math notranslate nohighlight">\(s'\)</span> different
 from <span class="math notranslate nohighlight">\(s\)</span>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>minw</strong> (<em>int</em>) – minimum weight of the core</p>
 </dd>
 </dl>
@@ -402,7 +404,7 @@ which returns a subset of the selector literals deemed responsible
 for unsatisfiability.</p>
 <p>After the core is extracted, its <em>minimum weight</em> <code class="docutils literal notranslate"><span class="pre">minw</span></code> is
 computed, i.e. it is the minimum weight among the weights of all
-soft clauses involved in the core (see <a class="footnote-reference brackets" href="#id11" id="id13">5</a>). Note that the cost of
+soft clauses involved in the core (see <a class="footnote-reference brackets" href="#id11" id="id13" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>). Note that the cost of
 the MaxSAT solution is incremented by <code class="docutils literal notranslate"><span class="pre">minw</span></code>.</p>
 <p>Clauses that have weight larger than <code class="docutils literal notranslate"><span class="pre">minw</span></code> are split (see
 <a class="reference internal" href="#examples.fm.FM.split_core" title="examples.fm.FM.split_core"><code class="xref py py-func docutils literal notranslate"><span class="pre">split_core()</span></code></a>). Afterwards, all clauses of the unsatisfiable

@@ -4,9 +4,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Hard formula generator (pysat.examples.genhard) &#8212; PySAT 1.8.dev5 documentation</title>
+    <title>Hard formula generator (pysat.examples.genhard) &#8212; PySAT 1.8.dev6 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev5)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev6)</strong></a>
       </div>
       
     </div>
@@ -175,10 +175,6 @@
 <section id="list-of-classes">
 <h2>List of classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">#</a></h2>
 <table class="autosummary longtable table autosummary">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#examples.genhard.CB" title="examples.genhard.CB"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CB</span></code></a></p></td>
 <td><p>Mutilated chessboard principle (CB).</p></td>
@@ -202,27 +198,34 @@ can be used for encoding practical problems into CNF formulas. These
 include combinatorial principles that are widely studied from the
 propositional proof complexity perspective. Namely, encodings for the
 following principles are implemented: <em>pigeonhole principle</em> (<a class="reference internal" href="#examples.genhard.PHP" title="examples.genhard.PHP"><code class="xref py py-class docutils literal notranslate"><span class="pre">PHP</span></code></a>)
-<a class="footnote-reference brackets" href="#id5" id="id1">1</a>, <em>ordering (greater-than) principle</em> (<a class="reference internal" href="#examples.genhard.GT" title="examples.genhard.GT"><code class="xref py py-class docutils literal notranslate"><span class="pre">GT</span></code></a>) <a class="footnote-reference brackets" href="#id6" id="id2">2</a>, <em>mutilated
-chessboard principle</em> (<a class="reference internal" href="#examples.genhard.CB" title="examples.genhard.CB"><code class="xref py py-class docutils literal notranslate"><span class="pre">CB</span></code></a>) <a class="footnote-reference brackets" href="#id7" id="id3">3</a>, and <em>parity principle</em>
-(<a class="reference internal" href="#examples.genhard.PAR" title="examples.genhard.PAR"><code class="xref py py-class docutils literal notranslate"><span class="pre">PAR</span></code></a>) <a class="footnote-reference brackets" href="#id8" id="id4">4</a>.</p>
-<dl class="footnote brackets">
-<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Stephen A. Cook, Robert A. Reckhow. <em>The Relative Efficiency of
+<a class="footnote-reference brackets" href="#id5" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, <em>ordering (greater-than) principle</em> (<a class="reference internal" href="#examples.genhard.GT" title="examples.genhard.GT"><code class="xref py py-class docutils literal notranslate"><span class="pre">GT</span></code></a>) <a class="footnote-reference brackets" href="#id6" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>, <em>mutilated
+chessboard principle</em> (<a class="reference internal" href="#examples.genhard.CB" title="examples.genhard.CB"><code class="xref py py-class docutils literal notranslate"><span class="pre">CB</span></code></a>) <a class="footnote-reference brackets" href="#id7" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>, and <em>parity principle</em>
+(<a class="reference internal" href="#examples.genhard.PAR" title="examples.genhard.PAR"><code class="xref py py-class docutils literal notranslate"><span class="pre">PAR</span></code></a>) <a class="footnote-reference brackets" href="#id8" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>.</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id5" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Stephen A. Cook, Robert A. Reckhow. <em>The Relative Efficiency of
 Propositional Proof Systems</em>. J. Symb. Log. 44(1). 1979. pp. 36-50</p>
-</dd>
-<dt class="label" id="id6"><span class="brackets">2</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id10">2</a>)</span></dt>
-<dd><p>Balakrishnan Krishnamurthy. <em>Short Proofs for Tricky Formulas</em>. Acta
+</aside>
+<aside class="footnote brackets" id="id6" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id2">1</a>,<a role="doc-backlink" href="#id10">2</a>)</span>
+<p>Balakrishnan Krishnamurthy. <em>Short Proofs for Tricky Formulas</em>. Acta
 Informatica 22(3). 1985. pp. 253-275</p>
-</dd>
-<dt class="label" id="id7"><span class="brackets">3</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id9">2</a>)</span></dt>
-<dd><p>Michael Alekhnovich. <em>Mutilated Chessboard Problem Is Exponentially
+</aside>
+<aside class="footnote brackets" id="id7" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id3">1</a>,<a role="doc-backlink" href="#id9">2</a>)</span>
+<p>Michael Alekhnovich. <em>Mutilated Chessboard Problem Is Exponentially
 Hard For Resolution</em>. Theor. Comput. Sci. 310(1-3). 2004. pp. 513-525</p>
-</dd>
-<dt class="label" id="id8"><span class="brackets">4</span><span class="fn-backref">(<a href="#id4">1</a>,<a href="#id13">2</a>)</span></dt>
-<dd><p>Miklós Ajtai. <em>Parity And The Pigeonhole Principle</em>. Feasible
+</aside>
+<aside class="footnote brackets" id="id8" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id4">1</a>,<a role="doc-backlink" href="#id13">2</a>)</span>
+<p>Miklós Ajtai. <em>Parity And The Pigeonhole Principle</em>. Feasible
 Mathematics. 1990. pp. 1–24</p>
-</dd>
-</dl>
+</aside>
+</aside>
 <p>The module can be used as an executable (the list of available command-line
 options can be shown using <code class="docutils literal notranslate"><span class="pre">genhard.py</span> <span class="pre">-h</span></code>) in the following way</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ genhard.py -t php -n 3 -v
@@ -305,9 +308,9 @@ white cells while the <span class="math notranslate nohighlight">\(\textsf{AtLea
 formulated only for the black cells. Depending on the value of
 parameter <code class="docutils literal notranslate"><span class="pre">exhaustive</span></code> the encoder applies the <em>complete</em> or
 <em>partial</em> formulation of the problem.</p>
-<p>Mutilated chessboard principle is known to be hard for resolution <a class="footnote-reference brackets" href="#id7" id="id9">3</a>.</p>
+<p>Mutilated chessboard principle is known to be hard for resolution <a class="footnote-reference brackets" href="#id7" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>size</strong> (<em>int</em>) – problem size (<span class="math notranslate nohighlight">\(n\)</span>)</p></li>
 <li><p><strong>exhaustive</strong> (<em>bool</em>) – encode the problem exhaustively</p></li>
@@ -315,7 +318,7 @@ parameter <code class="docutils literal notranslate"><span class="pre">exhaustiv
 <li><p><strong>verb</strong> (<em>bool</em>) – defines whether or not the encoder is verbose</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>object of class <a class="reference internal" href="../formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">pysat.formula.CNF</span></code></a>.</p>
 </dd>
 </dl>
@@ -335,24 +338,25 @@ transitive. As a result, <span class="math notranslate nohighlight">\(\succ\)</s
 <span class="math notranslate nohighlight">\([n]\)</span>. The additional requirement that each element <span class="math notranslate nohighlight">\(i\)</span> has
 a successor in <span class="math notranslate nohighlight">\([n]\setminus\{i\}\)</span> represented a clause
 <span class="math notranslate nohighlight">\((\vee_{j \neq i}{x_{ji}})\)</span> makes the formula unsatisfiable.</p>
-<p>GT formulas were originally conjectured <a class="footnote-reference brackets" href="#id6" id="id10">2</a> to be hard for resolution.
-However, <a class="footnote-reference brackets" href="#id12" id="id11">5</a> proved the existence of a polynomial size resolution
+<p>GT formulas were originally conjectured <a class="footnote-reference brackets" href="#id6" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> to be hard for resolution.
+However, <a class="footnote-reference brackets" href="#id12" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> proved the existence of a polynomial size resolution
 refutation for GT formulas.</p>
-<dl class="footnote brackets">
-<dt class="label" id="id12"><span class="brackets"><a class="fn-backref" href="#id11">5</a></span></dt>
-<dd><p>Gunnar Stålmarck. <em>Short Resolution Proofs for a Sequence of
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id12" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">5</a><span class="fn-bracket">]</span></span>
+<p>Gunnar Stålmarck. <em>Short Resolution Proofs for a Sequence of
 Tricky Formulas</em>. Acta Informatica. 33(3). 1996. pp. 277-280</p>
-</dd>
-</dl>
+</aside>
+</aside>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>size</strong> (<em>int</em>) – number of elements (<span class="math notranslate nohighlight">\(n\)</span>)</p></li>
 <li><p><strong>topv</strong> (<em>int</em>) – current top variable identifier</p></li>
 <li><p><strong>verb</strong> (<em>bool</em>) – defines whether or not the encoder is verbose</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>object of class <a class="reference internal" href="../formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">pysat.formula.CNF</span></code></a>.</p>
 </dd>
 </dl>
@@ -370,16 +374,16 @@ variables <span class="math notranslate nohighlight">\(x_{ij},i \neq j\)</span>.
 The formula consists of the following clauses: <span class="math notranslate nohighlight">\((\vee_{j \neq
 i}{x_{ij}})\)</span> for every <span class="math notranslate nohighlight">\(i\in[2n+1]\)</span>, and <span class="math notranslate nohighlight">\((\neg{x_{ij}}
 \vee \neg{x_{kj}})\)</span> for all distinct <span class="math notranslate nohighlight">\(i,j,k \in [2n+1]\)</span>.</p>
-<p>The parity principle is known to be hard for resolution <a class="footnote-reference brackets" href="#id8" id="id13">4</a>.</p>
+<p>The parity principle is known to be hard for resolution <a class="footnote-reference brackets" href="#id8" id="id13" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>size</strong> (<em>int</em>) – problem size (<span class="math notranslate nohighlight">\(n\)</span>)</p></li>
 <li><p><strong>topv</strong> (<em>int</em>) – current top variable identifier</p></li>
 <li><p><strong>verb</strong> (<em>bool</em>) – defines whether or not the encoder is verbose</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>object of class <a class="reference internal" href="../formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">pysat.formula.CNF</span></code></a>.</p>
 </dd>
 </dl>
@@ -406,15 +410,16 @@ pigeon to be placed into at least one hole while each
 <span class="math notranslate nohighlight">\(\textsf{AtMost}k\)</span> constraint allows the corresponding hole to
 have at most <span class="math notranslate nohighlight">\(k\)</span> pigeons. The overall PHP formulas are
 unsatisfiable.</p>
-<p>PHP formulas are well-known <a class="footnote-reference brackets" href="#id15" id="id14">6</a> to be hard for resolution.</p>
-<dl class="footnote brackets">
-<dt class="label" id="id15"><span class="brackets"><a class="fn-backref" href="#id14">6</a></span></dt>
-<dd><p>Armin Haken. <em>The Intractability of Resolution</em>. Theor. Comput.
+<p>PHP formulas are well-known <a class="footnote-reference brackets" href="#id15" id="id14" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a> to be hard for resolution.</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id15" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id14">6</a><span class="fn-bracket">]</span></span>
+<p>Armin Haken. <em>The Intractability of Resolution</em>. Theor. Comput.
 Sci. 39. 1985. pp. 297-308</p>
-</dd>
-</dl>
+</aside>
+</aside>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>nof_holes</strong> (<em>int</em>) – number of holes (<span class="math notranslate nohighlight">\(n\)</span>)</p></li>
 <li><p><strong>kval</strong> (<em>int</em>) – multiplier <span class="math notranslate nohighlight">\(k\)</span></p></li>
@@ -422,7 +427,7 @@ Sci. 39. 1985. pp. 297-308</p>
 <li><p><strong>verb</strong> (<em>bool</em>) – defines whether or not the encoder is verbose</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>object of class <a class="reference internal" href="../formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">pysat.formula.CNF</span></code></a>.</p>
 </dd>
 </dl>
