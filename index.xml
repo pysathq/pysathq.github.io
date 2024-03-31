@@ -61,7 +61,7 @@
       <link>https://pysathq.github.io/updates/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://pysathq.github.io/updates/</guid>
-      <description>PySAT is being developed with the rolling release model, which means we do not deliver major releases from time to time. Instead, many small (sometimes tiny) and frequent updates are provided. As a result, upgrading your installation of the toolkit every now and then to keep it up-to-date is good idea.&#xA;27.03.2024 (1.8.dev6) A few minor issues in the toolkit setup. 20.03.2024 (1.8.dev5) Fixed a few issues in formula simplification. 17.</description>
+      <description>PySAT is being developed with the rolling release model, which means we do not deliver major releases from time to time. Instead, many small (sometimes tiny) and frequent updates are provided. As a result, upgrading your installation of the toolkit every now and then to keep it up-to-date is good idea.&#xA;31.03.2024 (1.8.dev7) Fixed a bug in formula key flattening. Added support for empty conjunctions and disjunctions representing PYSAT_TRUE and PYSAT_FALSE respectively.</description>
     </item>
     <item>
       <title>Usage</title>
