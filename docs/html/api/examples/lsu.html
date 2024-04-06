@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>LSU algorithm for MaxSAT (pysat.examples.lsu) &#8212; PySAT 1.8.dev7 documentation</title>
+    <title>LSU algorithm for MaxSAT (pysat.examples.lsu) &#8212; PySAT 1.8.dev8 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -70,7 +70,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev7)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev8)</strong></a>
       </div>
       
     </div>
@@ -248,7 +248,7 @@ standard <code class="docutils literal notranslate"><span class="pre">import</sp
 <h2>Module details<a class="headerlink" href="#module-details" title="Permalink to this headline">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="examples.lsu.LSU">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">examples.lsu.</span></span><span class="sig-name descname"><span class="pre">LSU</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formula</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'g4'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expect_interrupt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lsu.LSU" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">examples.lsu.</span></span><span class="sig-name descname"><span class="pre">LSU</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formula</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'g4'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">incr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expect_interrupt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lsu.LSU" title="Permalink to this definition">#</a></dt>
 <dd><p>Linear SAT-UNSAT algorithm for MaxSAT <a class="footnote-reference brackets" href="#id4" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. The algorithm can be seen
 as a series of satisfiability oracle calls refining an upper bound on
 the MaxSAT cost, followed by one unsatisfiability call, which stops the
@@ -271,6 +271,7 @@ integer verbosity level.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>formula</strong> (<a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a>) – input MaxSAT formula</p></li>
 <li><p><strong>solver</strong> (<em>str</em>) – name of SAT solver</p></li>
+<li><p><strong>incr</strong> (<em>bool</em>) – enable incremental mode of Glucose</p></li>
 <li><p><strong>expect_interrupt</strong> (<em>bool</em>) – whether or not an <a class="reference internal" href="#examples.lsu.LSU.interrupt" title="examples.lsu.LSU.interrupt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">interrupt()</span></code></a> call is expected</p></li>
 <li><p><strong>verbose</strong> (<em>int</em>) – verbosity level</p></li>
 </ul>
@@ -403,7 +404,7 @@ otherwise.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="examples.lsu.LSUPlus">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">examples.lsu.</span></span><span class="sig-name descname"><span class="pre">LSUPlus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formula</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solver</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expect_interrupt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lsu.LSUPlus" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">examples.lsu.</span></span><span class="sig-name descname"><span class="pre">LSUPlus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formula</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'g4'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">incr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expect_interrupt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lsu.LSUPlus" title="Permalink to this definition">#</a></dt>
 <dd><p>LSU-like algorithm extended for <a class="reference internal" href="../formula.html#pysat.formula.WCNFPlus" title="pysat.formula.WCNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNFPlus</span></code></a> formulas (using
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Minicard</span></code>).</p>
 <dl class="field-list simple">
