@@ -61,7 +61,7 @@
       <link>https://pysathq.github.io/updates/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://pysathq.github.io/updates/</guid>
-      <description>PySAT is being developed with the rolling release model, which means we do not deliver major releases from time to time. Instead, many small (sometimes tiny) and frequent updates are provided. As a result, upgrading your installation of the toolkit every now and then to keep it up-to-date is good idea.&#xA;05.04.2024 (1.8.dev8) Added support for CaDiCaL 1.9.5 with linear engine in example scripts. 31.03.2024 (1.8.dev7) Fixed a bug in formula key flattening.</description>
+      <description>PySAT is being developed with the rolling release model, which means we do not deliver major releases from time to time. Instead, many small (sometimes tiny) and frequent updates are provided. As a result, upgrading your installation of the toolkit every now and then to keep it up-to-date is good idea.&#xA;07.04.2024 (1.8.dev9) Fixed implementation of propagate() for CaDiCaL 1.9.5. 05.04.2024 (1.8.dev8) Added support for CaDiCaL 1.9.5 with linear engine in example scripts.</description>
     </item>
     <item>
       <title>Usage</title>
