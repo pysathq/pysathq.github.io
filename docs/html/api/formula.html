@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 1.8.dev11 documentation</title>
+    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 1.8.dev12 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev11)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev12)</strong></a>
       </div>
       
     </div>
@@ -602,7 +602,18 @@ updates the number of variables, i.e. variable <code class="docutils literal not
 in the formula.</p>
 <p>The additional keyword argument <code class="docutils literal notranslate"><span class="pre">update_vpool</span></code> can be set to
 <code class="docutils literal notranslate"><span class="pre">True</span></code> if the user wants to update for default static pool of
-variable identifiers stored in class <a class="reference internal" href="#pysat.formula.Formula" title="pysat.formula.Formula"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formula</span></code></a>.</p>
+variable identifiers stored in class <a class="reference internal" href="#pysat.formula.Formula" title="pysat.formula.Formula"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formula</span></code></a>. In light of
+the fact that a user may encode their problem manually and add
+thousands to millions of clauses using this method, the value of
+<code class="docutils literal notranslate"><span class="pre">update_vpool</span></code> is set to <code class="docutils literal notranslate"><span class="pre">False</span></code> by default.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Setting <code class="docutils literal notranslate"><span class="pre">update_vpool=True</span></code> is required if a user wants to
+combine this <a class="reference internal" href="#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a> formula with other (clausal or
+non-clausal) formulas followed by the clausification of the
+result combination. Alternatively, a user may resort to using
+the method <a class="reference internal" href="#pysat.formula.CNF.extend" title="pysat.formula.CNF.extend"><code class="xref py py-meth docutils literal notranslate"><span class="pre">extend()</span></code></a> instead.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -644,19 +655,13 @@ the <em>deepcopy</em> functionality to copy the clauses.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.formula.CNF.extend">
-<span class="sig-name descname"><span class="pre">extend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clauses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_vpool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.CNF.extend" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">extend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clauses</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.CNF.extend" title="Permalink to this definition">#</a></dt>
 <dd><p>Add several clauses to CNF formula. The clauses should be given in
 the form of list. For every clause in the list, method
 <a class="reference internal" href="#pysat.formula.CNF.append" title="pysat.formula.CNF.append"><code class="xref py py-meth docutils literal notranslate"><span class="pre">append()</span></code></a> is invoked.</p>
-<p>The additional keyword argument <code class="docutils literal notranslate"><span class="pre">update_vpool</span></code> can be set to
-<code class="docutils literal notranslate"><span class="pre">True</span></code> if the user wants to update for default static pool of
-variable identifiers stored in class <a class="reference internal" href="#pysat.formula.Formula" title="pysat.formula.Formula"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formula</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>clauses</strong> (<em>list</em><em>(</em><em>list</em><em>(</em><em>int</em><em>)</em><em>)</em>) – a list of new clauses to add</p></li>
-<li><p><strong>update_vpool</strong> (<em>bool</em>) – update or not the static vpool</p></li>
-</ul>
+<dd class="field-odd"><p><strong>clauses</strong> (<em>list</em><em>(</em><em>list</em><em>(</em><em>int</em><em>)</em><em>)</em>) – a list of new clauses to add</p>
 </dd>
 </dl>
 <p>Example:</p>
