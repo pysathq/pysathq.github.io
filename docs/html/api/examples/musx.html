@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>A deletion-based MUS extractor (pysat.examples.musx) &#8212; PySAT 1.8.dev12 documentation</title>
+    <title>A deletion-based MUS extractor (pysat.examples.musx) &#8212; PySAT 1.8.dev13 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev12)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev13)</strong></a>
       </div>
       
     </div>
@@ -260,7 +260,7 @@ the algorithm can be seen as an iterative process, which tries to
 remove one soft clause at a time and check whether the remaining set of
 soft clauses is still unsatisfiable together with the hard clauses.</p>
 <p>The constructor of <a class="reference internal" href="#examples.musx.MUSX" title="examples.musx.MUSX"><code class="xref py py-class docutils literal notranslate"><span class="pre">MUSX</span></code></a> objects receives a target
-<a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a> formula, a SAT solver name, and a verbosity level. Note
+<a class="reference internal" href="../formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a> or <cite>.WCNF</cite> formula, a SAT solver name, and a verbosity level. Note
 that the default SAT solver is MiniSat22 (referred to as <code class="docutils literal notranslate"><span class="pre">'m22'</span></code>, see
 <a class="reference internal" href="../solvers.html#pysat.solvers.SolverNames" title="pysat.solvers.SolverNames"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolverNames</span></code></a> for details). The default verbosity level is
 <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
