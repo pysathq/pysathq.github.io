@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>ApproxMC model counter (pysat.allies.approxmc) &#8212; PySAT 1.8.dev13 documentation</title>
+    <title>ApproxMC model counter (pysat.allies.approxmc) &#8212; PySAT 1.8.dev14 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev13)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev14)</strong></a>
       </div>
       
     </div>
@@ -214,13 +214,13 @@ including a random seed, <em>tolerance factor</em> <span class="math notranslate
 <em>confidence</em> <span class="math notranslate nohighlight">\(\delta\)</span>, the class can be used to get an approximate
 number of models of the formula, subject to the given tolerance factor and
 confidence parameter.</p>
-<p>Namely, given a CNF formula <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> with <span class="math notranslate nohighlight">\(\#\mathcal{F}\)</span>
-as the exact number of models, and parameters <span class="math notranslate nohighlight">\(\varepsilon\in(0,1]\)</span>
-and <span class="math notranslate nohighlight">\(\delta\in[0,1)\)</span>, the counter computes and reports a value
-<span class="math notranslate nohighlight">\(C\)</span>, which is an approximate number of models of
-<span class="math notranslate nohighlight">\(\mathcal{F}\)</span>, such that
-<span class="math notranslate nohighlight">\(\textrm{Pr}\left[\frac{1}{1+\varepsilon}\#\mathcal{F}\leq C\leq
-(1+\varepsilon)\#\mathcal{F}\right]\geq 1-\delta\)</span>.</p>
+<p>Namely, given a CNF formula <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> with
+<span class="math notranslate nohighlight">\(\#\mathcal{F}\)</span> as the exact number of models, and parameters
+<span class="math notranslate nohighlight">\(\varepsilon\in(0,1]\)</span> and <span class="math notranslate nohighlight">\(\delta\in[0,1)\)</span>, the counter
+computes and reports a value <span class="math notranslate nohighlight">\(C\)</span>, which is an approximate number of
+models of <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>, such that
+<span class="math notranslate nohighlight">\(\textrm{Pr}\left[\frac{1}{1+\varepsilon}\#\mathcal{F}\leq
+C\leq (1+\varepsilon)\#\mathcal{F}\right]\geq 1-\delta\)</span>.</p>
 <p>The implementation can be used as an executable (the list of available
 command-line options can be shown using <code class="docutils literal notranslate"><span class="pre">approxmc.py</span> <span class="pre">-h</span></code>) in the
 following way:</p>
@@ -272,8 +272,8 @@ state-of-the-art <em>approximate</em> model counter. Given a formula in
 models of the formula, subject to <em>tolerance factor</em> <code class="docutils literal notranslate"><span class="pre">epsilon</span></code> and
 <em>confidence parameter</em> <code class="docutils literal notranslate"><span class="pre">delta</span></code>.</p>
 <p>Namely, given a CNF formula <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> and parameters
-<span class="math notranslate nohighlight">\(\varepsilon\in(0,1]\)</span> and <span class="math notranslate nohighlight">\(\delta\in[0,1)\)</span>, the counter
-computes and reports a value <span class="math notranslate nohighlight">\(C\)</span> such that
+<span class="math notranslate nohighlight">\(\varepsilon\in(0,1]\)</span> and <span class="math notranslate nohighlight">\(\delta\in[0,1)\)</span>, the
+counter computes and reports a value <span class="math notranslate nohighlight">\(C\)</span> such that
 <span class="math notranslate nohighlight">\(\textrm{Pr}\left[\frac{1}{1+\varepsilon}\#\mathcal{F}\leq
 C\leq (1+\varepsilon)\#\mathcal{F}\right]\geq 1-\delta\)</span>. Here,
 <span class="math notranslate nohighlight">\(\#\mathcal{F}\)</span> denotes the exact model count for formula

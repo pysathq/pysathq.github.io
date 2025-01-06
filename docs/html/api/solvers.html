@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>SAT solvers’ API (pysat.solvers) &#8212; PySAT 1.8.dev13 documentation</title>
+    <title>SAT solvers’ API (pysat.solvers) &#8212; PySAT 1.8.dev14 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev13)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev14)</strong></a>
       </div>
       
     </div>
@@ -322,12 +322,12 @@ with the following basic SAT solving functionality:</p>
 </ul>
 <p>PySAT supports both non-incremental and incremental SAT solving.
 Incrementality can be achieved with the use of the MiniSat-like
-<em>assumption-based</em> interface <a class="footnote-reference brackets" href="#id5" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. It can be helpful if multiple calls to a
-SAT solver are needed for the same formula using different sets of
+<em>assumption-based</em> interface <a class="footnote-reference brackets" href="#id5" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. It can be helpful if multiple calls to
+a SAT solver are needed for the same formula using different sets of
 “assumptions”, e.g. when doing consecutive SAT calls for formula
 <span class="math notranslate nohighlight">\(\mathcal{F}\land (a_{i_1}\land\ldots\land a_{i_1+j_1})\)</span> and
-<span class="math notranslate nohighlight">\(\mathcal{F}\land (a_{i_2}\land\ldots\land a_{i_2+j_2})\)</span>, where every
-<span class="math notranslate nohighlight">\(a_{l_k}\)</span> is an assumption literal.</p>
+<span class="math notranslate nohighlight">\(\mathcal{F}\land (a_{i_2}\land\ldots\land a_{i_2+j_2})\)</span>, where
+every <span class="math notranslate nohighlight">\(a_{l_k}\)</span> is an assumption literal.</p>
 <p>There are several advantages of using assumptions: (1) it enables one to
 <em>keep and reuse</em> the clauses learnt during previous SAT calls at a later
 stage and (2) assumptions can be easily used to extract an <em>unsatisfiable
@@ -1209,7 +1209,7 @@ before calling <a class="reference internal" href="#pysat.solvers.Solver.solve" 
 </dl>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Solver</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Solver</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">Solver</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
 <span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">])</span>

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 1.8.dev13 documentation</title>
+    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 1.8.dev14 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev13)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev14)</strong></a>
       </div>
       
     </div>
@@ -424,9 +424,9 @@ formula encoder is shown below (the implementation can also be found in
 <dt class="sig sig-object py" id="pysat.formula.And">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">And</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.And" title="Permalink to this definition">#</a></dt>
 <dd><p>Conjunction. Given a list of operands (subformulas) <span class="math notranslate nohighlight">\(f_i\)</span>,
-<span class="math notranslate nohighlight">\(i \in \{1,\ldots,n\}, n \in \mathbb{N}\)</span>, it creates a formula
-<span class="math notranslate nohighlight">\(\bigwedge_{i=1}^{n}{f_i}\)</span>. The list of operands <em>of size at
-least 1</em> should be passed as arguments to the constructor.</p>
+<span class="math notranslate nohighlight">\(i \in \{1,\ldots,n\}, n \in \mathbb{N}\)</span>, it creates a
+formula <span class="math notranslate nohighlight">\(\bigwedge_{i=1}^{n}{f_i}\)</span>. The list of operands <em>of
+size at least 1</em> should be passed as arguments to the constructor.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
@@ -841,13 +841,14 @@ specific comment lines.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.formula.CNF.negate">
 <span class="sig-name descname"><span class="pre">negate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">topv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.CNF.negate" title="Permalink to this definition">#</a></dt>
-<dd><p>Given a CNF formula <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>, this method creates a CNF
-formula <span class="math notranslate nohighlight">\(\neg{\mathcal{F}}\)</span>. The negation of the formula is
-encoded to CNF with the use of <em>auxiliary</em> Tseitin variables <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.
-A new CNF formula is returned keeping all the newly introduced
-variables that can be accessed through the <code class="docutils literal notranslate"><span class="pre">auxvars</span></code> variable.
-All the literals used to encode the negation of the original
-clauses can be accessed through the <code class="docutils literal notranslate"><span class="pre">enclits</span></code> variable.</p>
+<dd><p>Given a CNF formula <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>, this method creates a
+CNF formula <span class="math notranslate nohighlight">\(\neg{\mathcal{F}}\)</span>. The negation of the
+formula is encoded to CNF with the use of <em>auxiliary</em> Tseitin
+variables <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. A new CNF formula is returned keeping all the
+newly introduced variables that can be accessed through the
+<code class="docutils literal notranslate"><span class="pre">auxvars</span></code> variable. All the literals used to encode the negation
+of the original clauses can be accessed through the <code class="docutils literal notranslate"><span class="pre">enclits</span></code>
+variable.</p>
 <p><strong>Note</strong> that the negation of each clause is encoded with one
 auxiliary variable if it is not unit size. Otherwise, no auxiliary
 variable is introduced.</p>
@@ -1060,10 +1061,10 @@ prepended with character <code class="docutils literal notranslate"><span class=
 </div>
 <p>Each AtLeastK constraint is translated into an AtMostK constraint in
 the standard way: <span class="math notranslate nohighlight">\(\sum_{i=1}^{n}{x_i}\geq k \leftrightarrow
-\sum_{i=1}^{n}{\neg{x_i}}\leq (n-k)\)</span>. Internally, AtMostK constraints
-are stored in variable <code class="docutils literal notranslate"><span class="pre">atmosts</span></code>, each being a pair <code class="docutils literal notranslate"><span class="pre">(lits,</span> <span class="pre">k)</span></code>,
-where <code class="docutils literal notranslate"><span class="pre">lits</span></code> is a list of literals in the sum and <code class="docutils literal notranslate"><span class="pre">k</span></code> is the upper
-bound.</p>
+\sum_{i=1}^{n}{\neg{x_i}}\leq (n-k)\)</span>. Internally, AtMostK
+constraints are stored in variable <code class="docutils literal notranslate"><span class="pre">atmosts</span></code>, each being a pair
+<code class="docutils literal notranslate"><span class="pre">(lits,</span> <span class="pre">k)</span></code>, where <code class="docutils literal notranslate"><span class="pre">lits</span></code> is a list of literals in the sum and
+<code class="docutils literal notranslate"><span class="pre">k</span></code> is the upper bound.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">CNFPlus</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNFPlus</span><span class="p">(</span><span class="n">from_string</span><span class="o">=</span><span class="s1">&#39;p cnf+ 7 3</span><span class="se">\n</span><span class="s1">1 -2 3 5 -7 &lt;= 3</span><span class="se">\n</span><span class="s1">4 5 6 -7 &gt;= 2</span><span class="se">\n</span><span class="s1"> 3 5 7 0</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -1318,10 +1319,10 @@ remains unchanged.</p>
 <dt class="sig sig-object py" id="pysat.formula.Equals">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">Equals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Equals" title="Permalink to this definition">#</a></dt>
 <dd><p>Equivalence. Given a list of operands (subformulas) <span class="math notranslate nohighlight">\(f_i\)</span>,
-<span class="math notranslate nohighlight">\(i \in \{1,\ldots,n\}, n \in \mathbb{N}\)</span>, it creates a formula
-<span class="math notranslate nohighlight">\(f_1 \leftrightarrow f_2 \leftrightarrow\ldots\leftrightarrow
-f_n\)</span>. The list of operands <em>of size at least 2</em> should be passed as
-arguments to the constructor.</p>
+<span class="math notranslate nohighlight">\(i \in \{1,\ldots,n\}, n \in \mathbb{N}\)</span>, it creates a
+formula <span class="math notranslate nohighlight">\(f_1 \leftrightarrow f_2
+\leftrightarrow\ldots\leftrightarrow f_n\)</span>. The list of operands <em>of
+size at least 2</em> should be passed as arguments to the constructor.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
@@ -1956,9 +1957,9 @@ simplified subformula.</p>
 <dt class="sig sig-object py" id="pysat.formula.Or">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">Or</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Or" title="Permalink to this definition">#</a></dt>
 <dd><p>Disjunction. Given a list of operands (subformulas) <span class="math notranslate nohighlight">\(f_i\)</span>,
-<span class="math notranslate nohighlight">\(i \in \{1,\ldots,n\}, n \in \mathbb{N}\)</span>, it creates a formula
-<span class="math notranslate nohighlight">\(\bigvee_{i=1}^{n}{f_i}\)</span>. The list of operands <em>of size at
-least 1</em> should be passed as arguments to the constructor.</p>
+<span class="math notranslate nohighlight">\(i \in \{1,\ldots,n\}, n \in \mathbb{N}\)</span>, it creates a
+formula <span class="math notranslate nohighlight">\(\bigvee_{i=1}^{n}{f_i}\)</span>. The list of operands <em>of size
+at least 1</em> should be passed as arguments to the constructor.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
@@ -2419,9 +2420,10 @@ prepended with character <code class="docutils literal notranslate"><span class=
 i.e. soft cardinality constraints are currently <em>not supported</em>.</p>
 <p>Each AtLeastK constraint is translated into an AtMostK constraint in
 the standard way: <span class="math notranslate nohighlight">\(\sum_{i=1}^{n}{x_i}\geq k \leftrightarrow
-\sum_{i=1}^{n}{\neg{x_i}}\leq (n-k)\)</span>. Internally, AtMostK constraints
-are stored in variable <code class="docutils literal notranslate"><span class="pre">atms</span></code>, each being a pair <code class="docutils literal notranslate"><span class="pre">(lits,</span> <span class="pre">k)</span></code>, where
-<code class="docutils literal notranslate"><span class="pre">lits</span></code> is a list of literals in the sum and <code class="docutils literal notranslate"><span class="pre">k</span></code> is the upper bound.</p>
+\sum_{i=1}^{n}{\neg{x_i}}\leq (n-k)\)</span>. Internally, AtMostK
+constraints are stored in variable <code class="docutils literal notranslate"><span class="pre">atms</span></code>, each being a pair
+<code class="docutils literal notranslate"><span class="pre">(lits,</span> <span class="pre">k)</span></code>, where <code class="docutils literal notranslate"><span class="pre">lits</span></code> is a list of literals in the sum and
+<code class="docutils literal notranslate"><span class="pre">k</span></code> is the upper bound.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">WCNFPlus</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">WCNFPlus</span><span class="p">(</span><span class="n">from_string</span><span class="o">=</span><span class="s1">&#39;p wcnf+ 7 3 10</span><span class="se">\n</span><span class="s1">10 1 -2 3 5 -7 &lt;= 3</span><span class="se">\n</span><span class="s1">10 4 5 6 -7 &gt;= 2</span><span class="se">\n</span><span class="s1">5 3 5 7 0</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -2662,9 +2664,9 @@ formula remain unchanged in the new (plain) formula.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">XOr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.XOr" title="Permalink to this definition">#</a></dt>
 <dd><p>Exclusive disjunction. Given a list of operands (subformulas)
 <span class="math notranslate nohighlight">\(f_i\)</span>, <span class="math notranslate nohighlight">\(i \in \{1,\ldots,n\}, n \in \mathbb{N}\)</span>, it
-creates a formula <span class="math notranslate nohighlight">\(f_1 \oplus f_2 \oplus\ldots\oplus f_n\)</span>. The
-list of operands <em>of size at least 2</em> should be passed as arguments to
-the constructor.</p>
+creates a formula <span class="math notranslate nohighlight">\(f_1 \oplus f_2 \oplus\ldots\oplus f_n\)</span>.
+The list of operands <em>of size at least 2</em> should be passed as
+arguments to the constructor.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Hard formula generator (pysat.examples.genhard) &#8212; PySAT 1.8.dev13 documentation</title>
+    <title>Hard formula generator (pysat.examples.genhard) &#8212; PySAT 1.8.dev14 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev13)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev14)</strong></a>
       </div>
       
     </div>
@@ -291,14 +291,14 @@ principle states that it is impossible to cover a chessboard of size
 <span class="math notranslate nohighlight">\(2n\cdot 2n\)</span> by domino tiles if two diagonally opposite corners
 of the chessboard are removed.</p>
 <p>Note that the chessboard has <span class="math notranslate nohighlight">\(4n^2-2\)</span> cells. Introduce a Boolean
-variable <span class="math notranslate nohighlight">\(x_{ij}\)</span> for <span class="math notranslate nohighlight">\(i,j\in[4n^2-2]\)</span> s.t. cells <span class="math notranslate nohighlight">\(i\)</span>
-and <span class="math notranslate nohighlight">\(j\)</span> are adjacent (no variables are introduced for pairs of
-non-adjacent cells). CB formulas comprise clauses (1)
+variable <span class="math notranslate nohighlight">\(x_{ij}\)</span> for <span class="math notranslate nohighlight">\(i,j\in[4n^2-2]\)</span> s.t. cells
+<span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> are adjacent (no variables are introduced for
+pairs of non-adjacent cells). CB formulas comprise clauses (1)
 <span class="math notranslate nohighlight">\((\neg{x_{ji} \vee \neg{x_{ki}}})\)</span> for every <span class="math notranslate nohighlight">\(i,j \neq
 k\)</span> meaning that no more than one adjacent cell can be paired with the
-current one; and (2) <span class="math notranslate nohighlight">\((\vee_{j \in \text{Adj}(i)} {x_{ij}})\,\,
-\forall i\)</span> enforcing that every cell <span class="math notranslate nohighlight">\(i\)</span> should be paired with
-at least one adjacent cell.</p>
+current one; and (2) <span class="math notranslate nohighlight">\((\vee_{j \in \text{Adj}(i)}
+{x_{ij}})\,\, \forall i\)</span> enforcing that every cell <span class="math notranslate nohighlight">\(i\)</span> should
+be paired with at least one adjacent cell.</p>
 <p>Clearly, since the two diagonal corners are removed, the formula is
 unsatisfiable. Also note the following. Assuming that the number of
 black cells is larger than the number of the white ones, CB formulas
@@ -330,14 +330,15 @@ parameter <code class="docutils literal notranslate"><span class="pre">exhaustiv
 <dd><p>Generator of ordering (or <em>greater than</em>, GT) principle formulas. Given
 an integer parameter <span class="math notranslate nohighlight">\(n\)</span>, the principle states that any partial
 order on the set <span class="math notranslate nohighlight">\(\{1,2,\ldots,n\}\)</span> must have a maximal element.</p>
-<p>Assume variable <span class="math notranslate nohighlight">\(x_{ij}\)</span>, for <span class="math notranslate nohighlight">\(i,j\in[n],i\neq j\)</span>, denotes
-the fact that <span class="math notranslate nohighlight">\(i \succ j\)</span>. Clauses <span class="math notranslate nohighlight">\((\neg{x_{ij}} \vee
-\neg{x_{ji}})\)</span> and <span class="math notranslate nohighlight">\((\neg{x_{ij}} \vee \neg{x_{jk}} \vee
-x_{ik})\)</span> ensure that the relation <span class="math notranslate nohighlight">\(\succ\)</span> is anti-symmetric and
-transitive. As a result, <span class="math notranslate nohighlight">\(\succ\)</span> is a partial order on
-<span class="math notranslate nohighlight">\([n]\)</span>. The additional requirement that each element <span class="math notranslate nohighlight">\(i\)</span> has
-a successor in <span class="math notranslate nohighlight">\([n]\setminus\{i\}\)</span> represented a clause
-<span class="math notranslate nohighlight">\((\vee_{j \neq i}{x_{ji}})\)</span> makes the formula unsatisfiable.</p>
+<p>Assume variable <span class="math notranslate nohighlight">\(x_{ij}\)</span>, for <span class="math notranslate nohighlight">\(i,j\in[n],i\neq j\)</span>,
+denotes the fact that <span class="math notranslate nohighlight">\(i \succ j\)</span>. Clauses
+<span class="math notranslate nohighlight">\((\neg{x_{ij}} \vee \neg{x_{ji}})\)</span> and <span class="math notranslate nohighlight">\((\neg{x_{ij}}
+\vee \neg{x_{jk}} \vee x_{ik})\)</span> ensure that the relation
+<span class="math notranslate nohighlight">\(\succ\)</span> is anti-symmetric and transitive. As a result,
+<span class="math notranslate nohighlight">\(\succ\)</span> is a partial order on <span class="math notranslate nohighlight">\([n]\)</span>. The additional
+requirement that each element <span class="math notranslate nohighlight">\(i\)</span> has a successor in
+<span class="math notranslate nohighlight">\([n]\setminus\{i\}\)</span> represented a clause <span class="math notranslate nohighlight">\((\vee_{j
+\neq i}{x_{ji}})\)</span> makes the formula unsatisfiable.</p>
 <p>GT formulas were originally conjectured <a class="footnote-reference brackets" href="#id6" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> to be hard for resolution.
 However, <a class="footnote-reference brackets" href="#id12" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> proved the existence of a polynomial size resolution
 refutation for GT formulas.</p>

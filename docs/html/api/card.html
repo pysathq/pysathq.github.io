@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Cardinality encodings (pysat.card) &#8212; PySAT 1.8.dev13 documentation</title>
+    <title>Cardinality encodings (pysat.card) &#8212; PySAT 1.8.dev14 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -71,7 +71,7 @@
       
       <div class="navbar-center-item">
         <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev13)</strong></a>
+<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev14)</strong></a>
       </div>
       
     </div>
@@ -256,8 +256,8 @@ pp. 129-134</p>
 </aside>
 </aside>
 <p>A cardinality constraint is a constraint of the form:
-<span class="math notranslate nohighlight">\(\sum_{i=1}^n{x_i}\leq k\)</span>. Cardinality constraints are ubiquitous in
-practical problem formulations. Note that the implementation of the
+<span class="math notranslate nohighlight">\(\sum_{i=1}^n{x_i}\leq k\)</span>. Cardinality constraints are ubiquitous
+in practical problem formulations. Note that the implementation of the
 pairwise, bitwise, and ladder encodings can only deal with AtMost1
 constraints, e.g. <span class="math notranslate nohighlight">\(\sum_{i=1}^n{x_i}\leq 1\)</span>.</p>
 <p>Access to all cardinality encodings can be made through the main class of
@@ -305,9 +305,10 @@ e.g. <code class="docutils literal notranslate"><span class="pre">CardEnc.atmost
 <dt class="sig sig-object py" id="pysat.card.CardEnc.atleast">
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">atleast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.card.CardEnc.atleast" title="Permalink to this definition">#</a></dt>
 <dd><p>This method can be used for creating a CNF encoding of an AtLeastK
-constraint, i.e. of <span class="math notranslate nohighlight">\(\sum_{i=1}^{n}{x_i}\geq k\)</span>. The method
-takes 1 mandatory argument <code class="docutils literal notranslate"><span class="pre">lits</span></code> and 3 default arguments can be
-specified: <code class="docutils literal notranslate"><span class="pre">bound</span></code>, <code class="docutils literal notranslate"><span class="pre">top_id</span></code>, <code class="docutils literal notranslate"><span class="pre">vpool</span></code>, and <code class="docutils literal notranslate"><span class="pre">encoding</span></code>.</p>
+constraint, i.e. of <span class="math notranslate nohighlight">\(\sum_{i=1}^{n}{x_i}\geq k\)</span>. The
+method takes 1 mandatory argument <code class="docutils literal notranslate"><span class="pre">lits</span></code> and 3 default arguments
+can be specified: <code class="docutils literal notranslate"><span class="pre">bound</span></code>, <code class="docutils literal notranslate"><span class="pre">top_id</span></code>, <code class="docutils literal notranslate"><span class="pre">vpool</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">encoding</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -352,8 +353,8 @@ modified list of literals and the new bound.</p>
 <dt class="sig sig-object py" id="pysat.card.CardEnc.atmost">
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">atmost</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.card.CardEnc.atmost" title="Permalink to this definition">#</a></dt>
 <dd><p>This method can be used for creating a CNF encoding of an AtMostK
-constraint, i.e. of <span class="math notranslate nohighlight">\(\sum_{i=1}^{n}{x_i}\leq k\)</span>. The method
-shares the arguments and the return type with method
+constraint, i.e. of <span class="math notranslate nohighlight">\(\sum_{i=1}^{n}{x_i}\leq k\)</span>. The
+method shares the arguments and the return type with method
 <a class="reference internal" href="#pysat.card.CardEnc.atleast" title="pysat.card.CardEnc.atleast"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CardEnc.atleast()</span></code></a>. Please, see it for details.</p>
 </dd></dl>
 
@@ -391,9 +392,9 @@ identifier, e.g. <code class="docutils literal notranslate"><span class="pre">2<
 <code class="docutils literal notranslate"><span class="pre">EncType.sortnetwrk</span></code>.</p>
 <p>Note that while most of the encodings are produced as a list of
 clauses, the “native” encoding of <a class="reference external" href="https://github.com/liffiton/minicard">MiniCard</a> is managed as one clause.
-Given an AtMostK constraint <span class="math notranslate nohighlight">\(\sum_{i=1}^n{x_i\leq k}\)</span>, the native
-encoding represents it as a pair <code class="docutils literal notranslate"><span class="pre">[lits,</span> <span class="pre">k]</span></code>, where <code class="docutils literal notranslate"><span class="pre">lits</span></code> is a
-list of size <code class="docutils literal notranslate"><span class="pre">n</span></code> containing literals in the sum.</p>
+Given an AtMostK constraint <span class="math notranslate nohighlight">\(\sum_{i=1}^n{x_i\leq k}\)</span>, the
+native encoding represents it as a pair <code class="docutils literal notranslate"><span class="pre">[lits,</span> <span class="pre">k]</span></code>, where <code class="docutils literal notranslate"><span class="pre">lits</span></code>
+is a list of size <code class="docutils literal notranslate"><span class="pre">n</span></code> containing literals in the sum.</p>
 </dd></dl>
 
 <dl class="py class">
