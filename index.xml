@@ -61,7 +61,7 @@
       <link>https://pysathq.github.io/updates/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://pysathq.github.io/updates/</guid>
-      <description>PySAT is being developed with the rolling release model, which means we do not deliver major releases from time to time. Instead, many small (sometimes tiny) and frequent updates are provided. As a result, upgrading your installation of the toolkit every now and then to keep it up-to-date is good idea.&#xA;15.03.2025 (1.8.dev15) Fixed an issue related to clausifying formulas with true/false constants. Glucose 4.2.1 random mode is now supported. 07.</description>
+      <description>PySAT is being developed with the rolling release model, which means we do not deliver major releases from time to time. Instead, many small (sometimes tiny) and frequent updates are provided. As a result, upgrading your installation of the toolkit every now and then to keep it up-to-date is good idea.&#xA;15.03.2025 (1.8.dev16) Another (minor) issue fixed, related to constant clausification. 15.03.2025 (1.8.dev15) Fixed an issue related to clausifying formulas with true/false constants.</description>
     </item>
     <item>
       <title>Usage</title>
