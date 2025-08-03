@@ -1,180 +1,368 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../" data-theme="auto">
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>SAT solvers’ API (pysat.solvers) &#8212; PySAT 1.8.dev17 documentation</title>
-    
+    <title>SAT solvers’ API (pysat.solvers) &#8212; PySAT 1.8.dev18 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "auto";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "auto";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=7507c64e"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/solvers';</script>
+    <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Fu&amp;Malik MaxSAT algorithm (pysat.examples.fm)" href="examples/fm.html" />
+    <link rel="next" title="Bica algorithm for formula simplification (pysat.examples.bica)" href="examples/bica.html" />
     <link rel="prev" title="Formula processing (pysat.process)" href="process.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
-
-  <div id="navbar-start">
-    
-    
-
-<a class="navbar-brand" href="https://pysathq.github.io">
-  <img src="../_static/logo-dark.svg" class="logo" alt="logo">
-</a>
-
-
-    
-  </div>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="auto">
 
   
-  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
-    <div id="navbar-center" class="mr-auto">
-      
-      <div class="navbar-center-item">
-        <!-- This will display the version of the docs -->
-<a href=https://pysathq.github.io/docs/html/index.html><strong>PySAT Documentation (version 1.8.dev17)</strong></a>
-      </div>
-      
-    </div>
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-    <div id="navbar-end">
-      
-      <div class="navbar-end-item">
-        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
-        <li class="nav-item">
-          <a class="nav-link" href="https://github.com/pysathq/pysat" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
-            <label class="sr-only">GitHub</label></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://pysathq.github.io/docs/pysat.pdf" rel="noopener" target="_blank" title="PDF"><span><i class="fas fa-file"></i></span>
-            <label class="sr-only">PDF</label></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://github.com/pysathq/pysat/issues" rel="noopener" target="_blank" title="Issue tracker"><span><i class="fas fa-bug"></i></span>
-            <label class="sr-only">Issue tracker</label></a>
-        </li>
-      </ul>
-      </div>
-      
-    </div>
-  </div>
-</div>
-    </nav>
+  
+  <dialog id="pst-search-dialog">
     
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
 
-    <div class="container-xl">
-      <div class="row">
-          
-            
-            <!-- Only show if we have sidebars configured, else just a small margin  -->
-            <div class="col-12 col-md-3 bd-sidebar">
-              <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  <div class="bd-toc-item active">
-    
-  </div>
-</nav>
-              </div>
-              <div class="sidebar-end-items">
-              </div>
-            </div>
-            
-          
-
-          
-          <div class="d-none d-xl-block col-xl-2 bd-toc">
-            
-              
-              <div class="toc-item">
-                
-<div class="tocsection onthispage mt-5 pt-1 pb-3">
-    <i class="fas fa-list"></i> On this page
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 
-<nav id="bd-toc-nav">
-    <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#list-of-classes">
-   List of classes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#module-description">
-   Module description
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#module-details">
-   Module details
-  </a>
- </li>
-</ul>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
 
+  
+
+<a class="navbar-brand logo" href="https://pysathq.github.io">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev18 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev18 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><!-- This will display the version of the docs -->
+<a href=><strong>PySAT Documentation (version 1.8.dev18)</strong></a></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pysathq/pysat" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pysathq.github.io/docs/pysat.pdf" title="PDF" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-file fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pysathq/pysat/issues" title="Issue tracker" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-bug fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Issue tracker</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item"><!-- This will display the version of the docs -->
+<a href=><strong>PySAT Documentation (version 1.8.dev18)</strong></a></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pysathq/pysat" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pysathq.github.io/docs/pysat.pdf" title="PDF" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-file fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pysathq/pysat/issues" title="Issue tracker" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-bug fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Issue tracker</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"></div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">SAT solvers’ API (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.solvers</span></code>)</span></li>
+  </ul>
 </nav>
-              </div>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
               
-              <div class="toc-item">
+              
+              
                 
-              </div>
-              
-            
-          </div>
-          
-
-          
-          
-            
-          
-          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
-              
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section id="module-pysat.solvers">
-<span id="sat-solvers-api-pysat-solvers"></span><h1>SAT solvers’ API (<a class="reference internal" href="#module-pysat.solvers" title="pysat.solvers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.solvers</span></code></a>)<a class="headerlink" href="#module-pysat.solvers" title="Permalink to this headline">#</a></h1>
+<span id="sat-solvers-api-pysat-solvers"></span><h1>SAT solvers’ API (<a class="reference internal" href="#module-pysat.solvers" title="pysat.solvers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.solvers</span></code></a>)<a class="headerlink" href="#module-pysat.solvers" title="Link to this heading">#</a></h1>
 <section id="list-of-classes">
-<h2>List of classes<a class="headerlink" href="#list-of-classes" title="Permalink to this headline">#</a></h2>
-<table class="autosummary longtable table autosummary">
+<h2>List of classes<a class="headerlink" href="#list-of-classes" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#pysat.solvers.SolverNames" title="pysat.solvers.SolverNames"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SolverNames</span></code></a></p></td>
 <td><p>This class serves to determine the solver requested by a user given a string name.</p></td>
@@ -235,9 +423,10 @@
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 <section id="module-description">
-<h2>Module description<a class="headerlink" href="#module-description" title="Permalink to this headline">#</a></h2>
+<h2>Module description<a class="headerlink" href="#module-description" title="Link to this heading">#</a></h2>
 <p>This module provides <em>incremental</em> access to a few modern SAT solvers. The
 solvers supported by PySAT are:</p>
 <ul class="simple">
@@ -361,10 +550,11 @@ direct access to the individual solvers, i.e. classes <code class="xref py py-cl
 base class <a class="reference internal" href="#pysat.solvers.Solver" title="pysat.solvers.Solver"><code class="xref py py-class docutils literal notranslate"><span class="pre">Solver</span></code></a> and, thus, can be used the same exact way.</p>
 </section>
 <section id="module-details">
-<h2>Module details<a class="headerlink" href="#module-details" title="Permalink to this headline">#</a></h2>
+<h2>Module details<a class="headerlink" href="#module-details" title="Link to this heading">#</a></h2>
+</section>
 <dl class="py exception">
 <dt class="sig sig-object py" id="pysat.solvers.NoSuchSolverError">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.solvers.</span></span><span class="sig-name descname"><span class="pre">NoSuchSolverError</span></span><a class="headerlink" href="#pysat.solvers.NoSuchSolverError" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.solvers.</span></span><span class="sig-name descname"><span class="pre">NoSuchSolverError</span></span><a class="headerlink" href="#pysat.solvers.NoSuchSolverError" title="Link to this definition">#</a></dt>
 <dd><p>This exception is raised when creating a new SAT solver whose name
 does not match any name in <a class="reference internal" href="#pysat.solvers.SolverNames" title="pysat.solvers.SolverNames"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolverNames</span></code></a>. The list of <em>known</em>
 solvers includes the names <cite>‘cadical103’</cite>, <cite>‘cadical153’</cite>,
@@ -374,7 +564,7 @@ solvers includes the names <cite>‘cadical103’</cite>, <cite>‘cadical153’
 <cite>‘minicard’</cite>, <cite>‘minisat22’</cite>, and <cite>‘minisatgh’</cite>.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.NoSuchSolverError.with_traceback">
-<span class="sig-name descname"><span class="pre">with_traceback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.NoSuchSolverError.with_traceback" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">with_traceback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.NoSuchSolverError.with_traceback" title="Link to this definition">#</a></dt>
 <dd><p>Exception.with_traceback(tb) –
 set self.__traceback__ to tb and return self.</p>
 </dd></dl>
@@ -383,7 +573,7 @@ set self.__traceback__ to tb and return self.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.solvers.Solver">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.solvers.</span></span><span class="sig-name descname"><span class="pre">Solver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'m22'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bootstrap_with</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_timer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.solvers.</span></span><span class="sig-name descname"><span class="pre">Solver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'m22'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bootstrap_with</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_timer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver" title="Link to this definition">#</a></dt>
 <dd><p>Main class for creating and manipulating a SAT solver. Any available
 SAT solver can be accessed as an object of this class and so
 <a class="reference internal" href="#pysat.solvers.Solver" title="pysat.solvers.Solver"><code class="xref py py-class docutils literal notranslate"><span class="pre">Solver</span></code></a> can be seen as a wrapper for all supported solvers.</p>
@@ -487,7 +677,7 @@ parameter:</p>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.accum_stats">
-<span class="sig-name descname"><span class="pre">accum_stats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.accum_stats" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">accum_stats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.accum_stats" title="Link to this definition">#</a></dt>
 <dd><p>Get accumulated low-level stats from the solver. Currently, the
 statistics includes the number of restarts, conflicts, decisions,
 and propagations.</p>
@@ -511,7 +701,7 @@ and propagations.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.activate_atmost">
-<span class="sig-name descname"><span class="pre">activate_atmost</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.activate_atmost" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">activate_atmost</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.activate_atmost" title="Link to this definition">#</a></dt>
 <dd><p>Activate native linear (cardinality or pseudo-Boolean) constraint
 reasoning. This is supported only by <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code> by means
 of its external propagators functionality and the use of
@@ -524,7 +714,7 @@ of its external propagators functionality and the use of
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.add_atmost">
-<span class="sig-name descname"><span class="pre">add_atmost</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_return</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.add_atmost" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">add_atmost</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_return</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.add_atmost" title="Link to this definition">#</a></dt>
 <dd><p>This method is responsible for adding a new <em>native</em> AtMostK (see
 <a class="reference internal" href="card.html#module-pysat.card" title="pysat.card"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.card</span></code></a>) constraint.</p>
 <p><strong>Note that most of the solvers do not support native AtMostK
@@ -562,7 +752,7 @@ result, if set to <code class="docutils literal notranslate"><span class="pre">F
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.add_clause">
-<span class="sig-name descname"><span class="pre">add_clause</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_return</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.add_clause" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">add_clause</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_return</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.add_clause" title="Link to this definition">#</a></dt>
 <dd><p>This method is used to add a single clause to the solver. An
 optional argument <code class="docutils literal notranslate"><span class="pre">no_return</span></code> controls whether or not to check
 the formula’s satisfiability after adding the new clause.</p>
@@ -591,7 +781,7 @@ others.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.add_xor_clause">
-<span class="sig-name descname"><span class="pre">add_xor_clause</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.add_xor_clause" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">add_xor_clause</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.add_xor_clause" title="Link to this definition">#</a></dt>
 <dd><p>Add a new XOR clause to solver’s internal formula. The input
 parameters include the list of literals and the right-hand side
 (the value of the sum).</p>
@@ -621,7 +811,7 @@ CryptoMinisat.</strong></p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.append_formula">
-<span class="sig-name descname"><span class="pre">append_formula</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formula</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_return</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.append_formula" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">append_formula</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formula</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_return</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.append_formula" title="Link to this definition">#</a></dt>
 <dd><p>This method can be used to add a given list of clauses into the
 solver.</p>
 <dl class="field-list simple">
@@ -650,7 +840,7 @@ result, if set to <code class="docutils literal notranslate"><span class="pre">F
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.clear_interrupt">
-<span class="sig-name descname"><span class="pre">clear_interrupt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.clear_interrupt" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">clear_interrupt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.clear_interrupt" title="Link to this definition">#</a></dt>
 <dd><p>Clears a previous interrupt. If a limited SAT call was interrupted
 using the <a class="reference internal" href="#pysat.solvers.Solver.interrupt" title="pysat.solvers.Solver.interrupt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">interrupt()</span></code></a> method, this method <strong>must be called</strong>
 before calling the SAT solver again.</p>
@@ -658,7 +848,7 @@ before calling the SAT solver again.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.conf_budget">
-<span class="sig-name descname"><span class="pre">conf_budget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">budget</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.conf_budget" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">conf_budget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">budget</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.conf_budget" title="Link to this definition">#</a></dt>
 <dd><p>Set limit (i.e. the upper bound) on the number of conflicts in the
 next limited SAT call (see <a class="reference internal" href="#pysat.solvers.Solver.solve_limited" title="pysat.solvers.Solver.solve_limited"><code class="xref py py-meth docutils literal notranslate"><span class="pre">solve_limited()</span></code></a>). The limit value
 is given as a <code class="docutils literal notranslate"><span class="pre">budget</span></code> variable and is an integer greater than
@@ -686,7 +876,7 @@ the number of conflicts is disabled.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.configure">
-<span class="sig-name descname"><span class="pre">configure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.configure" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">configure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.configure" title="Link to this definition">#</a></dt>
 <dd><p>Configure <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical153</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code>, and also
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Glucose42</span></code> by setting some of the predefined parameters to
 selected values. Note that this method is supposed to be invoked
@@ -718,7 +908,7 @@ assigned to is provided <a class="reference external" href="https://github.com/a
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.connect_propagator">
-<span class="sig-name descname"><span class="pre">connect_propagator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">propagator</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.connect_propagator" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">connect_propagator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">propagator</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.connect_propagator" title="Link to this definition">#</a></dt>
 <dd><p>Attach an external propagator through the IPASIR-UP interface. The
 only expected argument is <code class="docutils literal notranslate"><span class="pre">propagator</span></code>, which must be an object
 of a class inheriting from the abstract class <a class="reference internal" href="engines.html#pysat.engines.Propagator" title="pysat.engines.Propagator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Propagator</span></code></a>.</p>
@@ -730,7 +920,7 @@ of a class inheriting from the abstract class <a class="reference internal" href
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.dec_budget">
-<span class="sig-name descname"><span class="pre">dec_budget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">budget</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.dec_budget" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">dec_budget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">budget</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.dec_budget" title="Link to this definition">#</a></dt>
 <dd><p>Set limit (i.e. the upper bound) on the number of decisions in
 the next limited SAT call (see <a class="reference internal" href="#pysat.solvers.Solver.solve_limited" title="pysat.solvers.Solver.solve_limited"><code class="xref py py-meth docutils literal notranslate"><span class="pre">solve_limited()</span></code></a>). The limit
 value is given as a <code class="docutils literal notranslate"><span class="pre">budget</span></code> variable and is an integer greater
@@ -760,14 +950,14 @@ bound on the number of decisions is disabled.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.delete">
-<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.delete" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.delete" title="Link to this definition">#</a></dt>
 <dd><p>Solver destructor, which must be called explicitly if the solver
 is to be removed. This is not needed inside an <code class="docutils literal notranslate"><span class="pre">with</span></code> block.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.disable_propagator">
-<span class="sig-name descname"><span class="pre">disable_propagator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.disable_propagator" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">disable_propagator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.disable_propagator" title="Link to this definition">#</a></dt>
 <dd><p>Ask the solver to disable the propagator on the fly. This will it
 in passive mode, i.e. it will be invoked only to check assignments
 found by the solver.</p>
@@ -779,7 +969,7 @@ found by the solver.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.disconnect_propagator">
-<span class="sig-name descname"><span class="pre">disconnect_propagator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.disconnect_propagator" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">disconnect_propagator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.disconnect_propagator" title="Link to this definition">#</a></dt>
 <dd><p>Disconnect the previously attached propagator. This will also
 reset all the variables marked in the solver as observed by the
 propagator.</p>
@@ -791,7 +981,7 @@ propagator.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.enable_propagator">
-<span class="sig-name descname"><span class="pre">enable_propagator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.enable_propagator" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">enable_propagator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.enable_propagator" title="Link to this definition">#</a></dt>
 <dd><p>Ask the solver to enable the propagator on the fly. This will put
 it in active mode.</p>
 <div class="admonition note">
@@ -802,7 +992,7 @@ it in active mode.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.enum_models">
-<span class="sig-name descname"><span class="pre">enum_models</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assumptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.enum_models" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">enum_models</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assumptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.enum_models" title="Link to this definition">#</a></dt>
 <dd><p>This method can be used to enumerate models of a CNF formula and
 it performs as a standard Python iterator. The method can be
 called without arguments but also with an argument
@@ -847,7 +1037,7 @@ clause until no more models of the formula exist.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.get_core">
-<span class="sig-name descname"><span class="pre">get_core</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.get_core" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_core</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.get_core" title="Link to this definition">#</a></dt>
 <dd><p>This method is to be used for extracting an unsatisfiable core in
 the form of a subset of a given set of assumption literals, which
 are responsible for unsatisfiability of the formula. This can be
@@ -875,7 +1065,7 @@ Otherwise, <code class="docutils literal notranslate"><span class="pre">None</sp
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.get_model">
-<span class="sig-name descname"><span class="pre">get_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.get_model" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.get_model" title="Link to this definition">#</a></dt>
 <dd><p>The method is to be used for extracting a satisfying assignment for
 a CNF formula given to the solver. A model is provided if a
 previous SAT call returned <code class="docutils literal notranslate"><span class="pre">True</span></code>. Otherwise, <code class="docutils literal notranslate"><span class="pre">None</span></code> is
@@ -902,7 +1092,7 @@ reported.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.get_proof">
-<span class="sig-name descname"><span class="pre">get_proof</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.get_proof" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_proof</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.get_proof" title="Link to this definition">#</a></dt>
 <dd><p>A DRUP proof can be extracted using this method if the solver was
 set up to provide a proof. Otherwise, the method returns <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 <dl class="field-list simple">
@@ -927,7 +1117,7 @@ set up to provide a proof. Otherwise, the method returns <code class="docutils l
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.get_status">
-<span class="sig-name descname"><span class="pre">get_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.get_status" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.get_status" title="Link to this definition">#</a></dt>
 <dd><p>The result of a previous SAT call is stored in an internal
 variable and can be later obtained using this method.</p>
 <dl class="field-list simple">
@@ -940,7 +1130,7 @@ variable and can be later obtained using this method.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.ignore">
-<span class="sig-name descname"><span class="pre">ignore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.ignore" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">ignore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.ignore" title="Link to this definition">#</a></dt>
 <dd><p>Inform the solver that a given variable is ignored by the
 propagator attached to it.</p>
 <div class="admonition note">
@@ -951,7 +1141,7 @@ propagator attached to it.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.interrupt">
-<span class="sig-name descname"><span class="pre">interrupt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.interrupt" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">interrupt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.interrupt" title="Link to this definition">#</a></dt>
 <dd><p>Interrupt the execution of the current <em>limited</em> SAT call (see
 <a class="reference internal" href="#pysat.solvers.Solver.solve_limited" title="pysat.solvers.Solver.solve_limited"><code class="xref py py-meth docutils literal notranslate"><span class="pre">solve_limited()</span></code></a>). Can be used to enforce time limits using
 timer objects. The interrupt must be cleared before performing
@@ -983,7 +1173,7 @@ SAT call (see <a class="reference internal" href="#pysat.solvers.Solver.solve" t
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.is_decision">
-<span class="sig-name descname"><span class="pre">is_decision</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.is_decision" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">is_decision</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.is_decision" title="Link to this definition">#</a></dt>
 <dd><p>Check whether a given literal that is currently observed by the
 attached propagator is a assigned a value by branching or by
 propagation, i.e. whether it is decision or not. In the former
@@ -997,7 +1187,7 @@ case, the method returns <code class="docutils literal notranslate"><span class=
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.new">
-<span class="sig-name descname"><span class="pre">new</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'m22'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bootstrap_with</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_timer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.new" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">new</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'m22'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bootstrap_with</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_timer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.new" title="Link to this definition">#</a></dt>
 <dd><p>The actual solver constructor invoked from <code class="docutils literal notranslate"><span class="pre">__init__()</span></code>. Chooses
 the solver to run, based on its name. See <a class="reference internal" href="#pysat.solvers.Solver" title="pysat.solvers.Solver"><code class="xref py py-class docutils literal notranslate"><span class="pre">Solver</span></code></a> for the
 parameters description.</p>
@@ -1011,7 +1201,7 @@ name.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.nof_clauses">
-<span class="sig-name descname"><span class="pre">nof_clauses</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.nof_clauses" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">nof_clauses</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.nof_clauses" title="Link to this definition">#</a></dt>
 <dd><p>This method returns the number of clauses currently appearing in
 the formula given to the solver.</p>
 <dl class="field-list simple">
@@ -1029,7 +1219,7 @@ the formula given to the solver.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.nof_vars">
-<span class="sig-name descname"><span class="pre">nof_vars</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.nof_vars" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">nof_vars</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.nof_vars" title="Link to this definition">#</a></dt>
 <dd><p>This method returns the number of variables currently appearing in
 the formula given to the solver.</p>
 <dl class="field-list simple">
@@ -1047,7 +1237,7 @@ the formula given to the solver.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.observe">
-<span class="sig-name descname"><span class="pre">observe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.observe" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">observe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.observe" title="Link to this definition">#</a></dt>
 <dd><p>Inform the solver that a given variable is observed by the
 propagator attached to it.</p>
 <div class="admonition note">
@@ -1058,7 +1248,7 @@ propagator attached to it.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.prop_budget">
-<span class="sig-name descname"><span class="pre">prop_budget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">budget</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.prop_budget" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">prop_budget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">budget</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.prop_budget" title="Link to this definition">#</a></dt>
 <dd><p>Set limit (i.e. the upper bound) on the number of propagations in
 the next limited SAT call (see <a class="reference internal" href="#pysat.solvers.Solver.solve_limited" title="pysat.solvers.Solver.solve_limited"><code class="xref py py-meth docutils literal notranslate"><span class="pre">solve_limited()</span></code></a>). The limit
 value is given as a <code class="docutils literal notranslate"><span class="pre">budget</span></code> variable and is an integer greater
@@ -1086,7 +1276,7 @@ bound on the number of propagations is disabled.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.propagate">
-<span class="sig-name descname"><span class="pre">propagate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assumptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phase_saving</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.propagate" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">propagate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assumptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phase_saving</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.propagate" title="Link to this definition">#</a></dt>
 <dd><p>The method takes a list of assumption literals and does unit
 propagation of each of these literals consecutively. A Boolean
 status is returned followed by a list of assigned (assumed and also
@@ -1137,7 +1327,7 @@ before calling <a class="reference internal" href="#pysat.solvers.Solver.solve" 
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.propagator_active">
-<span class="sig-name descname"><span class="pre">propagator_active</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.propagator_active" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">propagator_active</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.propagator_active" title="Link to this definition">#</a></dt>
 <dd><p>Check if the propagator is currently active or passive. In the
 former case, the method will return <code class="docutils literal notranslate"><span class="pre">True</span></code>; otherwise, it will
 return <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
@@ -1149,7 +1339,7 @@ return <code class="docutils literal notranslate"><span class="pre">False</span>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.reset_observed">
-<span class="sig-name descname"><span class="pre">reset_observed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.reset_observed" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">reset_observed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.reset_observed" title="Link to this definition">#</a></dt>
 <dd><p>Ask the solver to reset all observed variables.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1159,7 +1349,7 @@ return <code class="docutils literal notranslate"><span class="pre">False</span>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.set_phases">
-<span class="sig-name descname"><span class="pre">set_phases</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">literals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.set_phases" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_phases</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">literals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.set_phases" title="Link to this definition">#</a></dt>
 <dd><p>The method takes a list of literals as an argument and sets
 <em>phases</em> (or MiniSat-like <em>polarities</em>) of the corresponding
 variables respecting the literals. For example, if a given list of
@@ -1198,7 +1388,7 @@ following SAT calls due to the phase saving heuristic.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.solve">
-<span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assumptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.solve" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assumptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.solve" title="Link to this definition">#</a></dt>
 <dd><p>This method is used to check satisfiability of a CNF formula given
 to the solver (see methods <a class="reference internal" href="#pysat.solvers.Solver.add_clause" title="pysat.solvers.Solver.add_clause"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_clause()</span></code></a> and
 <a class="reference internal" href="#pysat.solvers.Solver.append_formula" title="pysat.solvers.Solver.append_formula"><code class="xref py py-meth docutils literal notranslate"><span class="pre">append_formula()</span></code></a>). Unless interrupted with SIGINT, the
@@ -1234,7 +1424,7 @@ before calling <a class="reference internal" href="#pysat.solvers.Solver.solve" 
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.solve_limited">
-<span class="sig-name descname"><span class="pre">solve_limited</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assumptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expect_interrupt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.solve_limited" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">solve_limited</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assumptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expect_interrupt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.solve_limited" title="Link to this definition">#</a></dt>
 <dd><p>This method is used to check satisfiability of a CNF formula given
 to the solver (see methods <a class="reference internal" href="#pysat.solvers.Solver.add_clause" title="pysat.solvers.Solver.add_clause"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_clause()</span></code></a> and
 <a class="reference internal" href="#pysat.solvers.Solver.append_formula" title="pysat.solvers.Solver.append_formula"><code class="xref py py-meth docutils literal notranslate"><span class="pre">append_formula()</span></code></a>), taking into account the upper bounds on
@@ -1309,7 +1499,7 @@ inside a Python script. See the <a class="reference internal" href="#pysat.solve
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.start_mode">
-<span class="sig-name descname"><span class="pre">start_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">warm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.start_mode" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">start_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">warm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.start_mode" title="Link to this definition">#</a></dt>
 <dd><p>Set start mode: either warm or standard. Warm start mode can be
 beneficial if one is interested in efficient model enumeration.</p>
 <p>Note that warm start mode is disabled in the case of limited
@@ -1338,7 +1528,7 @@ with a <em>varying</em> list of assumption literals.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.supports_atmost">
-<span class="sig-name descname"><span class="pre">supports_atmost</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.supports_atmost" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">supports_atmost</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.supports_atmost" title="Link to this definition">#</a></dt>
 <dd><p>This method can be called to determine whether the solver supports
 native AtMostK (see <a class="reference internal" href="card.html#module-pysat.card" title="pysat.card"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.card</span></code></a>) constraints.</p>
 <dl class="field-list simple">
@@ -1357,7 +1547,7 @@ native AtMostK (see <a class="reference internal" href="card.html#module-pysat.c
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.time">
-<span class="sig-name descname"><span class="pre">time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.time" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.time" title="Link to this definition">#</a></dt>
 <dd><p>Get the time spent when doing the last SAT call. <strong>Note</strong> that the
 time is measured only if the <code class="docutils literal notranslate"><span class="pre">use_timer</span></code> argument was previously
 set to <code class="docutils literal notranslate"><span class="pre">True</span></code> when creating the solver (see <a class="reference internal" href="#pysat.solvers.Solver" title="pysat.solvers.Solver"><code class="xref py py-class docutils literal notranslate"><span class="pre">Solver</span></code></a> for
@@ -1383,7 +1573,7 @@ details).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.time_accum">
-<span class="sig-name descname"><span class="pre">time_accum</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.time_accum" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">time_accum</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.time_accum" title="Link to this definition">#</a></dt>
 <dd><p>Get the time spent for doing all SAT calls accumulated. <strong>Note</strong>
 that the time is measured only if the <code class="docutils literal notranslate"><span class="pre">use_timer</span></code> argument was
 previously set to <code class="docutils literal notranslate"><span class="pre">True</span></code> when creating the solver (see
@@ -1417,7 +1607,7 @@ previously set to <code class="docutils literal notranslate"><span class="pre">T
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.solvers.SolverNames">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.solvers.</span></span><span class="sig-name descname"><span class="pre">SolverNames</span></span><a class="headerlink" href="#pysat.solvers.SolverNames" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.solvers.</span></span><span class="sig-name descname"><span class="pre">SolverNames</span></span><a class="headerlink" href="#pysat.solvers.SolverNames" title="Link to this definition">#</a></dt>
 <dd><p>This class serves to determine the solver requested by a user given a
 string name. This allows for using several possible names for
 specifying a solver.</p>
@@ -1447,54 +1637,161 @@ are also allowed</em>.</p>
 </dd></dl>
 
 </section>
-</section>
 
 
-              </div>
+                </article>
               
               
-              <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="process.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Formula processing (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.process</span></code>)</p>
-        </div>
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="process.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Formula processing (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.process</span></code>)</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="examples/fm.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="examples/bica.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Fu&amp;Malik MaxSAT algorithm (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.fm</span></code>)</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+        <p class="prev-next-title">Bica algorithm for formula simplification (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.bica</span></code>)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
+                </footer>
               
-          </main>
-          
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
-      </div>
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-of-classes">List of classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-description">Module description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-details">Module details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.NoSuchSolverError"><code class="docutils literal notranslate"><span class="pre">NoSuchSolverError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.NoSuchSolverError.with_traceback"><code class="docutils literal notranslate"><span class="pre">NoSuchSolverError.with_traceback()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver"><code class="docutils literal notranslate"><span class="pre">Solver</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.accum_stats"><code class="docutils literal notranslate"><span class="pre">Solver.accum_stats()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.activate_atmost"><code class="docutils literal notranslate"><span class="pre">Solver.activate_atmost()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.add_atmost"><code class="docutils literal notranslate"><span class="pre">Solver.add_atmost()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.add_clause"><code class="docutils literal notranslate"><span class="pre">Solver.add_clause()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.add_xor_clause"><code class="docutils literal notranslate"><span class="pre">Solver.add_xor_clause()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.append_formula"><code class="docutils literal notranslate"><span class="pre">Solver.append_formula()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.clear_interrupt"><code class="docutils literal notranslate"><span class="pre">Solver.clear_interrupt()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.conf_budget"><code class="docutils literal notranslate"><span class="pre">Solver.conf_budget()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.configure"><code class="docutils literal notranslate"><span class="pre">Solver.configure()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.connect_propagator"><code class="docutils literal notranslate"><span class="pre">Solver.connect_propagator()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.dec_budget"><code class="docutils literal notranslate"><span class="pre">Solver.dec_budget()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.delete"><code class="docutils literal notranslate"><span class="pre">Solver.delete()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.disable_propagator"><code class="docutils literal notranslate"><span class="pre">Solver.disable_propagator()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.disconnect_propagator"><code class="docutils literal notranslate"><span class="pre">Solver.disconnect_propagator()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.enable_propagator"><code class="docutils literal notranslate"><span class="pre">Solver.enable_propagator()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.enum_models"><code class="docutils literal notranslate"><span class="pre">Solver.enum_models()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.get_core"><code class="docutils literal notranslate"><span class="pre">Solver.get_core()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.get_model"><code class="docutils literal notranslate"><span class="pre">Solver.get_model()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.get_proof"><code class="docutils literal notranslate"><span class="pre">Solver.get_proof()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.get_status"><code class="docutils literal notranslate"><span class="pre">Solver.get_status()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.ignore"><code class="docutils literal notranslate"><span class="pre">Solver.ignore()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.interrupt"><code class="docutils literal notranslate"><span class="pre">Solver.interrupt()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.is_decision"><code class="docutils literal notranslate"><span class="pre">Solver.is_decision()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.new"><code class="docutils literal notranslate"><span class="pre">Solver.new()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.nof_clauses"><code class="docutils literal notranslate"><span class="pre">Solver.nof_clauses()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.nof_vars"><code class="docutils literal notranslate"><span class="pre">Solver.nof_vars()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.observe"><code class="docutils literal notranslate"><span class="pre">Solver.observe()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.prop_budget"><code class="docutils literal notranslate"><span class="pre">Solver.prop_budget()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.propagate"><code class="docutils literal notranslate"><span class="pre">Solver.propagate()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.propagator_active"><code class="docutils literal notranslate"><span class="pre">Solver.propagator_active()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.reset_observed"><code class="docutils literal notranslate"><span class="pre">Solver.reset_observed()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.set_phases"><code class="docutils literal notranslate"><span class="pre">Solver.set_phases()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.solve"><code class="docutils literal notranslate"><span class="pre">Solver.solve()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.solve_limited"><code class="docutils literal notranslate"><span class="pre">Solver.solve_limited()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.start_mode"><code class="docutils literal notranslate"><span class="pre">Solver.start_mode()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.supports_atmost"><code class="docutils literal notranslate"><span class="pre">Solver.supports_atmost()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.time"><code class="docutils literal notranslate"><span class="pre">Solver.time()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.time_accum"><code class="docutils literal notranslate"><span class="pre">Solver.time_accum()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.SolverNames"><code class="docutils literal notranslate"><span class="pre">SolverNames</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-<footer class="footer mt-5 mt-md-0">
-  <div class="container">
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
     
-    <div class="footer-item">
-      <p class="copyright">
-    &copy; Copyright 2018-2024, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.<br>
-</p>
+      © Copyright 2018-2024, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
     </div>
-    
-    <div class="footer-item">
-      <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
-</p>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
     </div>
-    
-  </div>
-</footer>
+  
+</div>
+
+  </footer>
   </body>
 </html>
