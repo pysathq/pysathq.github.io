@@ -1,0 +1,857 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" data-theme="auto">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Minimum/minimal hitting set solver (pysat.examples.hitman) &#8212; PySAT 1.8.dev20 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "auto";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "auto";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=fbc4858d"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/examples/hitman';</script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="LBX-like MCS enumerator (pysat.examples.lbx)" href="lbx.html" />
+    <link rel="prev" title="Hard formula generator (pysat.examples.genhard)" href="genhard.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="auto">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="https://pysathq.github.io">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev20 documentation - Home"/>
+    <img src="../../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev20 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><!-- This will display the version of the docs -->
+<a href=><strong>PySAT Documentation (version 1.8.dev20)</strong></a></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pysathq/pysat" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pysathq.github.io/docs/pysat.pdf" title="PDF" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-file fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pysathq/pysat/issues" title="Issue tracker" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-bug fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Issue tracker</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item"><!-- This will display the version of the docs -->
+<a href=><strong>PySAT Documentation (version 1.8.dev20)</strong></a></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pysathq/pysat" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pysathq.github.io/docs/pysat.pdf" title="PDF" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-file fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pysathq/pysat/issues" title="Issue tracker" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-bug fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Issue tracker</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"></div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Minimum/minimal hitting set solver (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.hitman</span></code>)</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-examples.hitman">
+<span id="minimum-minimal-hitting-set-solver-pysat-examples-hitman"></span><h1>Minimum/minimal hitting set solver (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.hitman</span></code>)<a class="headerlink" href="#module-examples.hitman" title="Link to this heading">#</a></h1>
+<section id="list-of-classes">
+<h2>List of classes<a class="headerlink" href="#list-of-classes" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#examples.hitman.Hitman" title="examples.hitman.Hitman"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hitman</span></code></a></p></td>
+<td><p>A cardinality-/subset-minimal hitting set enumerator.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="module-description">
+<h2>Module description<a class="headerlink" href="#module-description" title="Link to this heading">#</a></h2>
+<p>A SAT-based implementation of an implicit minimal hitting set <a class="footnote-reference brackets" href="#id8" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>
+enumerator. The implementation is capable of computing/enumerating
+cardinality- and subset-minimal hitting sets of a given set of sets.
+Cardinality-minimal hitting set enumeration can be seen as ordered (sorted
+by size) subset-minimal hitting enumeration.</p>
+<p>The minimal hitting set problem is trivially formulated as a MaxSAT formula
+in WCNF, as follows. Assume <span class="math notranslate nohighlight">\(E=\{e_1,\ldots,e_n\}\)</span> to be a universe
+of elements. Also assume there are <span class="math notranslate nohighlight">\(k\)</span> sets to hit:
+<span class="math notranslate nohighlight">\(s_i=\{e_{i,1},\ldots,e_{i,j_i}\}\)</span> s.t. <span class="math notranslate nohighlight">\(e_{i,l}\in E\)</span>. Every
+set <span class="math notranslate nohighlight">\(s_i=\{e_{i,1},\ldots,e_{i,j_i}\}\)</span> is translated into a hard
+clause <span class="math notranslate nohighlight">\((e_{i,1} \vee \ldots \vee e_{i,j_i})\)</span>. This results in the
+set of hard clauses having size <span class="math notranslate nohighlight">\(k\)</span>. The set of soft clauses
+comprises unit clauses of the form <span class="math notranslate nohighlight">\((\neg{e_{j}})\)</span> s.t.
+<span class="math notranslate nohighlight">\(e_{j}\in E\)</span>, each having weight 1.</p>
+<p>Taking into account this problem formulation as MaxSAT, ordered hitting
+enumeration is done with the use of the state-of-the-art MaxSAT solver
+called <a class="reference internal" href="rc2.html#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2</span></code></a> <a class="footnote-reference brackets" href="#id9" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> <a class="footnote-reference brackets" href="#id10" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> <a class="footnote-reference brackets" href="#id11" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> while unordered hitting set enumeration
+is done through the <em>minimal correction subset</em> (MCS) enumeration, e.g.
+using the <a class="reference internal" href="lbx.html#examples.lbx.LBX" title="examples.lbx.LBX"><code class="xref py py-class docutils literal notranslate"><span class="pre">LBX</span></code></a>- <a class="footnote-reference brackets" href="#id12" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> or <a class="reference internal" href="mcsls.html#examples.mcsls.MCSls" title="examples.mcsls.MCSls"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCSls</span></code></a>-like <a class="footnote-reference brackets" href="#id13" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a> MCS enumerators.</p>
+<p>Note that this implementation additionally supports <em>pure</em> SAT-based
+minimal hitting set enumeration with the use of preferred variable
+polarity setting following the approach of <a class="footnote-reference brackets" href="#id14" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a>.</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id8" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Erick Moreno-Centeno, Richard M. Karp. <em>The Implicit Hitting Set
+Approach to Solve Combinatorial Optimization Problems with an
+Application to Multigenome Alignment</em>. Operations Research 61(2). 2013.
+pp. 453-468</p>
+</aside>
+<aside class="footnote brackets" id="id9" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>António Morgado, Carmine Dodaro, Joao Marques-Silva. <em>Core-Guided
+MaxSAT with Soft Cardinality Constraints</em>. CP 2014. pp. 564-573</p>
+</aside>
+<aside class="footnote brackets" id="id10" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>António Morgado, Alexey Ignatiev, Joao Marques-Silva. <em>MSCG: Robust
+Core-Guided MaxSAT Solving</em>. JSAT 9. 2014. pp. 129-134</p>
+</aside>
+<aside class="footnote brackets" id="id11" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p>Alexey Ignatiev, António Morgado, Joao Marques-Silva. <em>RC2: a
+Python-based MaxSAT Solver</em>. MaxSAT Evaluation 2018. p. 22</p>
+</aside>
+<aside class="footnote brackets" id="id12" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">5</a><span class="fn-bracket">]</span></span>
+<p>Carlos Mencía, Alessandro Previti, Joao Marques-Silva.
+<em>Literal-Based MCS Extraction</em>. IJCAI. 2015. pp. 1973-1979</p>
+</aside>
+<aside class="footnote brackets" id="id13" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">6</a><span class="fn-bracket">]</span></span>
+<p>Joao Marques-Silva, Federico Heras, Mikolás Janota,
+Alessandro Previti, Anton Belov. <em>On Computing Minimal Correction
+Subsets</em>. IJCAI. 2013. pp. 615-622</p>
+</aside>
+<aside class="footnote brackets" id="id14" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">7</a><span class="fn-bracket">]</span></span>
+<p>Enrico Giunchiglia, Marco Maratea. <em>Solving Optimization Problems
+with DLL</em>. ECAI 2006. pp. 377-381</p>
+</aside>
+</aside>
+<p><a class="reference internal" href="#examples.hitman.Hitman" title="examples.hitman.Hitman"><code class="xref py py-class docutils literal notranslate"><span class="pre">Hitman</span></code></a> supports hitting set enumeration in the <em>implicit</em> manner,
+i.e. when sets to hit can be added on the fly as well as hitting sets can
+be blocked on demand.</p>
+<p>An example usage of <a class="reference internal" href="#examples.hitman.Hitman" title="examples.hitman.Hitman"><code class="xref py py-class docutils literal notranslate"><span class="pre">Hitman</span></code></a> through the Python <code class="docutils literal notranslate"><span class="pre">import</span></code> interface
+is shown below. Here we target unordered subset-minimal hitting set
+enumeration.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.hitman</span> <span class="kn">import</span> <span class="n">Hitman</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="n">Hitman</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;m22&#39;</span><span class="p">,</span> <span class="n">htype</span><span class="o">=</span><span class="s1">&#39;lbx&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># adding sets to hit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">.</span><span class="n">hit</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">.</span><span class="n">hit</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">.</span><span class="n">hit</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="go">[1, 5]</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">.</span><span class="n">block</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="go">[2, 4, 5]</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Enumerating cardinality-minimal hitting sets can be done as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.hitman</span> <span class="kn">import</span> <span class="n">Hitman</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sets</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Hitman</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">sets</span><span class="p">,</span> <span class="n">htype</span><span class="o">=</span><span class="s1">&#39;sorted&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">hitman</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">for</span> <span class="n">hs</span> <span class="ow">in</span> <span class="n">hitman</span><span class="o">.</span><span class="n">enumerate</span><span class="p">():</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="n">hs</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">[1, 5]</span>
+<span class="go">[1, 6]</span>
+<span class="go">[1, 7]</span>
+<span class="go">[3, 4, 7]</span>
+<span class="go">[2, 4, 7]</span>
+<span class="go">[3, 4, 6]</span>
+<span class="go">[3, 4, 5]</span>
+<span class="go">[2, 4, 6]</span>
+<span class="go">[2, 4, 5]</span>
+</pre></div>
+</div>
+<p>Finally, implicit hitting set enumeration can be used in practical problem
+solving. As an example, let us show the basic flow of a MaxHS-like <a class="footnote-reference brackets" href="#id16" id="id15" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>
+algorithm for MaxSAT:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.hitman</span> <span class="kn">import</span> <span class="n">Hitman</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Solver</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hitman</span> <span class="o">=</span> <span class="n">Hitman</span><span class="p">(</span><span class="n">htype</span><span class="o">=</span><span class="s1">&#39;sorted&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">oracle</span> <span class="o">=</span> <span class="n">Solver</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># here we assume that the SAT oracle</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># is initialized with a MaxSAT formula,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># whose soft clauses are extended with</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># selector literals stored in &quot;sels&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">hs</span> <span class="o">=</span> <span class="n">hitman</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>  <span class="c1"># hitting the set of unsatisfiable cores</span>
+<span class="gp">... </span>    <span class="n">ts</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">sels</span><span class="p">)</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">hs</span><span class="p">))</span>  <span class="c1"># soft clauses to try</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">oracle</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="n">ts</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;s OPTIMUM FOUND&#39;</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">hs</span><span class="p">))</span>
+<span class="gp">... </span>        <span class="k">break</span>
+<span class="gp">... </span>    <span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">core</span> <span class="o">=</span> <span class="n">oracle</span><span class="o">.</span><span class="n">get_core</span><span class="p">()</span>
+<span class="gp">... </span>        <span class="n">hitman</span><span class="o">.</span><span class="n">hit</span><span class="p">(</span><span class="n">core</span><span class="p">)</span>
+</pre></div>
+</div>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id16" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id15">8</a><span class="fn-bracket">]</span></span>
+<p>Jessica Davies, Fahiem Bacchus. <em>Solving MAXSAT by Solving a
+Sequence of Simpler SAT Instances</em>. CP 2011. pp. 225-239</p>
+</aside>
+</aside>
+</section>
+<section id="module-details">
+<h2>Module details<a class="headerlink" href="#module-details" title="Link to this heading">#</a></h2>
+</section>
+<dl class="py class">
+<dt class="sig sig-object py" id="examples.hitman.Atom">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">examples.hitman.</span></span><span class="sig-name descname"><span class="pre">Atom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sign</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Atom" title="Link to this definition">#</a></dt>
+<dd><p>Atoms are elementary (signed) objects necessary when dealing with
+hitting sets subject to hard constraints.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="examples.hitman.Hitman">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">examples.hitman.</span></span><span class="sig-name descname"><span class="pre">Hitman</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bootstrap_with</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject_to</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'g3'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">htype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sorted'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mxs_adapt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mxs_exhaust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mxs_minz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mxs_trim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mcs_usecld</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman" title="Link to this definition">#</a></dt>
+<dd><p>A cardinality-/subset-minimal hitting set enumerator. The enumerator
+can be set up to use either a MaxSAT solver <a class="reference internal" href="rc2.html#examples.rc2.RC2" title="examples.rc2.RC2"><code class="xref py py-class docutils literal notranslate"><span class="pre">RC2</span></code></a> or an MCS
+enumerator (either <a class="reference internal" href="lbx.html#examples.lbx.LBX" title="examples.lbx.LBX"><code class="xref py py-class docutils literal notranslate"><span class="pre">LBX</span></code></a> or <a class="reference internal" href="mcsls.html#examples.mcsls.MCSls" title="examples.mcsls.MCSls"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCSls</span></code></a>). In the former
+case, the hitting sets enumerated are ordered by size (smallest size
+hitting sets are computed first), i.e. <em>sorted</em>. In the latter case,
+subset-minimal hitting are enumerated in an arbitrary order, i.e.
+<em>unsorted</em>. Additionally, Hitman supports pure SAT-based minimal
+hitting set enumeration with the use of polarity preferences.</p>
+<p>This is handled with the use of parameter <code class="docutils literal notranslate"><span class="pre">htype</span></code>, which is set to
+be <code class="docutils literal notranslate"><span class="pre">'sorted'</span></code> by default. The MaxSAT-based enumerator can be chosen
+by setting <code class="docutils literal notranslate"><span class="pre">htype</span></code> to one of the following values: <code class="docutils literal notranslate"><span class="pre">'maxsat'</span></code>,
+<code class="docutils literal notranslate"><span class="pre">'mxsat'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'rc2'</span></code>. Alternatively, by setting it to <code class="docutils literal notranslate"><span class="pre">'mcs'</span></code>
+or <code class="docutils literal notranslate"><span class="pre">'lbx'</span></code>, a user can enforce using the <a class="reference internal" href="lbx.html#examples.lbx.LBX" title="examples.lbx.LBX"><code class="xref py py-class docutils literal notranslate"><span class="pre">LBX</span></code></a> MCS
+enumerator. If <code class="docutils literal notranslate"><span class="pre">htype</span></code> is set to <code class="docutils literal notranslate"><span class="pre">'mcsls'</span></code>, the <a class="reference internal" href="mcsls.html#examples.mcsls.MCSls" title="examples.mcsls.MCSls"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCSls</span></code></a>
+enumerator is used. Finally, value <code class="docutils literal notranslate"><span class="pre">'sat'</span></code> can be given, in which
+case minimal hitting set enumeration will performed by means of a SAT
+solver (can be either MiniSat-GH, or Lingeling, or CaDiCaL 153) with
+polarity setting.</p>
+<p>In either case, unless pure SAT-based hitting set enumeration is
+selected, an underlying problem solver can use a SAT oracle specified
+as an input parameter <code class="docutils literal notranslate"><span class="pre">solver</span></code>. The default SAT solver is Glucose3
+(specified as <code class="docutils literal notranslate"><span class="pre">g3</span></code>, see <a class="reference internal" href="../solvers.html#pysat.solvers.SolverNames" title="pysat.solvers.SolverNames"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolverNames</span></code></a> for details). For
+SAT-based enumeration, MinisatGH is used as an underlying SAT solver.</p>
+<p>Objects of class <a class="reference internal" href="#examples.hitman.Hitman" title="examples.hitman.Hitman"><code class="xref py py-class docutils literal notranslate"><span class="pre">Hitman</span></code></a> can be bootstrapped with an iterable
+of iterables, e.g. a list of lists. This is handled using the
+<code class="docutils literal notranslate"><span class="pre">bootstrap_with</span></code> parameter. Each set to hit can comprise elements of
+any type, e.g. integers, strings or objects of any Python class, as
+well as their combinations. The bootstrapping phase is done in
+<a class="reference internal" href="#examples.hitman.Hitman.init" title="examples.hitman.Hitman.init"><code class="xref py py-func docutils literal notranslate"><span class="pre">init()</span></code></a>.</p>
+<p>Another optional parameter <code class="docutils literal notranslate"><span class="pre">subject_to</span></code> can be used to specify
+arbitrary hard constraints that must be respected when computing
+hitting sets of the given sets. Note that <code class="docutils literal notranslate"><span class="pre">subject_to</span></code> should be an
+iterable containing pure clauses and/or native AtMostK constraints.
+Note that native cardinality constraints supported only by
+MiniCard-like solvers. Finally, note that these hard constraints must
+be defined over the set of signed atomic objects, i.e. instances of
+class <a class="reference internal" href="#examples.hitman.Atom" title="examples.hitman.Atom"><code class="xref py py-class docutils literal notranslate"><span class="pre">Atom</span></code></a>.</p>
+<p>A few other optional parameters include the possible options for RC2
+as well as for LBX- and MCSls-like MCS enumerators that control the
+behaviour of the underlying solvers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bootstrap_with</strong> (<em>iterable</em><em>(</em><em>iterable</em><em>(</em><em>obj</em><em>)</em><em>)</em>) – input set of sets to hit</p></li>
+<li><p><strong>weights</strong> (<em>dict</em><em>(</em><em>obj</em><em>)</em>) – a mapping from objects to their weights (if weighted)</p></li>
+<li><p><strong>subject_to</strong> (<em>iterable</em><em>(</em><em>iterable</em><em>(</em><a class="reference internal" href="#examples.hitman.Atom" title="examples.hitman.Atom"><em>Atom</em></a><em>)</em><em>)</em>) – hard constraints (either clauses or native AtMostK constraints)</p></li>
+<li><p><strong>solver</strong> (<em>str</em>) – name of SAT solver</p></li>
+<li><p><strong>htype</strong> (<em>str</em>) – enumerator type</p></li>
+<li><p><strong>mxs_adapt</strong> (<em>bool</em>) – detect and process AtMost1 constraints in RC2</p></li>
+<li><p><strong>mxs_exhaust</strong> (<em>bool</em>) – apply unsatisfiable core exhaustion in RC2</p></li>
+<li><p><strong>mxs_minz</strong> (<em>bool</em>) – apply heuristic core minimization in RC2</p></li>
+<li><p><strong>mxs_trim</strong> (<em>int</em>) – trim unsatisfiable cores at most this number of times</p></li>
+<li><p><strong>mcs_usecld</strong> (<em>bool</em>) – use clause-D heuristic in the MCS enumerator</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="examples.hitman.Hitman.add_hard">
+<span class="sig-name descname"><span class="pre">add_hard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clause</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_obj</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.add_hard" title="Link to this definition">#</a></dt>
+<dd><p>Add a hard constraint, which can be either a pure clause or an
+AtMostK constraint.</p>
+<p>Note that an optional parameter that can be passed to this method
+is <code class="docutils literal notranslate"><span class="pre">weights</span></code>, which contains a mapping the objects under
+question into weights. Also note that the weight of an object must
+not change from one call of <a class="reference internal" href="#examples.hitman.Hitman.hit" title="examples.hitman.Hitman.hit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">hit()</span></code></a> to another.</p>
+<p>Finally, note that if <code class="docutils literal notranslate"><span class="pre">no_obj</span></code> is set to True, no new objects
+will be added to the hitting set enumerator. This is useful if the
+variables in the clause are either already present or are
+auxiliary. This is turned off by default.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>clause</strong> (<em>iterable</em><em>(</em><em>obj</em><em>)</em>) – hard constraint (either a clause or a native AtMostK constraint)</p></li>
+<li><p><strong>weights</strong> (<em>dict</em><em>(</em><em>obj</em><em>)</em>) – a mapping from objects to weights</p></li>
+<li><p><strong>no_obj</strong> (<em>bool</em>) – if True, no new objects are added to the oracle</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="examples.hitman.Hitman.block">
+<span class="sig-name descname"><span class="pre">block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">to_block</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.block" title="Link to this definition">#</a></dt>
+<dd><p>The method serves for imposing a constraint forbidding the hitting
+set solver to compute a given hitting set. Each set to block is
+encoded as a hard clause in the MaxSAT problem formulation, which
+is then added to the underlying oracle.</p>
+<p>Note that an optional parameter that can be passed to this method
+is <code class="docutils literal notranslate"><span class="pre">weights</span></code>, which contains a mapping the objects under
+question into weights. Also note that the weight of an object must
+not change from one call of <a class="reference internal" href="#examples.hitman.Hitman.hit" title="examples.hitman.Hitman.hit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">hit()</span></code></a> to another.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>to_block</strong> (<em>iterable</em><em>(</em><em>obj</em><em>)</em>) – a set to block</p></li>
+<li><p><strong>weights</strong> (<em>dict</em><em>(</em><em>obj</em><em>)</em>) – a mapping from objects to weights</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="examples.hitman.Hitman.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.delete" title="Link to this definition">#</a></dt>
+<dd><p>Explicit destructor of the internal hitting set oracle.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="examples.hitman.Hitman.enumerate">
+<span class="sig-name descname"><span class="pre">enumerate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.enumerate" title="Link to this definition">#</a></dt>
+<dd><p>The method can be used as a simple iterator computing and blocking
+the hitting sets on the fly. It essentially calls <a class="reference internal" href="#examples.hitman.Hitman.get" title="examples.hitman.Hitman.get"><code class="xref py py-func docutils literal notranslate"><span class="pre">get()</span></code></a>
+followed by <a class="reference internal" href="#examples.hitman.Hitman.block" title="examples.hitman.Hitman.block"><code class="xref py py-func docutils literal notranslate"><span class="pre">block()</span></code></a>. Each hitting set is reported as a list
+of objects in the original problem domain, i.e. it is mapped back
+from the solutions over Boolean variables computed by the
+underlying oracle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list(obj)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="examples.hitman.Hitman.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.get" title="Link to this definition">#</a></dt>
+<dd><p>This method computes and returns a hitting set. The hitting set is
+obtained using the underlying oracle operating the MaxSAT problem
+formulation. The computed solution is mapped back to objects of the
+problem domain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list(obj)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="examples.hitman.Hitman.hit">
+<span class="sig-name descname"><span class="pre">hit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">to_hit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.hit" title="Link to this definition">#</a></dt>
+<dd><p>This method adds a new set to hit to the hitting set solver. This
+is done by translating the input iterable of objects into a list of
+Boolean variables in the MaxSAT problem formulation.</p>
+<p>Note that an optional parameter that can be passed to this method
+is <code class="docutils literal notranslate"><span class="pre">weights</span></code>, which contains a mapping the objects under
+question into weights. Also note that the weight of an object must
+not change from one call of <a class="reference internal" href="#examples.hitman.Hitman.hit" title="examples.hitman.Hitman.hit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">hit()</span></code></a> to another.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>to_hit</strong> (<em>iterable</em><em>(</em><em>obj</em><em>)</em>) – a new set to hit</p></li>
+<li><p><strong>weights</strong> (<em>dict</em><em>(</em><em>obj</em><em>)</em>) – a mapping from objects to weights</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="examples.hitman.Hitman.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bootstrap_with</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject_to</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.init" title="Link to this definition">#</a></dt>
+<dd><p>This method serves for initializing the hitting set solver with a
+given list of sets to hit. Concretely, the hitting set problem is
+encoded into partial MaxSAT as outlined above, which is then fed
+either to a MaxSAT solver or an MCS enumerator.</p>
+<p>An additional optional parameter is <code class="docutils literal notranslate"><span class="pre">weights</span></code>, which can be used
+to specify non-unit weights for the target objects in the sets to
+hit. This only works if <code class="docutils literal notranslate"><span class="pre">'sorted'</span></code> enumeration of hitting sets
+is applied.</p>
+<p>Another optional parameter is available, namely, <code class="docutils literal notranslate"><span class="pre">subject_to</span></code>.
+It can be used to specify arbitrary hard constraints that must be
+respected when computing hitting sets of the given sets. Note that
+<code class="docutils literal notranslate"><span class="pre">subject_to</span></code> should be an iterable containing pure clauses
+and/or native AtMostK constraints. Finally, note that these hard
+constraints must be defined over the set of signed atomic objects,
+i.e. instances of class <a class="reference internal" href="#examples.hitman.Atom" title="examples.hitman.Atom"><code class="xref py py-class docutils literal notranslate"><span class="pre">Atom</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bootstrap_with</strong> (<em>iterable</em><em>(</em><em>iterable</em><em>(</em><em>obj</em><em>)</em><em>)</em>) – input set of sets to hit</p></li>
+<li><p><strong>weights</strong> (<em>dict</em><em>(</em><em>obj</em><em>)</em>) – weights of the objects in case the problem is weighted</p></li>
+<li><p><strong>subject_to</strong> (<em>iterable</em><em>(</em><em>iterable</em><em>(</em><a class="reference internal" href="#examples.hitman.Atom" title="examples.hitman.Atom"><em>Atom</em></a><em>)</em><em>)</em>) – hard constraints (either clauses or native AtMostK constraints)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="examples.hitman.Hitman.oracle_time">
+<span class="sig-name descname"><span class="pre">oracle_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.oracle_time" title="Link to this definition">#</a></dt>
+<dd><p>Report the total SAT solving time.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="examples.hitman.Hitman.switch_phase">
+<span class="sig-name descname"><span class="pre">switch_phase</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.hitman.Hitman.switch_phase" title="Link to this definition">#</a></dt>
+<dd><p>If a pure SAT-based hitting set enumeration is used, it is
+possible to instruct it to switch from enumerating target sets to
+enumerating dual sets, by polarity switching. This is what this
+method enables a user to do.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="genhard.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Hard formula generator (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.genhard</span></code>)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lbx.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">LBX-like MCS enumerator (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.lbx</span></code>)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-of-classes">List of classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-description">Module description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-details">Module details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.hitman.Atom"><code class="docutils literal notranslate"><span class="pre">Atom</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.hitman.Hitman"><code class="docutils literal notranslate"><span class="pre">Hitman</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.hitman.Hitman.add_hard"><code class="docutils literal notranslate"><span class="pre">Hitman.add_hard()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.hitman.Hitman.block"><code class="docutils literal notranslate"><span class="pre">Hitman.block()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.hitman.Hitman.delete"><code class="docutils literal notranslate"><span class="pre">Hitman.delete()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.hitman.Hitman.enumerate"><code class="docutils literal notranslate"><span class="pre">Hitman.enumerate()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.hitman.Hitman.get"><code class="docutils literal notranslate"><span class="pre">Hitman.get()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.hitman.Hitman.hit"><code class="docutils literal notranslate"><span class="pre">Hitman.hit()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.hitman.Hitman.init"><code class="docutils literal notranslate"><span class="pre">Hitman.init()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.hitman.Hitman.oracle_time"><code class="docutils literal notranslate"><span class="pre">Hitman.oracle_time()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.hitman.Hitman.switch_phase"><code class="docutils literal notranslate"><span class="pre">Hitman.switch_phase()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018-2024, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

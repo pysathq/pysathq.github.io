@@ -1,0 +1,505 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" data-theme="auto">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Welcome to PySAT’s documentation! &#8212; PySAT 1.8.dev20 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "auto";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "auto";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=fbc4858d"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Cardinality encodings (pysat.card)" href="api/card.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="auto">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="https://pysathq.github.io">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev20 documentation - Home"/>
+    <img src="_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev20 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><!-- This will display the version of the docs -->
+<a href=><strong>PySAT Documentation (version 1.8.dev20)</strong></a></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pysathq/pysat" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pysathq.github.io/docs/pysat.pdf" title="PDF" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-file fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pysathq/pysat/issues" title="Issue tracker" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-bug fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Issue tracker</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item"><!-- This will display the version of the docs -->
+<a href=><strong>PySAT Documentation (version 1.8.dev20)</strong></a></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pysathq/pysat" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pysathq.github.io/docs/pysat.pdf" title="PDF" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-file fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pysathq/pysat/issues" title="Issue tracker" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-bug fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Issue tracker</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="welcome-to-pysat-s-documentation">
+<h1>Welcome to PySAT’s documentation!<a class="headerlink" href="#welcome-to-pysat-s-documentation" title="Link to this heading">#</a></h1>
+<p>This site covers the usage and API documentation of the PySAT toolkit. For the
+basic information on what PySAT is, please, see <a class="reference external" href="https://pysathq.github.io">the main project website</a>.</p>
+<section id="api-documentation">
+<h2>API documentation<a class="headerlink" href="#api-documentation" title="Link to this heading">#</a></h2>
+<p>The PySAT toolkit has five core modules: <a class="reference internal" href="api/card.html#module-pysat.card" title="pysat.card"><code class="xref py py-mod docutils literal notranslate"><span class="pre">card</span></code></a>, <a class="reference internal" href="api/formula.html#module-pysat.formula" title="pysat.formula"><code class="xref py py-mod docutils literal notranslate"><span class="pre">formula</span></code></a>,
+<a class="reference internal" href="api/pb.html#module-pysat.pb" title="pysat.pb"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pb</span></code></a>, <a class="reference internal" href="api/process.html#module-pysat.process" title="pysat.process"><code class="xref py py-mod docutils literal notranslate"><span class="pre">process</span></code></a> and <a class="reference internal" href="api/solvers.html#module-pysat.solvers" title="pysat.solvers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">solvers</span></code></a>. The four of them
+(<a class="reference internal" href="api/card.html#module-pysat.card" title="pysat.card"><code class="xref py py-mod docutils literal notranslate"><span class="pre">card</span></code></a>, <a class="reference internal" href="api/pb.html#module-pysat.pb" title="pysat.pb"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pb</span></code></a>, <a class="reference internal" href="api/process.html#module-pysat.process" title="pysat.process"><code class="xref py py-mod docutils literal notranslate"><span class="pre">process</span></code></a> and <a class="reference internal" href="api/solvers.html#module-pysat.solvers" title="pysat.solvers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">solvers</span></code></a>) are Python
+wrappers for the code originally implemented in the C/C++ languages while the
+<a class="reference internal" href="api/formula.html#module-pysat.formula" title="pysat.formula"><code class="xref py py-mod docutils literal notranslate"><span class="pre">formula</span></code></a> module is a <em>pure</em> Python module. Version <em>0.1.4.dev0</em> of
+PySAT brings a new module called <a class="reference internal" href="api/pb.html#module-pysat.pb" title="pysat.pb"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pb</span></code></a>, which is a wrapper for the basic
+functionality of a third-party library <a class="reference external" href="https://pypi.org/project/pypblib/">PyPBLib</a> developed by the <a class="reference external" href="http://ulog.udl.cat/">Logic Optimization
+Group</a> of the University of Lleida.</p>
+<p>A supplementary sixth module <code class="xref py py-mod docutils literal notranslate"><span class="pre">examples</span></code> presents a list of scripts,
+which are supposed to demonstrate how the toolkit can be used for practical
+problem solving. The module includes a formula generator, several MaxSAT
+solvers including an award-winning RC2, a few (S)MUS extractors and
+enumerators as well as MCS enumerators, among other scripts.</p>
+<p>Finally, an additional seventh module <code class="xref py py-mod docutils literal notranslate"><span class="pre">allies</span></code> brought by version
+<em>0.1.8.dev3</em> is meant to provide access to a number of third-party tools
+important for practical SAT-based problem solving.</p>
+<section id="core-pysat-modules">
+<h3>Core PySAT modules<a class="headerlink" href="#core-pysat-modules" title="Link to this heading">#</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/card.html">Cardinality encodings (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.card</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/formula.html">Boolean formula manipulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.formula</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/engines.html">External engines (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.engines</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/pb.html">Pseudo-Boolean encodings (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.pb</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/process.html">Formula processing (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.process</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/solvers.html">SAT solvers’ API (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.solvers</span></code>)</a></li>
+</ul>
+</div>
+</section>
+<section id="supplementary-examples-package">
+<h3>Supplementary <code class="xref py py-mod docutils literal notranslate"><span class="pre">examples</span></code> package<a class="headerlink" href="#supplementary-examples-package" title="Link to this heading">#</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/examples/bica.html">Bica algorithm for formula simplification (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.bica</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/examples/fm.html">Fu&amp;Malik MaxSAT algorithm (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.fm</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/examples/genhard.html">Hard formula generator (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.genhard</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/examples/hitman.html">Minimum/minimal hitting set solver (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.hitman</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/examples/lbx.html">LBX-like MCS enumerator (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.lbx</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/examples/lsu.html">LSU algorithm for MaxSAT (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.lsu</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/examples/mcsls.html">CLD-like MCS enumerator (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.mcsls</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/examples/models.html">An iterative model enumerator (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.models</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/examples/musx.html">A deletion-based MUS extractor (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.musx</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/examples/optux.html">OptUx optimal MUS enumerator (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.optux</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/examples/primer.html">Primer-B algorithm for prime enumeration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.primer</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/examples/rc2.html">RC2 MaxSAT solver (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.rc2</span></code>)</a></li>
+</ul>
+</div>
+</section>
+<section id="supplementary-allies-package">
+<h3>Supplementary <code class="xref py py-mod docutils literal notranslate"><span class="pre">allies</span></code> package<a class="headerlink" href="#supplementary-allies-package" title="Link to this heading">#</a></h3>
+<p>This module provides interface to a list of external tools useful in practical
+SAT-based problem solving. Although only ApproxMCv4 is currently present here,
+the list of tools will grow.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/allies/approxmc.html">ApproxMC model counter (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.allies.approxmc</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/allies/unigen.html">UniGen almost-uniform sampler (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.allies.unigen</span></code>)</a></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="right-next"
+       href="api/card.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Cardinality encodings (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.card</span></code>)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-documentation">API documentation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core-pysat-modules">Core PySAT modules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supplementary-examples-package">Supplementary <code class="xref py py-mod docutils literal notranslate"><span class="pre">examples</span></code> package</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supplementary-allies-package">Supplementary <code class="xref py py-mod docutils literal notranslate"><span class="pre">allies</span></code> package</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018-2024, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

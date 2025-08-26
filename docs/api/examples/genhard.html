@@ -1,0 +1,743 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" data-theme="auto">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Hard formula generator (pysat.examples.genhard) &#8212; PySAT 1.8.dev20 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "auto";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "auto";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=fbc4858d"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/examples/genhard';</script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Minimum/minimal hitting set solver (pysat.examples.hitman)" href="hitman.html" />
+    <link rel="prev" title="Fu&amp;Malik MaxSAT algorithm (pysat.examples.fm)" href="fm.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="auto">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="https://pysathq.github.io">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev20 documentation - Home"/>
+    <img src="../../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev20 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><!-- This will display the version of the docs -->
+<a href=><strong>PySAT Documentation (version 1.8.dev20)</strong></a></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pysathq/pysat" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pysathq.github.io/docs/pysat.pdf" title="PDF" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-file fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pysathq/pysat/issues" title="Issue tracker" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-bug fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Issue tracker</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item"><!-- This will display the version of the docs -->
+<a href=><strong>PySAT Documentation (version 1.8.dev20)</strong></a></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pysathq/pysat" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pysathq.github.io/docs/pysat.pdf" title="PDF" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-file fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pysathq/pysat/issues" title="Issue tracker" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-bug fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Issue tracker</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"></div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Hard formula generator (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.genhard</span></code>)</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-examples.genhard">
+<span id="hard-formula-generator-pysat-examples-genhard"></span><h1>Hard formula generator (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.genhard</span></code>)<a class="headerlink" href="#module-examples.genhard" title="Link to this heading">#</a></h1>
+<section id="list-of-classes">
+<h2>List of classes<a class="headerlink" href="#list-of-classes" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#examples.genhard.CB" title="examples.genhard.CB"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CB</span></code></a></p></td>
+<td><p>Mutilated chessboard principle (CB).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#examples.genhard.GT" title="examples.genhard.GT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GT</span></code></a></p></td>
+<td><p>Generator of ordering (or <em>greater than</em>, GT) principle formulas.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#examples.genhard.PAR" title="examples.genhard.PAR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PAR</span></code></a></p></td>
+<td><p>Generator of the parity principle (PAR) formulas.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#examples.genhard.PHP" title="examples.genhard.PHP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PHP</span></code></a></p></td>
+<td><p>Generator of <span class="math notranslate nohighlight">\(k\)</span> pigeonhole principle (<span class="math notranslate nohighlight">\(k\)</span>-PHP) formulas.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="module-description">
+<h2>Module description<a class="headerlink" href="#module-description" title="Link to this heading">#</a></h2>
+<p>This module is designed to provide a few examples illustrating how PySAT
+can be used for encoding practical problems into CNF formulas. These
+include combinatorial principles that are widely studied from the
+propositional proof complexity perspective. Namely, encodings for the
+following principles are implemented: <em>pigeonhole principle</em> (<a class="reference internal" href="#examples.genhard.PHP" title="examples.genhard.PHP"><code class="xref py py-class docutils literal notranslate"><span class="pre">PHP</span></code></a>)
+<a class="footnote-reference brackets" href="#id5" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, <em>ordering (greater-than) principle</em> (<a class="reference internal" href="#examples.genhard.GT" title="examples.genhard.GT"><code class="xref py py-class docutils literal notranslate"><span class="pre">GT</span></code></a>) <a class="footnote-reference brackets" href="#id6" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>, <em>mutilated
+chessboard principle</em> (<a class="reference internal" href="#examples.genhard.CB" title="examples.genhard.CB"><code class="xref py py-class docutils literal notranslate"><span class="pre">CB</span></code></a>) <a class="footnote-reference brackets" href="#id7" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>, and <em>parity principle</em>
+(<a class="reference internal" href="#examples.genhard.PAR" title="examples.genhard.PAR"><code class="xref py py-class docutils literal notranslate"><span class="pre">PAR</span></code></a>) <a class="footnote-reference brackets" href="#id8" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>.</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id5" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Stephen A. Cook, Robert A. Reckhow. <em>The Relative Efficiency of
+Propositional Proof Systems</em>. J. Symb. Log. 44(1). 1979. pp. 36-50</p>
+</aside>
+<aside class="footnote brackets" id="id6" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id2">1</a>,<a role="doc-backlink" href="#id10">2</a>)</span>
+<p>Balakrishnan Krishnamurthy. <em>Short Proofs for Tricky Formulas</em>. Acta
+Informatica 22(3). 1985. pp. 253-275</p>
+</aside>
+<aside class="footnote brackets" id="id7" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id3">1</a>,<a role="doc-backlink" href="#id9">2</a>)</span>
+<p>Michael Alekhnovich. <em>Mutilated Chessboard Problem Is Exponentially
+Hard For Resolution</em>. Theor. Comput. Sci. 310(1-3). 2004. pp. 513-525</p>
+</aside>
+<aside class="footnote brackets" id="id8" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id4">1</a>,<a role="doc-backlink" href="#id13">2</a>)</span>
+<p>Miklós Ajtai. <em>Parity And The Pigeonhole Principle</em>. Feasible
+Mathematics. 1990. pp. 1–24</p>
+</aside>
+</aside>
+<p>The module can be used as an executable (the list of available command-line
+options can be shown using <code class="docutils literal notranslate"><span class="pre">genhard.py</span> <span class="pre">-h</span></code>) in the following way</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ genhard.py -t php -n 3 -v
+c PHP formula for 4 pigeons and 3 holes
+c (pigeon, hole) pair: (1, 1); bool var: 1
+c (pigeon, hole) pair: (1, 2); bool var: 2
+c (pigeon, hole) pair: (1, 3); bool var: 3
+c (pigeon, hole) pair: (2, 1); bool var: 4
+c (pigeon, hole) pair: (2, 2); bool var: 5
+c (pigeon, hole) pair: (2, 3); bool var: 6
+c (pigeon, hole) pair: (3, 1); bool var: 7
+c (pigeon, hole) pair: (3, 2); bool var: 8
+c (pigeon, hole) pair: (3, 3); bool var: 9
+c (pigeon, hole) pair: (4, 1); bool var: 10
+c (pigeon, hole) pair: (4, 2); bool var: 11
+c (pigeon, hole) pair: (4, 3); bool var: 12
+p cnf 12 22
+1 2 3 0
+4 5 6 0
+7 8 9 0
+10 11 12 0
+-1 -4 0
+-1 -7 0
+-1 -10 0
+-4 -7 0
+-4 -10 0
+-7 -10 0
+-2 -5 0
+-2 -8 0
+-2 -11 0
+-5 -8 0
+-5 -11 0
+-8 -11 0
+-3 -6 0
+-3 -9 0
+-3 -12 0
+-6 -9 0
+-6 -12 0
+-9 -12 0
+</pre></div>
+</div>
+<p>Alternatively, each of the considered problem encoders can be accessed with
+the use of the standard <code class="docutils literal notranslate"><span class="pre">import</span></code> interface of Python, e.g.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.genhard</span> <span class="kn">import</span> <span class="n">PHP</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">PHP</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">nv</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">))</span>
+<span class="go">12 22</span>
+</pre></div>
+</div>
+<p>Given this example, observe that classes <a class="reference internal" href="#examples.genhard.PHP" title="examples.genhard.PHP"><code class="xref py py-class docutils literal notranslate"><span class="pre">PHP</span></code></a>, <a class="reference internal" href="#examples.genhard.GT" title="examples.genhard.GT"><code class="xref py py-class docutils literal notranslate"><span class="pre">GT</span></code></a>,
+<a class="reference internal" href="#examples.genhard.CB" title="examples.genhard.CB"><code class="xref py py-class docutils literal notranslate"><span class="pre">CB</span></code></a>, and <a class="reference internal" href="#examples.genhard.PAR" title="examples.genhard.PAR"><code class="xref py py-class docutils literal notranslate"><span class="pre">PAR</span></code></a> inherit from class
+<a class="reference internal" href="../formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">pysat.formula.CNF</span></code></a> and, thus, their corresponding clauses can
+accessed through variable <code class="docutils literal notranslate"><span class="pre">.clauses</span></code>.</p>
+</section>
+<section id="module-details">
+<h2>Module details<a class="headerlink" href="#module-details" title="Link to this heading">#</a></h2>
+</section>
+<dl class="py class">
+<dt class="sig sig-object py" id="examples.genhard.CB">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">examples.genhard.</span></span><span class="sig-name descname"><span class="pre">CB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.genhard.CB" title="Link to this definition">#</a></dt>
+<dd><p>Mutilated chessboard principle (CB). Given an integer <span class="math notranslate nohighlight">\(n\)</span>, the
+principle states that it is impossible to cover a chessboard of size
+<span class="math notranslate nohighlight">\(2n\cdot 2n\)</span> by domino tiles if two diagonally opposite corners
+of the chessboard are removed.</p>
+<p>Note that the chessboard has <span class="math notranslate nohighlight">\(4n^2-2\)</span> cells. Introduce a Boolean
+variable <span class="math notranslate nohighlight">\(x_{ij}\)</span> for <span class="math notranslate nohighlight">\(i,j\in[4n^2-2]\)</span> s.t. cells
+<span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> are adjacent (no variables are introduced for
+pairs of non-adjacent cells). CB formulas comprise clauses (1)
+<span class="math notranslate nohighlight">\((\neg{x_{ji} \vee \neg{x_{ki}}})\)</span> for every <span class="math notranslate nohighlight">\(i,j \neq
+k\)</span> meaning that no more than one adjacent cell can be paired with the
+current one; and (2) <span class="math notranslate nohighlight">\((\vee_{j \in \text{Adj}(i)}
+{x_{ij}})\,\, \forall i\)</span> enforcing that every cell <span class="math notranslate nohighlight">\(i\)</span> should
+be paired with at least one adjacent cell.</p>
+<p>Clearly, since the two diagonal corners are removed, the formula is
+unsatisfiable. Also note the following. Assuming that the number of
+black cells is larger than the number of the white ones, CB formulas
+are unsatisfiable even if only a half of the formula is present, e.g.
+when <span class="math notranslate nohighlight">\(\textsf{AtMost1}\)</span> constraints are formulated only for the
+white cells while the <span class="math notranslate nohighlight">\(\textsf{AtLeast1}\)</span> constraints are
+formulated only for the black cells. Depending on the value of
+parameter <code class="docutils literal notranslate"><span class="pre">exhaustive</span></code> the encoder applies the <em>complete</em> or
+<em>partial</em> formulation of the problem.</p>
+<p>Mutilated chessboard principle is known to be hard for resolution <a class="footnote-reference brackets" href="#id7" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> (<em>int</em>) – problem size (<span class="math notranslate nohighlight">\(n\)</span>)</p></li>
+<li><p><strong>exhaustive</strong> (<em>bool</em>) – encode the problem exhaustively</p></li>
+<li><p><strong>topv</strong> (<em>int</em>) – current top variable identifier</p></li>
+<li><p><strong>verb</strong> (<em>bool</em>) – defines whether or not the encoder is verbose</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>object of class <a class="reference internal" href="../formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">pysat.formula.CNF</span></code></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="examples.genhard.GT">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">examples.genhard.</span></span><span class="sig-name descname"><span class="pre">GT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.genhard.GT" title="Link to this definition">#</a></dt>
+<dd><p>Generator of ordering (or <em>greater than</em>, GT) principle formulas. Given
+an integer parameter <span class="math notranslate nohighlight">\(n\)</span>, the principle states that any partial
+order on the set <span class="math notranslate nohighlight">\(\{1,2,\ldots,n\}\)</span> must have a maximal element.</p>
+<p>Assume variable <span class="math notranslate nohighlight">\(x_{ij}\)</span>, for <span class="math notranslate nohighlight">\(i,j\in[n],i\neq j\)</span>,
+denotes the fact that <span class="math notranslate nohighlight">\(i \succ j\)</span>. Clauses
+<span class="math notranslate nohighlight">\((\neg{x_{ij}} \vee \neg{x_{ji}})\)</span> and <span class="math notranslate nohighlight">\((\neg{x_{ij}}
+\vee \neg{x_{jk}} \vee x_{ik})\)</span> ensure that the relation
+<span class="math notranslate nohighlight">\(\succ\)</span> is anti-symmetric and transitive. As a result,
+<span class="math notranslate nohighlight">\(\succ\)</span> is a partial order on <span class="math notranslate nohighlight">\([n]\)</span>. The additional
+requirement that each element <span class="math notranslate nohighlight">\(i\)</span> has a successor in
+<span class="math notranslate nohighlight">\([n]\setminus\{i\}\)</span> represented a clause <span class="math notranslate nohighlight">\((\vee_{j
+\neq i}{x_{ji}})\)</span> makes the formula unsatisfiable.</p>
+<p>GT formulas were originally conjectured <a class="footnote-reference brackets" href="#id6" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> to be hard for resolution.
+However, <a class="footnote-reference brackets" href="#id12" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> proved the existence of a polynomial size resolution
+refutation for GT formulas.</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id12" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">5</a><span class="fn-bracket">]</span></span>
+<p>Gunnar Stålmarck. <em>Short Resolution Proofs for a Sequence of
+Tricky Formulas</em>. Acta Informatica. 33(3). 1996. pp. 277-280</p>
+</aside>
+</aside>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> (<em>int</em>) – number of elements (<span class="math notranslate nohighlight">\(n\)</span>)</p></li>
+<li><p><strong>topv</strong> (<em>int</em>) – current top variable identifier</p></li>
+<li><p><strong>verb</strong> (<em>bool</em>) – defines whether or not the encoder is verbose</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>object of class <a class="reference internal" href="../formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">pysat.formula.CNF</span></code></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="examples.genhard.PAR">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">examples.genhard.</span></span><span class="sig-name descname"><span class="pre">PAR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.genhard.PAR" title="Link to this definition">#</a></dt>
+<dd><p>Generator of the parity principle (PAR) formulas. Given an integer
+parameter <span class="math notranslate nohighlight">\(n\)</span>, the principle states that no graph on <span class="math notranslate nohighlight">\(2n+1\)</span>
+nodes consists of a complete perfect matching.</p>
+<p>The encoding of the parity principle uses <span class="math notranslate nohighlight">\(\binom{2n+1}{2}\)</span>
+variables <span class="math notranslate nohighlight">\(x_{ij},i \neq j\)</span>. If variable <span class="math notranslate nohighlight">\(x_{ij}\)</span> is
+<em>true</em>, then there is an edge between nodes <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>.
+The formula consists of the following clauses: <span class="math notranslate nohighlight">\((\vee_{j \neq
+i}{x_{ij}})\)</span> for every <span class="math notranslate nohighlight">\(i\in[2n+1]\)</span>, and <span class="math notranslate nohighlight">\((\neg{x_{ij}}
+\vee \neg{x_{kj}})\)</span> for all distinct <span class="math notranslate nohighlight">\(i,j,k \in [2n+1]\)</span>.</p>
+<p>The parity principle is known to be hard for resolution <a class="footnote-reference brackets" href="#id8" id="id13" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> (<em>int</em>) – problem size (<span class="math notranslate nohighlight">\(n\)</span>)</p></li>
+<li><p><strong>topv</strong> (<em>int</em>) – current top variable identifier</p></li>
+<li><p><strong>verb</strong> (<em>bool</em>) – defines whether or not the encoder is verbose</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>object of class <a class="reference internal" href="../formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">pysat.formula.CNF</span></code></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="examples.genhard.PHP">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">examples.genhard.</span></span><span class="sig-name descname"><span class="pre">PHP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.genhard.PHP" title="Link to this definition">#</a></dt>
+<dd><p>Generator of <span class="math notranslate nohighlight">\(k\)</span> pigeonhole principle (<span class="math notranslate nohighlight">\(k\)</span>-PHP) formulas.
+Given integer parameters <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(k\)</span>, the <span class="math notranslate nohighlight">\(k\)</span>
+pigeonhole principle states that if <span class="math notranslate nohighlight">\(k\cdot m+1\)</span> pigeons are
+distributes by <span class="math notranslate nohighlight">\(m\)</span> holes, then at least one hole contains more
+than <span class="math notranslate nohighlight">\(k\)</span> pigeons.</p>
+<p>Note that if <span class="math notranslate nohighlight">\(k\)</span> is 1, the principle degenerates to the
+formulation of the original pigeonhole principle stating that
+<span class="math notranslate nohighlight">\(m+1\)</span> pigeons cannot be distributed by <span class="math notranslate nohighlight">\(m\)</span> holes.</p>
+<p>Assume that a Boolean variable <span class="math notranslate nohighlight">\(x_{ij}\)</span> encodes that pigeon
+<span class="math notranslate nohighlight">\(i\)</span> resides in hole <span class="math notranslate nohighlight">\(j\)</span>. Then a PHP formula can be seen as
+a conjunction: <span class="math notranslate nohighlight">\(\bigwedge_{i=1}^{k\cdot
+m+1}{\textsf{AtLeast1}(x_{i1},\ldots,x_{im})}\wedge
+\bigwedge_{j=1}^{m}{\textsf{AtMost}k(x_{1j},\ldots,x_{k\cdot
+m+1,j})}\)</span>. Here each <span class="math notranslate nohighlight">\(\textsf{AtLeast1}\)</span> constraint forces every
+pigeon to be placed into at least one hole while each
+<span class="math notranslate nohighlight">\(\textsf{AtMost}k\)</span> constraint allows the corresponding hole to
+have at most <span class="math notranslate nohighlight">\(k\)</span> pigeons. The overall PHP formulas are
+unsatisfiable.</p>
+<p>PHP formulas are well-known <a class="footnote-reference brackets" href="#id15" id="id14" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a> to be hard for resolution.</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id15" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id14">6</a><span class="fn-bracket">]</span></span>
+<p>Armin Haken. <em>The Intractability of Resolution</em>. Theor. Comput.
+Sci. 39. 1985. pp. 297-308</p>
+</aside>
+</aside>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nof_holes</strong> (<em>int</em>) – number of holes (<span class="math notranslate nohighlight">\(n\)</span>)</p></li>
+<li><p><strong>kval</strong> (<em>int</em>) – multiplier <span class="math notranslate nohighlight">\(k\)</span></p></li>
+<li><p><strong>topv</strong> (<em>int</em>) – current top variable identifier</p></li>
+<li><p><strong>verb</strong> (<em>bool</em>) – defines whether or not the encoder is verbose</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>object of class <a class="reference internal" href="../formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">pysat.formula.CNF</span></code></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="fm.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Fu&amp;Malik MaxSAT algorithm (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.fm</span></code>)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="hitman.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Minimum/minimal hitting set solver (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.hitman</span></code>)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-of-classes">List of classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-description">Module description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-details">Module details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.genhard.CB"><code class="docutils literal notranslate"><span class="pre">CB</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.genhard.GT"><code class="docutils literal notranslate"><span class="pre">GT</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.genhard.PAR"><code class="docutils literal notranslate"><span class="pre">PAR</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.genhard.PHP"><code class="docutils literal notranslate"><span class="pre">PHP</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018-2024, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

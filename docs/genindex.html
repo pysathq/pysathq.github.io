@@ -1,0 +1,1519 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" data-theme="auto">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index &#8212; PySAT 1.8.dev20 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "auto";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "auto";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=fbc4858d"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="#" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="auto">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="https://pysathq.github.io">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev20 documentation - Home"/>
+    <img src="_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev20 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><!-- This will display the version of the docs -->
+<a href=><strong>PySAT Documentation (version 1.8.dev20)</strong></a></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pysathq/pysat" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pysathq.github.io/docs/pysat.pdf" title="PDF" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-file fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pysathq/pysat/issues" title="Issue tracker" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-bug fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Issue tracker</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item"><!-- This will display the version of the docs -->
+<a href=><strong>PySAT Documentation (version 1.8.dev20)</strong></a></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pysathq/pysat" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pysathq.github.io/docs/pysat.pdf" title="PDF" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-file fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PDF</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pysathq/pysat/issues" title="Issue tracker" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-bug fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Issue tracker</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#_"><strong>_</strong></a>
+ | <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#H"><strong>H</strong></a>
+ | <a href="#I"><strong>I</strong></a>
+ | <a href="#J"><strong>J</strong></a>
+ | <a href="#L"><strong>L</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
+ | <a href="#O"><strong>O</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
+ | <a href="#U"><strong>U</strong></a>
+ | <a href="#W"><strong>W</strong></a>
+ | <a href="#X"><strong>X</strong></a>
+ 
+</div>
+<h2 id="_">_</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/examples/lsu.html#examples.lsu.LSU._assert_lt">_assert_lt() (examples.lsu.LSU method)</a>
+
+      <ul>
+        <li><a href="api/examples/lsu.html#examples.lsu.LSUPlus._assert_lt">(examples.lsu.LSUPlus method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/examples/fm.html#examples.fm.FM._compute">_compute() (examples.fm.FM method)</a>
+
+      <ul>
+        <li><a href="api/examples/lbx.html#examples.lbx.LBX._compute">(examples.lbx.LBX method)</a>
+</li>
+        <li><a href="api/examples/mcsls.html#examples.mcsls.MCSls._compute">(examples.mcsls.MCSls method)</a>
+</li>
+        <li><a href="api/examples/musx.html#examples.musx.MUSX._compute">(examples.musx.MUSX method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/examples/optux.html#examples.optux.OptUx._disjoint">_disjoint() (examples.optux.OptUx method)</a>
+</li>
+      <li><a href="api/examples/lbx.html#examples.lbx.LBX._filter_satisfied">_filter_satisfied() (examples.lbx.LBX method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/examples/lsu.html#examples.lsu.LSU._get_model_cost">_get_model_cost() (examples.lsu.LSU method)</a>
+</li>
+      <li><a href="api/examples/lsu.html#examples.lsu.LSU._init">_init() (examples.lsu.LSU method)</a>
+</li>
+      <li><a href="api/examples/lbx.html#examples.lbx.LBX._map_extlit">_map_extlit() (examples.lbx.LBX method)</a>
+
+      <ul>
+        <li><a href="api/examples/mcsls.html#examples.mcsls.MCSls._map_extlit">(examples.mcsls.MCSls method)</a>
+</li>
+        <li><a href="api/examples/rc2.html#examples.rc2.RC2._map_extlit">(examples.rc2.RC2 method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/examples/mcsls.html#examples.mcsls.MCSls._overapprox">_overapprox() (examples.mcsls.MCSls method)</a>
+</li>
+      <li><a href="api/examples/optux.html#examples.optux.OptUx._process_soft">_process_soft() (examples.optux.OptUx method)</a>
+</li>
+      <li><a href="api/examples/lbx.html#examples.lbx.LBX._satisfied">_satisfied() (examples.lbx.LBX method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/engines.html#pysat.engines.LinearConstraint.abandon_unweighted">abandon_unweighted() (pysat.engines.LinearConstraint method)</a>
+</li>
+      <li><a href="api/engines.html#pysat.engines.LinearConstraint.abandon_weighted">abandon_weighted() (pysat.engines.LinearConstraint method)</a>
+</li>
+      <li><a href="api/solvers.html#pysat.solvers.Solver.accum_stats">accum_stats() (pysat.solvers.Solver method)</a>
+</li>
+      <li><a href="api/solvers.html#pysat.solvers.Solver.activate_atmost">activate_atmost() (pysat.solvers.Solver method)</a>
+</li>
+      <li><a href="api/examples/rc2.html#examples.rc2.RC2Stratified.activate_clauses">activate_clauses() (examples.rc2.RC2Stratified method)</a>
+</li>
+      <li><a href="api/examples/rc2.html#examples.rc2.RC2.adapt_am1">adapt_am1() (examples.rc2.RC2 method)</a>
+</li>
+      <li><a href="api/engines.html#pysat.engines.BooleanEngine.adaptive_constants">adaptive_constants() (pysat.engines.BooleanEngine method)</a>
+</li>
+      <li><a href="api/engines.html#pysat.engines.BooleanEngine.adaptive_update">adaptive_update() (pysat.engines.BooleanEngine method)</a>
+</li>
+      <li><a href="api/solvers.html#pysat.solvers.Solver.add_atmost">add_atmost() (pysat.solvers.Solver method)</a>
+</li>
+      <li><a href="api/allies/approxmc.html#allies.approxmc.Counter.add_clause">add_clause() (allies.approxmc.Counter method)</a>
+
+      <ul>
+        <li><a href="api/allies/unigen.html#allies.unigen.Sampler.add_clause">(allies.unigen.Sampler method)</a>
+</li>
+        <li><a href="api/examples/lbx.html#examples.lbx.LBX.add_clause">(examples.lbx.LBX method)</a>
+</li>
+        <li><a href="api/examples/mcsls.html#examples.mcsls.MCSls.add_clause">(examples.mcsls.MCSls method)</a>
+</li>
+        <li><a href="api/examples/rc2.html#examples.rc2.RC2.add_clause">(examples.rc2.RC2 method)</a>
+</li>
+        <li><a href="api/engines.html#pysat.engines.BooleanEngine.add_clause">(pysat.engines.BooleanEngine method)</a>
+</li>
+        <li><a href="api/engines.html#pysat.engines.Propagator.add_clause">(pysat.engines.Propagator method)</a>
+</li>
+        <li><a href="api/process.html#pysat.process.Processor.add_clause">(pysat.process.Processor method)</a>
+</li>
+        <li><a href="api/solvers.html#pysat.solvers.Solver.add_clause">(pysat.solvers.Solver method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/engines.html#pysat.engines.BooleanEngine.add_constraint">add_constraint() (pysat.engines.BooleanEngine method)</a>
+</li>
+      <li><a href="api/examples/hitman.html#examples.hitman.Hitman.add_hard">add_hard() (examples.hitman.Hitman method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/solvers.html#pysat.solvers.Solver.add_xor_clause">add_xor_clause() (pysat.solvers.Solver method)</a>
+</li>
+      <li>
+    allies.approxmc
+
+      <ul>
+        <li><a href="api/allies/approxmc.html#module-allies.approxmc">module</a>
+</li>
+      </ul></li>
+      <li>
+    allies.unigen
+
+      <ul>
+        <li><a href="api/allies/unigen.html#module-allies.unigen">module</a>
+</li>
+      </ul></li>
+      <li><a href="api/formula.html#pysat.formula.And">And (class in pysat.formula)</a>
+</li>
+      <li><a href="api/formula.html#pysat.formula.CNF.append">append() (pysat.formula.CNF method)</a>
+
+      <ul>
+        <li><a href="api/formula.html#pysat.formula.CNFPlus.append">(pysat.formula.CNFPlus method)</a>
+</li>
+        <li><a href="api/formula.html#pysat.formula.WCNF.append">(pysat.formula.WCNF method)</a>
+</li>
+        <li><a href="api/formula.html#pysat.formula.WCNFPlus.append">(pysat.formula.WCNFPlus method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/process.html#pysat.process.Processor.append_formula">append_formula() (pysat.process.Processor method)</a>
+
+      <ul>
+        <li><a href="api/solvers.html#pysat.solvers.Solver.append_formula">(pysat.solvers.Solver method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/card.html#pysat.card.CardEnc.atleast">atleast() (pysat.card.CardEnc class method)</a>
+
+      <ul>
+        <li><a href="api/pb.html#pysat.pb.PBEnc.atleast">(pysat.pb.PBEnc class method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/card.html#pysat.card.CardEnc.atmost">atmost() (pysat.card.CardEnc class method)</a>
+
+      <ul>
+        <li><a href="api/pb.html#pysat.pb.PBEnc.atmost">(pysat.pb.PBEnc class method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/examples/hitman.html#examples.hitman.Atom">Atom (class in examples.hitman)</a>
+
+      <ul>
+        <li><a href="api/formula.html#pysat.formula.Atom">(class in pysat.formula)</a>
+</li>
+      </ul></li>
+      <li><a href="api/formula.html#pysat.formula.Formula.atoms">atoms() (pysat.formula.Formula method)</a>
+</li>
+      <li><a href="api/engines.html#pysat.engines.LinearConstraint.attach_values">attach_values() (pysat.engines.LinearConstraint method)</a>
+</li>
+      <li><a href="api/formula.html#pysat.formula.Formula.attach_vpool">attach_vpool() (pysat.formula.Formula static method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/examples/bica.html#examples.bica.Bica">Bica (class in examples.bica)</a>
+</li>
+      <li><a href="api/examples/hitman.html#examples.hitman.Hitman.block">block() (examples.hitman.Hitman method)</a>
+
+      <ul>
+        <li><a href="api/examples/lbx.html#examples.lbx.LBX.block">(examples.lbx.LBX method)</a>
+</li>
+        <li><a href="api/examples/mcsls.html#examples.mcsls.MCSls.block">(examples.mcsls.MCSls method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/engines.html#pysat.engines.BooleanEngine">BooleanEngine (class in pysat.engines)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/card.html#pysat.card.CardEnc">CardEnc (class in pysat.card)</a>
+</li>
+      <li><a href="api/examples/genhard.html#examples.genhard.CB">CB (class in examples.genhard)</a>
+</li>
+      <li><a href="api/engines.html#pysat.engines.BooleanEngine.check_model">check_model() (pysat.engines.BooleanEngine method)</a>
+
+      <ul>
+        <li><a href="api/engines.html#pysat.engines.Propagator.check_model">(pysat.engines.Propagator method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/formula.html#pysat.formula.Formula.clausify">clausify() (pysat.formula.Formula method)</a>
+</li>
+      <li><a href="api/formula.html#pysat.formula.Formula.cleanup">cleanup() (pysat.formula.Formula static method)</a>
+</li>
+      <li><a href="api/engines.html#pysat.engines.BooleanEngine.cleanup_watched">cleanup_watched() (pysat.engines.BooleanEngine method)</a>
+</li>
+      <li><a href="api/examples/lsu.html#examples.lsu.LSU.clear_interrupt">clear_interrupt() (examples.lsu.LSU method)</a>
+
+      <ul>
+        <li><a href="api/solvers.html#pysat.solvers.Solver.clear_interrupt">(pysat.solvers.Solver method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/formula.html#pysat.formula.CNF">CNF (class in pysat.formula)</a>
+</li>
+      <li><a href="api/formula.html#pysat.formula.CNFPlus">CNFPlus (class in pysat.formula)</a>
+</li>
+      <li><a href="api/examples/bica.html#examples.bica.Bica.compute">compute() (examples.bica.Bica method)</a>
+
+      <ul>
+        <li><a href="api/examples/fm.html#examples.fm.FM.compute">(examples.fm.FM method)</a>
+</li>
+        <li><a href="api/examples/lbx.html#examples.lbx.LBX.compute">(examples.lbx.LBX method)</a>
+</li>
+        <li><a href="api/examples/mcsls.html#examples.mcsls.MCSls.compute">(examples.mcsls.MCSls method)</a>
+</li>
+        <li><a href="api/examples/musx.html#examples.musx.MUSX.compute">(examples.musx.MUSX method)</a>
+</li>
+        <li><a href="api/examples/optux.html#examples.optux.OptUx.compute">(examples.optux.OptUx method)</a>
+</li>
+        <li><a href="api/examples/primer.html#examples.primer.Primer.compute">(examples.primer.Primer method)</a>
+</li>
+        <li><a href="api/examples/rc2.html#examples.rc2.RC2.compute">(examples.rc2.RC2 method)</a>
+</li>
+        <li><a href="api/examples/rc2.html#examples.rc2.RC2Stratified.compute">(examples.rc2.RC2Stratified method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/examples/rc2.html#examples.rc2.RC2.compute_">compute_() (examples.rc2.RC2 method)</a>
+</li>
+      <li><a href="api/solvers.html#pysat.solvers.Solver.conf_budget">conf_budget() (pysat.solvers.Solver method)</a>
+</li>
+      <li><a href="api/solvers.html#pysat.solvers.Solver.configure">configure() (pysat.solvers.Solver method)</a>
+</li>
+      <li><a href="api/solvers.html#pysat.solvers.Solver.connect_propagator">connect_propagator() (pysat.solvers.Solver method)</a>
+</li>
+      <li><a href="api/formula.html#pysat.formula.CNF.copy">copy() (pysat.formula.CNF method)</a>
+
+      <ul>
+        <li><a href="api/formula.html#pysat.formula.CNFPlus.copy">(pysat.formula.CNFPlus method)</a>
+</li>
+        <li><a href="api/formula.html#pysat.formula.WCNF.copy">(pysat.formula.WCNF method)</a>
+</li>
+        <li><a href="api/formula.html#pysat.formula.WCNFPlus.copy">(pysat.formula.WCNFPlus method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/allies/approxmc.html#allies.approxmc.Counter.count">count() (allies.approxmc.Counter method)</a>
+</li>
+      <li><a href="api/allies/approxmc.html#allies.approxmc.Counter">Counter (class in allies.approxmc)</a>
+</li>
+      <li><a href="api/examples/rc2.html#examples.rc2.RC2.create_sum">create_sum() (examples.rc2.RC2 method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/solvers.html#pysat.solvers.Solver.dec_budget">dec_budget() (pysat.solvers.Solver method)</a>
+</li>
+      <li><a href="api/engines.html#pysat.engines.BooleanEngine.decide">decide() (pysat.engines.BooleanEngine method)</a>
+
+      <ul>
+        <li><a href="api/engines.html#pysat.engines.Propagator.decide">(pysat.engines.Propagator method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/allies/approxmc.html#allies.approxmc.Counter.delete">delete() (allies.approxmc.Counter method)</a>
+
+      <ul>
+        <li><a href="api/allies/unigen.html#allies.unigen.Sampler.delete">(allies.unigen.Sampler method)</a>
+</li>
+        <li><a href="api/examples/bica.html#examples.bica.Bica.delete">(examples.bica.Bica method)</a>
+</li>
+        <li><a href="api/examples/fm.html#examples.fm.FM.delete">(examples.fm.FM method)</a>
+</li>
+        <li><a href="api/examples/hitman.html#examples.hitman.Hitman.delete">(examples.hitman.Hitman method)</a>
+</li>
+        <li><a href="api/examples/lbx.html#examples.lbx.LBX.delete">(examples.lbx.LBX method)</a>
+</li>
+        <li><a href="api/examples/lsu.html#examples.lsu.LSU.delete">(examples.lsu.LSU method)</a>
+</li>
+        <li><a href="api/examples/mcsls.html#examples.mcsls.MCSls.delete">(examples.mcsls.MCSls method)</a>
+</li>
+        <li><a href="api/examples/musx.html#examples.musx.MUSX.delete">(examples.musx.MUSX method)</a>
+</li>
+        <li><a href="api/examples/optux.html#examples.optux.OptUx.delete">(examples.optux.OptUx method)</a>
+</li>
+        <li><a href="api/examples/primer.html#examples.primer.Primer.delete">(examples.primer.Primer method)</a>
+</li>
+        <li><a href="api/examples/rc2.html#examples.rc2.RC2.delete">(examples.rc2.RC2 method)</a>
+</li>
+        <li><a href="api/card.html#pysat.card.ITotalizer.delete">(pysat.card.ITotalizer method)</a>
+</li>
+        <li><a href="api/process.html#pysat.process.Processor.delete">(pysat.process.Processor method)</a>
+</li>
+        <li><a href="api/solvers.html#pysat.solvers.Solver.delete">(pysat.solvers.Solver method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/engines.html#pysat.engines.BooleanEngine.disable">disable() (pysat.engines.BooleanEngine method)</a>
+</li>
+      <li><a href="api/solvers.html#pysat.solvers.Solver.disable_propagator">disable_propagator() (pysat.solvers.Solver method)</a>
+</li>
+      <li><a href="api/solvers.html#pysat.solvers.Solver.disconnect_propagator">disconnect_propagator() (pysat.solvers.Solver method)</a>
+</li>
+      <li><a href="api/examples/lbx.html#examples.lbx.LBX.do_cld_check">do_cld_check() (examples.lbx.LBX method)</a>
+
+      <ul>
+        <li><a href="api/examples/mcsls.html#examples.mcsls.MCSls.do_cld_check">(examples.mcsls.MCSls method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/engines.html#pysat.engines.BooleanEngine.enable">enable() (pysat.engines.BooleanEngine method)</a>
+</li>
+      <li><a href="api/solvers.html#pysat.solvers.Solver.enable_propagator">enable_propagator() (pysat.solvers.Solver method)</a>
+</li>
+      <li><a href="api/card.html#pysat.card.EncType">EncType (class in pysat.card)</a>
+
+      <ul>
+        <li><a href="api/pb.html#pysat.pb.EncType">(class in pysat.pb)</a>
+</li>
+      </ul></li>
+      <li><a href="api/solvers.html#pysat.solvers.Solver.enum_models">enum_models() (pysat.solvers.Solver method)</a>
+</li>
+      <li><a href="api/examples/bica.html#examples.bica.Bica.enumerate">enumerate() (examples.bica.Bica method)</a>
+
+      <ul>
+        <li><a href="api/examples/hitman.html#examples.hitman.Hitman.enumerate">(examples.hitman.Hitman method)</a>
+</li>
+        <li><a href="api/examples/lbx.html#examples.lbx.LBX.enumerate">(examples.lbx.LBX method)</a>
+</li>
+        <li><a href="api/examples/mcsls.html#examples.mcsls.MCSls.enumerate">(examples.mcsls.MCSls method)</a>
+</li>
+        <li><a href="api/examples/optux.html#examples.optux.OptUx.enumerate">(examples.optux.OptUx method)</a>
+</li>
+        <li><a href="api/examples/primer.html#examples.primer.Primer.enumerate">(examples.primer.Primer method)</a>
+</li>
+        <li><a href="api/examples/rc2.html#examples.rc2.RC2.enumerate">(examples.rc2.RC2 method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/examples/models.html#examples.models.enumerate_models">enumerate_models() (in module examples.models)</a>
+</li>
+      <li><a href="api/formula.html#pysat.formula.Equals">Equals (class in pysat.formula)</a>
+</li>
+      <li><a href="api/card.html#pysat.card.CardEnc.equals">equals() (pysat.card.CardEnc class method)</a>
+
+      <ul>
+        <li><a href="api/pb.html#pysat.pb.PBEnc.equals">(pysat.pb.PBEnc class method)</a>
+</li>
+      </ul></li>
+      <li>
+    examples.bica
+
+      <ul>
+        <li><a href="api/examples/bica.html#module-examples.bica">module</a>
+</li>
+      </ul></li>
+      <li>
+    examples.fm
+
+      <ul>
+        <li><a href="api/examples/fm.html#module-examples.fm">module</a>
+</li>
+      </ul></li>
+      <li>
+    examples.genhard
+
+      <ul>
+        <li><a href="api/examples/genhard.html#module-examples.genhard">module</a>
+</li>
+      </ul></li>
+      <li>
+    examples.hitman
+
+      <ul>
+        <li><a href="api/examples/hitman.html#module-examples.hitman">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    examples.lbx
+
+      <ul>
+        <li><a href="api/examples/lbx.html#module-examples.lbx">module</a>
+</li>
+      </ul></li>
+      <li>
+    examples.lsu
+
+      <ul>
+        <li><a href="api/examples/lsu.html#module-examples.lsu">module</a>
+</li>
+      </ul></li>
+      <li>
+    examples.mcsls
+
+      <ul>
+        <li><a href="api/examples/mcsls.html#module-examples.mcsls">module</a>
+</li>
+      </ul></li>
+      <li>
+    examples.models
+
+      <ul>
+        <li><a href="api/examples/models.html#module-examples.models">module</a>
+</li>
+      </ul></li>
+      <li>
+    examples.musx
+
+      <ul>
+        <li><a href="api/examples/musx.html#module-examples.musx">module</a>
+</li>
+      </ul></li>
+      <li>
+    examples.optux
+
+      <ul>
+        <li><a href="api/examples/optux.html#module-examples.optux">module</a>
+</li>
+      </ul></li>
+      <li>
+    examples.primer
+
+      <ul>
+        <li><a href="api/examples/primer.html#module-examples.primer">module</a>
+</li>
+      </ul></li>
+      <li>
+    examples.rc2
+
+      <ul>
+        <li><a href="api/examples/rc2.html#module-examples.rc2">module</a>
+</li>
+      </ul></li>
+      <li><a href="api/examples/rc2.html#examples.rc2.RC2.exhaust_core">exhaust_core() (examples.rc2.RC2 method)</a>
+</li>
+      <li><a href="api/engines.html#pysat.engines.LinearConstraint.explain_failure">explain_failure() (pysat.engines.LinearConstraint method)</a>
+</li>
+      <li><a href="api/formula.html#pysat.formula.Formula.export_vpool">export_vpool() (pysat.formula.Formula static method)</a>
+</li>
+      <li><a href="api/card.html#pysat.card.ITotalizer.extend">extend() (pysat.card.ITotalizer method)</a>
+
+      <ul>
+        <li><a href="api/formula.html#pysat.formula.CNF.extend">(pysat.formula.CNF method)</a>
+</li>
+        <li><a href="api/formula.html#pysat.formula.CNFPlus.extend">(pysat.formula.CNFPlus method)</a>
+</li>
+        <li><a href="api/formula.html#pysat.formula.WCNF.extend">(pysat.formula.WCNF method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/engines.html#pysat.engines.LinearConstraint.falsified_by">falsified_by() (pysat.engines.LinearConstraint method)</a>
+</li>
+      <li><a href="api/examples/rc2.html#examples.rc2.RC2.filter_assumps">filter_assumps() (examples.rc2.RC2 method)</a>
+</li>
+      <li><a href="api/examples/rc2.html#examples.rc2.RC2Stratified.finish_level">finish_level() (examples.rc2.RC2Stratified method)</a>
+</li>
+      <li><a href="api/examples/fm.html#examples.fm.FM">FM (class in examples.fm)</a>
+</li>
+      <li><a href="api/formula.html#pysat.formula.Formula">Formula (class in pysat.formula)</a>
+</li>
+      <li><a href="api/formula.html#pysat.formula.FormulaError">FormulaError</a>
+</li>
+      <li><a href="api/formula.html#pysat.formula.Formula.formulas">formulas() (pysat.formula.Formula static method)</a>
+</li>
+      <li><a href="api/formula.html#pysat.formula.FormulaType">FormulaType (class in pysat.formula)</a>
+</li>
+      <li><a href="api/examples/lsu.html#examples.lsu.LSU.found_optimum">found_optimum() (examples.lsu.LSU method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/formula.html#pysat.formula.CNF.from_aiger">from_aiger() (pysat.formula.CNF method)</a>
+</li>
+      <li><a href="api/formula.html#pysat.formula.CNF.from_clauses">from_clauses() (pysat.formula.CNF method)</a>
+</li>
+      <li><a href="api/formula.html#pysat.formula.CNF.from_file">from_file() (pysat.formula.CNF method)</a>
+
+      <ul>
+        <li><a href="api/formula.html#pysat.formula.WCNF.from_file">(pysat.formula.WCNF method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/formula.html#pysat.formula.CNF.from_fp">from_fp() (pysat.formula.CNF method)</a>
+
+      <ul>
+        <li><a href="api/formula.html#pysat.formula.CNFPlus.from_fp">(pysat.formula.CNFPlus method)</a>
+</li>
+        <li><a href="api/formula.html#pysat.formula.WCNF.from_fp">(pysat.formula.WCNF method)</a>
+</li>
+        <li><a href="api/formula.html#pysat.formula.WCNFPlus.from_fp">(pysat.formula.WCNFPlus method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/formula.html#pysat.formula.CNF.from_string">from_string() (pysat.formula.CNF method)</a>
+
+      <ul>
+        <li><a href="api/formula.html#pysat.formula.WCNF.from_string">(pysat.formula.WCNF method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/pb.html#pysat.pb.PBEnc.geq">geq() (pysat.pb.PBEnc class method)</a>
+</li>
+      <li><a href="api/examples/hitman.html#examples.hitman.Hitman.get">get() (examples.hitman.Hitman method)</a>
+</li>
+      <li><a href="api/examples/rc2.html#examples.rc2.RC2.get_core">get_core() (examples.rc2.RC2 method)</a>
+
+      <ul>
+        <li><a href="api/solvers.html#pysat.solvers.Solver.get_core">(pysat.solvers.Solver method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/examples/lsu.html#examples.lsu.LSU.get_model">get_model() (examples.lsu.LSU method)</a>
+
+      <ul>
+        <li><a href="api/solvers.html#pysat.solvers.Solver.get_model">(pysat.solvers.Solver method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/solvers.html#pysat.solvers.Solver.get_proof">get_proof() (pysat.solvers.Solver method)</a>
+</li>
+      <li><a href="api/process.html#pysat.process.Processor.get_status">get_status() (pysat.process.Processor method)</a>
+
+      <ul>
+        <li><a href="api/solvers.html#pysat.solvers.Solver.get_status">(pysat.solvers.Solver method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/examples/genhard.html#examples.genhard.GT">GT (class in examples.genhard)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="H">H</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/examples/hitman.html#examples.hitman.Hitman.hit">hit() (examples.hitman.Hitman method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/examples/hitman.html#examples.hitman.Hitman">Hitman (class in examples.hitman)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/formula.html#pysat.formula.IDPool.id">id() (pysat.formula.IDPool method)</a>
+</li>
+      <li><a href="api/formula.html#pysat.formula.IDPool">IDPool (class in pysat.formula)</a>
+</li>
+      <li><a href="api/solvers.html#pysat.solvers.Solver.ignore">ignore() (pysat.solvers.Solver method)</a>
+</li>
+      <li><a href="api/formula.html#pysat.formula.Implies">Implies (class in pysat.formula)</a>
+</li>
+      <li><a href="api/card.html#pysat.card.ITotalizer.increase">increase() (pysat.card.ITotalizer method)</a>
+</li>
+      <li><a href="api/examples/fm.html#examples.fm.FM.init">init() (examples.fm.FM method)</a>
+
+      <ul>
+        <li><a href="api/examples/hitman.html#examples.hitman.Hitman.init">(examples.hitman.Hitman method)</a>
+</li>
+        <li><a href="api/examples/rc2.html#examples.rc2.RC2.init">(examples.rc2.RC2 method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/examples/primer.html#examples.primer.Primer.init_oracles">init_oracles() (examples.primer.Primer method)</a>
+</li>
+      <li><a href="api/examples/rc2.html#examples.rc2.RC2Stratified.init_wstr">init_wstr() (examples.rc2.RC2Stratified method)</a>
+</li>
+      <li><a href="api/examples/lsu.html#examples.lsu.LSU.interrupt">interrupt() (examples.lsu.LSU method)</a>
+
+      <ul>
+        <li><a href="api/solvers.html#pysat.solvers.Solver.interrupt">(pysat.solvers.Solver method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/engines.html#pysat.engines.BooleanEngine.is_active">is_active() (pysat.engines.BooleanEngine method)</a>
+</li>
+      <li><a href="api/solvers.html#pysat.solvers.Solver.is_decision">is_decision() (pysat.solvers.Solver method)</a>
+</li>
+      <li><a href="api/formula.html#pysat.formula.ITE">ITE (class in pysat.formula)</a>
+</li>
+      <li><a href="api/card.html#pysat.card.ITotalizer">ITotalizer (class in pysat.card)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="J">J</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/engines.html#pysat.engines.LinearConstraint.justify_unweighted">justify_unweighted() (pysat.engines.LinearConstraint method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/engines.html#pysat.engines.LinearConstraint.justify_weighted">justify_weighted() (pysat.engines.LinearConstraint method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/examples/lbx.html#examples.lbx.LBX">LBX (class in examples.lbx)</a>
+</li>
+      <li><a href="api/pb.html#pysat.pb.PBEnc.leq">leq() (pysat.pb.PBEnc class method)</a>
+</li>
+      <li><a href="api/engines.html#pysat.engines.LinearConstraint">LinearConstraint (class in pysat.engines)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/formula.html#pysat.formula.Formula.literals">literals() (pysat.formula.Formula static method)</a>
+</li>
+      <li><a href="api/examples/lsu.html#examples.lsu.LSU">LSU (class in examples.lsu)</a>
+</li>
+      <li><a href="api/examples/lsu.html#examples.lsu.LSUPlus">LSUPlus (class in examples.lsu)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/examples/mcsls.html#examples.mcsls.MCSls">MCSls (class in examples.mcsls)</a>
+</li>
+      <li><a href="api/card.html#pysat.card.ITotalizer.merge_with">merge_with() (pysat.card.ITotalizer method)</a>
+</li>
+      <li><a href="api/examples/primer.html#examples.primer.Primer.minimise_dual">minimise_dual() (examples.primer.Primer method)</a>
+</li>
+      <li><a href="api/examples/rc2.html#examples.rc2.RC2.minimize_core">minimize_core() (examples.rc2.RC2 method)</a>
+</li>
+      <li>
+    module
+
+      <ul>
+        <li><a href="api/allies/approxmc.html#module-allies.approxmc">allies.approxmc</a>
+</li>
+        <li><a href="api/allies/unigen.html#module-allies.unigen">allies.unigen</a>
+</li>
+        <li><a href="api/examples/bica.html#module-examples.bica">examples.bica</a>
+</li>
+        <li><a href="api/examples/fm.html#module-examples.fm">examples.fm</a>
+</li>
+        <li><a href="api/examples/genhard.html#module-examples.genhard">examples.genhard</a>
+</li>
+        <li><a href="api/examples/hitman.html#module-examples.hitman">examples.hitman</a>
+</li>
+        <li><a href="api/examples/lbx.html#module-examples.lbx">examples.lbx</a>
+</li>
+        <li><a href="api/examples/lsu.html#module-examples.lsu">examples.lsu</a>
+</li>
+        <li><a href="api/examples/mcsls.html#module-examples.mcsls">examples.mcsls</a>
+</li>
+        <li><a href="api/examples/models.html#module-examples.models">examples.models</a>
+</li>
+        <li><a href="api/examples/musx.html#module-examples.musx">examples.musx</a>
+</li>
+        <li><a href="api/examples/optux.html#module-examples.optux">examples.optux</a>
+</li>
+        <li><a href="api/examples/primer.html#module-examples.primer">examples.primer</a>
+</li>
+        <li><a href="api/examples/rc2.html#module-examples.rc2">examples.rc2</a>
+</li>
+        <li><a href="api/card.html#module-pysat.card">pysat.card</a>
+</li>
+        <li><a href="api/engines.html#module-pysat.engines">pysat.engines</a>
+</li>
+        <li><a href="api/formula.html#module-pysat.formula">pysat.formula</a>
+</li>
+        <li><a href="api/pb.html#module-pysat.pb">pysat.pb</a>
+</li>
+        <li><a href="api/process.html#module-pysat.process">pysat.process</a>
+</li>
+        <li><a href="api/solvers.html#module-pysat.solvers">pysat.solvers</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/examples/musx.html#examples.musx.MUSX">MUSX (class in examples.musx)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/formula.html#pysat.formula.Neg">Neg (class in pysat.formula)</a>
+</li>
+      <li><a href="api/formula.html#pysat.formula.CNF.negate">negate() (pysat.formula.CNF method)</a>
+</li>
+      <li><a href="api/card.html#pysat.card.ITotalizer.new">new() (pysat.card.ITotalizer method)</a>
+
+      <ul>
+        <li><a href="api/solvers.html#pysat.solvers.Solver.new">(pysat.solvers.Solver method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/examples/rc2.html#examples.rc2.RC2Stratified.next_level">next_level() (examples.rc2.RC2Stratified method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/solvers.html#pysat.solvers.Solver.nof_clauses">nof_clauses() (pysat.solvers.Solver method)</a>
+</li>
+      <li><a href="api/solvers.html#pysat.solvers.Solver.nof_vars">nof_vars() (pysat.solvers.Solver method)</a>
+</li>
+      <li><a href="api/formula.html#pysat.formula.WCNF.normalize_negatives">normalize_negatives() (pysat.formula.WCNF method)</a>
+</li>
+      <li><a href="api/card.html#pysat.card.NoSuchEncodingError">NoSuchEncodingError</a>, <a href="api/pb.html#pysat.pb.NoSuchEncodingError">[1]</a>
+</li>
+      <li><a href="api/solvers.html#pysat.solvers.NoSuchSolverError">NoSuchSolverError</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="O">O</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/formula.html#pysat.formula.IDPool.obj">obj() (pysat.formula.IDPool method)</a>
+</li>
+      <li><a href="api/solvers.html#pysat.solvers.Solver.observe">observe() (pysat.solvers.Solver method)</a>
+</li>
+      <li><a href="api/formula.html#pysat.formula.IDPool.occupy">occupy() (pysat.formula.IDPool method)</a>
+</li>
+      <li><a href="api/engines.html#pysat.engines.BooleanEngine.on_assignment">on_assignment() (pysat.engines.BooleanEngine method)</a>
+
+      <ul>
+        <li><a href="api/engines.html#pysat.engines.Propagator.on_assignment">(pysat.engines.Propagator method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/engines.html#pysat.engines.BooleanEngine.on_backtrack">on_backtrack() (pysat.engines.BooleanEngine method)</a>
+
+      <ul>
+        <li><a href="api/engines.html#pysat.engines.Propagator.on_backtrack">(pysat.engines.Propagator method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/engines.html#pysat.engines.BooleanEngine.on_new_level">on_new_level() (pysat.engines.BooleanEngine method)</a>
+
+      <ul>
+        <li><a href="api/engines.html#pysat.engines.Propagator.on_new_level">(pysat.engines.Propagator method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/examples/optux.html#examples.optux.OptUx">OptUx (class in examples.optux)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/formula.html#pysat.formula.Or">Or (class in pysat.formula)</a>
+</li>
+      <li><a href="api/examples/bica.html#examples.bica.Bica.oracle_time">oracle_time() (examples.bica.Bica method)</a>
+
+      <ul>
+        <li><a href="api/examples/fm.html#examples.fm.FM.oracle_time">(examples.fm.FM method)</a>
+</li>
+        <li><a href="api/examples/hitman.html#examples.hitman.Hitman.oracle_time">(examples.hitman.Hitman method)</a>
+</li>
+        <li><a href="api/examples/lbx.html#examples.lbx.LBX.oracle_time">(examples.lbx.LBX method)</a>
+</li>
+        <li><a href="api/examples/lsu.html#examples.lsu.LSU.oracle_time">(examples.lsu.LSU method)</a>
+</li>
+        <li><a href="api/examples/mcsls.html#examples.mcsls.MCSls.oracle_time">(examples.mcsls.MCSls method)</a>
+</li>
+        <li><a href="api/examples/musx.html#examples.musx.MUSX.oracle_time">(examples.musx.MUSX method)</a>
+</li>
+        <li><a href="api/examples/optux.html#examples.optux.OptUx.oracle_time">(examples.optux.OptUx method)</a>
+</li>
+        <li><a href="api/examples/primer.html#examples.primer.Primer.oracle_time">(examples.primer.Primer method)</a>
+</li>
+        <li><a href="api/examples/rc2.html#examples.rc2.RC2.oracle_time">(examples.rc2.RC2 method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/examples/genhard.html#examples.genhard.PAR">PAR (class in examples.genhard)</a>
+</li>
+      <li><a href="api/pb.html#pysat.pb.PBEnc">PBEnc (class in pysat.pb)</a>
+</li>
+      <li><a href="api/examples/genhard.html#examples.genhard.PHP">PHP (class in examples.genhard)</a>
+</li>
+      <li><a href="api/engines.html#pysat.engines.BooleanEngine.preprocess">preprocess() (pysat.engines.BooleanEngine method)</a>
+</li>
+      <li><a href="api/examples/primer.html#examples.primer.Primer">Primer (class in examples.primer)</a>
+</li>
+      <li><a href="api/process.html#pysat.process.Processor.process">process() (pysat.process.Processor method)</a>
+</li>
+      <li><a href="api/examples/rc2.html#examples.rc2.RC2.process_am1">process_am1() (examples.rc2.RC2 method)</a>
+
+      <ul>
+        <li><a href="api/examples/rc2.html#examples.rc2.RC2Stratified.process_am1">(examples.rc2.RC2Stratified method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/examples/rc2.html#examples.rc2.RC2.process_core">process_core() (examples.rc2.RC2 method)</a>
+</li>
+      <li><a href="api/engines.html#pysat.engines.BooleanEngine.process_linear">process_linear() (pysat.engines.BooleanEngine method)</a>
+</li>
+      <li><a href="api/engines.html#pysat.engines.BooleanEngine.process_parity">process_parity() (pysat.engines.BooleanEngine method)</a>
+</li>
+      <li><a href="api/examples/rc2.html#examples.rc2.RC2.process_sels">process_sels() (examples.rc2.RC2 method)</a>
+
+      <ul>
+        <li><a href="api/examples/rc2.html#examples.rc2.RC2Stratified.process_sels">(examples.rc2.RC2Stratified method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/examples/rc2.html#examples.rc2.RC2.process_sums">process_sums() (examples.rc2.RC2 method)</a>
+
+      <ul>
+        <li><a href="api/examples/rc2.html#examples.rc2.RC2Stratified.process_sums">(examples.rc2.RC2Stratified method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/process.html#pysat.process.Processor">Processor (class in pysat.process)</a>
+</li>
+      <li><a href="api/solvers.html#pysat.solvers.Solver.prop_budget">prop_budget() (pysat.solvers.Solver method)</a>
+</li>
+      <li><a href="api/engines.html#pysat.engines.BooleanEngine.propagate">propagate() (pysat.engines.BooleanEngine method)</a>
+
+      <ul>
+        <li><a href="api/engines.html#pysat.engines.Propagator.propagate">(pysat.engines.Propagator method)</a>
+</li>
+        <li><a href="api/solvers.html#pysat.solvers.Solver.propagate">(pysat.solvers.Solver method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/engines.html#pysat.engines.LinearConstraint.propagate_unweighted">propagate_unweighted() (pysat.engines.LinearConstraint method)</a>
+</li>
+      <li><a href="api/engines.html#pysat.engines.LinearConstraint.propagate_weighted">propagate_weighted() (pysat.engines.LinearConstraint method)</a>
+</li>
+      <li><a href="api/engines.html#pysat.engines.Propagator">Propagator (class in pysat.engines)</a>
+</li>
+      <li><a href="api/solvers.html#pysat.solvers.Solver.propagator_active">propagator_active() (pysat.solvers.Solver method)</a>
+</li>
+      <li><a href="api/engines.html#pysat.engines.BooleanEngine.provide_reason">provide_reason() (pysat.engines.BooleanEngine method)</a>
+
+      <ul>
+        <li><a href="api/engines.html#pysat.engines.Propagator.provide_reason">(pysat.engines.Propagator method)</a>
+</li>
+      </ul></li>
+      <li>
+    pysat.card
+
+      <ul>
+        <li><a href="api/card.html#module-pysat.card">module</a>
+</li>
+      </ul></li>
+      <li>
+    pysat.engines
+
+      <ul>
+        <li><a href="api/engines.html#module-pysat.engines">module</a>
+</li>
+      </ul></li>
+      <li>
+    pysat.formula
+
+      <ul>
+        <li><a href="api/formula.html#module-pysat.formula">module</a>
+</li>
+      </ul></li>
+      <li>
+    pysat.pb
+
+      <ul>
+        <li><a href="api/pb.html#module-pysat.pb">module</a>
+</li>
+      </ul></li>
+      <li>
+    pysat.process
+
+      <ul>
+        <li><a href="api/process.html#module-pysat.process">module</a>
+</li>
+      </ul></li>
+      <li>
+    pysat.solvers
+
+      <ul>
+        <li><a href="api/solvers.html#module-pysat.solvers">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/examples/rc2.html#examples.rc2.RC2">RC2 (class in examples.rc2)</a>
+</li>
+      <li><a href="api/examples/rc2.html#examples.rc2.RC2Stratified">RC2Stratified (class in examples.rc2)</a>
+</li>
+      <li><a href="api/engines.html#pysat.engines.LinearConstraint.register_watched">register_watched() (pysat.engines.LinearConstraint method)</a>
+</li>
+      <li><a href="api/examples/fm.html#examples.fm.FM.reinit">reinit() (examples.fm.FM method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/examples/fm.html#examples.fm.FM.relax_core">relax_core() (examples.fm.FM method)</a>
+</li>
+      <li><a href="api/examples/fm.html#examples.fm.FM.remove_unit_core">remove_unit_core() (examples.fm.FM method)</a>
+</li>
+      <li><a href="api/solvers.html#pysat.solvers.Solver.reset_observed">reset_observed() (pysat.solvers.Solver method)</a>
+</li>
+      <li><a href="api/formula.html#pysat.formula.IDPool.restart">restart() (pysat.formula.IDPool method)</a>
+</li>
+      <li><a href="api/process.html#pysat.process.Processor.restore">restore() (pysat.process.Processor method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/allies/unigen.html#allies.unigen.Sampler.sample">sample() (allies.unigen.Sampler method)</a>
+</li>
+      <li><a href="api/allies/unigen.html#allies.unigen.Sampler">Sampler (class in allies.unigen)</a>
+</li>
+      <li><a href="api/formula.html#pysat.formula.Formula.satisfied">satisfied() (pysat.formula.Formula method)</a>
+</li>
+      <li><a href="api/examples/rc2.html#examples.rc2.RC2.set_bound">set_bound() (examples.rc2.RC2 method)</a>
+</li>
+      <li><a href="api/formula.html#pysat.formula.Formula.set_context">set_context() (pysat.formula.Formula static method)</a>
+</li>
+      <li><a href="api/solvers.html#pysat.solvers.Solver.set_phases">set_phases() (pysat.solvers.Solver method)</a>
+</li>
+      <li><a href="api/engines.html#pysat.engines.BooleanEngine.setup_observe">setup_observe() (pysat.engines.BooleanEngine method)</a>
+</li>
+      <li><a href="api/formula.html#pysat.formula.And.simplified">simplified() (pysat.formula.And method)</a>
+
+      <ul>
+        <li><a href="api/formula.html#pysat.formula.Atom.simplified">(pysat.formula.Atom method)</a>
+</li>
+        <li><a href="api/formula.html#pysat.formula.CNF.simplified">(pysat.formula.CNF method)</a>
+</li>
+        <li><a href="api/formula.html#pysat.formula.Equals.simplified">(pysat.formula.Equals method)</a>
+</li>
+        <li><a href="api/formula.html#pysat.formula.Formula.simplified">(pysat.formula.Formula method)</a>
+</li>
+        <li><a href="api/formula.html#pysat.formula.Implies.simplified">(pysat.formula.Implies method)</a>
+</li>
+        <li><a href="api/formula.html#pysat.formula.ITE.simplified">(pysat.formula.ITE method)</a>
+</li>
+        <li><a href="api/formula.html#pysat.formula.Neg.simplified">(pysat.formula.Neg method)</a>
+</li>
+        <li><a href="api/formula.html#pysat.formula.Or.simplified">(pysat.formula.Or method)</a>
+</li>
+        <li><a href="api/formula.html#pysat.formula.XOr.simplified">(pysat.formula.XOr method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/examples/lsu.html#examples.lsu.LSU.solve">solve() (examples.lsu.LSU method)</a>
+
+      <ul>
+        <li><a href="api/solvers.html#pysat.solvers.Solver.solve">(pysat.solvers.Solver method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/solvers.html#pysat.solvers.Solver.solve_limited">solve_limited() (pysat.solvers.Solver method)</a>
+</li>
+      <li><a href="api/solvers.html#pysat.solvers.Solver">Solver (class in pysat.solvers)</a>
+</li>
+      <li><a href="api/solvers.html#pysat.solvers.SolverNames">SolverNames (class in pysat.solvers)</a>
+</li>
+      <li><a href="api/examples/fm.html#examples.fm.FM.split_core">split_core() (examples.fm.FM method)</a>
+</li>
+      <li><a href="api/solvers.html#pysat.solvers.Solver.start_mode">start_mode() (pysat.solvers.Solver method)</a>
+</li>
+      <li><a href="api/solvers.html#pysat.solvers.Solver.supports_atmost">supports_atmost() (pysat.solvers.Solver method)</a>
+</li>
+      <li><a href="api/examples/hitman.html#examples.hitman.Hitman.switch_phase">switch_phase() (examples.hitman.Hitman method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/solvers.html#pysat.solvers.Solver.time">time() (pysat.solvers.Solver method)</a>
+</li>
+      <li><a href="api/solvers.html#pysat.solvers.Solver.time_accum">time_accum() (pysat.solvers.Solver method)</a>
+</li>
+      <li><a href="api/formula.html#pysat.formula.CNF.to_alien">to_alien() (pysat.formula.CNF method)</a>
+
+      <ul>
+        <li><a href="api/formula.html#pysat.formula.CNFPlus.to_alien">(pysat.formula.CNFPlus method)</a>
+</li>
+        <li><a href="api/formula.html#pysat.formula.WCNF.to_alien">(pysat.formula.WCNF method)</a>
+</li>
+        <li><a href="api/formula.html#pysat.formula.WCNFPlus.to_alien">(pysat.formula.WCNFPlus method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/formula.html#pysat.formula.CNF.to_dimacs">to_dimacs() (pysat.formula.CNF method)</a>
+
+      <ul>
+        <li><a href="api/formula.html#pysat.formula.CNFPlus.to_dimacs">(pysat.formula.CNFPlus method)</a>
+</li>
+        <li><a href="api/formula.html#pysat.formula.WCNF.to_dimacs">(pysat.formula.WCNF method)</a>
+</li>
+        <li><a href="api/formula.html#pysat.formula.WCNFPlus.to_dimacs">(pysat.formula.WCNFPlus method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/formula.html#pysat.formula.CNF.to_file">to_file() (pysat.formula.CNF method)</a>
+
+      <ul>
+        <li><a href="api/formula.html#pysat.formula.WCNF.to_file">(pysat.formula.WCNF method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/formula.html#pysat.formula.CNF.to_fp">to_fp() (pysat.formula.CNF method)</a>
+
+      <ul>
+        <li><a href="api/formula.html#pysat.formula.CNFPlus.to_fp">(pysat.formula.CNFPlus method)</a>
+</li>
+        <li><a href="api/formula.html#pysat.formula.WCNF.to_fp">(pysat.formula.WCNF method)</a>
+</li>
+        <li><a href="api/formula.html#pysat.formula.WCNFPlus.to_fp">(pysat.formula.WCNFPlus method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/examples/fm.html#examples.fm.FM.treat_core">treat_core() (examples.fm.FM method)</a>
+</li>
+      <li><a href="api/examples/rc2.html#examples.rc2.RC2.trim_core">trim_core() (examples.rc2.RC2 method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/engines.html#pysat.engines.LinearConstraint.unassign">unassign() (pysat.engines.LinearConstraint method)</a>
+</li>
+      <li><a href="api/card.html#pysat.card.UnsupportedBound">UnsupportedBound</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/formula.html#pysat.formula.WCNF.unweighted">unweighted() (pysat.formula.WCNF method)</a>
+
+      <ul>
+        <li><a href="api/formula.html#pysat.formula.WCNFPlus.unweighted">(pysat.formula.WCNFPlus method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/examples/rc2.html#examples.rc2.RC2.update_sum">update_sum() (examples.rc2.RC2 method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/formula.html#pysat.formula.WCNF">WCNF (class in pysat.formula)</a>
+</li>
+      <li><a href="api/formula.html#pysat.formula.WCNFPlus">WCNFPlus (class in pysat.formula)</a>
+</li>
+      <li><a href="api/formula.html#pysat.formula.CNF.weighted">weighted() (pysat.formula.CNF method)</a>
+
+      <ul>
+        <li><a href="api/formula.html#pysat.formula.CNFPlus.weighted">(pysat.formula.CNFPlus method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/card.html#pysat.card.NoSuchEncodingError.with_traceback">with_traceback() (pysat.card.NoSuchEncodingError method)</a>
+
+      <ul>
+        <li><a href="api/card.html#pysat.card.UnsupportedBound.with_traceback">(pysat.card.UnsupportedBound method)</a>
+</li>
+        <li><a href="api/pb.html#pysat.pb.NoSuchEncodingError.with_traceback">(pysat.pb.NoSuchEncodingError method)</a>
+</li>
+        <li><a href="api/solvers.html#pysat.solvers.NoSuchSolverError.with_traceback">(pysat.solvers.NoSuchSolverError method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="X">X</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/formula.html#pysat.formula.XOr">XOr (class in pysat.formula)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018-2024, Alexey Ignatiev, Joao Marques-Silva, Antonio Morgado.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
