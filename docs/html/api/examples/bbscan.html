@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>A deletion-based MUS extractor (pysat.examples.musx) &#8212; PySAT 1.8.dev22 documentation</title>
+    <title>Collection of backbone computation algorithms (pysat.examples.bbscan) &#8212; PySAT 1.8.dev22 documentation</title>
   
   
   
@@ -42,12 +42,12 @@
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/examples/musx';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/examples/bbscan';</script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="OptUx optimal MUS enumerator (pysat.examples.optux)" href="optux.html" />
-    <link rel="prev" title="An iterative model enumerator (pysat.examples.models)" href="models.html" />
+    <link rel="next" title="Bica algorithm for formula simplification (pysat.examples.bica)" href="bica.html" />
+    <link rel="prev" title="SAT solvers’ API (pysat.solvers)" href="../solvers.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -341,7 +341,7 @@
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">A deletion-based MUS extractor (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.musx</span></code>)</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Collection of backbone computation algorithms (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.bbscan</span></code>)</span></li>
   </ul>
 </nav>
 </div>
@@ -358,14 +358,14 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="module-examples.musx">
-<span id="a-deletion-based-mus-extractor-pysat-examples-musx"></span><h1>A deletion-based MUS extractor (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.musx</span></code>)<a class="headerlink" href="#module-examples.musx" title="Link to this heading">#</a></h1>
+  <section id="module-examples.bbscan">
+<span id="collection-of-backbone-computation-algorithms-pysat-examples-bbscan"></span><h1>Collection of backbone computation algorithms (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.bbscan</span></code>)<a class="headerlink" href="#module-examples.bbscan" title="Link to this heading">#</a></h1>
 <section id="list-of-classes">
 <h2>List of classes<a class="headerlink" href="#list-of-classes" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#examples.musx.MUSX" title="examples.musx.MUSX"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MUSX</span></code></a></p></td>
-<td><p>MUS eXtractor using the deletion-based algorithm.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#examples.bbscan.BBScan" title="examples.bbscan.BBScan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BBScan</span></code></a></p></td>
+<td><p>A solver for computing all backbone literals of a given Boolean formula.</p></td>
 </tr>
 </tbody>
 </table>
@@ -373,150 +373,158 @@
 </section>
 <section id="module-description">
 <h2>Module description<a class="headerlink" href="#module-description" title="Link to this heading">#</a></h2>
-<p>This module implements a deletion-based algorithm <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> for extracting a
-<em>minimal unsatisfiable subset</em> (<em>MUS</em>) of a given (unsafistiable) CNF
-formula. This simplistic implementation can deal with <em>plain</em> and <em>partial</em>
-CNF formulas, e.g. formulas in the DIMACS CNF and WCNF formats.</p>
+<p>A simple implementation of a few backbone extraction algorithms described
+in <a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. Given a Boolean formula <span class="math notranslate nohighlight">\(\varphi\)</span>, a backbone literal is a
+literal that holds true in every satisfying assignment of
+<span class="math notranslate nohighlight">\(\varphi\)</span>. The backbone of formula <span class="math notranslate nohighlight">\(\varphi\)</span> is the set of
+all backbone literals. This implementation includes the following
+algorithms from <a class="footnote-reference brackets" href="#id3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>:</p>
+<ul class="simple">
+<li><p>implicant enumeration algorithm,</p></li>
+<li><p>iterative algorithm (with one test per variable),</p></li>
+<li><p>complement of backbone estimate algorithm,</p></li>
+<li><p>chunking algorithm,</p></li>
+<li><p>core-based algorithm,</p></li>
+<li><p>core-based algorithm with chunking.</p></li>
+</ul>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id2" role="doc-footnote">
+<aside class="footnote brackets" id="id3" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
-<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id3">2</a>)</span>
-<p>Joao Marques-Silva. <em>Minimal Unsatisfiability: Models, Algorithms
-and Applications</em>. ISMVL 2010. pp. 9-14</p>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>,<a role="doc-backlink" href="#id4">3</a>)</span>
+<p>Mikolás Janota, Inês Lynce, Joao Marques-Silva. <em>Algorithms for
+computing backbones of propositional formulae</em>. AI Commun. 28(2).
+2015. pp. 161-177</p>
 </aside>
 </aside>
-<p>The following extraction procedure is implemented:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># oracle: SAT solver (initialized)</span>
-<span class="c1"># assump: full set of assumptions</span>
-
-<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">assump</span><span class="p">):</span>
-    <span class="n">to_test</span> <span class="o">=</span> <span class="n">assump</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">assump</span><span class="p">[(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):]</span>
-    <span class="k">if</span> <span class="n">oracle</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="n">to_test</span><span class="p">):</span>
-        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">assump</span> <span class="o">=</span> <span class="n">to_test</span>
-
-<span class="k">return</span> <span class="n">assump</span>
-</pre></div>
-</div>
-<p>The implementation can be used as an executable (the list of available
-command-line options can be shown using <code class="docutils literal notranslate"><span class="pre">musx.py</span> <span class="pre">-h</span></code>) in the following
-way:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat formula.wcnf
-p wcnf 3 6 4
-1 1 0
+<p>The implementation can be used as an executable (the list of
+available command-line options can be shown using <code class="docutils literal notranslate"><span class="pre">bbscan.py</span> <span class="pre">-h</span></code>)
+in the following way:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ xzcat formula.cnf.xz
+p cnf 3 4
 1 2 0
-1 3 0
-4 -1 -2 0
-4 -1 -3 0
-4 -2 -3 0
+1 -2 0
+2 -3 0
+-2 -3 0
 
-$ musx.py -s glucose3 -vv formula.wcnf
-c MUS approx: 1 2 0
-c testing clid: 0 -&gt; sat (keeping 0)
-c testing clid: 1 -&gt; sat (keeping 1)
-c nof soft: 3
-c MUS size: 2
-v 1 2 0
-c oracle time: 0.0001
+$ bbscan.py -v formula.cnf.xz
+c formula: 3 vars, 4 clauses
+c using iterative algorithm
+v +1 -3 0
+c backbone size: 2 (66.67% of all variables)
+c oracle time: 0.0000
+c oracle calls: 4
 </pre></div>
 </div>
-<p>Alternatively, the algorithm can be accessed and invoked through the
+<p>Alternatively, the algorithms can be accessed and invoked through the
 standard <code class="docutils literal notranslate"><span class="pre">import</span></code> interface of Python, e.g.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.musx</span> <span class="kn">import</span> <span class="n">MUSX</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">WCNF</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.examples.bbscan</span> <span class="kn">import</span> <span class="n">BBScan</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">CNF</span>
 <span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;formula.wcnf&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># reading a formula from file</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;formula.wcnf.xz&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">musx</span> <span class="o">=</span> <span class="n">MUSX</span><span class="p">(</span><span class="n">wcnf</span><span class="p">,</span> <span class="n">verbosity</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">musx</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>  <span class="c1"># compute a minimally unsatisfiable set of clauses</span>
-<span class="go">[1, 2]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># creating BBScan and running it</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">BBScan</span><span class="p">(</span><span class="n">cnf</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s1">&#39;g3&#39;</span><span class="p">,</span> <span class="n">lift</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">rotate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">bbscan</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">bbone</span> <span class="o">=</span> <span class="n">bbscan</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;core&#39;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="c1"># outputting the results</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">bbone</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="n">bbone</span><span class="p">)</span>
+<span class="go">[1, -3]</span>
 </pre></div>
 </div>
-<p>Note that the implementation is able to compute only one MUS (MUS
-enumeration is not supported).</p>
+<p>Each of the available algorithms can be augmented with two simple
+heuristics aiming at reducing satisfying assignments and, thus, filtering
+out unnecessary literals: literal lifting and filtering rotatable
+literals. Both are described in the aforementioned paper.</p>
+<p>Note that most of the methods of the class <a class="reference internal" href="#examples.bbscan.BBScan" title="examples.bbscan.BBScan"><code class="xref py py-class docutils literal notranslate"><span class="pre">BBScan</span></code></a> are made
+private. Therefore, the tool provides a minimalistic interface via which a
+user can specify all the necessary parameters.</p>
 </section>
 <section id="module-details">
 <h2>Module details<a class="headerlink" href="#module-details" title="Link to this heading">#</a></h2>
 </section>
 <dl class="py class">
-<dt class="sig sig-object py" id="examples.musx.MUSX">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">examples.musx.</span></span><span class="sig-name descname"><span class="pre">MUSX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formula</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'m22'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbosity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.musx.MUSX" title="Link to this definition">#</a></dt>
-<dd><p>MUS eXtractor using the deletion-based algorithm. The algorithm is
-described in <a class="footnote-reference brackets" href="#id2" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> (also see the module description above). Essentially,
-the algorithm can be seen as an iterative process, which tries to
-remove one soft clause at a time and check whether the remaining set of
-soft clauses is still unsatisfiable together with the hard clauses.</p>
-<p>The constructor of <a class="reference internal" href="#examples.musx.MUSX" title="examples.musx.MUSX"><code class="xref py py-class docutils literal notranslate"><span class="pre">MUSX</span></code></a> objects receives a target
-<a class="reference internal" href="../formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a> or <cite>.WCNF</cite> formula, a SAT solver name, and a verbosity level. Note
-that the default SAT solver is MiniSat22 (referred to as <code class="docutils literal notranslate"><span class="pre">'m22'</span></code>, see
-<a class="reference internal" href="../solvers.html#pysat.solvers.SolverNames" title="pysat.solvers.SolverNames"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolverNames</span></code></a> for details). The default verbosity level is
-<code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+<dt class="sig sig-object py" id="examples.bbscan.BBScan">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">examples.bbscan.</span></span><span class="sig-name descname"><span class="pre">BBScan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formula</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'g3'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.bbscan.BBScan" title="Link to this definition">#</a></dt>
+<dd><p>A solver for computing all backbone literals of a given Boolean
+formula. It implements 6 algorithms for backbone computation described
+in <a class="footnote-reference brackets" href="#id3" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> augmented with two simple heuristics that can be speed up the
+process.</p>
+<p>Note that the input formula can be a <a class="reference internal" href="../formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a> object but also any
+object of class <a class="reference internal" href="../formula.html#pysat.formula.Formula" title="pysat.formula.Formula"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formula</span></code></a>, thus the tool can used for
+computing backbone literals of non-clausal formulas.</p>
+<p>A user can select one of the SAT solvers available at hand
+(<code class="docutils literal notranslate"><span class="pre">'glucose3'</span></code> is used by default). The optional two heuristics can
+be also specified as Boolean input arguments <code class="docutils literal notranslate"><span class="pre">lift</span></code>, and <code class="docutils literal notranslate"><span class="pre">rotate</span></code>
+(turned off by default).</p>
+<p>The list of initialiser’s arguments is as follows:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>formula</strong> (<a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a>) – input WCNF formula</p></li>
-<li><p><strong>solver</strong> (<em>str</em>) – name of SAT solver</p></li>
-<li><p><strong>verbosity</strong> (<em>int</em>) – verbosity level</p></li>
+<li><p><strong>formula</strong> (<a class="reference internal" href="../formula.html#pysat.formula.Formula" title="pysat.formula.Formula"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formula</span></code></a> or <a class="reference internal" href="../formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a>) – input formula whose backbone is sought</p></li>
+<li><p><strong>solver</strong> (<em>str</em>) – SAT oracle name</p></li>
+<li><p><strong>lift</strong> (<em>bool</em>) – apply literal lifting heuristic</p></li>
+<li><p><strong>rotate</strong> (<em>bool</em>) – apply rotatable literal filtering</p></li>
+<li><p><strong>verbose</strong> (<em>int</em>) – verbosity level</p></li>
 </ul>
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="examples.musx.MUSX._compute">
-<span class="sig-name descname"><span class="pre">_compute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">approx</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.musx.MUSX._compute" title="Link to this definition">#</a></dt>
-<dd><p>Deletion-based MUS extraction. Given an over-approximation of an
-MUS, i.e. an unsatisfiable core previously returned by a SAT
-oracle, the method represents a loop, which at each iteration
-removes a clause from the core and checks whether the remaining
-clauses of the approximation are unsatisfiable together with the
-hard clauses.</p>
-<p>Soft clauses are (de)activated using the standard MiniSat-like
-assumptions interface <a class="footnote-reference brackets" href="#id5" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. Each soft clause <span class="math notranslate nohighlight">\(c\)</span> is augmented
-with a selector literal <span class="math notranslate nohighlight">\(s\)</span>, e.g. <span class="math notranslate nohighlight">\((c) \gets (c \vee
-\neg{s})\)</span>. As a result, clause <span class="math notranslate nohighlight">\(c\)</span> can be activated by
-assuming literal <span class="math notranslate nohighlight">\(s\)</span>. The over-approximation provided as an
-input is specified as a list of selector literals for clauses in
-the unsatisfiable core.</p>
-<aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id5" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">2</a><span class="fn-bracket">]</span></span>
-<p>Niklas Eén, Niklas Sörensson. <em>Temporal induction by
-incremental SAT solving</em>. Electr. Notes Theor. Comput. Sci.
-89(4). 2003. pp. 543-560</p>
-</aside>
-</aside>
+<dt class="sig sig-object py" id="examples.bbscan.BBScan.compute">
+<span class="sig-name descname"><span class="pre">compute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">algorithm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'iter'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">focus_on</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.bbscan.BBScan.compute" title="Link to this definition">#</a></dt>
+<dd><p>Main solving method. A user is supposed to specify which backbone
+computation algorithm they want to use:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'enum'</span></code> (implicant enumeration algorithm),</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'iter'</span></code> (iterative algorithm, with one test per variable),</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'compl'</span></code> (complement of backbone estimate algorithm),</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'chunk'</span></code> (chunking algorithm),</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'core'</span></code> (core-based algorithm),</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'corechunk'</span></code> (core-based algorithm with chunking).</p></li>
+</ul>
+<p>By default, <a class="reference internal" href="#examples.bbscan.BBScan" title="examples.bbscan.BBScan"><code class="xref py py-class docutils literal notranslate"><span class="pre">BBScan</span></code></a> opts for <code class="docutils literal notranslate"><span class="pre">'iter'</span></code>.</p>
+<p>If the chunking algorithm is selected (either <code class="docutils literal notranslate"><span class="pre">'chunk'</span></code> or
+<code class="docutils literal notranslate"><span class="pre">'corechunk'</span></code>), the user may specify the size of the chunk,
+which is set to 100 by default.</p>
+<p>Finally, one may opt for computing backbone literals out of a
+particular subset of literals / variables, which may run faster
+than computing the entire formula’s backbone. To focus on a
+particular set of variables / literals, the user should use the
+parameter <code class="docutils literal notranslate"><span class="pre">focus_on</span></code>, which is set to <code class="docutils literal notranslate"><span class="pre">None</span></code> by default.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The method raises <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> if the input formula is
+unsatisfiable.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>approx</strong> (<em>list</em><em>(</em><em>int</em><em>)</em>) – an over-approximation of an MUS</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>algorithm</strong> (<em>str</em>) – backbone computation algorithm</p></li>
+<li><p><strong>chunk_size</strong> (<em>int</em>) – number of literals in the chunk (for chunking algorithms)</p></li>
+<li><p><strong>focus_on</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – a list of literals to focus on</p></li>
+</ul>
 </dd>
 </dl>
-<p>Note that the method does not return. Instead, after its execution,
-the input over-approximation is refined and contains an MUS.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="examples.musx.MUSX.compute">
-<span class="sig-name descname"><span class="pre">compute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.musx.MUSX.compute" title="Link to this definition">#</a></dt>
-<dd><p>This is the main method of the <a class="reference internal" href="#examples.musx.MUSX" title="examples.musx.MUSX"><code class="xref py py-class docutils literal notranslate"><span class="pre">MUSX</span></code></a> class. It computes a
-set of soft clauses belonging to an MUS of the input formula.
-First, the method checks whether the formula is satisfiable. If it
-is, nothing else is done. Otherwise, an <em>unsatisfiable core</em> of the
-formula is extracted, which is later used as an over-approximation
-of an MUS refined in <a class="reference internal" href="#examples.musx.MUSX._compute" title="examples.musx.MUSX._compute"><code class="xref py py-func docutils literal notranslate"><span class="pre">_compute()</span></code></a>.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="examples.musx.MUSX.delete">
-<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.musx.MUSX.delete" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="examples.bbscan.BBScan.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.bbscan.BBScan.delete" title="Link to this definition">#</a></dt>
 <dd><p>Explicit destructor of the internal SAT oracle.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="examples.musx.MUSX.oracle_time">
-<span class="sig-name descname"><span class="pre">oracle_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.musx.MUSX.oracle_time" title="Link to this definition">#</a></dt>
-<dd><p>Method for calculating and reporting the total SAT solving time.</p>
+<dt class="sig sig-object py" id="examples.bbscan.BBScan.oracle_time">
+<span class="sig-name descname"><span class="pre">oracle_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.bbscan.BBScan.oracle_time" title="Link to this definition">#</a></dt>
+<dd><p>This method computes and returns the total SAT solving time
+involved, including the time spent by the hitting set enumerator
+and the two SAT oracles.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -534,20 +542,20 @@ of an MUS refined in <a class="reference internal" href="#examples.musx.MUSX._co
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="models.html"
+       href="../solvers.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">An iterative model enumerator (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.models</span></code>)</p>
+        <p class="prev-next-title">SAT solvers’ API (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.solvers</span></code>)</p>
       </div>
     </a>
     <a class="right-next"
-       href="optux.html"
+       href="bica.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">OptUx optimal MUS enumerator (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.optux</span></code>)</p>
+        <p class="prev-next-title">Bica algorithm for formula simplification (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.examples.bica</span></code>)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -573,11 +581,10 @@ of an MUS refined in <a class="reference internal" href="#examples.musx.MUSX._co
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-of-classes">List of classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-description">Module description</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-details">Module details</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.musx.MUSX"><code class="docutils literal notranslate"><span class="pre">MUSX</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.musx.MUSX._compute"><code class="docutils literal notranslate"><span class="pre">MUSX._compute()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.musx.MUSX.compute"><code class="docutils literal notranslate"><span class="pre">MUSX.compute()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.musx.MUSX.delete"><code class="docutils literal notranslate"><span class="pre">MUSX.delete()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.musx.MUSX.oracle_time"><code class="docutils literal notranslate"><span class="pre">MUSX.oracle_time()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.bbscan.BBScan"><code class="docutils literal notranslate"><span class="pre">BBScan</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.bbscan.BBScan.compute"><code class="docutils literal notranslate"><span class="pre">BBScan.compute()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.bbscan.BBScan.delete"><code class="docutils literal notranslate"><span class="pre">BBScan.delete()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.bbscan.BBScan.oracle_time"><code class="docutils literal notranslate"><span class="pre">BBScan.oracle_time()</span></code></a></li>
 </ul>
 </li>
 </ul>

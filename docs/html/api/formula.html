@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 1.8.dev19 documentation</title>
+    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 1.8.dev22 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=d17f4257"></script>
+    <script src="../_static/documentation_options.js?v=68448bfe"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -114,8 +114,8 @@
       
     
     
-    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev19 documentation - Home"/>
-    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev19 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev22 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev22 documentation - Home"/>
   
   
 </a></div>
@@ -127,7 +127,7 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.8.dev19)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.8.dev22)</strong></a></div>
       
     </div>
     
@@ -228,7 +228,7 @@
           
           
             <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.8.dev19)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.8.dev22)</strong></a></div>
           
         
       </div>
@@ -945,7 +945,7 @@ it is slower).</p>
 <dd><p>Read a CNF formula from a file in the DIMACS format. A file name is
 expected as an argument. A default argument is <code class="docutils literal notranslate"><span class="pre">comment_lead</span></code> for
 parsing comment lines. A given file can be compressed by either
-gzip, bzip2, or lzma.</p>
+gzip, bzip2, lzma, or zstd.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -956,11 +956,12 @@ gzip, bzip2, or lzma.</p>
 </dd>
 </dl>
 <p>Note that the <code class="docutils literal notranslate"><span class="pre">compressed_with</span></code> parameter can be <code class="docutils literal notranslate"><span class="pre">None</span></code> (i.e.
-the file is uncompressed), <code class="docutils literal notranslate"><span class="pre">'gzip'</span></code>, <code class="docutils literal notranslate"><span class="pre">'bzip2'</span></code>, <code class="docutils literal notranslate"><span class="pre">'lzma'</span></code>, or
-<code class="docutils literal notranslate"><span class="pre">'use_ext'</span></code>. The latter value indicates that compression type
-should be automatically determined based on the file extension.
-Using <code class="docutils literal notranslate"><span class="pre">'lzma'</span></code> in Python 2 requires the <code class="docutils literal notranslate"><span class="pre">backports.lzma</span></code>
-package to be additionally installed.</p>
+the file is uncompressed), <code class="docutils literal notranslate"><span class="pre">'gzip'</span></code>, <code class="docutils literal notranslate"><span class="pre">'bzip2'</span></code>, <code class="docutils literal notranslate"><span class="pre">'lzma'</span></code>,
+<code class="docutils literal notranslate"><span class="pre">'zstd'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'use_ext'</span></code>. The latter value indicates that
+compression type should be automatically determined based on the
+file extension. Using <code class="docutils literal notranslate"><span class="pre">'lzma'</span></code> in Python 2 requires the
+<code class="docutils literal notranslate"><span class="pre">backports.lzma</span></code> package to be additionally installed. Using
+<code class="docutils literal notranslate"><span class="pre">'zstd'</span></code> requires Python 3.14.</p>
 <p>Usage example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">CNF</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf1</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">()</span>
@@ -1140,7 +1141,7 @@ comment lines can be specified in the <code class="docutils literal notranslate"
 CNF format. A file name is expected as an argument. Additionally,
 supplementary comment lines can be specified in the <code class="docutils literal notranslate"><span class="pre">comments</span></code>
 parameter. Also, a file can be compressed using either gzip, bzip2,
-or lzma (xz).</p>
+lzma (xz), or zstd.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1151,12 +1152,13 @@ or lzma (xz).</p>
 </ul>
 </dd>
 </dl>
-<p>Note that the <code class="docutils literal notranslate"><span class="pre">compress_with</span></code> parameter can be <code class="docutils literal notranslate"><span class="pre">None</span></code> (i.e.
-the file is uncompressed), <code class="docutils literal notranslate"><span class="pre">'gzip'</span></code>, <code class="docutils literal notranslate"><span class="pre">'bzip2'</span></code>, <code class="docutils literal notranslate"><span class="pre">'lzma'</span></code>, or
-<code class="docutils literal notranslate"><span class="pre">'use_ext'</span></code>. The latter value indicates that compression type
-should be automatically determined based on the file extension.
-Using <code class="docutils literal notranslate"><span class="pre">'lzma'</span></code> in Python 2 requires the <code class="docutils literal notranslate"><span class="pre">backports.lzma</span></code>
-package to be additionally installed.</p>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">compressed_with</span></code> parameter can be <code class="docutils literal notranslate"><span class="pre">None</span></code> (i.e.
+the file is uncompressed), <code class="docutils literal notranslate"><span class="pre">'gzip'</span></code>, <code class="docutils literal notranslate"><span class="pre">'bzip2'</span></code>, <code class="docutils literal notranslate"><span class="pre">'lzma'</span></code>,
+<code class="docutils literal notranslate"><span class="pre">'zstd'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'use_ext'</span></code>. The latter value indicates that
+compression type should be automatically determined based on the
+file extension. Using <code class="docutils literal notranslate"><span class="pre">'lzma'</span></code> in Python 2 requires the
+<code class="docutils literal notranslate"><span class="pre">backports.lzma</span></code> package to be additionally installed. Using
+<code class="docutils literal notranslate"><span class="pre">'zstd'</span></code> requires Python 3.14.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">CNF</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">()</span>
@@ -2366,7 +2368,7 @@ hard.</p>
 <dd><p>Read a WCNF formula from a file in the DIMACS format. A file name
 is expected as an argument. A default argument is <code class="docutils literal notranslate"><span class="pre">comment_lead</span></code>
 for parsing comment lines. A given file can be compressed by either
-gzip, bzip2, or lzma.</p>
+gzip, bzip2, lzma, or zstd.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -2377,11 +2379,12 @@ gzip, bzip2, or lzma.</p>
 </dd>
 </dl>
 <p>Note that the <code class="docutils literal notranslate"><span class="pre">compressed_with</span></code> parameter can be <code class="docutils literal notranslate"><span class="pre">None</span></code> (i.e.
-the file is uncompressed), <code class="docutils literal notranslate"><span class="pre">'gzip'</span></code>, <code class="docutils literal notranslate"><span class="pre">'bzip2'</span></code>, <code class="docutils literal notranslate"><span class="pre">'lzma'</span></code>, or
-<code class="docutils literal notranslate"><span class="pre">'use_ext'</span></code>. The latter value indicates that compression type
-should be automatically determined based on the file extension.
-Using <code class="docutils literal notranslate"><span class="pre">'lzma'</span></code> in Python 2 requires the <code class="docutils literal notranslate"><span class="pre">backports.lzma</span></code>
-package to be additionally installed.</p>
+the file is uncompressed), <code class="docutils literal notranslate"><span class="pre">'gzip'</span></code>, <code class="docutils literal notranslate"><span class="pre">'bzip2'</span></code>, <code class="docutils literal notranslate"><span class="pre">'lzma'</span></code>,
+<code class="docutils literal notranslate"><span class="pre">'zstd'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'use_ext'</span></code>. The latter value indicates that
+compression type should be automatically determined based on the
+file extension. Using <code class="docutils literal notranslate"><span class="pre">'lzma'</span></code> in Python 2 requires the
+<code class="docutils literal notranslate"><span class="pre">backports.lzma</span></code> package to be additionally installed. Using
+<code class="docutils literal notranslate"><span class="pre">'zstd'</span></code> requires Python 3.14.</p>
 <p>Usage example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">WCNF</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf1</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">()</span>
@@ -2526,7 +2529,7 @@ comment lines can be specified in the <code class="docutils literal notranslate"
 CNF format. A file name is expected as an argument. Additionally,
 supplementary comment lines can be specified in the <code class="docutils literal notranslate"><span class="pre">comments</span></code>
 parameter. Also, a file can be compressed using either gzip, bzip2,
-or lzma (xz).</p>
+lzma (xz), or zstd.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -2536,12 +2539,13 @@ or lzma (xz).</p>
 </ul>
 </dd>
 </dl>
-<p>Note that the <code class="docutils literal notranslate"><span class="pre">compress_with</span></code> parameter can be <code class="docutils literal notranslate"><span class="pre">None</span></code> (i.e.
-the file is uncompressed), <code class="docutils literal notranslate"><span class="pre">'gzip'</span></code>, <code class="docutils literal notranslate"><span class="pre">'bzip2'</span></code>, <code class="docutils literal notranslate"><span class="pre">'lzma'</span></code>, or
-<code class="docutils literal notranslate"><span class="pre">'use_ext'</span></code>. The latter value indicates that compression type
-should be automatically determined based on the file extension.
-Using <code class="docutils literal notranslate"><span class="pre">'lzma'</span></code> in Python 2 requires the <code class="docutils literal notranslate"><span class="pre">backports.lzma</span></code>
-package to be additionally installed.</p>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">compressed_with</span></code> parameter can be <code class="docutils literal notranslate"><span class="pre">None</span></code> (i.e.
+the file is uncompressed), <code class="docutils literal notranslate"><span class="pre">'gzip'</span></code>, <code class="docutils literal notranslate"><span class="pre">'bzip2'</span></code>, <code class="docutils literal notranslate"><span class="pre">'lzma'</span></code>,
+<code class="docutils literal notranslate"><span class="pre">'zstd'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'use_ext'</span></code>. The latter value indicates that
+compression type should be automatically determined based on the
+file extension. Using <code class="docutils literal notranslate"><span class="pre">'lzma'</span></code> in Python 2 requires the
+<code class="docutils literal notranslate"><span class="pre">backports.lzma</span></code> package to be additionally installed. Using
+<code class="docutils literal notranslate"><span class="pre">'zstd'</span></code> requires Python 3.14.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">WCNF</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">()</span>

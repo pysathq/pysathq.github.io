@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Formula processing (pysat.process) &#8212; PySAT 1.8.dev19 documentation</title>
+    <title>Formula processing (pysat.process) &#8212; PySAT 1.8.dev22 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=d17f4257"></script>
+    <script src="../_static/documentation_options.js?v=68448bfe"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/process';</script>
@@ -113,8 +113,8 @@
       
     
     
-    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev19 documentation - Home"/>
-    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev19 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev22 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev22 documentation - Home"/>
   
   
 </a></div>
@@ -126,7 +126,7 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.8.dev19)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.8.dev22)</strong></a></div>
       
     </div>
     
@@ -227,7 +227,7 @@
           
           
             <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.8.dev19)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.8.dev22)</strong></a></div>
           
         
       </div>
@@ -397,6 +397,10 @@ running the processor:</p>
 Solving</em>. In <em>Handbook of Satisfiability - Second Edition</em>. pp. 391-435</p>
 </aside>
 </aside>
+<p>Importantly, the module provides a user with a possibility to freeze some
+of the formula’s variables so that they aren’t eliminated, which may be
+useful when unsatisfiability preserving processing is required - usable in
+MCS and MUS enumeration as well as MaxSAT solving.</p>
 <p>Note that the numerous parameters used in CaDiCaL for tweaking the
 preprocessor’s behavior are currently unavailable here. (Default values
 are used.)</p>
@@ -529,7 +533,7 @@ status equals <code class="docutils literal notranslate"><span class="pre">True<
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.process.Processor.process">
-<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cover</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decompose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">probe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">probehbr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subsume</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vivify</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.process.Processor.process" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cover</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decompose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">probe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">probehbr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subsume</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vivify</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freeze</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.process.Processor.process" title="Link to this definition">#</a></dt>
 <dd><p>Runs CaDiCaL’s preprocessor for the internal formula for a given
 number of rounds and using the techniques specified in the
 arguments. Note that the default values of all the arguments used
@@ -547,6 +551,10 @@ and covered clause elimination is invoked only if bounded variable
 elimination is active. Subsumption elimination in turn may trigger
 vivification and transitive reduction if the corresponding flags
 are set.</p>
+<p>Finally, note that the <code class="docutils literal notranslate"><span class="pre">freeze</span></code> argument can be used to keep
+some of the variables of the original formula unchanged during
+preprocessing. If convenient, the list may contain literals too
+(negative integers).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -560,6 +568,7 @@ are set.</p>
 <li><p><strong>probehbr</strong> (<em>bool</em>) – learn hyper binary resolvents while probing</p></li>
 <li><p><strong>subsume</strong> (<em>bool</em>) – apply global forward clause subsumption</p></li>
 <li><p><strong>vivify</strong> (<em>bool</em>) – apply clause vivification</p></li>
+<li><p><strong>freeze</strong> (<em>list</em><em>(</em><em>int</em><em>) or </em><em>any iterable</em><em>(</em><em>int</em><em>)</em>) – a list of variables / literals to be kept during preprocessing</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>

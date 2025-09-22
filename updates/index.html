@@ -182,6 +182,22 @@ tiny) and frequent updates are provided. As a result,
 <a href="../installation">upgrading</a> your installation of the toolkit every now and
 then to keep it up-to-date is good idea.</p>
 <!-- raw HTML omitted -->
+<h2 id="22092025-18dev22">22.09.2025 (<em>1.8.dev22</em>)</h2>
+<ul>
+<li>Minor fixes in the example scripts accepting input (W)CNF files.</li>
+<li>Added BBScan, a tool for computing backbones literals of a formula.</li>
+</ul>
+<h2 id="14092025-18dev21">14.09.2025 (<em>1.8.dev21</em>)</h2>
+<ul>
+<li>Added literal freezing in the <code>process</code> module. This will allow one to
+apply preprocessing in the context of MaxSAT solving as well as MUS and
+MCS enumeration.</li>
+<li>Added rudimentary support of formula preprocessing to RC2, LBX, MCSls, and
+OptUx.</li>
+<li>Replaced the compiler for Glucose 4.2.1 (thanks to Christoph Jabs).</li>
+<li>Fixed Glucose 4.2.1 compilation on systems with musl libc.</li>
+<li>Fixed further muslinux compilation issues related to external propagation.</li>
+</ul>
 <h2 id="26082025-18dev20">26.08.2025 (<em>1.8.dev20</em>)</h2>
 <ul>
 <li>Removed clause duplicates when accessing clauses of a clausified formula.</li>

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>LBX-like MCS enumerator (pysat.examples.lbx) &#8212; PySAT 1.8.dev19 documentation</title>
+    <title>LBX-like MCS enumerator (pysat.examples.lbx) &#8212; PySAT 1.8.dev22 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=d17f4257"></script>
+    <script src="../../_static/documentation_options.js?v=68448bfe"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -114,8 +114,8 @@
       
     
     
-    <img src="../../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev19 documentation - Home"/>
-    <img src="../../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev19 documentation - Home"/>
+    <img src="../../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev22 documentation - Home"/>
+    <img src="../../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev22 documentation - Home"/>
   
   
 </a></div>
@@ -127,7 +127,7 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.8.dev19)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.8.dev22)</strong></a></div>
       
     </div>
     
@@ -228,7 +228,7 @@
           
           
             <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.8.dev19)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.8.dev22)</strong></a></div>
           
         
       </div>
@@ -434,7 +434,7 @@ standard <code class="docutils literal notranslate"><span class="pre">import</sp
 </section>
 <dl class="py class">
 <dt class="sig sig-object py" id="examples.lbx.LBX">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">examples.lbx.</span></span><span class="sig-name descname"><span class="pre">LBX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formula</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_cld</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solver_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'m22'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_timer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">examples.lbx.</span></span><span class="sig-name descname"><span class="pre">LBX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formula</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_cld</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solver_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'m22'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">process</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_timer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.lbx.LBX" title="Link to this definition">#</a></dt>
 <dd><p>LBX-like algorithm for computing MCSes. Given an unsatisfiable partial
 CNF formula, i.e. formula in the <a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a> format, this class can
 be used to compute a given number of MCSes of the formula. The
@@ -445,12 +445,17 @@ use any SAT solver available in PySAT. Additionally, the “clause
 The “clause <span class="math notranslate nohighlight">\(D\)</span>” heuristic is disabled by default, i.e.
 <code class="docutils literal notranslate"><span class="pre">use_cld</span></code> is set to <code class="docutils literal notranslate"><span class="pre">False</span></code>. Internal SAT solver’s timer is also
 disabled by default, i.e. <code class="docutils literal notranslate"><span class="pre">use_timer</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>Additionally, the input formula can be preprocessed before running MCS
+enumeration. This is controlled by the input parameter <code class="docutils literal notranslate"><span class="pre">process</span></code>
+whose integer value signifies the number of processing rounds to be
+applied. The number of rounds is set to 0 by default.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>formula</strong> (<a class="reference internal" href="../formula.html#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a>) – unsatisfiable partial CNF formula</p></li>
 <li><p><strong>use_cld</strong> (<em>bool</em>) – whether or not to use “clause <span class="math notranslate nohighlight">\(D\)</span>”</p></li>
 <li><p><strong>solver_name</strong> (<em>str</em>) – SAT oracle name</p></li>
+<li><p><strong>process</strong> (<em>int</em>) – apply formula preprocessing this many times</p></li>
 <li><p><strong>use_timer</strong> (<em>bool</em>) – whether or not to use SAT solver’s timer</p></li>
 </ul>
 </dd>
