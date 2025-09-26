@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Collection of backbone computation algorithms (pysat.examples.bbscan) &#8212; PySAT 1.8.dev22 documentation</title>
+    <title>Collection of backbone computation algorithms (pysat.examples.bbscan) &#8212; PySAT 1.8.dev23 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=68448bfe"></script>
+    <script src="../../_static/documentation_options.js?v=cc3c0fe7"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -114,8 +114,8 @@
       
     
     
-    <img src="../../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev22 documentation - Home"/>
-    <img src="../../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev22 documentation - Home"/>
+    <img src="../../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev23 documentation - Home"/>
+    <img src="../../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev23 documentation - Home"/>
   
   
 </a></div>
@@ -127,7 +127,7 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.8.dev22)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.8.dev23)</strong></a></div>
       
     </div>
     
@@ -228,7 +228,7 @@
           
           
             <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.8.dev22)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.8.dev23)</strong></a></div>
           
         
       </div>
@@ -486,12 +486,15 @@ computation algorithm they want to use:</p>
 <p>By default, <a class="reference internal" href="#examples.bbscan.BBScan" title="examples.bbscan.BBScan"><code class="xref py py-class docutils literal notranslate"><span class="pre">BBScan</span></code></a> opts for <code class="docutils literal notranslate"><span class="pre">'iter'</span></code>.</p>
 <p>If the chunking algorithm is selected (either <code class="docutils literal notranslate"><span class="pre">'chunk'</span></code> or
 <code class="docutils literal notranslate"><span class="pre">'corechunk'</span></code>), the user may specify the size of the chunk,
-which is set to 100 by default.</p>
+which is set to 100 by default. Note that the chunk_size can be a
+floating-point number in the interval (0, 1], which will set the
+actual chunk_size relative to the total number of literals of
+interest.</p>
 <p>Finally, one may opt for computing backbone literals out of a
-particular subset of literals / variables, which may run faster
-than computing the entire formula’s backbone. To focus on a
-particular set of variables / literals, the user should use the
-parameter <code class="docutils literal notranslate"><span class="pre">focus_on</span></code>, which is set to <code class="docutils literal notranslate"><span class="pre">None</span></code> by default.</p>
+particular subset of literals, which may run faster than computing
+the entire formula’s backbone. To focus on a particular set of
+literals, the user should use the parameter <code class="docutils literal notranslate"><span class="pre">focus_on</span></code>, which is
+set to <code class="docutils literal notranslate"><span class="pre">None</span></code> by default.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The method raises <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> if the input formula is
@@ -501,7 +504,7 @@ unsatisfiable.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>algorithm</strong> (<em>str</em>) – backbone computation algorithm</p></li>
-<li><p><strong>chunk_size</strong> (<em>int</em>) – number of literals in the chunk (for chunking algorithms)</p></li>
+<li><p><strong>chunk_size</strong> (<em>int</em><em> or </em><em>float</em>) – number of literals in the chunk (for chunking algorithms)</p></li>
 <li><p><strong>focus_on</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – a list of literals to focus on</p></li>
 </ul>
 </dd>
