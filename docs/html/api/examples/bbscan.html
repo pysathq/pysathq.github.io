@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Collection of backbone computation algorithms (pysat.examples.bbscan) &#8212; PySAT 1.8.dev23 documentation</title>
+    <title>Collection of backbone computation algorithms (pysat.examples.bbscan) &#8212; PySAT 1.8.dev24 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=cc3c0fe7"></script>
+    <script src="../../_static/documentation_options.js?v=07b59f2a"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -114,8 +114,8 @@
       
     
     
-    <img src="../../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev23 documentation - Home"/>
-    <img src="../../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev23 documentation - Home"/>
+    <img src="../../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev24 documentation - Home"/>
+    <img src="../../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev24 documentation - Home"/>
   
   
 </a></div>
@@ -127,7 +127,7 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.8.dev23)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.8.dev24)</strong></a></div>
       
     </div>
     
@@ -228,7 +228,7 @@
           
           
             <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.8.dev23)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.8.dev24)</strong></a></div>
           
         
       </div>
@@ -424,7 +424,7 @@ standard <code class="docutils literal notranslate"><span class="pre">import</sp
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;formula.wcnf.xz&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># creating BBScan and running it</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">BBScan</span><span class="p">(</span><span class="n">cnf</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s1">&#39;g3&#39;</span><span class="p">,</span> <span class="n">lift</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">rotate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">bbscan</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">BBScan</span><span class="p">(</span><span class="n">cnf</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s1">&#39;g3&#39;</span><span class="p">,</span> <span class="n">rotate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">bbscan</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">bbone</span> <span class="o">=</span> <span class="n">bbscan</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;core&#39;</span><span class="p">)</span>
 <span class="gp">...</span>
 <span class="gp">... </span>    <span class="c1"># outputting the results</span>
@@ -433,10 +433,10 @@ standard <code class="docutils literal notranslate"><span class="pre">import</sp
 <span class="go">[1, -3]</span>
 </pre></div>
 </div>
-<p>Each of the available algorithms can be augmented with two simple
-heuristics aiming at reducing satisfying assignments and, thus, filtering
-out unnecessary literals: literal lifting and filtering rotatable
-literals. Both are described in the aforementioned paper.</p>
+<p>Each of the available algorithms can be augmented with a simple heuristic
+aiming at reducing satisfying assignments and, thus, filtering out
+unnecessary literals: namely, filtering rotatable literals. The heuristic
+is described in the aforementioned paper.</p>
 <p>Note that most of the methods of the class <a class="reference internal" href="#examples.bbscan.BBScan" title="examples.bbscan.BBScan"><code class="xref py py-class docutils literal notranslate"><span class="pre">BBScan</span></code></a> are made
 private. Therefore, the tool provides a minimalistic interface via which a
 user can specify all the necessary parameters.</p>
@@ -446,25 +446,23 @@ user can specify all the necessary parameters.</p>
 </section>
 <dl class="py class">
 <dt class="sig sig-object py" id="examples.bbscan.BBScan">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">examples.bbscan.</span></span><span class="sig-name descname"><span class="pre">BBScan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formula</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'g3'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.bbscan.BBScan" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">examples.bbscan.</span></span><span class="sig-name descname"><span class="pre">BBScan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formula</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'g3'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.bbscan.BBScan" title="Link to this definition">#</a></dt>
 <dd><p>A solver for computing all backbone literals of a given Boolean
 formula. It implements 6 algorithms for backbone computation described
-in <a class="footnote-reference brackets" href="#id3" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> augmented with two simple heuristics that can be speed up the
-process.</p>
+in <a class="footnote-reference brackets" href="#id3" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> augmented with a heuristic that can be speed up the process.</p>
 <p>Note that the input formula can be a <a class="reference internal" href="../formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a> object but also any
 object of class <a class="reference internal" href="../formula.html#pysat.formula.Formula" title="pysat.formula.Formula"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formula</span></code></a>, thus the tool can used for
 computing backbone literals of non-clausal formulas.</p>
 <p>A user can select one of the SAT solvers available at hand
-(<code class="docutils literal notranslate"><span class="pre">'glucose3'</span></code> is used by default). The optional two heuristics can
-be also specified as Boolean input arguments <code class="docutils literal notranslate"><span class="pre">lift</span></code>, and <code class="docutils literal notranslate"><span class="pre">rotate</span></code>
-(turned off by default).</p>
+(<code class="docutils literal notranslate"><span class="pre">'glucose3'</span></code> is used by default). The optional heuristic can be
+also specified as a Boolean input arguments <code class="docutils literal notranslate"><span class="pre">rotate</span></code> (turned off by
+default).</p>
 <p>The list of initialiser’s arguments is as follows:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>formula</strong> (<a class="reference internal" href="../formula.html#pysat.formula.Formula" title="pysat.formula.Formula"><code class="xref py py-class docutils literal notranslate"><span class="pre">Formula</span></code></a> or <a class="reference internal" href="../formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a>) – input formula whose backbone is sought</p></li>
 <li><p><strong>solver</strong> (<em>str</em>) – SAT oracle name</p></li>
-<li><p><strong>lift</strong> (<em>bool</em>) – apply literal lifting heuristic</p></li>
 <li><p><strong>rotate</strong> (<em>bool</em>) – apply rotatable literal filtering</p></li>
 <li><p><strong>verbose</strong> (<em>int</em>) – verbosity level</p></li>
 </ul>
