@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Pseudo-Boolean encodings (pysat.pb) &#8212; PySAT 1.8.dev24 documentation</title>
+    <title>Pseudo-Boolean encodings (pysat.pb) &#8212; PySAT 1.8.dev25 documentation</title>
   
   
   
@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -38,7 +38,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=07b59f2a"></script>
+    <script src="../_static/documentation_options.js?v=a3cd1b33"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -114,8 +114,8 @@
       
     
     
-    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev24 documentation - Home"/>
-    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev24 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev25 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev25 documentation - Home"/>
   
   
 </a></div>
@@ -127,7 +127,7 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.8.dev24)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.8.dev25)</strong></a></div>
       
     </div>
     
@@ -228,7 +228,7 @@
           
           
             <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.8.dev24)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.8.dev25)</strong></a></div>
           
         
       </div>
@@ -362,7 +362,7 @@
 <span id="pseudo-boolean-encodings-pysat-pb"></span><h1>Pseudo-Boolean encodings (<a class="reference internal" href="#module-pysat.pb" title="pysat.pb"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.pb</span></code></a>)<a class="headerlink" href="#module-pysat.pb" title="Link to this heading">#</a></h1>
 <section id="list-of-classes">
 <h2>List of classes<a class="headerlink" href="#list-of-classes" title="Link to this heading">#</a></h2>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#pysat.pb.EncType" title="pysat.pb.EncType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EncType</span></code></a></p></td>
 <td><p>This class represents a C-like <code class="docutils literal notranslate"><span class="pre">enum</span></code> type for choosing the pseudo-Boolean encoding to use.</p></td>
@@ -451,7 +451,7 @@ Generalized Arc Consistency Is Maintained</em>. KI. 2014. pp. 123-134</p>
 </section>
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.pb.EncType">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.pb.</span></span><span class="sig-name descname"><span class="pre">EncType</span></span><a class="headerlink" href="#pysat.pb.EncType" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.pb.</span></span><span class="sig-name descname"><span class="pre">EncType</span></span><a class="headerlink" href="#pysat.pb.EncType" title="Link to this definition">#</a></dt>
 <dd><p>This class represents a C-like <code class="docutils literal notranslate"><span class="pre">enum</span></code> type for choosing the
 pseudo-Boolean encoding to use. The values denoting the encodings are:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">best</span>       <span class="o">=</span> <span class="mi">0</span>
@@ -475,21 +475,26 @@ cases, this invokes the <code class="docutils literal notranslate"><span class="
 
 <dl class="py exception">
 <dt class="sig sig-object py" id="pysat.pb.NoSuchEncodingError">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.pb.</span></span><span class="sig-name descname"><span class="pre">NoSuchEncodingError</span></span><a class="headerlink" href="#pysat.pb.NoSuchEncodingError" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.pb.</span></span><span class="sig-name descname"><span class="pre">NoSuchEncodingError</span></span><a class="headerlink" href="#pysat.pb.NoSuchEncodingError" title="Link to this definition">#</a></dt>
 <dd><p>This exception is raised when creating an unknown LEQ, GEQ, or Equals
 constraint encoding.</p>
 <dl class="py method">
+<dt class="sig sig-object py" id="pysat.pb.NoSuchEncodingError.add_note">
+<span class="sig-name descname"><span class="pre">add_note</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">note</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.NoSuchEncodingError.add_note" title="Link to this definition">#</a></dt>
+<dd><p>Add a note to the exception</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="pysat.pb.NoSuchEncodingError.with_traceback">
-<span class="sig-name descname"><span class="pre">with_traceback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.NoSuchEncodingError.with_traceback" title="Link to this definition">#</a></dt>
-<dd><p>Exception.with_traceback(tb) –
-set self.__traceback__ to tb and return self.</p>
+<span class="sig-name descname"><span class="pre">with_traceback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tb</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.NoSuchEncodingError.with_traceback" title="Link to this definition">#</a></dt>
+<dd><p>Set self.__traceback__ to tb and return self.</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.pb.PBEnc">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.pb.</span></span><span class="sig-name descname"><span class="pre">PBEnc</span></span><a class="headerlink" href="#pysat.pb.PBEnc" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.pb.</span></span><span class="sig-name descname"><span class="pre">PBEnc</span></span><a class="headerlink" href="#pysat.pb.PBEnc" title="Link to this definition">#</a></dt>
 <dd><p>Abstract class responsible for the creation of pseudo-Boolean
 constraints encoded to a CNF formula. The class has three main <em>class
 methods</em> for creating LEQ, GEQ, and Equals constraints. Given (1)
@@ -501,7 +506,7 @@ type, each of these methods returns an object of class
 it. Instead, the methods should be called directly as class methods,
 e.g. <code class="docutils literal notranslate"><span class="pre">PBEnc.atmost(wlits,</span> <span class="pre">bound)</span></code> or <code class="docutils literal notranslate"><span class="pre">PBEnc.equals(lits,</span> <span class="pre">weights,</span>
 <span class="pre">bound)</span></code>. An example usage is the following:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.pb</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.pb</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">PBEnc</span><span class="o">.</span><span class="n">atmost</span><span class="p">(</span><span class="n">lits</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">bound</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[4], [-1, -5], [-2, -5], [5, -3, -6], [6]]</span>
@@ -512,19 +517,19 @@ e.g. <code class="docutils literal notranslate"><span class="pre">PBEnc.atmost(w
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.pb.PBEnc.atleast">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">atleast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.PBEnc.atleast" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">atleast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conditionals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.PBEnc.atleast" title="Link to this definition">#</a></dt>
 <dd><p>A synonym for <a class="reference internal" href="#pysat.pb.PBEnc.geq" title="pysat.pb.PBEnc.geq"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PBEnc.geq()</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.pb.PBEnc.atmost">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">atmost</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.PBEnc.atmost" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">atmost</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conditionals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.PBEnc.atmost" title="Link to this definition">#</a></dt>
 <dd><p>A synonim for <a class="reference internal" href="#pysat.pb.PBEnc.leq" title="pysat.pb.PBEnc.leq"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PBEnc.leq()</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.pb.PBEnc.equals">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">equals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.PBEnc.equals" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">equals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conditionals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.PBEnc.equals" title="Link to this definition">#</a></dt>
 <dd><p>This method can be used for creating a CNF encoding of a weighted
 EqualsK constraint, i.e. of <span class="math notranslate nohighlight">\(\sum_{i=1}^{n}{a_i\cdot x_i}=
 k\)</span>. The method shares the arguments and the return type with
@@ -533,7 +538,7 @@ method <a class="reference internal" href="#pysat.pb.PBEnc.leq" title="pysat.pb.
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.pb.PBEnc.geq">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">geq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.PBEnc.geq" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">geq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conditionals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.PBEnc.geq" title="Link to this definition">#</a></dt>
 <dd><p>This method can be used for creating a CNF encoding of a GEQ
 (weighted AtLeastK) constraint, i.e. of
 <span class="math notranslate nohighlight">\(\sum_{i=1}^{n}{a_i\cdot x_i}\geq k\)</span>. The method shares
@@ -543,7 +548,7 @@ Please, see it for details.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.pb.PBEnc.leq">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">leq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.PBEnc.leq" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">leq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conditionals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.pb.PBEnc.leq" title="Link to this definition">#</a></dt>
 <dd><p>This method can be used for creating a CNF encoding of a LEQ
 (weighted AtMostK) constraint, i.e. of
 <span class="math notranslate nohighlight">\(\sum_{i=1}^{n}{a_i\cdot x_i}\leq k\)</span>. The resulting set
@@ -556,6 +561,10 @@ specified separately. The type of encoding to use can be specified
 using the <code class="docutils literal notranslate"><span class="pre">encoding</span></code> parameter. By default, it is set to
 <code class="docutils literal notranslate"><span class="pre">EncType.best</span></code>, i.e. it is up to the PBLib encoder to choose the
 encoding type.</p>
+<p>The final optional argument is <code class="docutils literal notranslate"><span class="pre">conditionals</span></code>, where a list of
+literals can be passed to be used as the antecedent for the PB
+constraint, which makes it <em>“reified”</em>. If the argument is set to
+<code class="docutils literal notranslate"><span class="pre">None</span></code>, the constraint won’t be reified.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -565,6 +574,7 @@ encoding type.</p>
 <li><p><strong>top_id</strong> (<em>integer</em><em> or </em><em>None</em>) – top variable identifier used so far.</p></li>
 <li><p><strong>vpool</strong> (<a class="reference internal" href="formula.html#pysat.formula.IDPool" title="pysat.formula.IDPool"><code class="xref py py-class docutils literal notranslate"><span class="pre">IDPool</span></code></a>) – variable pool for counting the number of variables.</p></li>
 <li><p><strong>encoding</strong> (<em>integer</em>) – identifier of the encoding to use.</p></li>
+<li><p><strong>conditionals</strong> (<em>list</em><em>(</em><em>int</em><em>) or </em><em>None</em>) – a list of variables that imply this constraint.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -629,6 +639,7 @@ encoding type.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-details">Module details</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.pb.EncType"><code class="docutils literal notranslate"><span class="pre">EncType</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.pb.NoSuchEncodingError"><code class="docutils literal notranslate"><span class="pre">NoSuchEncodingError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.pb.NoSuchEncodingError.add_note"><code class="docutils literal notranslate"><span class="pre">NoSuchEncodingError.add_note()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.pb.NoSuchEncodingError.with_traceback"><code class="docutils literal notranslate"><span class="pre">NoSuchEncodingError.with_traceback()</span></code></a></li>
 </ul>
 </li>
@@ -677,7 +688,7 @@ encoding type.</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
     <br/>
   </p>
 </div>

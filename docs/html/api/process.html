@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Formula processing (pysat.process) &#8212; PySAT 1.8.dev24 documentation</title>
+    <title>Formula processing (pysat.process) &#8212; PySAT 1.8.dev25 documentation</title>
   
   
   
@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -38,7 +38,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=07b59f2a"></script>
+    <script src="../_static/documentation_options.js?v=a3cd1b33"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/process';</script>
@@ -113,8 +113,8 @@
       
     
     
-    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev24 documentation - Home"/>
-    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev24 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev25 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev25 documentation - Home"/>
   
   
 </a></div>
@@ -126,7 +126,7 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.8.dev24)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.8.dev25)</strong></a></div>
       
     </div>
     
@@ -227,7 +227,7 @@
           
           
             <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.8.dev24)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.8.dev25)</strong></a></div>
           
         
       </div>
@@ -361,7 +361,7 @@
 <span id="formula-processing-pysat-process"></span><h1>Formula processing (<a class="reference internal" href="#module-pysat.process" title="pysat.process"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.process</span></code></a>)<a class="headerlink" href="#module-pysat.process" title="Link to this heading">#</a></h1>
 <section id="list-of-classes">
 <h2>List of classes<a class="headerlink" href="#list-of-classes" title="Link to this heading">#</a></h2>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#pysat.process.Processor" title="pysat.process.Processor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Processor</span></code></a></p></td>
 <td><p>This class provides interface to CaDiCaL's preprocessor.</p></td>
@@ -404,9 +404,9 @@ MCS and MUS enumeration as well as MaxSAT solving.</p>
 <p>Note that the numerous parameters used in CaDiCaL for tweaking the
 preprocessor’s behavior are currently unavailable here. (Default values
 are used.)</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.formula</span> <span class="kn">import</span> <span class="n">CNF</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.process</span> <span class="kn">import</span> <span class="n">Processor</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Solver</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="n">CNF</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.process</span><span class="w"> </span><span class="kn">import</span> <span class="n">Processor</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.solvers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Solver</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_clauses</span><span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">processor</span> <span class="o">=</span> <span class="n">Processor</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">cnf</span><span class="p">)</span>
@@ -434,7 +434,7 @@ are used.)</p>
 </section>
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.process.Processor">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.process.</span></span><span class="sig-name descname"><span class="pre">Processor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bootstrap_with</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.process.Processor" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.process.</span></span><span class="sig-name descname"><span class="pre">Processor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bootstrap_with</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.process.Processor" title="Link to this definition">#</a></dt>
 <dd><p>This class provides interface to CaDiCaL’s preprocessor. The only
 input parameter is <code class="docutils literal notranslate"><span class="pre">bootstrap_with</span></code>, which is expected to be a
 <a class="reference internal" href="formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a> formula or a list (or iterable) of clauses.</p>
@@ -455,8 +455,8 @@ given a model for the processed formula as illustrated below.</p>
 <p>Note how keeping the <a class="reference internal" href="#pysat.process.Processor" title="pysat.process.Processor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Processor</span></code></a> object is needed for model
 restoration. (If it is deleted, the information needed for model
 reconstruction is lost.)</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.process</span> <span class="kn">import</span> <span class="n">Processor</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.solvers</span> <span class="kn">import</span> <span class="n">Solver</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.process</span><span class="w"> </span><span class="kn">import</span> <span class="n">Processor</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.solvers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Solver</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">processor</span> <span class="o">=</span> <span class="n">Processor</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">processor</span><span class="o">.</span><span class="n">append_formula</span><span class="p">([[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
@@ -578,7 +578,7 @@ preprocessing. If convenient, the list may contain literals too
 <dd class="field-odd"><p><a class="reference internal" href="formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a></p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.process</span> <span class="kn">import</span> <span class="n">Processor</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.process</span><span class="w"> </span><span class="kn">import</span> <span class="n">Processor</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">processor</span> <span class="o">=</span> <span class="n">Processor</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">processor</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
@@ -614,7 +614,7 @@ reconstruction stack functionality.</p>
 <dd class="field-odd"><p>list(int)</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.process</span> <span class="kn">import</span> <span class="n">Processor</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.process</span><span class="w"> </span><span class="kn">import</span> <span class="n">Processor</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Processor</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span> <span class="k">as</span> <span class="n">proc</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">proc</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
@@ -728,7 +728,7 @@ reconstruction stack functionality.</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
     <br/>
   </p>
 </div>

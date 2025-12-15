@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Cardinality encodings (pysat.card) &#8212; PySAT 1.8.dev24 documentation</title>
+    <title>Cardinality encodings (pysat.card) &#8212; PySAT 1.8.dev25 documentation</title>
   
   
   
@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -38,7 +38,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=07b59f2a"></script>
+    <script src="../_static/documentation_options.js?v=a3cd1b33"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -114,8 +114,8 @@
       
     
     
-    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev24 documentation - Home"/>
-    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev24 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev25 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev25 documentation - Home"/>
   
   
 </a></div>
@@ -127,7 +127,7 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.8.dev24)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.8.dev25)</strong></a></div>
       
     </div>
     
@@ -228,7 +228,7 @@
           
           
             <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.8.dev24)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.8.dev25)</strong></a></div>
           
         
       </div>
@@ -362,7 +362,7 @@
 <span id="cardinality-encodings-pysat-card"></span><h1>Cardinality encodings (<a class="reference internal" href="#module-pysat.card" title="pysat.card"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.card</span></code></a>)<a class="headerlink" href="#module-pysat.card" title="Link to this heading">#</a></h1>
 <section id="list-of-classes">
 <h2>List of classes<a class="headerlink" href="#list-of-classes" title="Link to this heading">#</a></h2>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#pysat.card.EncType" title="pysat.card.EncType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EncType</span></code></a></p></td>
 <td><p>This class represents a C-like <code class="docutils literal notranslate"><span class="pre">enum</span></code> type for choosing the cardinality encoding to use.</p></td>
@@ -471,7 +471,7 @@ use of the <a class="reference internal" href="#pysat.card.ITotalizer" title="py
 </section>
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.card.CardEnc">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.card.</span></span><span class="sig-name descname"><span class="pre">CardEnc</span></span><a class="headerlink" href="#pysat.card.CardEnc" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.card.</span></span><span class="sig-name descname"><span class="pre">CardEnc</span></span><a class="headerlink" href="#pysat.card.CardEnc" title="Link to this definition">#</a></dt>
 <dd><p>This abstract class is responsible for the creation of cardinality
 constraints encoded to a CNF formula. The class has three <em>class
 methods</em> for creating AtMostK, AtLeastK, and EqualsK constraints. Given
@@ -482,7 +482,7 @@ representing the resulting CNF formula.</p>
 it. Instead, the methods should be called directly as class methods,
 e.g. <code class="docutils literal notranslate"><span class="pre">CardEnc.atmost(lits,</span> <span class="pre">bound)</span></code> or <code class="docutils literal notranslate"><span class="pre">CardEnc.equals(lits,</span>
 <span class="pre">bound)</span></code>. An example usage is the following:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.card</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.card</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CardEnc</span><span class="o">.</span><span class="n">atmost</span><span class="p">(</span><span class="n">lits</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">encoding</span><span class="o">=</span><span class="n">EncType</span><span class="o">.</span><span class="n">pairwise</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[-1, -2], [-1, -3], [-2, -3]]</span>
@@ -493,7 +493,7 @@ e.g. <code class="docutils literal notranslate"><span class="pre">CardEnc.atmost
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.card.CardEnc.atleast">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">atleast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.card.CardEnc.atleast" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">atleast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.card.CardEnc.atleast" title="Link to this definition">#</a></dt>
 <dd><p>This method can be used for creating a CNF encoding of an AtLeastK
 constraint, i.e. of <span class="math notranslate nohighlight">\(\sum_{i=1}^{n}{x_i}\geq k\)</span>. The
 method takes 1 mandatory argument <code class="docutils literal notranslate"><span class="pre">lits</span></code> and 3 default arguments
@@ -541,7 +541,7 @@ modified list of literals and the new bound.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.card.CardEnc.atmost">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">atmost</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.card.CardEnc.atmost" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">atmost</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.card.CardEnc.atmost" title="Link to this definition">#</a></dt>
 <dd><p>This method can be used for creating a CNF encoding of an AtMostK
 constraint, i.e. of <span class="math notranslate nohighlight">\(\sum_{i=1}^{n}{x_i}\leq k\)</span>. The
 method shares the arguments and the return type with method
@@ -550,7 +550,7 @@ method shares the arguments and the return type with method
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.card.CardEnc.equals">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">equals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.card.CardEnc.equals" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">equals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.card.CardEnc.equals" title="Link to this definition">#</a></dt>
 <dd><p>This method can be used for creating a CNF encoding of an EqualsK
 constraint, i.e. of <span class="math notranslate nohighlight">\(\sum_{i=1}^{n}{x_i}= k\)</span>. The method
 makes consecutive calls of both <a class="reference internal" href="#pysat.card.CardEnc.atleast" title="pysat.card.CardEnc.atleast"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CardEnc.atleast()</span></code></a> and
@@ -562,7 +562,7 @@ with method <a class="reference internal" href="#pysat.card.CardEnc.atleast" tit
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.card.EncType">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.card.</span></span><span class="sig-name descname"><span class="pre">EncType</span></span><a class="headerlink" href="#pysat.card.EncType" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.card.</span></span><span class="sig-name descname"><span class="pre">EncType</span></span><a class="headerlink" href="#pysat.card.EncType" title="Link to this definition">#</a></dt>
 <dd><p>This class represents a C-like <code class="docutils literal notranslate"><span class="pre">enum</span></code> type for choosing the
 cardinality encoding to use. The values denoting the encodings are:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pairwise</span>    <span class="o">=</span> <span class="mi">0</span>
@@ -589,7 +589,7 @@ is a list of size <code class="docutils literal notranslate"><span class="pre">n
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.card.ITotalizer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.card.</span></span><span class="sig-name descname"><span class="pre">ITotalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ubound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.card.ITotalizer" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.card.</span></span><span class="sig-name descname"><span class="pre">ITotalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ubound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.card.ITotalizer" title="Link to this definition">#</a></dt>
 <dd><p>This class implements the iterative totalizer encoding <a class="footnote-reference brackets" href="#id24" id="id25" role="doc-noteref"><span class="fn-bracket">[</span>11<span class="fn-bracket">]</span></a>. Note that
 <a class="reference internal" href="#pysat.card.ITotalizer" title="pysat.card.ITotalizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ITotalizer</span></code></a> can be used only for creating AtMostK constraints.
 In contrast to class <a class="reference internal" href="#pysat.card.EncType" title="pysat.card.EncType"><code class="xref py py-class docutils literal notranslate"><span class="pre">EncType</span></code></a>, this class is not abstract and
@@ -616,7 +616,7 @@ all literals of the sum to be <em>false</em>.</p>
 <p>An <a class="reference internal" href="#pysat.card.ITotalizer" title="pysat.card.ITotalizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ITotalizer</span></code></a> object should be deleted if it is not needed
 anymore.</p>
 <p>Possible usage of the class is shown below:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.card</span> <span class="kn">import</span> <span class="n">ITotalizer</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.card</span><span class="w"> </span><span class="kn">import</span> <span class="n">ITotalizer</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">ITotalizer</span><span class="p">(</span><span class="n">lits</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">ubound</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[-2, 4], [-1, 4], [-1, -2, 5], [-4, 6], [-5, 7], [-3, 6], [-3, -4, 7]]</span>
@@ -627,7 +627,7 @@ anymore.</p>
 </div>
 <p>Alternatively, an object can be created using the <code class="docutils literal notranslate"><span class="pre">with</span></code> keyword. In
 this case, the object is deleted automatically:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.card</span> <span class="kn">import</span> <span class="n">ITotalizer</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.card</span><span class="w"> </span><span class="kn">import</span> <span class="n">ITotalizer</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">ITotalizer</span><span class="p">(</span><span class="n">lits</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">ubound</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">as</span> <span class="n">t</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[-2, 4], [-1, 4], [-1, -2, 5], [-4, 6], [-5, 7], [-3, 6], [-3, -4, 7]]</span>
@@ -669,7 +669,7 @@ created clauses is stored in variable <code class="docutils literal notranslate"
 gets increased and its length becomes <code class="docutils literal notranslate"><span class="pre">ubound+1</span></code>. Otherwise, it
 is updated with new values.</p>
 <p>The method can be used in the following way:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.card</span> <span class="kn">import</span> <span class="n">ITotalizer</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.card</span><span class="w"> </span><span class="kn">import</span> <span class="n">ITotalizer</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">ITotalizer</span><span class="p">(</span><span class="n">lits</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">ubound</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[-2, 3], [-1, 3], [-1, -2, 4]]</span>
@@ -711,7 +711,7 @@ newly created clauses is stored in variable <code class="docutils literal notran
 <p>Also, a list of bounds <code class="docutils literal notranslate"><span class="pre">self.rhs</span></code> gets increased and its length
 becomes <code class="docutils literal notranslate"><span class="pre">ubound+1</span></code>.</p>
 <p>The method can be used in the following way:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.card</span> <span class="kn">import</span> <span class="n">ITotalizer</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.card</span><span class="w"> </span><span class="kn">import</span> <span class="n">ITotalizer</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">ITotalizer</span><span class="p">(</span><span class="n">lits</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">ubound</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[-2, 4], [-1, 4], [-1, -2, 5], [-4, 6], [-5, 7], [-3, 6], [-3, -4, 7]]</span>
@@ -759,7 +759,7 @@ number of newly created clauses is stored in variable
 gets increased and its length becomes <code class="docutils literal notranslate"><span class="pre">ubound+1</span></code>. Otherwise, it
 is updated with new values.</p>
 <p>The method can be used in the following way:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysat.card</span> <span class="kn">import</span> <span class="n">ITotalizer</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.card</span><span class="w"> </span><span class="kn">import</span> <span class="n">ITotalizer</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">ITotalizer</span><span class="p">(</span><span class="n">lits</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">ubound</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">as</span> <span class="n">t1</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[-2, 3], [-1, 3], [-1, -2, 4]]</span>
@@ -799,29 +799,39 @@ the description of <a class="reference internal" href="#pysat.card.ITotalizer" t
 
 <dl class="py exception">
 <dt class="sig sig-object py" id="pysat.card.NoSuchEncodingError">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.card.</span></span><span class="sig-name descname"><span class="pre">NoSuchEncodingError</span></span><a class="headerlink" href="#pysat.card.NoSuchEncodingError" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.card.</span></span><span class="sig-name descname"><span class="pre">NoSuchEncodingError</span></span><a class="headerlink" href="#pysat.card.NoSuchEncodingError" title="Link to this definition">#</a></dt>
 <dd><p>This exception is raised when creating an unknown an AtMostK, AtLeastK,
 or EqualK constraint encoding.</p>
 <dl class="py method">
+<dt class="sig sig-object py" id="pysat.card.NoSuchEncodingError.add_note">
+<span class="sig-name descname"><span class="pre">add_note</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">note</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.card.NoSuchEncodingError.add_note" title="Link to this definition">#</a></dt>
+<dd><p>Add a note to the exception</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="pysat.card.NoSuchEncodingError.with_traceback">
-<span class="sig-name descname"><span class="pre">with_traceback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.card.NoSuchEncodingError.with_traceback" title="Link to this definition">#</a></dt>
-<dd><p>Exception.with_traceback(tb) –
-set self.__traceback__ to tb and return self.</p>
+<span class="sig-name descname"><span class="pre">with_traceback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tb</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.card.NoSuchEncodingError.with_traceback" title="Link to this definition">#</a></dt>
+<dd><p>Set self.__traceback__ to tb and return self.</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py exception">
 <dt class="sig sig-object py" id="pysat.card.UnsupportedBound">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.card.</span></span><span class="sig-name descname"><span class="pre">UnsupportedBound</span></span><a class="headerlink" href="#pysat.card.UnsupportedBound" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.card.</span></span><span class="sig-name descname"><span class="pre">UnsupportedBound</span></span><a class="headerlink" href="#pysat.card.UnsupportedBound" title="Link to this definition">#</a></dt>
 <dd><p>This exception is raised when creating a pairwise, or bitwise, or
 ladder encoding of AtMostK, AtLeastK, or EqualsK with the bound
 different from <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">-</span> <span class="pre">1</span></code>.</p>
 <dl class="py method">
+<dt class="sig sig-object py" id="pysat.card.UnsupportedBound.add_note">
+<span class="sig-name descname"><span class="pre">add_note</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">note</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.card.UnsupportedBound.add_note" title="Link to this definition">#</a></dt>
+<dd><p>Add a note to the exception</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="pysat.card.UnsupportedBound.with_traceback">
-<span class="sig-name descname"><span class="pre">with_traceback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.card.UnsupportedBound.with_traceback" title="Link to this definition">#</a></dt>
-<dd><p>Exception.with_traceback(tb) –
-set self.__traceback__ to tb and return self.</p>
+<span class="sig-name descname"><span class="pre">with_traceback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tb</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.card.UnsupportedBound.with_traceback" title="Link to this definition">#</a></dt>
+<dd><p>Set self.__traceback__ to tb and return self.</p>
 </dd></dl>
 
 </dd></dl>
@@ -894,10 +904,12 @@ set self.__traceback__ to tb and return self.</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.card.NoSuchEncodingError"><code class="docutils literal notranslate"><span class="pre">NoSuchEncodingError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.card.NoSuchEncodingError.add_note"><code class="docutils literal notranslate"><span class="pre">NoSuchEncodingError.add_note()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.card.NoSuchEncodingError.with_traceback"><code class="docutils literal notranslate"><span class="pre">NoSuchEncodingError.with_traceback()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.card.UnsupportedBound"><code class="docutils literal notranslate"><span class="pre">UnsupportedBound</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.card.UnsupportedBound.add_note"><code class="docutils literal notranslate"><span class="pre">UnsupportedBound.add_note()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.card.UnsupportedBound.with_traceback"><code class="docutils literal notranslate"><span class="pre">UnsupportedBound.with_traceback()</span></code></a></li>
 </ul>
 </li>
@@ -938,7 +950,7 @@ set self.__traceback__ to tb and return self.</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
     <br/>
   </p>
 </div>
