@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>RC2 MaxSAT solver (pysat.examples.rc2) &#8212; PySAT 1.8.dev25 documentation</title>
+    <title>RC2 MaxSAT solver (pysat.examples.rc2) &#8212; PySAT 1.8.dev26 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=a3cd1b33"></script>
+    <script src="../../_static/documentation_options.js?v=94359159"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -114,8 +114,8 @@
       
     
     
-    <img src="../../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev25 documentation - Home"/>
-    <img src="../../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev25 documentation - Home"/>
+    <img src="../../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev26 documentation - Home"/>
+    <img src="../../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev26 documentation - Home"/>
   
   
 </a></div>
@@ -127,7 +127,7 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.8.dev25)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.8.dev26)</strong></a></div>
       
     </div>
     
@@ -228,7 +228,7 @@
           
           
             <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.8.dev25)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.8.dev26)</strong></a></div>
           
         
       </div>
@@ -540,6 +540,23 @@ pp. 309-317</p>
 </dd>
 </dl>
 <dl class="py method">
+<dt class="sig sig-object py" id="examples.rc2.RC2._call_oracle">
+<span class="sig-name descname"><span class="pre">_call_oracle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assumptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expect_interrupt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2._call_oracle" title="Link to this definition">#</a></dt>
+<dd><p>Makes a call to the internal SAT solver by means of invoking
+<cite>oracle.solve_limited()</cite>. The two arguments are the list of
+assumption literals and the Boolean flag indicating whether the
+call can be interrupted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>assumptions</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – a list of assumption literals.</p></li>
+<li><p><strong>expect_interrupt</strong> (<em>bool</em>) – whether <a class="reference internal" href="#examples.rc2.RC2.interrupt" title="examples.rc2.RC2.interrupt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">interrupt()</span></code></a> may be called</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="examples.rc2.RC2._map_extlit">
 <span class="sig-name descname"><span class="pre">_map_extlit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2._map_extlit" title="Link to this definition">#</a></dt>
 <dd><p>Map an external variable to an internal one if necessary.</p>
@@ -638,8 +655,16 @@ native cardinality constraints represented as a pair <code class="docutils liter
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="examples.rc2.RC2.clear_interrupt">
+<span class="sig-name descname"><span class="pre">clear_interrupt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2.clear_interrupt" title="Link to this definition">#</a></dt>
+<dd><p>Clears a previous interrupt. Technically, this method should be
+used every time after the previous MaxSAT call gets interrupted.
+<strong>However</strong>, the current implementation handles this on its own.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="examples.rc2.RC2.compute">
-<span class="sig-name descname"><span class="pre">compute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2.compute" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">compute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expect_interrupt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2.compute" title="Link to this definition">#</a></dt>
 <dd><p>This method can be used for computing one MaxSAT solution,
 i.e. for computing an assignment satisfying all hard
 clauses of the input formula and maximizing the sum of
@@ -651,12 +676,17 @@ exists. The method can be called multiple times, each
 being followed by blocking the last model. This way one
 can enumerate top-<span class="math notranslate nohighlight">\(k\)</span> MaxSAT solutions (this can
 also be done by calling <a class="reference internal" href="#examples.rc2.RC2.enumerate" title="examples.rc2.RC2.enumerate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">enumerate()</span></code></a>).</p>
+<p>This MaxSAT call can be asynchronously interrupted, in which case
+the value of <code class="docutils literal notranslate"><span class="pre">expect_interrupt</span></code> must be set to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>a MaxSAT model</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>expect_interrupt</strong> (<em>bool</em>) – whether <a class="reference internal" href="#examples.rc2.RC2.interrupt" title="examples.rc2.RC2.interrupt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">interrupt()</span></code></a> may be called</p>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>list(int)</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a MaxSAT model</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list(int)</p>
 </dd>
 </dl>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.examples.rc2</span><span class="w"> </span><span class="kn">import</span> <span class="n">RC2</span>
@@ -730,7 +760,7 @@ destroys the processor (if any).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="examples.rc2.RC2.enumerate">
-<span class="sig-name descname"><span class="pre">enumerate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2.enumerate" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">enumerate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expect_interrupt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2.enumerate" title="Link to this definition">#</a></dt>
 <dd><p>Enumerate top MaxSAT solutions (from best to worst). The
 method works as a generator, which iteratively calls
 <a class="reference internal" href="#examples.rc2.RC2.compute" title="examples.rc2.RC2.compute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compute()</span></code></a> to compute a MaxSAT model, blocks it
@@ -741,9 +771,15 @@ models corresponding to different maximal satisfiable subsets
 should set the <code class="docutils literal notranslate"><span class="pre">block</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">1</span></code>. To block MCSes, set
 it to <code class="docutils literal notranslate"><span class="pre">-1</span></code>. By the default (for blocking MaxSAT models),
 <code class="docutils literal notranslate"><span class="pre">block</span></code> is set to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<p>This MaxSAT enumeration call can be asynchronously interrupted, in
+which case the value of <code class="docutils literal notranslate"><span class="pre">expect_interrupt</span></code> must be set to
+<code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>block</strong> (<em>int</em>) – preferred way to block solutions when enumerating</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>block</strong> (<em>int</em>) – preferred way to block solutions when enumerating</p></li>
+<li><p><strong>expect_interrupt</strong> (<em>bool</em>) – whether <a class="reference internal" href="#examples.rc2.RC2.interrupt" title="examples.rc2.RC2.interrupt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">interrupt()</span></code></a> may be called</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>a MaxSAT model</p>
@@ -845,6 +881,46 @@ is turned on.</p>
 </ul>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="examples.rc2.RC2.interrupt">
+<span class="sig-name descname"><span class="pre">interrupt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2.interrupt" title="Link to this definition">#</a></dt>
+<dd><p>Interrupt the execution of the current <em>limited</em> SAT call in the
+RC2 algorithm. Can be used to enforce time limits using timer
+objects. The interrupt must be cleared before performing another
+<cite>compute</cite> call (see <a class="reference internal" href="#examples.rc2.RC2.clear_interrupt" title="examples.rc2.RC2.clear_interrupt"><code class="xref py py-meth docutils literal notranslate"><span class="pre">clear_interrupt()</span></code></a>).</p>
+<p>Importantly, interruption is implemented such that it can work
+incrementally with multiple MaxSAT calls, i.e. upon an interrupted
+invocation a user may extend the resources / time and call the
+solver again. To make this work, none of the SAT calls used by the
+heuristics are interrupted. For this reason, the solver may take
+slightly more time than assumed (spent to properly finish the
+processing of the last unsatisfiable core).</p>
+<p><strong>Note</strong> that this method can be called if the <cite>compute</cite> call was
+made with the option <code class="docutils literal notranslate"><span class="pre">expect_interrupt</span></code> set to <code class="docutils literal notranslate"><span class="pre">True</span></code>.
+Behaviour is <strong>undefined</strong> if used to <code class="docutils literal notranslate"><span class="pre">expect_interrupt</span></code> was set
+to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.examples.rc2</span><span class="w"> </span><span class="kn">import</span> <span class="n">RC2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="n">WCNF</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">threading</span><span class="w"> </span><span class="kn">import</span> <span class="n">Timer</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;somefile.wcnf&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">RC2</span><span class="p">(</span><span class="n">wcnf</span><span class="p">)</span> <span class="k">as</span> <span class="n">rc2</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">def</span><span class="w"> </span><span class="nf">interrupt</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;interrupted!&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="n">s</span><span class="o">.</span><span class="n">interrupt</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">timer</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">interrupt</span><span class="p">,</span> <span class="p">[</span><span class="n">rc2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;computing...&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">rc2</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">expect_interrupt</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;done&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -1032,7 +1108,7 @@ details).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="examples.rc2.RC2Stratified.compute">
-<span class="sig-name descname"><span class="pre">compute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2Stratified.compute" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">compute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expect_interrupt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.rc2.RC2Stratified.compute" title="Link to this definition">#</a></dt>
 <dd><p>This method solves the MaxSAT problem iteratively. Each
 optimization level is tackled the standard way, i.e. by
 calling <code class="xref py py-func docutils literal notranslate"><span class="pre">compute_()</span></code>. A new level is started by
@@ -1162,9 +1238,11 @@ reactivated at a later stage.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-description">Module description</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-details">Module details</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.rc2.RC2"><code class="docutils literal notranslate"><span class="pre">RC2</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.rc2.RC2._call_oracle"><code class="docutils literal notranslate"><span class="pre">RC2._call_oracle()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.rc2.RC2._map_extlit"><code class="docutils literal notranslate"><span class="pre">RC2._map_extlit()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.rc2.RC2.adapt_am1"><code class="docutils literal notranslate"><span class="pre">RC2.adapt_am1()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.rc2.RC2.add_clause"><code class="docutils literal notranslate"><span class="pre">RC2.add_clause()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.rc2.RC2.clear_interrupt"><code class="docutils literal notranslate"><span class="pre">RC2.clear_interrupt()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.rc2.RC2.compute"><code class="docutils literal notranslate"><span class="pre">RC2.compute()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.rc2.RC2.compute_"><code class="docutils literal notranslate"><span class="pre">RC2.compute_()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.rc2.RC2.create_sum"><code class="docutils literal notranslate"><span class="pre">RC2.create_sum()</span></code></a></li>
@@ -1174,6 +1252,7 @@ reactivated at a later stage.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.rc2.RC2.filter_assumps"><code class="docutils literal notranslate"><span class="pre">RC2.filter_assumps()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.rc2.RC2.get_core"><code class="docutils literal notranslate"><span class="pre">RC2.get_core()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.rc2.RC2.init"><code class="docutils literal notranslate"><span class="pre">RC2.init()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.rc2.RC2.interrupt"><code class="docutils literal notranslate"><span class="pre">RC2.interrupt()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.rc2.RC2.minimize_core"><code class="docutils literal notranslate"><span class="pre">RC2.minimize_core()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.rc2.RC2.oracle_time"><code class="docutils literal notranslate"><span class="pre">RC2.oracle_time()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples.rc2.RC2.process_am1"><code class="docutils literal notranslate"><span class="pre">RC2.process_am1()</span></code></a></li>
