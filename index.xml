@@ -61,7 +61,7 @@
       <link>https://pysathq.github.io/updates/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://pysathq.github.io/updates/</guid>
-      <description>PySAT is being developed with the rolling release model, which means we do not deliver major releases from time to time. Instead, many small (sometimes tiny) and frequent updates are provided. As a result, upgrading your installation of the toolkit every now and then to keep it up-to-date is good idea.&#xA;21.01.2026 (1.8.dev27) Fixed a bug in the initialiser of RC2. 20.12.2025 (1.8.dev26) Added asynchronous interruption in RC2. 15.12.2025 (1.8.dev25) Added automatic negation handling in IDPool.</description>
+      <description>PySAT is being developed with the rolling release model, which means we do not deliver major releases from time to time. Instead, many small (sometimes tiny) and frequent updates are provided. As a result, upgrading your installation of the toolkit every now and then to keep it up-to-date is good idea.&#xA;27.01.2026 (1.8.dev28) Added support for MSE22 WCNF format. 21.01.2026 (1.8.dev27) Fixed a bug in the initialiser of RC2. 20.12.2025 (1.</description>
     </item>
     <item>
       <title>Usage</title>

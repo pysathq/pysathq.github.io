@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 1.8.dev27 documentation</title>
+    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 1.8.dev28 documentation</title>
   
   
   
@@ -38,10 +38,10 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=304d1540"></script>
-    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
-    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="../_static/documentation_options.js?v=d857b682"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/formula';</script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -114,8 +114,8 @@
       
     
     
-    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev27 documentation - Home"/>
-    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev27 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev28 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev28 documentation - Home"/>
   
   
 </a></div>
@@ -127,7 +127,7 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.8.dev27)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.8.dev28)</strong></a></div>
       
     </div>
     
@@ -228,7 +228,7 @@
           
           
             <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.8.dev27)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.8.dev28)</strong></a></div>
           
         
       </div>
@@ -612,7 +612,7 @@ formula encoder is shown below (the implementation can also be found in
 </section>
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.And">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">And</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.And" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">And</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.And" title="Link to this definition">#</a></dt>
 <dd><p>Conjunction. Given a list of operands (subformulas) <span class="math notranslate nohighlight">\(f_i\)</span>,
 <span class="math notranslate nohighlight">\(i \in \{1,\ldots,n\}, n \in \mathbb{N}\)</span>, it creates a
 formula <span class="math notranslate nohighlight">\(\bigwedge_{i=1}^{n}{f_i}\)</span>. The list of operands <em>of
@@ -690,7 +690,7 @@ subformulas and creates a new formula.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.Atom">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">Atom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Atom" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">Atom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Atom" title="Link to this definition">#</a></dt>
 <dd><p>Atomic formula, i.e. a variable or constant. Although we often refer
 to negated literals as atomic formulas too, they are techically
 implemented as <code class="docutils literal notranslate"><span class="pre">Neg(Atom)</span></code>.</p>
@@ -765,7 +765,7 @@ return <code class="docutils literal notranslate"><span class="pre">self</span><
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.CNF">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">CNF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.CNF" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">CNF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.CNF" title="Link to this definition">#</a></dt>
 <dd><p>Class for manipulating CNF formulas. It can be used for creating
 formulas, reading them from a file, or writing them to a file. The
 <code class="docutils literal notranslate"><span class="pre">comment_lead</span></code> parameter can be helpful when one needs to parse
@@ -1227,7 +1227,7 @@ is equal to <code class="docutils literal notranslate"><span class="pre">1</span
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.CNFPlus">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">CNFPlus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.CNFPlus" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">CNFPlus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.CNFPlus" title="Link to this definition">#</a></dt>
 <dd><p>CNF formulas augmented with <em>native</em> cardinality constraints.</p>
 <p>This class inherits most of the functionality of the <a class="reference internal" href="#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a>
 class. The only difference between the two is that <a class="reference internal" href="#pysat.formula.CNFPlus" title="pysat.formula.CNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNFPlus</span></code></a>
@@ -1511,7 +1511,7 @@ remains unchanged.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.Equals">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">Equals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Equals" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">Equals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Equals" title="Link to this definition">#</a></dt>
 <dd><p>Equivalence. Given a list of operands (subformulas) <span class="math notranslate nohighlight">\(f_i\)</span>,
 <span class="math notranslate nohighlight">\(i \in \{1,\ldots,n\}, n \in \mathbb{N}\)</span>, it creates a
 formula <span class="math notranslate nohighlight">\(f_1 \leftrightarrow f_2
@@ -1590,7 +1590,7 @@ subformulas and creates a new formula.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.Formula">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">Formula</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Formula" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">Formula</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Formula" title="Link to this definition">#</a></dt>
 <dd><p>Abstract formula class. At the same time, the class is a factory for
 its children and can be used this way although it is recommended to
 create objects of the children classes directly. In particular, its
@@ -1676,7 +1676,7 @@ it finds.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.formula.Formula.attach_vpool">
-<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">attach_vpool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vpool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Formula.attach_vpool" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">attach_vpool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vpool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Formula.attach_vpool" title="Link to this definition">#</a></dt>
 <dd><p>Attach an external <a class="reference internal" href="#pysat.formula.IDPool" title="pysat.formula.IDPool"><code class="xref py py-class docutils literal notranslate"><span class="pre">IDPool</span></code></a> to be associated with a given
 context. This is useful when a user has an already created
 <a class="reference internal" href="#pysat.formula.IDPool" title="pysat.formula.IDPool"><code class="xref py py-class docutils literal notranslate"><span class="pre">IDPool</span></code></a> object and wants to reuse it when clausifying
@@ -1716,7 +1716,7 @@ formula).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.formula.Formula.cleanup">
-<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">cleanup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Formula.cleanup" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cleanup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Formula.cleanup" title="Link to this definition">#</a></dt>
 <dd><p>Clean up either a given context (if specified as different from
 <code class="docutils literal notranslate"><span class="pre">None</span></code>) or all contexts (otherwise); afterwards, start the
 “default” context from scratch.</p>
@@ -1739,7 +1739,7 @@ are orphaned and can’t get re-clausified.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.formula.Formula.export_vpool">
-<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">export_vpool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">active</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Formula.export_vpool" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">export_vpool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">active</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Formula.export_vpool" title="Link to this definition">#</a></dt>
 <dd><p>Opposite to <a class="reference internal" href="#pysat.formula.Formula.attach_vpool" title="pysat.formula.Formula.attach_vpool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">attach_vpool()</span></code></a>, this method returns a variable
 managed attached to a given context, which may be useful for
 external use.</p>
@@ -1758,7 +1758,7 @@ external use.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.formula.Formula.formulas">
-<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">formulas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atoms_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Formula.formulas" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">formulas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atoms_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Formula.formulas" title="Link to this definition">#</a></dt>
 <dd><p>Given a list of integer literal identifiers, this method returns a
 list of formulas corresponding to these identifiers. Basically,
 the method can be seen as mapping auxiliary variables naming
@@ -1800,7 +1800,7 @@ list will be included in the result.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.formula.Formula.literals">
-<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">literals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">forms</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Formula.literals" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">literals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">forms</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Formula.literals" title="Link to this definition">#</a></dt>
 <dd><p>Extract formula names for a given list of formulas and return them
 as a list of integer identifiers. Essentially, the method is the
 opposite to <a class="reference internal" href="#pysat.formula.Formula.formulas" title="pysat.formula.Formula.formulas"><code class="xref py py-meth docutils literal notranslate"><span class="pre">formulas()</span></code></a>.</p>
@@ -1864,7 +1864,7 @@ falsified, and <code class="docutils literal notranslate"><span class="pre">None
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.formula.Formula.set_context">
-<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">set_context</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Formula.set_context" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set_context</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Formula.set_context" title="Link to this definition">#</a></dt>
 <dd><p>Set the current context of interest. If set to <code class="docutils literal notranslate"><span class="pre">None</span></code>, no
 context will be assumed and duplicate checking will be disabled as
 a result.</p>
@@ -1914,13 +1914,13 @@ object is returned.</p>
 
 <dl class="py exception">
 <dt class="sig sig-object py" id="pysat.formula.FormulaError">
-<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">FormulaError</span></span><a class="headerlink" href="#pysat.formula.FormulaError" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">FormulaError</span></span><a class="headerlink" href="#pysat.formula.FormulaError" title="Link to this definition">#</a></dt>
 <dd><p>This exception is raised when an formula-related issue occurs.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.FormulaType">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">FormulaType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.FormulaType" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">FormulaType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.FormulaType" title="Link to this definition">#</a></dt>
 <dd><p>This class represents a C-like <code class="docutils literal notranslate"><span class="pre">enum</span></code> type for choosing the formula
 type to use. The values denoting all the formula types are as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ATOM</span> <span class="o">=</span> <span class="mi">0</span>
@@ -1937,7 +1937,7 @@ type to use. The values denoting all the formula types are as follows:</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.IDPool">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">IDPool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_from</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">occupied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_neg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.IDPool" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">IDPool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_from</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">occupied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_neg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.IDPool" title="Link to this definition">#</a></dt>
 <dd><p>A simple manager of variable IDs. It can be used as a pool of integers
 assigning an ID to any object. Identifiers are to start from <code class="docutils literal notranslate"><span class="pre">1</span></code> by
 default. The list of occupied intervals is empty be default. If
@@ -2046,7 +2046,7 @@ the constructor of <a class="reference internal" href="#pysat.formula.IDPool" ti
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.ITE">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">ITE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.ITE" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">ITE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.ITE" title="Link to this definition">#</a></dt>
 <dd><p>If-then-else operator. Given three operands (subformulas) <span class="math notranslate nohighlight">\(x\)</span>,
 <span class="math notranslate nohighlight">\(y\)</span>, and <span class="math notranslate nohighlight">\(z\)</span>, it creates a formula <span class="math notranslate nohighlight">\((x \rightarrow
 y) \land (\neg{x} \rightarrow z)\)</span>. The operands should be passed as
@@ -2090,7 +2090,7 @@ subformulas and creates a new formula.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.Implies">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">Implies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Implies" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">Implies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Implies" title="Link to this definition">#</a></dt>
 <dd><p>Implication. Given two operands <span class="math notranslate nohighlight">\(f_1\)</span> and <span class="math notranslate nohighlight">\(f_2\)</span>, it
 creates a formula <span class="math notranslate nohighlight">\(f_1 \rightarrow f_2\)</span>. The operands must be
 passed to the constructors either as two arguments or two keyword
@@ -2134,7 +2134,7 @@ formula with these simplified subformulas.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.Neg">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">Neg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Neg" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">Neg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Neg" title="Link to this definition">#</a></dt>
 <dd><p>Negation. Given a single operand (subformula) <span class="math notranslate nohighlight">\(f\)</span>, it creates a
 formula <span class="math notranslate nohighlight">\(\neg{f}\)</span>. The operand must be passed as an argument to
 the constructor.</p>
@@ -2182,7 +2182,7 @@ simplified subformula.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.Or">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">Or</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Or" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">Or</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Or" title="Link to this definition">#</a></dt>
 <dd><p>Disjunction. Given a list of operands (subformulas) <span class="math notranslate nohighlight">\(f_i\)</span>,
 <span class="math notranslate nohighlight">\(i \in \{1,\ldots,n\}, n \in \mathbb{N}\)</span>, it creates a
 formula <span class="math notranslate nohighlight">\(\bigvee_{i=1}^{n}{f_i}\)</span>. The list of operands <em>of size
@@ -2260,7 +2260,7 @@ subformulas and creates a new formula.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.WCNF">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">WCNF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_fp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment_lead</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['c']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.WCNF" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">WCNF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_fp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment_lead</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['c']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.WCNF" title="Link to this definition">#</a></dt>
 <dd><p>Class for manipulating partial (weighted) CNF formulas. It can be used
 for creating formulas, reading them from a file, or writing them to a
 file. The <code class="docutils literal notranslate"><span class="pre">comment_lead</span></code> parameter can be helpful when one needs to
@@ -2417,11 +2417,11 @@ lines.</p>
 </dd>
 </dl>
 <p>Usage example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;some-file.cnf&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;some-file.wcnf&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">cnf1</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="n">cnf1</span><span class="o">.</span><span class="n">from_fp</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;another-file.cnf&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;another-file.wcnf&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">cnf2</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">(</span><span class="n">from_fp</span><span class="o">=</span><span class="n">fp</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2505,9 +2505,17 @@ comment lines can be specified in the <code class="docutils literal notranslate"
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.formula.WCNF.to_dimacs">
-<span class="sig-name descname"><span class="pre">to_dimacs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.WCNF.to_dimacs" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_dimacs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mse22'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.WCNF.to_dimacs" title="Link to this definition">#</a></dt>
 <dd><p>Return the current state of the object in extended DIMACS format.</p>
-<p>For example, if ‘some-file.cnf’ contains:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">format</span></code> parameter can be set either to value <code class="docutils literal notranslate"><span class="pre">'mse22'</span></code>
+(set by default) or <code class="docutils literal notranslate"><span class="pre">'legacy'</span></code>. Both variants are described on
+the <a class="reference external" href="https://maxsat-evaluations.github.io/2022/rules.html#input">MSE 2022 webpage</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>format</strong> (<em>str</em>) – WCNF format to use</p>
+</dd>
+</dl>
+<p>For example, if ‘some-file.wcnf’ contains:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="n">Example</span>
 <span class="n">p</span> <span class="n">wcnf</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">10</span>
 <span class="mi">1</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">0</span>
@@ -2517,11 +2525,17 @@ comment lines can be specified in the <code class="docutils literal notranslate"
 </div>
 <p>Then you can obtain the DIMACS with:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="n">WCNF</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;some-file.cnf&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">to_dimacs</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;some-file.wcnf&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">to_dimacs</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;legacy&#39;</span><span class="p">))</span>
 <span class="go">c Example</span>
 <span class="go">p wcnf 2 3 10</span>
 <span class="go">10 1 2 0</span>
+<span class="go">1 -1 0</span>
+<span class="go">2 -2 0</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">to_dimacs</span><span class="p">())</span>
+<span class="go">c Example</span>
+<span class="go">h 1 2 0</span>
 <span class="go">1 -1 0</span>
 <span class="go">2 -2 0</span>
 </pre></div>
@@ -2530,18 +2544,22 @@ comment lines can be specified in the <code class="docutils literal notranslate"
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.formula.WCNF.to_file">
-<span class="sig-name descname"><span class="pre">to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comments</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compress_with</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'use_ext'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.WCNF.to_file" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comments</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compress_with</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'use_ext'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mse22'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.WCNF.to_file" title="Link to this definition">#</a></dt>
 <dd><p>The method is for saving a WCNF formula into a file in the DIMACS
 CNF format. A file name is expected as an argument. Additionally,
 supplementary comment lines can be specified in the <code class="docutils literal notranslate"><span class="pre">comments</span></code>
 parameter. Also, a file can be compressed using either gzip, bzip2,
 lzma (xz), or zstd.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">format</span></code> parameter can be set either to value <code class="docutils literal notranslate"><span class="pre">'mse22'</span></code>
+(set by default) or <code class="docutils literal notranslate"><span class="pre">'legacy'</span></code>. Both variants are described on
+the <a class="reference external" href="https://maxsat-evaluations.github.io/2022/rules.html#input">MSE 2022 webpage</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>fname</strong> (<em>str</em>) – a file name where to store the formula.</p></li>
 <li><p><strong>comments</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – additional comments to put in the file.</p></li>
 <li><p><strong>compress_with</strong> (<em>str</em>) – file compression algorithm</p></li>
+<li><p><strong>format</strong> (<em>str</em>) – WCNF format to use</p></li>
 </ul>
 </dd>
 </dl>
@@ -2564,16 +2582,20 @@ file extension. Using <code class="docutils literal notranslate"><span class="pr
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.formula.WCNF.to_fp">
-<span class="sig-name descname"><span class="pre">to_fp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_pointer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comments</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.WCNF.to_fp" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_fp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_pointer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comments</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mse22'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.WCNF.to_fp" title="Link to this definition">#</a></dt>
 <dd><p>The method can be used to save a WCNF formula into a file pointer.
 The file pointer is expected as an argument. Additionally,
 supplementary comment lines can be specified in the <code class="docutils literal notranslate"><span class="pre">comments</span></code>
 parameter.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">format</span></code> parameter can be set either to value <code class="docutils literal notranslate"><span class="pre">'mse22'</span></code>
+(set by default) or <code class="docutils literal notranslate"><span class="pre">'legacy'</span></code>. Both variants are described on
+the <a class="reference external" href="https://maxsat-evaluations.github.io/2022/rules.html#input">MSE 2022 webpage</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>file_pointer</strong> (<em>file pointer</em>) – a file pointer where to store the formula.</p></li>
 <li><p><strong>comments</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – additional comments to put in the file.</p></li>
+<li><p><strong>format</strong> (<em>str</em>) – WCNF format to use</p></li>
 </ul>
 </dd>
 </dl>
@@ -2618,7 +2640,7 @@ weights are discarded.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.WCNFPlus">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">WCNFPlus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_fp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment_lead</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['c']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.WCNFPlus" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">WCNFPlus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_fp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment_lead</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['c']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.WCNFPlus" title="Link to this definition">#</a></dt>
 <dd><p>WCNF formulas augmented with <em>native</em> cardinality constraints.</p>
 <p>This class inherits most of the functionality of the <a class="reference internal" href="#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a>
 class. The only difference between the two is that <a class="reference internal" href="#pysat.formula.WCNFPlus" title="pysat.formula.WCNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNFPlus</span></code></a>
@@ -2831,16 +2853,20 @@ You may want to use Z3’s API instead (see its PB interface).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.formula.WCNFPlus.to_fp">
-<span class="sig-name descname"><span class="pre">to_fp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_pointer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comments</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.WCNFPlus.to_fp" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_fp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_pointer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comments</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mse22'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.WCNFPlus.to_fp" title="Link to this definition">#</a></dt>
 <dd><p>The method can be used to save a WCNF+ formula into a file pointer.
 The file pointer is expected as an argument. Additionally,
 supplementary comment lines can be specified in the <code class="docutils literal notranslate"><span class="pre">comments</span></code>
 parameter.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">format</span></code> parameter can be set either to value <code class="docutils literal notranslate"><span class="pre">'mse22'</span></code>
+(set by default) or <code class="docutils literal notranslate"><span class="pre">'legacy'</span></code>. Both variants are described on
+the <a class="reference external" href="https://maxsat-evaluations.github.io/2022/rules.html#input">MSE 2022 webpage</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>file_pointer</strong> (<em>file pointer</em>) – a file pointer where to store the formula.</p></li>
 <li><p><strong>comments</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – additional comments to put in the file.</p></li>
+<li><p><strong>format</strong> (<em>str</em>) – WCNF format to use</p></li>
 </ul>
 </dd>
 </dl>
@@ -2890,7 +2916,7 @@ formula remain unchanged in the new (plain) formula.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.XOr">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">XOr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.XOr" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">XOr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.XOr" title="Link to this definition">#</a></dt>
 <dd><p>Exclusive disjunction. Given a list of operands (subformulas)
 <span class="math notranslate nohighlight">\(f_i\)</span>, <span class="math notranslate nohighlight">\(i \in \{1,\ldots,n\}, n \in \mathbb{N}\)</span>, it
 creates a formula <span class="math notranslate nohighlight">\(f_1 \oplus f_2 \oplus\ldots\oplus f_n\)</span>.
@@ -3164,7 +3190,7 @@ subformulas and creates a new formula.</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
     <br/>
   </p>
 </div>
