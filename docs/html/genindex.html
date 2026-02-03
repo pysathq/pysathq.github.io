@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index &#8212; PySAT 1.8.dev28 documentation</title>
+    <title>Index &#8212; PySAT 1.8.dev29 documentation</title>
   
   
   
@@ -37,7 +37,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=d857b682"></script>
+    <script src="_static/documentation_options.js?v=7c2f329b"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
@@ -110,8 +110,8 @@
       
     
     
-    <img src="_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev28 documentation - Home"/>
-    <img src="_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev28 documentation - Home"/>
+    <img src="_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev29 documentation - Home"/>
+    <img src="_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev29 documentation - Home"/>
   
   
 </a></div>
@@ -123,7 +123,7 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.8.dev28)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.8.dev29)</strong></a></div>
       
     </div>
     
@@ -222,7 +222,7 @@
           
           
             <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.8.dev28)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.8.dev29)</strong></a></div>
           
         
       </div>
@@ -417,6 +417,8 @@
 </li>
       <li><a href="api/engines.html#pysat.engines.BooleanEngine.adaptive_update">adaptive_update() (pysat.engines.BooleanEngine method)</a>
 </li>
+      <li><a href="api/integer.html#pysat.integer.IntegerEngine.add_alldifferent">add_alldifferent() (pysat.integer.IntegerEngine method)</a>
+</li>
       <li><a href="api/solvers.html#pysat.solvers.Solver.add_atmost">add_atmost() (pysat.solvers.Solver method)</a>
 </li>
       <li><a href="api/allies/approxmc.html#allies.approxmc.Counter.add_clause">add_clause() (allies.approxmc.Counter method)</a>
@@ -443,6 +445,10 @@
 </li>
       <li><a href="api/examples/hitman.html#examples.hitman.Hitman.add_hard">add_hard() (examples.hitman.Hitman method)</a>
 </li>
+      <li><a href="api/integer.html#pysat.integer.IntegerEngine.add_linear">add_linear() (pysat.integer.IntegerEngine method)</a>
+</li>
+      <li><a href="api/integer.html#pysat.integer.IntegerEngine.add_not_equal">add_not_equal() (pysat.integer.IntegerEngine method)</a>
+</li>
       <li><a href="api/card.html#pysat.card.NoSuchEncodingError.add_note">add_note() (pysat.card.NoSuchEncodingError method)</a>
 
       <ul>
@@ -455,6 +461,8 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/integer.html#pysat.integer.IntegerEngine.add_var">add_var() (pysat.integer.IntegerEngine method)</a>
+</li>
       <li><a href="api/solvers.html#pysat.solvers.Solver.add_xor_clause">add_xor_clause() (pysat.solvers.Solver method)</a>
 </li>
       <li>
@@ -492,12 +500,16 @@
       <li><a href="api/card.html#pysat.card.CardEnc.atleast">atleast() (pysat.card.CardEnc class method)</a>
 
       <ul>
+        <li><a href="api/integer.html#pysat.integer.Integer.atleast">(pysat.integer.Integer method)</a>
+</li>
         <li><a href="api/pb.html#pysat.pb.PBEnc.atleast">(pysat.pb.PBEnc class method)</a>
 </li>
       </ul></li>
       <li><a href="api/card.html#pysat.card.CardEnc.atmost">atmost() (pysat.card.CardEnc class method)</a>
 
       <ul>
+        <li><a href="api/integer.html#pysat.integer.Integer.atmost">(pysat.integer.Integer method)</a>
+</li>
         <li><a href="api/pb.html#pysat.pb.PBEnc.atmost">(pysat.pb.PBEnc class method)</a>
 </li>
       </ul></li>
@@ -535,6 +547,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/engines.html#pysat.engines.BooleanEngine">BooleanEngine (class in pysat.engines)</a>
 </li>
+      <li><a href="api/integer.html#pysat.integer.LinearExpr.bounds">bounds() (pysat.integer.LinearExpr method)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -552,7 +566,11 @@
 </li>
       </ul></li>
       <li><a href="api/formula.html#pysat.formula.Formula.clausify">clausify() (pysat.formula.Formula method)</a>
+
+      <ul>
+        <li><a href="api/integer.html#pysat.integer.IntegerEngine.clausify">(pysat.integer.IntegerEngine method)</a>
 </li>
+      </ul></li>
       <li><a href="api/formula.html#pysat.formula.Formula.cleanup">cleanup() (pysat.formula.Formula static method)</a>
 </li>
       <li><a href="api/engines.html#pysat.engines.BooleanEngine.cleanup_watched">cleanup_watched() (pysat.engines.BooleanEngine method)</a>
@@ -631,6 +649,10 @@
         <li><a href="api/engines.html#pysat.engines.Propagator.decide">(pysat.engines.Propagator method)</a>
 </li>
       </ul></li>
+      <li><a href="api/integer.html#pysat.integer.Integer.decode">decode() (pysat.integer.Integer method)</a>
+</li>
+      <li><a href="api/integer.html#pysat.integer.IntegerEngine.decode_model">decode_model() (pysat.integer.IntegerEngine method)</a>
+</li>
       <li><a href="api/allies/approxmc.html#allies.approxmc.Counter.delete">delete() (allies.approxmc.Counter method)</a>
 
       <ul>
@@ -679,6 +701,8 @@
         <li><a href="api/examples/mcsls.html#examples.mcsls.MCSls.do_cld_check">(examples.mcsls.MCSls method)</a>
 </li>
       </ul></li>
+      <li><a href="api/integer.html#pysat.integer.Integer.domain_clauses">domain_clauses() (pysat.integer.Integer method)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -688,6 +712,10 @@
       <li><a href="api/engines.html#pysat.engines.BooleanEngine.enable">enable() (pysat.engines.BooleanEngine method)</a>
 </li>
       <li><a href="api/solvers.html#pysat.solvers.Solver.enable_propagator">enable_propagator() (pysat.solvers.Solver method)</a>
+</li>
+      <li><a href="api/integer.html#pysat.integer.Integer.encode">encode() (pysat.integer.Integer method)</a>
+</li>
+      <li><a href="api/integer.html#pysat.integer.IntegerEngine.encode_model">encode_model() (pysat.integer.IntegerEngine method)</a>
 </li>
       <li><a href="api/card.html#pysat.card.EncType">EncType (class in pysat.card)</a>
 
@@ -720,6 +748,8 @@
       <li><a href="api/card.html#pysat.card.CardEnc.equals">equals() (pysat.card.CardEnc class method)</a>
 
       <ul>
+        <li><a href="api/integer.html#pysat.integer.Integer.equals">(pysat.integer.Integer method)</a>
+</li>
         <li><a href="api/pb.html#pysat.pb.PBEnc.equals">(pysat.pb.PBEnc class method)</a>
 </li>
       </ul></li>
@@ -890,6 +920,8 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/integer.html#pysat.integer.Integer.ge">ge() (pysat.integer.Integer method)</a>
+</li>
       <li><a href="api/pb.html#pysat.pb.PBEnc.geq">geq() (pysat.pb.PBEnc class method)</a>
 </li>
       <li><a href="api/examples/hitman.html#examples.hitman.Hitman.get">get() (examples.hitman.Hitman method)</a>
@@ -900,14 +932,14 @@
         <li><a href="api/solvers.html#pysat.solvers.Solver.get_core">(pysat.solvers.Solver method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/examples/lsu.html#examples.lsu.LSU.get_model">get_model() (examples.lsu.LSU method)</a>
 
       <ul>
         <li><a href="api/solvers.html#pysat.solvers.Solver.get_model">(pysat.solvers.Solver method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/solvers.html#pysat.solvers.Solver.get_proof">get_proof() (pysat.solvers.Solver method)</a>
 </li>
       <li><a href="api/process.html#pysat.process.Processor.get_status">get_status() (pysat.process.Processor method)</a>
@@ -954,11 +986,15 @@
         <li><a href="api/examples/rc2.html#examples.rc2.RC2.init">(examples.rc2.RC2 method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/examples/primer.html#examples.primer.Primer.init_oracles">init_oracles() (examples.primer.Primer method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/examples/rc2.html#examples.rc2.RC2Stratified.init_wstr">init_wstr() (examples.rc2.RC2Stratified method)</a>
+</li>
+      <li><a href="api/integer.html#pysat.integer.Integer">Integer (class in pysat.integer)</a>
+</li>
+      <li><a href="api/integer.html#pysat.integer.IntegerEngine">IntegerEngine (class in pysat.integer)</a>
 </li>
       <li><a href="api/examples/lsu.html#examples.lsu.LSU.interrupt">interrupt() (examples.lsu.LSU method)</a>
 
@@ -996,12 +1032,18 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/examples/lbx.html#examples.lbx.LBX">LBX (class in examples.lbx)</a>
 </li>
+      <li><a href="api/integer.html#pysat.integer.Integer.le">le() (pysat.integer.Integer method)</a>
+</li>
       <li><a href="api/pb.html#pysat.pb.PBEnc.leq">leq() (pysat.pb.PBEnc class method)</a>
 </li>
       <li><a href="api/engines.html#pysat.engines.LinearConstraint">LinearConstraint (class in pysat.engines)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/integer.html#pysat.integer.LinearExpr">LinearExpr (class in pysat.integer)</a>
+</li>
+      <li><a href="api/integer.html#pysat.integer.Integer.linearize">linearize() (pysat.integer.Integer method)</a>
+</li>
       <li><a href="api/formula.html#pysat.formula.Formula.literals">literals() (pysat.formula.Formula static method)</a>
 </li>
       <li><a href="api/examples/lsu.html#examples.lsu.LSU">LSU (class in examples.lsu)</a>
@@ -1061,6 +1103,8 @@
         <li><a href="api/engines.html#module-pysat.engines">pysat.engines</a>
 </li>
         <li><a href="api/formula.html#module-pysat.formula">pysat.formula</a>
+</li>
+        <li><a href="api/integer.html#module-pysat.integer">pysat.integer</a>
 </li>
         <li><a href="api/pb.html#module-pysat.pb">pysat.pb</a>
 </li>
@@ -1171,6 +1215,12 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/examples/genhard.html#examples.genhard.PAR">PAR (class in examples.genhard)</a>
 </li>
+      <li><a href="api/integer.html#pysat.integer.IntegerEngine.pb_linear_leq">pb_linear_leq() (pysat.integer.IntegerEngine static method)</a>
+
+      <ul>
+        <li><a href="api/integer.html#pysat.integer.LinearExpr.pb_linear_leq">(pysat.integer.LinearExpr static method)</a>
+</li>
+      </ul></li>
       <li><a href="api/pb.html#pysat.pb.PBEnc">PBEnc (class in pysat.pb)</a>
 </li>
       <li><a href="api/examples/genhard.html#examples.genhard.PHP">PHP (class in examples.genhard)</a>
@@ -1255,6 +1305,13 @@
 </li>
       </ul></li>
       <li>
+    pysat.integer
+
+      <ul>
+        <li><a href="api/integer.html#module-pysat.integer">module</a>
+</li>
+      </ul></li>
+      <li>
     pysat.pb
 
       <ul>
@@ -1320,7 +1377,11 @@
       <li><a href="api/solvers.html#pysat.solvers.Solver.set_phases">set_phases() (pysat.solvers.Solver method)</a>
 </li>
       <li><a href="api/engines.html#pysat.engines.BooleanEngine.setup_observe">setup_observe() (pysat.engines.BooleanEngine method)</a>
+
+      <ul>
+        <li><a href="api/integer.html#pysat.integer.IntegerEngine.setup_observe">(pysat.integer.IntegerEngine method)</a>
 </li>
+      </ul></li>
       <li><a href="api/formula.html#pysat.formula.And.simplified">simplified() (pysat.formula.And method)</a>
 
       <ul>

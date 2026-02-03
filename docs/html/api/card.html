@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Cardinality encodings (pysat.card) &#8212; PySAT 1.8.dev28 documentation</title>
+    <title>Cardinality encodings (pysat.card) &#8212; PySAT 1.8.dev29 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=d857b682"></script>
+    <script src="../_static/documentation_options.js?v=7c2f329b"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -46,7 +46,7 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Boolean formula manipulation (pysat.formula)" href="formula.html" />
+    <link rel="next" title="External engines (pysat.engines)" href="engines.html" />
     <link rel="prev" title="Welcome to PySAT’s documentation!" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -114,8 +114,8 @@
       
     
     
-    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev28 documentation - Home"/>
-    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev28 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev29 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev29 documentation - Home"/>
   
   
 </a></div>
@@ -127,7 +127,7 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.8.dev28)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.8.dev29)</strong></a></div>
       
     </div>
     
@@ -228,7 +228,7 @@
           
           
             <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.8.dev28)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.8.dev29)</strong></a></div>
           
         
       </div>
@@ -521,7 +521,7 @@ identifiers <code class="docutils literal notranslate"><span class="pre">vpool</
 method call. In many circumstances, this is more convenient than
 using <code class="docutils literal notranslate"><span class="pre">top_id</span></code>. Also note that parameters <code class="docutils literal notranslate"><span class="pre">top_id</span></code> and
 <code class="docutils literal notranslate"><span class="pre">vpool</span></code> <strong>cannot</strong> be specified <em>simultaneously</em>.</p>
-<p>The default value of <code class="docutils literal notranslate"><span class="pre">encoding</span></code> is <code class="xref py py-attr docutils literal notranslate"><span class="pre">Enctype.seqcounter</span></code>.</p>
+<p>The default value of <code class="docutils literal notranslate"><span class="pre">encoding</span></code> is <code class="xref py py-attr docutils literal notranslate"><span class="pre">EncType.seqcounter</span></code>.</p>
 <p>The method <em>translates</em> the AtLeast constraint into an AtMost
 constraint by <em>negating</em> the literals of <code class="docutils literal notranslate"><span class="pre">lits</span></code>, creating a new
 bound <span class="math notranslate nohighlight">\(n-k\)</span> and invoking <a class="reference internal" href="#pysat.card.CardEnc.atmost" title="pysat.card.CardEnc.atmost"><code class="xref py py-meth docutils literal notranslate"><span class="pre">CardEnc.atmost()</span></code></a> with the
@@ -858,11 +858,11 @@ different from <code class="docutils literal notranslate"><span class="pre">1</s
       </div>
     </a>
     <a class="right-next"
-       href="formula.html"
+       href="engines.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Boolean formula manipulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.formula</span></code>)</p>
+        <p class="prev-next-title">External engines (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.engines</span></code>)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

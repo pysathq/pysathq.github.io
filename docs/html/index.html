@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Welcome to PySAT’s documentation! &#8212; PySAT 1.8.dev28 documentation</title>
+    <title>Welcome to PySAT’s documentation! &#8212; PySAT 1.8.dev29 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=d857b682"></script>
+    <script src="_static/documentation_options.js?v=7c2f329b"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
@@ -112,8 +112,8 @@
       
     
     
-    <img src="_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev28 documentation - Home"/>
-    <img src="_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev28 documentation - Home"/>
+    <img src="_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.8.dev29 documentation - Home"/>
+    <img src="_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.8.dev29 documentation - Home"/>
   
   
 </a></div>
@@ -125,7 +125,7 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.8.dev28)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.8.dev29)</strong></a></div>
       
     </div>
     
@@ -228,7 +228,7 @@
           
           
             <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.8.dev28)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.8.dev29)</strong></a></div>
           
         
       </div>
@@ -334,13 +334,14 @@
 basic information on what PySAT is, please, see <a class="reference external" href="https://pysathq.github.io">the main project website</a>.</p>
 <section id="api-documentation">
 <h2>API documentation<a class="headerlink" href="#api-documentation" title="Link to this heading">#</a></h2>
-<p>The PySAT toolkit has five core modules: <a class="reference internal" href="api/card.html#module-pysat.card" title="pysat.card"><code class="xref py py-mod docutils literal notranslate"><span class="pre">card</span></code></a>, <a class="reference internal" href="api/formula.html#module-pysat.formula" title="pysat.formula"><code class="xref py py-mod docutils literal notranslate"><span class="pre">formula</span></code></a>,
-<a class="reference internal" href="api/pb.html#module-pysat.pb" title="pysat.pb"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pb</span></code></a>, <a class="reference internal" href="api/process.html#module-pysat.process" title="pysat.process"><code class="xref py py-mod docutils literal notranslate"><span class="pre">process</span></code></a> and <a class="reference internal" href="api/solvers.html#module-pysat.solvers" title="pysat.solvers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">solvers</span></code></a>. The four of them
-(<a class="reference internal" href="api/card.html#module-pysat.card" title="pysat.card"><code class="xref py py-mod docutils literal notranslate"><span class="pre">card</span></code></a>, <a class="reference internal" href="api/pb.html#module-pysat.pb" title="pysat.pb"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pb</span></code></a>, <a class="reference internal" href="api/process.html#module-pysat.process" title="pysat.process"><code class="xref py py-mod docutils literal notranslate"><span class="pre">process</span></code></a> and <a class="reference internal" href="api/solvers.html#module-pysat.solvers" title="pysat.solvers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">solvers</span></code></a>) are Python
-wrappers for the code originally implemented in the C/C++ languages while the
-<a class="reference internal" href="api/formula.html#module-pysat.formula" title="pysat.formula"><code class="xref py py-mod docutils literal notranslate"><span class="pre">formula</span></code></a> module is a <em>pure</em> Python module. Version <em>0.1.4.dev0</em> of
-PySAT brings a new module called <a class="reference internal" href="api/pb.html#module-pysat.pb" title="pysat.pb"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pb</span></code></a>, which is a wrapper for the basic
-functionality of a third-party library <a class="reference external" href="https://pypi.org/project/pypblib/">PyPBLib</a> developed by the <a class="reference external" href="http://ulog.udl.cat/">Logic Optimization
+<p>The PySAT toolkit has seven core modules: <a class="reference internal" href="api/card.html#module-pysat.card" title="pysat.card"><code class="xref py py-mod docutils literal notranslate"><span class="pre">card</span></code></a>, <a class="reference internal" href="api/engines.html#module-pysat.engines" title="pysat.engines"><code class="xref py py-mod docutils literal notranslate"><span class="pre">engines</span></code></a>,
+<a class="reference internal" href="api/formula.html#module-pysat.formula" title="pysat.formula"><code class="xref py py-mod docutils literal notranslate"><span class="pre">formula</span></code></a>, <a class="reference internal" href="api/integer.html#module-pysat.integer" title="pysat.integer"><code class="xref py py-mod docutils literal notranslate"><span class="pre">integer</span></code></a>, <a class="reference internal" href="api/pb.html#module-pysat.pb" title="pysat.pb"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pb</span></code></a>, <a class="reference internal" href="api/process.html#module-pysat.process" title="pysat.process"><code class="xref py py-mod docutils literal notranslate"><span class="pre">process</span></code></a> and
+<a class="reference internal" href="api/solvers.html#module-pysat.solvers" title="pysat.solvers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">solvers</span></code></a>. The four of them (<a class="reference internal" href="api/card.html#module-pysat.card" title="pysat.card"><code class="xref py py-mod docutils literal notranslate"><span class="pre">card</span></code></a>, <a class="reference internal" href="api/pb.html#module-pysat.pb" title="pysat.pb"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pb</span></code></a>, <a class="reference internal" href="api/process.html#module-pysat.process" title="pysat.process"><code class="xref py py-mod docutils literal notranslate"><span class="pre">process</span></code></a>
+and <a class="reference internal" href="api/solvers.html#module-pysat.solvers" title="pysat.solvers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">solvers</span></code></a>) are Python wrappers for the code originally implemented
+in the C/C++ languages while the <a class="reference internal" href="api/engines.html#module-pysat.engines" title="pysat.engines"><code class="xref py py-mod docutils literal notranslate"><span class="pre">engines</span></code></a>, <a class="reference internal" href="api/formula.html#module-pysat.formula" title="pysat.formula"><code class="xref py py-mod docutils literal notranslate"><span class="pre">formula</span></code></a> and
+<a class="reference internal" href="api/integer.html#module-pysat.integer" title="pysat.integer"><code class="xref py py-mod docutils literal notranslate"><span class="pre">integer</span></code></a> modules are <em>pure</em> Python modules. Version
+<em>0.1.4.dev0</em> of PySAT brings a new module called <a class="reference internal" href="api/pb.html#module-pysat.pb" title="pysat.pb"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pb</span></code></a>, which is a wrapper
+for the basic functionality of a third-party library <a class="reference external" href="https://pypi.org/project/pypblib/">PyPBLib</a> developed by the <a class="reference external" href="http://ulog.udl.cat/">Logic Optimization
 Group</a> of the University of Lleida.</p>
 <p>A supplementary sixth module <code class="xref py py-mod docutils literal notranslate"><span class="pre">examples</span></code> presents a list of scripts,
 which are supposed to demonstrate how the toolkit can be used for practical
@@ -355,8 +356,9 @@ important for practical SAT-based problem solving.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api/card.html">Cardinality encodings (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.card</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/formula.html">Boolean formula manipulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.formula</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/engines.html">External engines (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.engines</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/formula.html">Boolean formula manipulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.formula</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/integer.html">Integer variables (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.integer</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/pb.html">Pseudo-Boolean encodings (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.pb</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/process.html">Formula processing (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.process</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/solvers.html">SAT solvers’ API (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pysat.solvers</span></code>)</a></li>
