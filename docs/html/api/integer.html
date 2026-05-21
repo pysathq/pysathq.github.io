@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Integer variables (pysat.integer) &#8212; PySAT 1.9.dev2 documentation</title>
+    <title>Integer variables (pysat.integer) &#8212; PySAT 1.9.dev3 documentation</title>
   
   
   
@@ -38,10 +38,10 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=00e88f0f"></script>
-    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
-    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="../_static/documentation_options.js?v=a4900b16"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/integer';</script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -114,8 +114,8 @@
       
     
     
-    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.9.dev2 documentation - Home"/>
-    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.9.dev2 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.9.dev3 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.9.dev3 documentation - Home"/>
   
   
 </a></div>
@@ -127,7 +127,7 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.9.dev2)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.9.dev3)</strong></a></div>
       
     </div>
     
@@ -228,7 +228,7 @@
           
           
             <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.9.dev2)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.9.dev3)</strong></a></div>
           
         
       </div>
@@ -498,10 +498,18 @@ Therefore, the final PB constraint is <span class="math notranslate nohighlight"
 <p>The module also includes a minimal expression DSL (see
 <a class="reference internal" href="#pysat.integer.LinearExpr" title="pysat.integer.LinearExpr"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearExpr</span></code></a>) so that constraints can be written in a natural form
 (e.g. <code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">+</span> <span class="pre">Y</span> <span class="pre">&lt;=</span> <span class="pre">4</span></code>). Supported syntactic sugar includes <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>,
-unary negation, scalar <code class="docutils literal notranslate"><span class="pre">*</span></code> by numeric constants, and comparisons <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>,
-<code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">==</span></code>, <code class="docutils literal notranslate"><span class="pre">!=</span></code>. Notably <strong>unsupported</strong> are
-variable-variable multiplication, division, modulus, absolute values, and
-reification.</p>
+unary negation, scalar <code class="docutils literal notranslate"><span class="pre">*</span></code> by numeric constants, builtin <code class="docutils literal notranslate"><span class="pre">abs()</span></code>, and
+comparisons <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">==</span></code>, <code class="docutils literal notranslate"><span class="pre">!=</span></code>. Reification is
+supported at the engine level via <a class="reference internal" href="#pysat.integer.IntegerEngine.add_linear" title="pysat.integer.IntegerEngine.add_linear"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IntegerEngine.add_linear()</span></code></a>.
+Equality between two plain <a class="reference internal" href="#pysat.integer.Integer" title="pysat.integer.Integer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Integer</span></code></a> objects is a special case:
+<code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">==</span> <span class="pre">Y</span></code> performs Python identity comparison and does <strong>not</strong> build a
+modelling constraint. To express variable-variable equality, use
+<code class="docutils literal notranslate"><span class="pre">X.as_expr()</span> <span class="pre">==</span> <span class="pre">Y.as_expr()</span></code> (preferred, as it enables the specialized
+<code class="docutils literal notranslate"><span class="pre">eq_vars</span></code> encoding) or equivalently <code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">-</span> <span class="pre">Y</span> <span class="pre">==</span> <span class="pre">0</span></code>. By contrast,
+<code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">!=</span> <span class="pre">Y</span></code> and order comparisons such as <code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">&lt;</span> <span class="pre">Y</span></code> work directly on
+<a class="reference internal" href="#pysat.integer.Integer" title="pysat.integer.Integer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Integer</span></code></a> objects and return constraints.
+Notably <strong>unsupported</strong> are variable-variable multiplication, division,
+and modulus.</p>
 <p>Integer variables can be declared to operate with either <code class="docutils literal notranslate"><span class="pre">'float'</span></code> or
 <code class="docutils literal notranslate"><span class="pre">'decimal'</span></code> coefficients, which is handled by the <code class="docutils literal notranslate"><span class="pre">numeric</span></code>
 parameter. Integer coefficients can be mixed with either mode. However,
@@ -567,7 +575,7 @@ illustrative.</p>
 </section>
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.integer.Integer">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.integer.</span></span><span class="sig-name descname"><span class="pre">Integer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ub</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'direct'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">card_enc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numeric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.integer.Integer" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.integer.</span></span><span class="sig-name descname"><span class="pre">Integer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ub</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'direct'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">card_enc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numeric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.integer.Integer" title="Link to this definition">#</a></dt>
 <dd><p>Finite-domain integer variable with a configurable CNF encoding.</p>
 <p>Supported encodings are:</p>
 <ul class="simple">
@@ -614,6 +622,20 @@ exactly one value.</p>
 either numeric mode. Mixing floats with decimals raises
 <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>.</p>
 </div>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.integer.Integer.abs">
+<span class="sig-name descname"><span class="pre">abs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.integer.Integer.abs" title="Link to this definition">#</a></dt>
+<dd><p>Return an absolute-value wrapper for this variable.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.integer.Integer.as_expr">
+<span class="sig-name descname"><span class="pre">as_expr</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.integer.Integer.as_expr" title="Link to this definition">#</a></dt>
+<dd><p>Convert the variable to a linear expression, i.e. an object of
+class <a class="reference internal" href="#pysat.integer.LinearExpr" title="pysat.integer.LinearExpr"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearExpr</span></code></a>. Given <code class="docutils literal notranslate"><span class="pre">self</span></code>, a new object of class
+<a class="reference internal" href="#pysat.integer.LinearExpr" title="pysat.integer.LinearExpr"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearExpr</span></code></a> is returned.</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.integer.Integer.atleast">
 <span class="sig-name descname"><span class="pre">atleast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.integer.Integer.atleast" title="Link to this definition">#</a></dt>
@@ -783,7 +805,7 @@ which makes all weights in the final expression non-negative.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.integer.IntegerEngine">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.integer.</span></span><span class="sig-name descname"><span class="pre">IntegerEngine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adaptive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.integer.IntegerEngine" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.integer.</span></span><span class="sig-name descname"><span class="pre">IntegerEngine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adaptive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vpool</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.integer.IntegerEngine" title="Link to this definition">#</a></dt>
 <dd><p>Thin wrapper around <a class="reference internal" href="engines.html#pysat.engines.BooleanEngine" title="pysat.engines.BooleanEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">BooleanEngine</span></code></a>: converts integer
 constraints to pseudo-Boolean linear constraints and delegates
 reasoning to <a class="reference internal" href="engines.html#pysat.engines.BooleanEngine" title="pysat.engines.BooleanEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">BooleanEngine</span></code></a>.</p>
@@ -815,20 +837,97 @@ implementation rather than a performance-optimized CP solver.</p>
 </pre></div>
 </div>
 <dl class="py method">
-<dt class="sig sig-object py" id="pysat.integer.IntegerEngine.add_alldifferent">
-<span class="sig-name descname"><span class="pre">add_alldifferent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vars</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.integer.IntegerEngine.add_alldifferent" title="Link to this definition">#</a></dt>
-<dd><p>Add an AllDifferent constraint over variables (for direct/coupled
-encoding only).</p>
+<dt class="sig sig-object py" id="pysat.integer.IntegerEngine.add_abs_eq">
+<span class="sig-name descname"><span class="pre">add_abs_eq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reified</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.integer.IntegerEngine.add_abs_eq" title="Link to this definition">#</a></dt>
+<dd><p>Add an absolute value constraint: <code class="docutils literal notranslate"><span class="pre">|expr|</span> <span class="pre">==</span> <span class="pre">bound</span></code>.</p>
+<p>For a plain variable expression, a direct domain-based encoding is
+used. Otherwise the constraint is encoded as the disjunction
+<code class="docutils literal notranslate"><span class="pre">(expr</span> <span class="pre">==</span> <span class="pre">bound)</span> <span class="pre">or</span> <span class="pre">(expr</span> <span class="pre">==</span> <span class="pre">-bound)</span></code>, where each equality is
+represented internally as a conjunction of two linear
+inequalities. If <code class="docutils literal notranslate"><span class="pre">reified</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, the returned selector
+literal <code class="docutils literal notranslate"><span class="pre">b</span></code> satisfies <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">-&gt;</span> <span class="pre">(|expr|</span> <span class="pre">==</span> <span class="pre">bound)</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>vars</strong> (list(<a class="reference internal" href="#pysat.integer.Integer" title="pysat.integer.Integer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Integer</span></code></a>)) – variables to be all-different</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expr</strong> – linear expression or Integer</p></li>
+<li><p><strong>bound</strong> – numeric bound</p></li>
+<li><p><strong>reified</strong> (<em>bool</em>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code>, return a selector literal for the constraint</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="pysat.integer.IntegerEngine.add_abs_ge">
+<span class="sig-name descname"><span class="pre">add_abs_ge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reified</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.integer.IntegerEngine.add_abs_ge" title="Link to this definition">#</a></dt>
+<dd><p>Add an absolute value constraint: <code class="docutils literal notranslate"><span class="pre">|expr|</span> <span class="pre">&gt;=</span> <span class="pre">bound</span></code>.</p>
+<p>For a plain variable expression, a direct domain-based encoding is
+used. Otherwise the constraint is encoded as the disjunction
+<code class="docutils literal notranslate"><span class="pre">(expr</span> <span class="pre">&gt;=</span> <span class="pre">bound)</span> <span class="pre">or</span> <span class="pre">(expr</span> <span class="pre">&lt;=</span> <span class="pre">-bound)</span></code>. If <code class="docutils literal notranslate"><span class="pre">reified</span></code> is
+<code class="docutils literal notranslate"><span class="pre">True</span></code>, the returned selector literal <code class="docutils literal notranslate"><span class="pre">b</span></code> satisfies
+<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">-&gt;</span> <span class="pre">(|expr|</span> <span class="pre">&gt;=</span> <span class="pre">bound)</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expr</strong> – linear expression or Integer</p></li>
+<li><p><strong>bound</strong> – numeric bound</p></li>
+<li><p><strong>reified</strong> (<em>bool</em>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code>, return a selector literal for the constraint</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.integer.IntegerEngine.add_abs_le">
+<span class="sig-name descname"><span class="pre">add_abs_le</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reified</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.integer.IntegerEngine.add_abs_le" title="Link to this definition">#</a></dt>
+<dd><p>Add an absolute value constraint: <code class="docutils literal notranslate"><span class="pre">|expr|</span> <span class="pre">&lt;=</span> <span class="pre">bound</span></code>.</p>
+<p>For a plain variable expression, a direct domain-based encoding is
+used. Otherwise the constraint is encoded as the conjunction
+<code class="docutils literal notranslate"><span class="pre">expr</span> <span class="pre">&lt;=</span> <span class="pre">bound</span></code> and <code class="docutils literal notranslate"><span class="pre">-expr</span> <span class="pre">&lt;=</span> <span class="pre">bound</span></code>. If <code class="docutils literal notranslate"><span class="pre">reified</span></code> is
+<code class="docutils literal notranslate"><span class="pre">True</span></code>, the returned selector literal <code class="docutils literal notranslate"><span class="pre">b</span></code> satisfies
+<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">-&gt;</span> <span class="pre">(|expr|</span> <span class="pre">&lt;=</span> <span class="pre">bound)</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expr</strong> – linear expression or Integer</p></li>
+<li><p><strong>bound</strong> – numeric bound</p></li>
+<li><p><strong>reified</strong> (<em>bool</em>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code>, return a selector literal for the constraint</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.integer.IntegerEngine.add_alldifferent">
+<span class="sig-name descname"><span class="pre">add_alldifferent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reified</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.integer.IntegerEngine.add_alldifferent" title="Link to this definition">#</a></dt>
+<dd><p>Add an AllDifferent constraint over variables (for direct/coupled
+encoding only).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vars</strong> (list(<a class="reference internal" href="#pysat.integer.Integer" title="pysat.integer.Integer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Integer</span></code></a>)) – variables to be all-different</p></li>
+<li><p><strong>reified</strong> (<em>bool</em>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code>, return a selector literal for the constraint</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.integer.IntegerEngine.add_equal">
+<span class="sig-name descname"><span class="pre">add_equal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">left</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reified</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.integer.IntegerEngine.add_equal" title="Link to this definition">#</a></dt>
+<dd><p>Add an equality constraint on two <a class="reference internal" href="#pysat.integer.Integer" title="pysat.integer.Integer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Integer</span></code></a> variables.</p>
+<p>Uses direct/order encodings when available, falling back to a
+linear equality otherwise.</p>
+<p>The intersection of domains is enforced upfront to prune
+impossible values early. If the intersection is empty, the
+constraint is unsatisfiable.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">reified</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, a selector literal <code class="docutils literal notranslate"><span class="pre">b</span></code> is returned
+such that <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">-&gt;</span> <span class="pre">(left</span> <span class="pre">==</span> <span class="pre">right)</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="pysat.integer.IntegerEngine.add_linear">
-<span class="sig-name descname"><span class="pre">add_linear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constraint</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.integer.IntegerEngine.add_linear" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">add_linear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reified</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.integer.IntegerEngine.add_linear" title="Link to this definition">#</a></dt>
 <dd><p>Add a constraint or a bundle of constraints to the engine.</p>
 <p>Accepts a single <a class="reference internal" href="#pysat.integer.LinearExpr" title="pysat.integer.LinearExpr"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearExpr</span></code></a>-style constraint (e.g. <code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">+</span>
 <span class="pre">Y</span> <span class="pre">&lt;=</span> <span class="pre">4</span></code>), a list of such constraints (from <code class="docutils literal notranslate"><span class="pre">==</span></code>), or a
@@ -841,14 +940,17 @@ constraints, those are internally transformed into
 <a class="reference internal" href="engines.html#pysat.engines.BooleanEngine" title="pysat.engines.BooleanEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">BooleanEngine</span></code></a>-style PB constraint first.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>constraint</strong> (<a class="reference internal" href="#pysat.integer.LinearExpr" title="pysat.integer.LinearExpr"><em>LinearExpr</em></a><em> | </em><em>tuple</em><em> | </em><em>list</em>) – constraint or list of constraints</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>constr</strong> (<a class="reference internal" href="#pysat.integer.LinearExpr" title="pysat.integer.LinearExpr"><em>LinearExpr</em></a><em> | </em><em>tuple</em><em> | </em><em>list</em>) – constraint or list of constraints</p></li>
+<li><p><strong>reified</strong> (<em>bool</em>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code>, return a selector literal for the constraint</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.integer.IntegerEngine.add_not_equal">
-<span class="sig-name descname"><span class="pre">add_not_equal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">left</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.integer.IntegerEngine.add_not_equal" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">add_not_equal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">left</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reified</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.integer.IntegerEngine.add_not_equal" title="Link to this definition">#</a></dt>
 <dd><p>Add a not-equal constraint on two <a class="reference internal" href="#pysat.integer.Integer" title="pysat.integer.Integer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Integer</span></code></a> variables: left
 != right (for direct/coupled encodings only).</p>
 <dl class="field-list simple">
@@ -856,6 +958,8 @@ constraints, those are internally transformed into
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>left</strong> (<a class="reference internal" href="#pysat.integer.Integer" title="pysat.integer.Integer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Integer</span></code></a>) – left variable</p></li>
 <li><p><strong>right</strong> (<a class="reference internal" href="#pysat.integer.Integer" title="pysat.integer.Integer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Integer</span></code></a>) – right variable</p></li>
+<li><p><strong>reified</strong> (<em>bool</em>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code>, return a selector literal <code class="docutils literal notranslate"><span class="pre">b</span></code> such
+that <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">-&gt;</span> <span class="pre">(left</span> <span class="pre">!=</span> <span class="pre">right)</span></code></p></li>
 </ul>
 </dd>
 </dl>
@@ -897,8 +1001,8 @@ constraints.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="pysat.integer.IntegerEngine.decode_assignment">
-<span class="sig-name descname"><span class="pre">decode_assignment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.integer.IntegerEngine.decode_assignment" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="pysat.integer.IntegerEngine.decode">
+<span class="sig-name descname"><span class="pre">decode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.integer.IntegerEngine.decode" title="Link to this definition">#</a></dt>
 <dd><p>Given a list of assigned Boolean literals, return a mapping
 <code class="docutils literal notranslate"><span class="pre">{Integer:</span> <span class="pre">integer_value}</span></code> for those variables whose value is
 fixed by the assignment alone. Unlike <a class="reference internal" href="#pysat.integer.IntegerEngine.decode_model" title="pysat.integer.IntegerEngine.decode_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">decode_model()</span></code></a>, this
@@ -915,7 +1019,7 @@ If order-based bounds are contradictory (lower bound exceeds upper
 bound), the value is reported as an empty list.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">st</span><span class="p">,</span> <span class="n">props</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">propagate</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="n">clues</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">vals</span> <span class="o">=</span> <span class="n">eng</span><span class="o">.</span><span class="n">decode_assignment</span><span class="p">(</span><span class="n">props</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vals</span> <span class="o">=</span> <span class="n">eng</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">props</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># vals[i] is an int if the value is fixed,</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># a list if conflicting if multiple values are present,</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># or [] if contradictory bounds were derived.</span>
@@ -932,6 +1036,12 @@ bound), the value is reported as an empty list.</p>
 <dd class="field-even"><p>dict</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.integer.IntegerEngine.decode_assignment">
+<span class="sig-name descname"><span class="pre">decode_assignment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.integer.IntegerEngine.decode_assignment" title="Link to this definition">#</a></dt>
+<dd><p>Backward-compatible alias for <a class="reference internal" href="#pysat.integer.IntegerEngine.decode" title="pysat.integer.IntegerEngine.decode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">decode()</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -983,7 +1093,7 @@ None).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.integer.IntegerEngine.pb_linear_leq">
-<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">pb_linear_leq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">terms</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.integer.IntegerEngine.pb_linear_leq" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pb_linear_leq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">terms</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.integer.IntegerEngine.pb_linear_leq" title="Link to this definition">#</a></dt>
 <dd><p>Convenience wrapper for building a PySAT <code class="docutils literal notranslate"><span class="pre">'linear'</span></code> constraint
 (cardinality / pseudo-Boolean) from integer terms. Calls
 <a class="reference internal" href="#pysat.integer.LinearExpr.pb_linear_leq" title="pysat.integer.LinearExpr.pb_linear_leq"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LinearExpr.pb_linear_leq()</span></code></a>.</p>
@@ -1004,15 +1114,20 @@ None).</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.integer.LinearExpr">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.integer.</span></span><span class="sig-name descname"><span class="pre">LinearExpr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">terms</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">const</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numeric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.integer.LinearExpr" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.integer.</span></span><span class="sig-name descname"><span class="pre">LinearExpr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">terms</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">const</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numeric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.integer.LinearExpr" title="Link to this definition">#</a></dt>
 <dd><p>Minimal linear expression builder for <a class="reference internal" href="#pysat.integer.Integer" title="pysat.integer.Integer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Integer</span></code></a> with numeric
-coefficients. Supports comparisons against numeric values.</p>
+coefficients. Supports comparisons against numeric values and other
+linear expressions.</p>
 <p>The resulting comparisons return <a class="reference internal" href="engines.html#pysat.engines.BooleanEngine" title="pysat.engines.BooleanEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">BooleanEngine</span></code></a>-style
 constraints (tuples) that can be passed to
 <a class="reference internal" href="#pysat.integer.IntegerEngine.add_linear" title="pysat.integer.IntegerEngine.add_linear"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IntegerEngine.add_linear()</span></code></a>. Syntactic sugar supports <code class="docutils literal notranslate"><span class="pre">+</span></code>,
-<code class="docutils literal notranslate"><span class="pre">-</span></code>, unary negation, scalar <code class="docutils literal notranslate"><span class="pre">*</span></code> by numeric constants, and
-comparisons. Variable-variable multiplication, division, modulus,
-absolute values, and reification are not supported.</p>
+<code class="docutils literal notranslate"><span class="pre">-</span></code>, unary negation, scalar <code class="docutils literal notranslate"><span class="pre">*</span></code> by numeric constants, builtin
+<code class="docutils literal notranslate"><span class="pre">abs()</span></code>, and comparisons. Reification is supported at the engine
+level via <a class="reference internal" href="#pysat.integer.IntegerEngine.add_linear" title="pysat.integer.IntegerEngine.add_linear"><code class="xref py py-meth docutils literal notranslate"><span class="pre">IntegerEngine.add_linear()</span></code></a>. Variable-variable
+multiplication, division, and modulus are not supported. In
+particular, variable-variable equality is best written as
+<code class="docutils literal notranslate"><span class="pre">x.as_expr()</span> <span class="pre">==</span> <span class="pre">y.as_expr()</span></code> so that the specialized <code class="docutils literal notranslate"><span class="pre">eq_vars</span></code>
+encoding can be used.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.integer</span><span class="w"> </span><span class="kn">import</span> <span class="n">Integer</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
@@ -1031,6 +1146,12 @@ absolute values, and reification are not supported.</p>
 mode. Mixing floats with decimals raises <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>.</p>
 </div>
 <dl class="py method">
+<dt class="sig sig-object py" id="pysat.integer.LinearExpr.abs">
+<span class="sig-name descname"><span class="pre">abs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.integer.LinearExpr.abs" title="Link to this definition">#</a></dt>
+<dd><p>Return an absolute-value wrapper for this expression.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="pysat.integer.LinearExpr.bounds">
 <span class="sig-name descname"><span class="pre">bounds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.integer.LinearExpr.bounds" title="Link to this definition">#</a></dt>
 <dd><p>Compute a (min, max) pair for the expression over variable domains.</p>
@@ -1038,7 +1159,7 @@ mode. Mixing floats with decimals raises <code class="docutils literal notransla
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.integer.LinearExpr.pb_linear_leq">
-<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">pb_linear_leq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">terms</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.integer.LinearExpr.pb_linear_leq" title="Link to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pb_linear_leq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">terms</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.integer.LinearExpr.pb_linear_leq" title="Link to this definition">#</a></dt>
 <dd><p>Build a PySAT <code class="docutils literal notranslate"><span class="pre">'linear'</span></code> constraint over Boolean variables
 (cardinality / pseudo-Boolean) representing:</p>
 <blockquote>
@@ -1126,6 +1247,8 @@ pairs <code class="docutils literal notranslate"><span class="pre">(coeff_i,</sp
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-description">Module description</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-details">Module details</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.integer.Integer"><code class="docutils literal notranslate"><span class="pre">Integer</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.integer.Integer.abs"><code class="docutils literal notranslate"><span class="pre">Integer.abs()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.integer.Integer.as_expr"><code class="docutils literal notranslate"><span class="pre">Integer.as_expr()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.integer.Integer.atleast"><code class="docutils literal notranslate"><span class="pre">Integer.atleast()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.integer.Integer.atmost"><code class="docutils literal notranslate"><span class="pre">Integer.atmost()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.integer.Integer.decode"><code class="docutils literal notranslate"><span class="pre">Integer.decode()</span></code></a></li>
@@ -1138,11 +1261,16 @@ pairs <code class="docutils literal notranslate"><span class="pre">(coeff_i,</sp
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.integer.IntegerEngine"><code class="docutils literal notranslate"><span class="pre">IntegerEngine</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.integer.IntegerEngine.add_abs_eq"><code class="docutils literal notranslate"><span class="pre">IntegerEngine.add_abs_eq()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.integer.IntegerEngine.add_abs_ge"><code class="docutils literal notranslate"><span class="pre">IntegerEngine.add_abs_ge()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.integer.IntegerEngine.add_abs_le"><code class="docutils literal notranslate"><span class="pre">IntegerEngine.add_abs_le()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.integer.IntegerEngine.add_alldifferent"><code class="docutils literal notranslate"><span class="pre">IntegerEngine.add_alldifferent()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.integer.IntegerEngine.add_equal"><code class="docutils literal notranslate"><span class="pre">IntegerEngine.add_equal()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.integer.IntegerEngine.add_linear"><code class="docutils literal notranslate"><span class="pre">IntegerEngine.add_linear()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.integer.IntegerEngine.add_not_equal"><code class="docutils literal notranslate"><span class="pre">IntegerEngine.add_not_equal()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.integer.IntegerEngine.add_var"><code class="docutils literal notranslate"><span class="pre">IntegerEngine.add_var()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.integer.IntegerEngine.clausify"><code class="docutils literal notranslate"><span class="pre">IntegerEngine.clausify()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.integer.IntegerEngine.decode"><code class="docutils literal notranslate"><span class="pre">IntegerEngine.decode()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.integer.IntegerEngine.decode_assignment"><code class="docutils literal notranslate"><span class="pre">IntegerEngine.decode_assignment()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.integer.IntegerEngine.decode_model"><code class="docutils literal notranslate"><span class="pre">IntegerEngine.decode_model()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.integer.IntegerEngine.encode_model"><code class="docutils literal notranslate"><span class="pre">IntegerEngine.encode_model()</span></code></a></li>
@@ -1151,6 +1279,7 @@ pairs <code class="docutils literal notranslate"><span class="pre">(coeff_i,</sp
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.integer.LinearExpr"><code class="docutils literal notranslate"><span class="pre">LinearExpr</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.integer.LinearExpr.abs"><code class="docutils literal notranslate"><span class="pre">LinearExpr.abs()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.integer.LinearExpr.bounds"><code class="docutils literal notranslate"><span class="pre">LinearExpr.bounds()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.integer.LinearExpr.pb_linear_leq"><code class="docutils literal notranslate"><span class="pre">LinearExpr.pb_linear_leq()</span></code></a></li>
 </ul>
@@ -1192,7 +1321,7 @@ pairs <code class="docutils literal notranslate"><span class="pre">(coeff_i,</sp
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
     <br/>
   </p>
 </div>
