@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 1.9.dev7 documentation</title>
+    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 1.9.dev8 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../_static/documentation_options.js?v=58e111b1"></script>
+    <script src="../_static/documentation_options.js?v=b0fbb273"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -121,8 +121,8 @@
       
     
     
-    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.9.dev7 documentation - Home"/>
-    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.9.dev7 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.9.dev8 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.9.dev8 documentation - Home"/>
   
   
 </a></div>
@@ -134,7 +134,7 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.9.dev7)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.9.dev8)</strong></a></div>
       
     </div>
     
@@ -254,7 +254,7 @@
           
           
             <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.9.dev7)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.9.dev8)</strong></a></div>
           
         
       </div>
@@ -1566,7 +1566,7 @@ bitwise operations are used to create <code class="docutils literal notranslate"
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a1</span> <span class="o">=</span> <span class="n">Equals</span><span class="p">(</span><span class="n">Equals</span><span class="p">(</span><span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a2</span> <span class="o">=</span> <span class="n">Equals</span><span class="p">(</span><span class="n">Equals</span><span class="p">(</span><span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">),</span> <span class="n">merge</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a3</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a3</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span> <span class="o">@</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span> <span class="o">@</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span>
 <span class="go">(x @ y) @ z</span>
@@ -2087,7 +2087,7 @@ arguments to the constructor.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ite</span> <span class="o">=</span> <span class="n">ITE</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">ite</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="n">y</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="o">~</span><span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="n">z</span><span class="p">)</span>
+<span class="go">(x &gt;&gt; y) &amp; (~x &gt;&gt; z)</span>
 </pre></div>
 </div>
 <dl class="py method">
@@ -2966,13 +2966,12 @@ arguments to the constructor.</p>
 </div>
 <p>If an additional Boolean keyword argument <code class="docutils literal notranslate"><span class="pre">merge</span></code> is provided set to
 <code class="docutils literal notranslate"><span class="pre">True</span></code>, the toolkit will try to flatten the current <a class="reference internal" href="#pysat.formula.XOr" title="pysat.formula.XOr"><code class="xref py py-class docutils literal notranslate"><span class="pre">XOr</span></code></a>
-formula merging its <em>equivalence</em> sub-operands into the list of
-operands. For example, if <code class="docutils literal notranslate"><span class="pre">XOr(XOr(x,</span> <span class="pre">y),</span> <span class="pre">z,</span> <span class="pre">merge=True)</span></code> is called,
-a new Formula object will be created with two operands: <code class="docutils literal notranslate"><span class="pre">XOr(x,</span> <span class="pre">y)</span></code>
-and <code class="docutils literal notranslate"><span class="pre">z</span></code>, followed by merging <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> into the list of
-root-level <code class="docutils literal notranslate"><span class="pre">XOr</span></code>. This will result in a formula <code class="docutils literal notranslate"><span class="pre">XOr(x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code>.
-Merging sub-operands is disabled by default if bitwise operations are
-used to create <code class="docutils literal notranslate"><span class="pre">XOr</span></code> formulas.</p>
+formula merging its <em>exclusive-disjunction</em> sub-operands into the
+list of operands. For example, if <code class="docutils literal notranslate"><span class="pre">XOr(XOr(x,</span> <span class="pre">y),</span> <span class="pre">z,</span> <span class="pre">merge=True)</span></code> is
+called, a new Formula object will be created with two operands:
+<code class="docutils literal notranslate"><span class="pre">XOr(x,</span> <span class="pre">y)</span></code> and <code class="docutils literal notranslate"><span class="pre">z</span></code>, followed by merging <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> into the
+list of root-level <code class="docutils literal notranslate"><span class="pre">XOr</span></code>. This will result in a formula
+<code class="docutils literal notranslate"><span class="pre">XOr(x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code>. Bitwise <code class="docutils literal notranslate"><span class="pre">^</span></code> operations also enable merging.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a1</span> <span class="o">=</span> <span class="n">XOr</span><span class="p">(</span><span class="n">XOr</span><span class="p">(</span><span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">))</span>
@@ -2989,8 +2988,8 @@ used to create <code class="docutils literal notranslate"><span class="pre">XOr<
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
 <span class="go">False</span>
 <span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span>
-<span class="go">True  # formulas a1 and a3 refer to the same object</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span>
+<span class="go">True  # formulas a2 and a3 refer to the same object</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -3020,7 +3019,7 @@ subformulas and creates a new formula.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="o">^</span> <span class="n">y</span> <span class="o">^</span> <span class="n">z</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">simplified</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="n">y</span><span class="p">]))</span>
-<span class="go">~x ^ z</span>
+<span class="go">~(x ^ z)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">simplified</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="o">~</span><span class="n">y</span><span class="p">]))</span>
 <span class="go">x ^ z</span>
 </pre></div>
