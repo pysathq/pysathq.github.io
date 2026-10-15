@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 1.9.dev15 documentation</title>
+    <title>Boolean formula manipulation (pysat.formula) &#8212; PySAT 1.9.dev16 documentation</title>
   
   
   
@@ -38,10 +38,10 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../_static/documentation_options.js?v=1ed85331"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/documentation_options.js?v=2920d95b"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/formula';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="icon" href="../_static/favicon.ico"/>
@@ -121,8 +121,8 @@
       
     
     
-    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.9.dev15 documentation - Home"/>
-    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.9.dev15 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.9.dev16 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.9.dev16 documentation - Home"/>
   
   
 </a></div>
@@ -134,7 +134,7 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.9.dev15)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.9.dev16)</strong></a></div>
       
     </div>
     
@@ -254,7 +254,7 @@
           
           
             <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.9.dev15)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.9.dev16)</strong></a></div>
           
         
       </div>
@@ -492,16 +492,16 @@ is a line <code class="docutils literal notranslate"><span class="pre">p</span> 
 <p>Reading and writing formulas in DIMACS can be done with PySAT in the
 following way:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="n">CNF</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f1</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;some-file-name.cnf&#39;</span><span class="p">)</span>  <span class="c1"># reading from file</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f1</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s1">&#39;another-file-name.cnf&#39;</span><span class="p">)</span>  <span class="c1"># writing to a file</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">'some-file-name.cnf'</span><span class="p">)</span>  <span class="c1"># reading from file</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s1">'another-file-name.cnf'</span><span class="p">)</span>  <span class="c1"># writing to a file</span>
 <span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;some-file-name.cnf&#39;</span><span class="p">,</span> <span class="s1">&#39;r+&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'some-file-name.cnf'</span><span class="p">,</span> <span class="s1">'r+'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">f2</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_fp</span><span class="o">=</span><span class="n">fp</span><span class="p">)</span>  <span class="c1"># reading from a file pointer</span>
 <span class="gp">...</span>
 <span class="gp">... </span>    <span class="n">fp</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="n">f2</span><span class="o">.</span><span class="n">to_fp</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>  <span class="c1"># writing to a file pointer</span>
 <span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f3</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_string</span><span class="o">=</span><span class="s1">&#39;p cnf 3 3</span><span class="se">\n</span><span class="s1">-1 2 0</span><span class="se">\n</span><span class="s1">-2 3 0</span><span class="se">\n</span><span class="s1">-3 0</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f3</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_string</span><span class="o">=</span><span class="s1">'p cnf 3 3</span><span class="se">\n</span><span class="s1">-1 2 0</span><span class="se">\n</span><span class="s1">-2 3 0</span><span class="se">\n</span><span class="s1">-3 0</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">f3</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[-1, 2], [-2, 3], [-3]]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">f3</span><span class="o">.</span><span class="n">nv</span><span class="p">)</span>
@@ -617,7 +617,7 @@ formula encoder is shown below (the implementation can also be found in
 
 <span class="c1"># initializing the pool of variable ids</span>
 <span class="n">vpool</span> <span class="o">=</span> <span class="n">IDPool</span><span class="p">(</span><span class="n">start_from</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">pigeon</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> <span class="n">vpool</span><span class="o">.</span><span class="n">id</span><span class="p">(</span><span class="s1">&#39;pigeon</span><span class="si">{0}</span><span class="s1">@</span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span>
+<span class="n">pigeon</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> <span class="n">vpool</span><span class="o">.</span><span class="n">id</span><span class="p">(</span><span class="s1">'pigeon</span><span class="si">{0}</span><span class="s1">@</span><span class="si">{1}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span>
 
 <span class="c1"># placing all pigeons into holes</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">nof_holes</span> <span class="o">+</span> <span class="mi">2</span><span class="p">):</span>
@@ -636,14 +636,14 @@ formula encoder is shown below (the implementation can also be found in
 </section>
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.And">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">And</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.And" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">And</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.And" title="Link to this definition">#</a></dt>
 <dd><p>Conjunction. Given a list of operands (subformulas) <span class="math notranslate nohighlight">\(f_i\)</span>,
 <span class="math notranslate nohighlight">\(i \in \{1,\ldots,n\}, n \in \mathbb{N}\)</span>, it creates a
 formula <span class="math notranslate nohighlight">\(\bigwedge_{i=1}^{n}{f_i}\)</span>. The list of operands <em>of
 size at least 1</em> should be passed as arguments to the constructor.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">conj</span> <span class="o">=</span> <span class="n">And</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -658,16 +658,16 @@ Merging sub-operands is enabled by default if bitwise operations are
 used to create <code class="docutils literal notranslate"><span class="pre">And</span></code> formulas.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a1</span> <span class="o">=</span> <span class="n">And</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a2</span> <span class="o">=</span> <span class="n">And</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">),</span> <span class="n">merge</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a3</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a1</span> <span class="o">=</span> <span class="n">And</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">)),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a2</span> <span class="o">=</span> <span class="n">And</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">)),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">),</span> <span class="n">merge</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a3</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">repr</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span>
-<span class="go">&quot;And[And[Atom(&#39;x&#39;), Atom(&#39;y&#39;)], Atom(&#39;z&#39;)]&quot;</span>
+<span class="go">"And[And[Atom('x'), Atom('y')], Atom('z')]"</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">repr</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
-<span class="go">&quot;And[Atom(&#39;x&#39;), Atom(&#39;y&#39;), Atom(&#39;z&#39;)]&quot;</span>
+<span class="go">"And[Atom('x'), Atom('y'), Atom('z')]"</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">repr</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span>
-<span class="go">&quot;And[Atom(&#39;x&#39;), Atom(&#39;y&#39;), Atom(&#39;z&#39;)]&quot;</span>
+<span class="go">"And[Atom('x'), Atom('y'), Atom('z')]"</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
 <span class="go">False</span>
@@ -699,7 +699,7 @@ subformulas and creates a new formula.</p>
 </dl>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&amp;</span> <span class="n">y</span> <span class="o">&amp;</span> <span class="n">z</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">simplified</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="n">y</span><span class="p">]))</span>
@@ -714,7 +714,7 @@ subformulas and creates a new formula.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.Atom">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">Atom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Atom" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">Atom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Atom" title="Link to this definition">#</a></dt>
 <dd><p>Atomic formula, i.e. a variable or constant. Although we often refer
 to negated literals as atomic formulas too, they are techically
 implemented as <code class="docutils literal notranslate"><span class="pre">Neg(Atom)</span></code>.</p>
@@ -724,12 +724,12 @@ this atom is involved in, the atom receives an auxiliary variable
 assigned to it as a <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="nb">object</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># checking x&#39;s name</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="nb">object</span><span class="o">=</span><span class="s1">'y'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># checking x's name</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">name</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># None</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># right, that&#39;s because the atom is not yet clausified</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># right, that's because the atom is not yet clausified</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">clausify</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">name</span>
 <span class="go">1</span>
@@ -789,7 +789,7 @@ return <code class="docutils literal notranslate"><span class="pre">self</span><
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.CNF">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">CNF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.CNF" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">CNF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.CNF" title="Link to this definition">#</a></dt>
 <dd><p>Class for manipulating CNF formulas. It can be used for creating
 formulas, reading them from a file, or writing them to a file. The
 <code class="docutils literal notranslate"><span class="pre">comment_lead</span></code> parameter can be helpful when one needs to parse
@@ -907,7 +907,7 @@ string to parse. (Classes <code class="xref py py-class docutils literal notrans
 </dl>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">aiger</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">aiger</span><span class="o">.</span><span class="n">atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">aiger</span><span class="o">.</span><span class="n">atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">aiger</span><span class="o">.</span><span class="n">atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">aiger</span><span class="o">.</span><span class="n">atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">),</span> <span class="n">aiger</span><span class="o">.</span><span class="n">atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">),</span> <span class="n">aiger</span><span class="o">.</span><span class="n">atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">expr</span> <span class="o">=</span> <span class="o">~</span><span class="p">(</span><span class="n">x</span> <span class="o">|</span> <span class="n">y</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">z</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">aig</span><span class="p">)</span>
 <span class="go">aag 5 3 0 1 2</span>
@@ -928,10 +928,10 @@ string to parse. (Classes <code class="xref py py-class docutils literal notrans
 <span class="go">5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[3, 2, 4], [-3, -4], [-2, -4], [-4, -1, 5], [4, -5], [1, -5]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">([</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> &lt;-&gt; </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">cnf</span><span class="o">.</span><span class="n">vpool</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cnf</span><span class="o">.</span><span class="n">inps</span><span class="p">])</span>
-<span class="go">[&#39;3 &lt;-&gt; y&#39;, &#39;2 &lt;-&gt; x&#39;, &#39;1 &lt;-&gt; z&#39;]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">([</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> &lt;-&gt; </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">cnf</span><span class="o">.</span><span class="n">vpool</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cnf</span><span class="o">.</span><span class="n">outs</span><span class="p">])</span>
-<span class="go">[&#39;5 &lt;-&gt; 6c454aea-c9e1-11e9-bbe3-3af9d34370a9&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">([</span><span class="s1">'</span><span class="si">{0}</span><span class="s1"> &lt;-&gt; </span><span class="si">{1}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">cnf</span><span class="o">.</span><span class="n">vpool</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cnf</span><span class="o">.</span><span class="n">inps</span><span class="p">])</span>
+<span class="go">['3 &lt;-&gt; y', '2 &lt;-&gt; x', '1 &lt;-&gt; z']</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">([</span><span class="s1">'</span><span class="si">{0}</span><span class="s1"> &lt;-&gt; </span><span class="si">{1}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">cnf</span><span class="o">.</span><span class="n">vpool</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cnf</span><span class="o">.</span><span class="n">outs</span><span class="p">])</span>
+<span class="go">['5 &lt;-&gt; 6c454aea-c9e1-11e9-bbe3-3af9d34370a9']</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -989,9 +989,9 @@ file extension. Using <code class="docutils literal notranslate"><span class="pr
 <p>Usage example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="n">CNF</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf1</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf1</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s1">&#39;some-file.cnf.gz&#39;</span><span class="p">,</span> <span class="n">compressed_with</span><span class="o">=</span><span class="s1">&#39;gzip&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf1</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s1">'some-file.cnf.gz'</span><span class="p">,</span> <span class="n">compressed_with</span><span class="o">=</span><span class="s1">'gzip'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf2</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;another-file.cnf&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf2</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">'another-file.cnf'</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1012,11 +1012,11 @@ lines.</p>
 </dd>
 </dl>
 <p>Usage example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;some-file.cnf&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'some-file.cnf'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">cnf1</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="n">cnf1</span><span class="o">.</span><span class="n">from_fp</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;another-file.cnf&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'another-file.cnf'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">cnf2</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_fp</span><span class="o">=</span><span class="n">fp</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1040,11 +1040,11 @@ specific comment lines.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="n">CNF</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf1</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf1</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="s1">&#39;p cnf 2 2</span><span class="se">\n</span><span class="s1">-1 2 0</span><span class="se">\n</span><span class="s1">1 -2 0&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf1</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="s1">'p cnf 2 2</span><span class="se">\n</span><span class="s1">-1 2 0</span><span class="se">\n</span><span class="s1">1 -2 0'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf1</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[-1, 2], [1, -2]]</span>
 <span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf2</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_string</span><span class="o">=</span><span class="s1">&#39;p cnf 3 3</span><span class="se">\n</span><span class="s1">-1 2 0</span><span class="se">\n</span><span class="s1">-2 3 0</span><span class="se">\n</span><span class="s1">-3 0</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf2</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_string</span><span class="o">=</span><span class="s1">'p cnf 3 3</span><span class="se">\n</span><span class="s1">-1 2 0</span><span class="se">\n</span><span class="s1">-2 3 0</span><span class="se">\n</span><span class="s1">-3 0</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf2</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[-1, 2], [-2, 3], [-3]]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf2</span><span class="o">.</span><span class="n">nv</span><span class="p">)</span>
@@ -1127,8 +1127,8 @@ comment lines can be specified in the <code class="docutils literal notranslate"
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">()</span>
 <span class="gp">...</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># the formula is filled with a bunch of clauses</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;some-file.lp&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="n">cnf</span><span class="o">.</span><span class="n">to_alien</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;lp&#39;</span><span class="p">)</span>  <span class="c1"># writing to the file pointer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'some-file.lp'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">cnf</span><span class="o">.</span><span class="n">to_alien</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'lp'</span><span class="p">)</span>  <span class="c1"># writing to the file pointer</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1147,7 +1147,7 @@ comment lines can be specified in the <code class="docutils literal notranslate"
 </div>
 <p>Then you can obtain the DIMACS with:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="n">CNF</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;some-file.cnf&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">'some-file.cnf'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">to_dimacs</span><span class="p">())</span>
 <span class="go">c Example</span>
 <span class="go">p cnf 3 3</span>
@@ -1188,7 +1188,7 @@ file extension. Using <code class="docutils literal notranslate"><span class="pr
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">()</span>
 <span class="gp">...</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># the formula is filled with a bunch of clauses</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s1">&#39;some-file-name.cnf&#39;</span><span class="p">)</span>  <span class="c1"># writing to a file</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s1">'some-file-name.cnf'</span><span class="p">)</span>  <span class="c1"># writing to a file</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1214,7 +1214,7 @@ parameter.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">()</span>
 <span class="gp">...</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># the formula is filled with a bunch of clauses</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;some-file.cnf&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'some-file.cnf'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">cnf</span><span class="o">.</span><span class="n">to_fp</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>  <span class="c1"># writing to the file pointer</span>
 </pre></div>
 </div>
@@ -1251,7 +1251,7 @@ is equal to <code class="docutils literal notranslate"><span class="pre">1</span
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.CNFPlus">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">CNFPlus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.CNFPlus" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">CNFPlus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.CNFPlus" title="Link to this definition">#</a></dt>
 <dd><p>CNF formulas augmented with <em>native</em> cardinality constraints.</p>
 <p>This class inherits most of the functionality of the <a class="reference internal" href="#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a>
 class. The only difference between the two is that <a class="reference internal" href="#pysat.formula.CNFPlus" title="pysat.formula.CNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNFPlus</span></code></a>
@@ -1285,7 +1285,7 @@ constraints are stored in variable <code class="docutils literal notranslate"><s
 <code class="docutils literal notranslate"><span class="pre">k</span></code> is the upper bound.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="n">CNFPlus</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNFPlus</span><span class="p">(</span><span class="n">from_string</span><span class="o">=</span><span class="s1">&#39;p cnf+ 7 3</span><span class="se">\n</span><span class="s1">1 -2 3 5 -7 &lt;= 3</span><span class="se">\n</span><span class="s1">4 5 6 -7 &gt;= 2</span><span class="se">\n</span><span class="s1"> 3 5 7 0</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNFPlus</span><span class="p">(</span><span class="n">from_string</span><span class="o">=</span><span class="s1">'p cnf+ 7 3</span><span class="se">\n</span><span class="s1">1 -2 3 5 -7 &lt;= 3</span><span class="se">\n</span><span class="s1">4 5 6 -7 &gt;= 2</span><span class="se">\n</span><span class="s1"> 3 5 7 0</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
 <span class="go">[[3, 5, 7]]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">atmosts</span><span class="p">)</span>
@@ -1399,11 +1399,11 @@ lines.</p>
 </dd>
 </dl>
 <p>Usage example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;some-file.cnf+&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'some-file.cnf+'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">cnf1</span> <span class="o">=</span> <span class="n">CNFPlus</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="n">cnf1</span><span class="o">.</span><span class="n">from_fp</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;another-file.cnf+&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'another-file.cnf+'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">cnf2</span> <span class="o">=</span> <span class="n">CNFPlus</span><span class="p">(</span><span class="n">from_fp</span><span class="o">=</span><span class="n">fp</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1446,8 +1446,8 @@ You may want to use Z3’s API instead (see its PB interface).</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNFPlus</span><span class="p">()</span>
 <span class="gp">...</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># the formula is filled with a bunch of clauses</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;some-file.lp&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="n">cnf</span><span class="o">.</span><span class="n">to_alien</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;lp&#39;</span><span class="p">)</span>  <span class="c1"># writing to the file pointer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'some-file.lp'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">cnf</span><span class="o">.</span><span class="n">to_alien</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'lp'</span><span class="p">)</span>  <span class="c1"># writing to the file pointer</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1466,7 +1466,7 @@ You may want to use Z3’s API instead (see its PB interface).</p>
 </div>
 <p>Then you can obtain the DIMACS with:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="n">CNFPlus</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNFPlus</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;some-file.cnf&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNFPlus</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">'some-file.cnf'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">to_dimacs</span><span class="p">())</span>
 <span class="go">c Example</span>
 <span class="go">p cnf+ 7 3</span>
@@ -1497,7 +1497,7 @@ parameter.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNFPlus</span><span class="p">()</span>
 <span class="gp">...</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># the formula is filled with a bunch of clauses</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;some-file.cnf+&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'some-file.cnf+'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">cnf</span><span class="o">.</span><span class="n">to_fp</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>  <span class="c1"># writing to the file pointer</span>
 </pre></div>
 </div>
@@ -1541,7 +1541,7 @@ remains unchanged.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.Equals">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">Equals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Equals" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">Equals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Equals" title="Link to this definition">#</a></dt>
 <dd><p>Equivalence. Given a list of operands (subformulas) <span class="math notranslate nohighlight">\(f_i\)</span>,
 <span class="math notranslate nohighlight">\(i \in \{1,\ldots,n\}, n \in \mathbb{N}\)</span>, it creates a
 formula <span class="math notranslate nohighlight">\(f_1 \leftrightarrow f_2
@@ -1549,7 +1549,7 @@ formula <span class="math notranslate nohighlight">\(f_1 \leftrightarrow f_2
 size at least 2</em> should be passed as arguments to the constructor.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">equiv</span> <span class="o">=</span> <span class="n">Equals</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1564,9 +1564,9 @@ the list of root-level <code class="docutils literal notranslate"><span class="p
 bitwise operations are used to create <code class="docutils literal notranslate"><span class="pre">Equals</span></code> formulas.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a1</span> <span class="o">=</span> <span class="n">Equals</span><span class="p">(</span><span class="n">Equals</span><span class="p">(</span><span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a2</span> <span class="o">=</span> <span class="n">Equals</span><span class="p">(</span><span class="n">Equals</span><span class="p">(</span><span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">),</span> <span class="n">merge</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a3</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span> <span class="o">@</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span> <span class="o">@</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a1</span> <span class="o">=</span> <span class="n">Equals</span><span class="p">(</span><span class="n">Equals</span><span class="p">(</span><span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">)),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a2</span> <span class="o">=</span> <span class="n">Equals</span><span class="p">(</span><span class="n">Equals</span><span class="p">(</span><span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">)),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">),</span> <span class="n">merge</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a3</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">)</span> <span class="o">@</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">)</span> <span class="o">@</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span>
 <span class="go">(x @ y) @ z</span>
@@ -1605,7 +1605,7 @@ subformulas and creates a new formula.</p>
 </dl>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="o">@</span> <span class="n">y</span> <span class="o">@</span> <span class="n">z</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">simplified</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="n">y</span><span class="p">]))</span>
@@ -1620,7 +1620,7 @@ subformulas and creates a new formula.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.Formula">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">Formula</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Formula" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">Formula</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Formula" title="Link to this definition">#</a></dt>
 <dd><p>Abstract formula class. At the same time, the class is a factory for
 its children and can be used this way although it is recommended to
 create objects of the children classes directly. In particular, its
@@ -1641,10 +1641,10 @@ times as part of one of more complex formulas.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
 <span class="go">True  # x1 and x2 refer to the same atom</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">x1</span> <span class="o">&amp;</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">))</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">x2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">x1</span> <span class="o">&amp;</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">))</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">x2</span><span class="p">)</span>
 <span class="go">True  # it holds if constructing complex formulas with them as subformulas</span>
 </pre></div>
 </div>
@@ -1655,16 +1655,16 @@ all contexts.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">f1</span> <span class="o">=</span> <span class="n">Or</span><span class="p">(</span><span class="n">And</span><span class="p">(</span><span class="o">...</span><span class="p">))</span>  <span class="c1"># arbitrary formula</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># by default, the context is set to &#39;default&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># by default, the context is set to 'default'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># another context can be created like this:</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Formula</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="n">context</span><span class="o">=</span><span class="s1">&#39;some-other-context&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Formula</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="n">context</span><span class="o">=</span><span class="s1">'some-other-context'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># the new context knows nothing about formula f1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># ...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># cleaning up context &#39;some-other-context&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># cleaning up context 'some-other-context'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># this deletes all the formulas known in this context</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Formula</span><span class="o">.</span><span class="n">cleanup</span><span class="p">(</span><span class="n">context</span><span class="o">=</span><span class="s1">&#39;some-other-context&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># switching back to &#39;default&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Formula</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="n">context</span><span class="o">=</span><span class="s1">&#39;default&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Formula</span><span class="o">.</span><span class="n">cleanup</span><span class="p">(</span><span class="n">context</span><span class="o">=</span><span class="s1">'some-other-context'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># switching back to 'default'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Formula</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="n">context</span><span class="o">=</span><span class="s1">'default'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>A user may also want to disable duplicate blocking, which can be
@@ -1695,18 +1695,18 @@ it finds.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">@</span> <span class="n">y</span><span class="p">)</span> <span class="o">|</span> <span class="n">z</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">atoms</span><span class="p">()</span>
-<span class="go">[Atom(&#39;x&#39;), Atom(&#39;y&#39;), Atom(&#39;z&#39;)]</span>
+<span class="go">[Atom('x'), Atom('y'), Atom('z')]</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.formula.Formula.attach_vpool">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">attach_vpool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vpool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Formula.attach_vpool" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">attach_vpool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vpool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Formula.attach_vpool" title="Link to this definition">#</a></dt>
 <dd><p>Attach an external <a class="reference internal" href="#pysat.formula.IDPool" title="pysat.formula.IDPool"><code class="xref py py-class docutils literal notranslate"><span class="pre">IDPool</span></code></a> to be associated with a given
 context. This is useful when a user has an already created
 <a class="reference internal" href="#pysat.formula.IDPool" title="pysat.formula.IDPool"><code class="xref py py-class docutils literal notranslate"><span class="pre">IDPool</span></code></a> object and wants to reuse it when clausifying
@@ -1732,12 +1732,12 @@ independently of other subformulas (and independently of the root
 formula).</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">@</span> <span class="n">y</span><span class="p">)</span> <span class="o">|</span> <span class="n">z</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">clausify</span><span class="p">()</span>  <span class="c1"># clausifying formula a</span>
 <span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># let&#39;s what clauses represent the root logic connective</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># let's what clauses represent the root logic connective</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">clauses</span>
 <span class="go">[[3, 4]]  # 4 corresponds to z while 3 represents the equality x @ y</span>
 </pre></div>
@@ -1746,7 +1746,7 @@ formula).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.formula.Formula.cleanup">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cleanup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Formula.cleanup" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">cleanup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Formula.cleanup" title="Link to this definition">#</a></dt>
 <dd><p>Clean up either a given context (if specified as different from
 <code class="docutils literal notranslate"><span class="pre">None</span></code>) or all contexts (otherwise); afterwards, start the
 “default” context from scratch.</p>
@@ -1769,7 +1769,7 @@ are orphaned and can’t get re-clausified.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.formula.Formula.export_vpool">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">export_vpool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">active</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Formula.export_vpool" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">export_vpool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">active</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Formula.export_vpool" title="Link to this definition">#</a></dt>
 <dd><p>Opposite to <a class="reference internal" href="#pysat.formula.Formula.attach_vpool" title="pysat.formula.Formula.attach_vpool"><code class="xref py py-meth docutils literal notranslate"><span class="pre">attach_vpool()</span></code></a>, this method returns a variable
 managed attached to a given context, which may be useful for
 external use.</p>
@@ -1788,7 +1788,7 @@ external use.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.formula.Formula.formulas">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">formulas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atoms_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Formula.formulas" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">formulas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atoms_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Formula.formulas" title="Link to this definition">#</a></dt>
 <dd><p>Given a list of integer literal identifiers, this method returns a
 list of formulas corresponding to these identifiers. Basically,
 the method can be seen as mapping auxiliary variables naming
@@ -1812,7 +1812,7 @@ list will be included in the result.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.solvers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Solver</span>
 <span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">@</span> <span class="n">y</span><span class="p">)</span> <span class="o">^</span> <span class="n">z</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Solver</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="n">a</span><span class="p">)</span> <span class="k">as</span> <span class="n">solver</span><span class="p">:</span>
@@ -1820,17 +1820,17 @@ list will be included in the result.</p>
 <span class="gp">... </span>        <span class="c1"># using method formulas to map the model back to atoms</span>
 <span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="n">Formula</span><span class="o">.</span><span class="n">formulas</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">atoms_only</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 <span class="gp">...</span>
-<span class="go">[Neg(Atom(&#39;x&#39;)), Neg(Atom(&#39;y&#39;)), Neg(Atom(&#39;z&#39;))]</span>
-<span class="go">[Neg(Atom(&#39;x&#39;)), Atom(&#39;y&#39;), Atom(&#39;z&#39;)]</span>
-<span class="go">[Atom(&#39;x&#39;), Atom(&#39;y&#39;), Neg(Atom(&#39;z&#39;))]</span>
-<span class="go">[Atom(&#39;x&#39;), Neg(Atom(&#39;y&#39;)), Atom(&#39;z&#39;)]</span>
+<span class="go">[Neg(Atom('x')), Neg(Atom('y')), Neg(Atom('z'))]</span>
+<span class="go">[Neg(Atom('x')), Atom('y'), Atom('z')]</span>
+<span class="go">[Atom('x'), Atom('y'), Neg(Atom('z'))]</span>
+<span class="go">[Atom('x'), Neg(Atom('y')), Atom('z')]</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.formula.Formula.literals">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">literals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">forms</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Formula.literals" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">literals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">forms</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Formula.literals" title="Link to this definition">#</a></dt>
 <dd><p>Extract formula names for a given list of formulas and return them
 as a list of integer identifiers. Essentially, the method is the
 opposite to <a class="reference internal" href="#pysat.formula.Formula.formulas" title="pysat.formula.Formula.formulas"><code class="xref py py-meth docutils literal notranslate"><span class="pre">formulas()</span></code></a>.</p>
@@ -1846,7 +1846,7 @@ opposite to <a class="reference internal" href="#pysat.formula.Formula.formulas"
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.solvers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Solver</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">@</span> <span class="n">y</span><span class="p">)</span> <span class="o">^</span> <span class="n">z</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># applying Tseitin transformation to formula a</span>
@@ -1854,10 +1854,10 @@ opposite to <a class="reference internal" href="#pysat.formula.Formula.formulas"
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># checking what facts the internal vpool knows</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">Formula</span><span class="o">.</span><span class="n">export_vpool</span><span class="p">()</span><span class="o">.</span><span class="n">id2obj</span><span class="p">)</span>
-<span class="go">{1: Atom(&#39;x&#39;), 2: Atom(&#39;y&#39;), 3: Equals[Atom(&#39;x&#39;), Atom(&#39;y&#39;)], 4: Atom(&#39;z&#39;)}</span>
+<span class="go">{1: Atom('x'), 2: Atom('y'), 3: Equals[Atom('x'), Atom('y')], 4: Atom('z')}</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># now, mapping two atoms to their integer id representations</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Formula</span><span class="o">.</span><span class="n">literals</span><span class="p">(</span><span class="n">forms</span><span class="o">=</span><span class="p">[</span><span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="o">~</span><span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Formula</span><span class="o">.</span><span class="n">literals</span><span class="p">(</span><span class="n">forms</span><span class="o">=</span><span class="p">[</span><span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">),</span> <span class="o">~</span><span class="n">Atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">)])</span>
 <span class="go">[1, -4]</span>
 </pre></div>
 </div>
@@ -1881,7 +1881,7 @@ falsified, and <code class="docutils literal notranslate"><span class="pre">None
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">@</span> <span class="n">y</span><span class="p">)</span> <span class="o">|</span> <span class="n">z</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">satisfied</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="p">[</span><span class="n">z</span><span class="p">])</span>
@@ -1894,7 +1894,7 @@ falsified, and <code class="docutils literal notranslate"><span class="pre">None
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.formula.Formula.set_context">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set_context</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Formula.set_context" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">set_context</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Formula.set_context" title="Link to this definition">#</a></dt>
 <dd><p>Set the current context of interest. If set to <code class="docutils literal notranslate"><span class="pre">None</span></code>, no
 context will be assumed and duplicate checking will be disabled as
 a result.</p>
@@ -1923,19 +1923,19 @@ object is returned.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">@</span> <span class="n">y</span><span class="p">)</span> <span class="o">|</span> <span class="n">z</span>  <span class="c1"># a formula over 3 variables: x, y, and z</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">simplified</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="n">z</span><span class="p">])</span>
 <span class="go">Atom(True)</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">simplified</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="o">~</span><span class="n">z</span><span class="p">])</span>
-<span class="go">Equals[Atom(&#39;x&#39;), Atom(&#39;y&#39;)]</span>
+<span class="go">Equals[Atom('x'), Atom('y')]</span>
 <span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">^</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>  <span class="c1"># a more complex formula</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">^</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'p'</span><span class="p">)</span>  <span class="c1"># a more complex formula</span>
 <span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">simplified</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="o">~</span><span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)])</span>
-<span class="go">Or[Atom(&#39;y&#39;), Atom(&#39;z&#39;)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">simplified</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="o">~</span><span class="n">Atom</span><span class="p">(</span><span class="s1">'p'</span><span class="p">)])</span>
+<span class="go">Or[Atom('y'), Atom('z')]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1944,13 +1944,13 @@ object is returned.</p>
 
 <dl class="py exception">
 <dt class="sig sig-object py" id="pysat.formula.FormulaError">
-<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">FormulaError</span></span><a class="headerlink" href="#pysat.formula.FormulaError" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">FormulaError</span></span><a class="headerlink" href="#pysat.formula.FormulaError" title="Link to this definition">#</a></dt>
 <dd><p>This exception is raised when an formula-related issue occurs.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.FormulaType">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">FormulaType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.FormulaType" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">FormulaType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.FormulaType" title="Link to this definition">#</a></dt>
 <dd><p>This class represents a C-like <code class="docutils literal notranslate"><span class="pre">enum</span></code> type for choosing the formula
 type to use. The values denoting all the formula types are as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ATOM</span> <span class="o">=</span> <span class="mi">0</span>
@@ -1967,7 +1967,7 @@ type to use. The values denoting all the formula types are as follows:</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.IDPool">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">IDPool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_from</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">occupied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_neg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.IDPool" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">IDPool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_from</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">occupied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_neg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.IDPool" title="Link to this definition">#</a></dt>
 <dd><p>A simple manager of variable IDs. It can be used as a pool of integers
 assigning an ID to any object. Identifiers are to start from <code class="docutils literal notranslate"><span class="pre">1</span></code> by
 default. The list of occupied intervals is empty be default. If
@@ -2010,7 +2010,7 @@ the method will return a new id unassigned to any object.</p>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># creating 5 unique variables for the following strings</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-<span class="gp">... </span>   <span class="nb">print</span><span class="p">(</span><span class="n">vpool</span><span class="o">.</span><span class="n">id</span><span class="p">(</span><span class="s1">&#39;v</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)))</span>
+<span class="gp">... </span>   <span class="nb">print</span><span class="p">(</span><span class="n">vpool</span><span class="o">.</span><span class="n">id</span><span class="p">(</span><span class="s1">'v</span><span class="si">{0}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)))</span>
 <span class="go">1</span>
 <span class="go">2</span>
 <span class="go">11</span>
@@ -2021,10 +2021,10 @@ the method will return a new id unassigned to any object.</p>
 <p>In some cases, it makes sense to create an external function for
 accessing IDPool, e.g.:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># continuing the previous example</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">var</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">vpool</span><span class="o">.</span><span class="n">id</span><span class="p">(</span><span class="s1">&#39;var</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">var</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">vpool</span><span class="o">.</span><span class="n">id</span><span class="p">(</span><span class="s1">'var</span><span class="si">{0}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">var</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="go">20</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">var</span><span class="p">(</span><span class="s1">&#39;hello_world!&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">var</span><span class="p">(</span><span class="s1">'hello_world!'</span><span class="p">)</span>
 <span class="go">21</span>
 </pre></div>
 </div>
@@ -2045,7 +2045,7 @@ the original object labeled by the identifier.</p>
 </dl>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vpool</span><span class="o">.</span><span class="n">obj</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span>
-<span class="go">&#39;hello_world!&#39;</span>
+<span class="go">'hello_world!'</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -2076,14 +2076,14 @@ the constructor of <a class="reference internal" href="#pysat.formula.IDPool" ti
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.ITE">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">ITE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.ITE" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">ITE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.ITE" title="Link to this definition">#</a></dt>
 <dd><p>If-then-else operator. Given three operands (subformulas) <span class="math notranslate nohighlight">\(x\)</span>,
 <span class="math notranslate nohighlight">\(y\)</span>, and <span class="math notranslate nohighlight">\(z\)</span>, it creates a formula <span class="math notranslate nohighlight">\((x \rightarrow
 y) \land (\neg{x} \rightarrow z)\)</span>. The operands should be passed as
 arguments to the constructor.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ite</span> <span class="o">=</span> <span class="n">ITE</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">ite</span><span class="p">)</span>
@@ -2105,7 +2105,7 @@ subformulas and creates a new formula.</p>
 </dl>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ite</span> <span class="o">=</span> <span class="n">ITE</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">ite</span><span class="o">.</span><span class="n">simplified</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="n">y</span><span class="p">]))</span>
@@ -2120,14 +2120,14 @@ subformulas and creates a new formula.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.Implies">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">Implies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Implies" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">Implies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Implies" title="Link to this definition">#</a></dt>
 <dd><p>Implication. Given two operands <span class="math notranslate nohighlight">\(f_1\)</span> and <span class="math notranslate nohighlight">\(f_2\)</span>, it
 creates a formula <span class="math notranslate nohighlight">\(f_1 \rightarrow f_2\)</span>. The operands must be
 passed to the constructors either as two arguments or two keyword
 arguments <code class="docutils literal notranslate"><span class="pre">left</span></code> and <code class="docutils literal notranslate"><span class="pre">right</span></code>.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Implies</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="go">x &gt;&gt; y</span>
@@ -2149,7 +2149,7 @@ formula with these simplified subformulas.</p>
 </dl>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="n">y</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">simplified</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="n">y</span><span class="p">]))</span>
@@ -2164,13 +2164,13 @@ formula with these simplified subformulas.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.Neg">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">Neg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Neg" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">Neg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Neg" title="Link to this definition">#</a></dt>
 <dd><p>Negation. Given a single operand (subformula) <span class="math notranslate nohighlight">\(f\)</span>, it creates a
 formula <span class="math notranslate nohighlight">\(\neg{f}\)</span>. The operand must be passed as an argument to
 the constructor.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">n1</span> <span class="o">=</span> <span class="n">Neg</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">n2</span> <span class="o">=</span> <span class="n">Neg</span><span class="p">(</span><span class="n">subformula</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">)</span>
@@ -2196,7 +2196,7 @@ simplified subformula.</p>
 </dl>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&amp;</span> <span class="n">y</span> <span class="o">|</span> <span class="n">z</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="o">~</span><span class="n">a</span>
 <span class="gp">&gt;&gt;&gt;</span>
@@ -2212,14 +2212,14 @@ simplified subformula.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.Or">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">Or</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Or" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">Or</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.Or" title="Link to this definition">#</a></dt>
 <dd><p>Disjunction. Given a list of operands (subformulas) <span class="math notranslate nohighlight">\(f_i\)</span>,
 <span class="math notranslate nohighlight">\(i \in \{1,\ldots,n\}, n \in \mathbb{N}\)</span>, it creates a
 formula <span class="math notranslate nohighlight">\(\bigvee_{i=1}^{n}{f_i}\)</span>. The list of operands <em>of size
 at least 1</em> should be passed as arguments to the constructor.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">conj</span> <span class="o">=</span> <span class="n">Or</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2234,16 +2234,16 @@ sub-operands is enabled by default if bitwise operations are used to
 create <code class="docutils literal notranslate"><span class="pre">Or</span></code> formulas.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a1</span> <span class="o">=</span> <span class="n">Or</span><span class="p">(</span><span class="n">Or</span><span class="p">(</span><span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a2</span> <span class="o">=</span> <span class="n">Or</span><span class="p">(</span><span class="n">Or</span><span class="p">(</span><span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">),</span> <span class="n">merge</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a3</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a1</span> <span class="o">=</span> <span class="n">Or</span><span class="p">(</span><span class="n">Or</span><span class="p">(</span><span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">)),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a2</span> <span class="o">=</span> <span class="n">Or</span><span class="p">(</span><span class="n">Or</span><span class="p">(</span><span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">)),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">),</span> <span class="n">merge</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a3</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">)</span> <span class="o">|</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">)</span> <span class="o">|</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">repr</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span>
-<span class="go">&quot;Or[Or[Atom(&#39;x&#39;), Atom(&#39;y&#39;)], Atom(&#39;z&#39;)]&quot;</span>
+<span class="go">"Or[Or[Atom('x'), Atom('y')], Atom('z')]"</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">repr</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
-<span class="go">&quot;Or[Atom(&#39;x&#39;), Atom(&#39;y&#39;), Atom(&#39;z&#39;)]&quot;</span>
+<span class="go">"Or[Atom('x'), Atom('y'), Atom('z')]"</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">repr</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
-<span class="go">&quot;Or[Atom(&#39;x&#39;), Atom(&#39;y&#39;), Atom(&#39;z&#39;)]&quot;</span>
+<span class="go">"Or[Atom('x'), Atom('y'), Atom('z')]"</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
 <span class="go">False</span>
@@ -2275,7 +2275,7 @@ subformulas and creates a new formula.</p>
 </dl>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="o">|</span> <span class="n">y</span> <span class="o">|</span> <span class="n">z</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">simplified</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="n">y</span><span class="p">]))</span>
@@ -2290,7 +2290,7 @@ subformulas and creates a new formula.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.WCNF">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">WCNF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_fp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment_lead</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['c']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.WCNF" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">WCNF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_fp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment_lead</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['c']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.WCNF" title="Link to this definition">#</a></dt>
 <dd><p>Class for manipulating partial (weighted) CNF formulas. It can be used
 for creating formulas, reading them from a file, or writing them to a
 file. The <code class="docutils literal notranslate"><span class="pre">comment_lead</span></code> parameter can be helpful when one needs to
@@ -2424,9 +2424,9 @@ file extension. Using <code class="docutils literal notranslate"><span class="pr
 <p>Usage example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="n">WCNF</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf1</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf1</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s1">&#39;some-file.wcnf.bz2&#39;</span><span class="p">,</span> <span class="n">compressed_with</span><span class="o">=</span><span class="s1">&#39;bzip2&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf1</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s1">'some-file.wcnf.bz2'</span><span class="p">,</span> <span class="n">compressed_with</span><span class="o">=</span><span class="s1">'bzip2'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf2</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;another-file.wcnf&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf2</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">'another-file.wcnf'</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -2447,11 +2447,11 @@ lines.</p>
 </dd>
 </dl>
 <p>Usage example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;some-file.wcnf&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'some-file.wcnf'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">cnf1</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="n">cnf1</span><span class="o">.</span><span class="n">from_fp</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;another-file.wcnf&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'another-file.wcnf'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">cnf2</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">(</span><span class="n">from_fp</span><span class="o">=</span><span class="n">fp</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2475,13 +2475,13 @@ specific comment lines.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="n">WCNF</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf1</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf1</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="s1">&#39;p wcnf 2 2 2</span><span class="se">\n</span><span class="s1"> 2 -1 2 0</span><span class="se">\n</span><span class="s1">1 1 -2 0&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf1</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="s1">'p wcnf 2 2 2</span><span class="se">\n</span><span class="s1"> 2 -1 2 0</span><span class="se">\n</span><span class="s1">1 1 -2 0'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf1</span><span class="o">.</span><span class="n">hard</span><span class="p">)</span>
 <span class="go">[[-1, 2]]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf1</span><span class="o">.</span><span class="n">soft</span><span class="p">)</span>
 <span class="go">[[1, 2]]</span>
 <span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf2</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">(</span><span class="n">from_string</span><span class="o">=</span><span class="s1">&#39;p wcnf 3 3 2</span><span class="se">\n</span><span class="s1">2 -1 2 0</span><span class="se">\n</span><span class="s1">2 -2 3 0</span><span class="se">\n</span><span class="s1">1 -3 0</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf2</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">(</span><span class="n">from_string</span><span class="o">=</span><span class="s1">'p wcnf 3 3 2</span><span class="se">\n</span><span class="s1">2 -1 2 0</span><span class="se">\n</span><span class="s1">2 -2 3 0</span><span class="se">\n</span><span class="s1">1 -3 0</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf2</span><span class="o">.</span><span class="n">hard</span><span class="p">)</span>
 <span class="go">[[-1, 2], [-2, 3]]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf2</span><span class="o">.</span><span class="n">soft</span><span class="p">)</span>
@@ -2527,8 +2527,8 @@ comment lines can be specified in the <code class="docutils literal notranslate"
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">()</span>
 <span class="gp">...</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># the formula is filled with a bunch of clauses</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;some-file.lp&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="n">cnf</span><span class="o">.</span><span class="n">to_alien</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;lp&#39;</span><span class="p">)</span>  <span class="c1"># writing to the file pointer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'some-file.lp'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">cnf</span><span class="o">.</span><span class="n">to_alien</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'lp'</span><span class="p">)</span>  <span class="c1"># writing to the file pointer</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -2555,8 +2555,8 @@ the <a class="reference external" href="https://maxsat-evaluations.github.io/202
 </div>
 <p>Then you can obtain the DIMACS with:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="n">WCNF</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;some-file.wcnf&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">to_dimacs</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;legacy&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">'some-file.wcnf'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">to_dimacs</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">'legacy'</span><span class="p">))</span>
 <span class="go">c Example</span>
 <span class="go">p wcnf 2 3 10</span>
 <span class="go">10 1 2 0</span>
@@ -2605,7 +2605,7 @@ file extension. Using <code class="docutils literal notranslate"><span class="pr
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">()</span>
 <span class="gp">...</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># the formula is filled with a bunch of clauses</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s1">&#39;some-file-name.wcnf&#39;</span><span class="p">)</span>  <span class="c1"># writing to a file</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s1">'some-file-name.wcnf'</span><span class="p">)</span>  <span class="c1"># writing to a file</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -2634,7 +2634,7 @@ the <a class="reference external" href="https://maxsat-evaluations.github.io/202
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wcnf</span> <span class="o">=</span> <span class="n">WCNF</span><span class="p">()</span>
 <span class="gp">...</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># the formula is filled with a bunch of clauses</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;some-file.wcnf&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'some-file.wcnf'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">wcnf</span><span class="o">.</span><span class="n">to_fp</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>  <span class="c1"># writing to the file pointer</span>
 </pre></div>
 </div>
@@ -2670,7 +2670,7 @@ weights are discarded.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.WCNFPlus">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">WCNFPlus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_fp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment_lead</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['c']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.WCNFPlus" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">WCNFPlus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_fp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_string</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment_lead</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['c']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.WCNFPlus" title="Link to this definition">#</a></dt>
 <dd><p>WCNF formulas augmented with <em>native</em> cardinality constraints.</p>
 <p>This class inherits most of the functionality of the <a class="reference internal" href="#pysat.formula.WCNF" title="pysat.formula.WCNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNF</span></code></a>
 class. The only difference between the two is that <a class="reference internal" href="#pysat.formula.WCNFPlus" title="pysat.formula.WCNFPlus"><code class="xref py py-class docutils literal notranslate"><span class="pre">WCNFPlus</span></code></a>
@@ -2707,7 +2707,7 @@ constraints are stored in variable <code class="docutils literal notranslate"><s
 <code class="docutils literal notranslate"><span class="pre">k</span></code> is the upper bound.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="n">WCNFPlus</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">WCNFPlus</span><span class="p">(</span><span class="n">from_string</span><span class="o">=</span><span class="s1">&#39;p wcnf+ 7 3 10</span><span class="se">\n</span><span class="s1">10 1 -2 3 5 -7 &lt;= 3</span><span class="se">\n</span><span class="s1">10 4 5 6 -7 &gt;= 2</span><span class="se">\n</span><span class="s1">5 3 5 7 0</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">WCNFPlus</span><span class="p">(</span><span class="n">from_string</span><span class="o">=</span><span class="s1">'p wcnf+ 7 3 10</span><span class="se">\n</span><span class="s1">10 1 -2 3 5 -7 &lt;= 3</span><span class="se">\n</span><span class="s1">10 4 5 6 -7 &gt;= 2</span><span class="se">\n</span><span class="s1">5 3 5 7 0</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">soft</span><span class="p">)</span>
 <span class="go">[[3, 5, 7]]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">wght</span><span class="p">)</span>
@@ -2808,11 +2808,11 @@ lines.</p>
 </dd>
 </dl>
 <p>Usage example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;some-file.wcnf+&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'some-file.wcnf+'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">cnf1</span> <span class="o">=</span> <span class="n">WCNFPlus</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="n">cnf1</span><span class="o">.</span><span class="n">from_fp</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;another-file.wcnf+&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'another-file.wcnf+'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">cnf2</span> <span class="o">=</span> <span class="n">WCNFPlus</span><span class="p">(</span><span class="n">from_fp</span><span class="o">=</span><span class="n">fp</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2855,8 +2855,8 @@ You may want to use Z3’s API instead (see its PB interface).</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">WCNFPlus</span><span class="p">()</span>
 <span class="gp">...</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># the formula is filled with a bunch of clauses</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;some-file.lp&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="n">cnf</span><span class="o">.</span><span class="n">to_alien</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;lp&#39;</span><span class="p">)</span>  <span class="c1"># writing to the file pointer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'some-file.lp'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">cnf</span><span class="o">.</span><span class="n">to_alien</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">'lp'</span><span class="p">)</span>  <span class="c1"># writing to the file pointer</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -2875,7 +2875,7 @@ You may want to use Z3’s API instead (see its PB interface).</p>
 </div>
 <p>Then you can obtain the DIMACS with:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="n">WCNFPlus</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">WCNFPlus</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;some-file.cnf&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">WCNFPlus</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">'some-file.cnf'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf</span><span class="o">.</span><span class="n">to_dimacs</span><span class="p">())</span>
 <span class="go">c Example</span>
 <span class="go">p wcnf+ 7 4 10</span>
@@ -2911,7 +2911,7 @@ the <a class="reference external" href="https://maxsat-evaluations.github.io/202
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">WCNFPlus</span><span class="p">()</span>
 <span class="gp">...</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># the formula is filled with a bunch of clauses</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;some-file.wcnf+&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'some-file.wcnf+'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">cnf</span><span class="o">.</span><span class="n">to_fp</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>  <span class="c1"># writing to the file pointer</span>
 </pre></div>
 </div>
@@ -2952,7 +2952,7 @@ formula remain unchanged in the new (plain) formula.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.formula.XOr">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">XOr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.XOr" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.formula.</span></span><span class="sig-name descname"><span class="pre">XOr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.formula.XOr" title="Link to this definition">#</a></dt>
 <dd><p>Exclusive disjunction. Given a list of operands (subformulas)
 <span class="math notranslate nohighlight">\(f_i\)</span>, <span class="math notranslate nohighlight">\(i \in \{1,\ldots,n\}, n \in \mathbb{N}\)</span>, it
 creates a formula <span class="math notranslate nohighlight">\(f_1 \oplus f_2 \oplus\ldots\oplus f_n\)</span>.
@@ -2960,7 +2960,7 @@ The list of operands <em>of size at least 2</em> should be passed as
 arguments to the constructor.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">xor</span> <span class="o">=</span> <span class="n">XOr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2974,9 +2974,9 @@ list of root-level <code class="docutils literal notranslate"><span class="pre">
 <code class="docutils literal notranslate"><span class="pre">XOr(x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code>. Bitwise <code class="docutils literal notranslate"><span class="pre">^</span></code> operations also enable merging.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a1</span> <span class="o">=</span> <span class="n">XOr</span><span class="p">(</span><span class="n">XOr</span><span class="p">(</span><span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a2</span> <span class="o">=</span> <span class="n">XOr</span><span class="p">(</span><span class="n">XOr</span><span class="p">(</span><span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">),</span> <span class="n">merge</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a3</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span> <span class="o">^</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span> <span class="o">^</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a1</span> <span class="o">=</span> <span class="n">XOr</span><span class="p">(</span><span class="n">XOr</span><span class="p">(</span><span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">)),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a2</span> <span class="o">=</span> <span class="n">XOr</span><span class="p">(</span><span class="n">XOr</span><span class="p">(</span><span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">)),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">),</span> <span class="n">merge</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a3</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">)</span> <span class="o">^</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">)</span> <span class="o">^</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span>
 <span class="go">(x ^ y) ^ z</span>
@@ -3015,7 +3015,7 @@ subformulas and creates a new formula.</p>
 </dl>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'x'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'y'</span><span class="p">),</span> <span class="n">Atom</span><span class="p">(</span><span class="s1">'z'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">x</span> <span class="o">^</span> <span class="n">y</span> <span class="o">^</span> <span class="n">z</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">simplified</span><span class="p">(</span><span class="n">assumptions</span><span class="o">=</span><span class="p">[</span><span class="n">y</span><span class="p">]))</span>
@@ -3227,7 +3227,7 @@ subformulas and creates a new formula.</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     <br/>
   </p>
 </div>

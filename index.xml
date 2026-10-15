@@ -61,7 +61,7 @@
       <link>https://pysathq.github.io/updates/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://pysathq.github.io/updates/</guid>
-      <description>PySAT is being developed with the rolling release model, which means we do not deliver major releases from time to time. Instead, many small (sometimes tiny) and frequent updates are provided. As a result, upgrading your installation of the toolkit every now and then to keep it up-to-date is good idea.&#xA;16.07.2026 (1.9.dev15) Minor modification of lsu.py due to the use of filter(). A couple of subtle bugs in hitman.py: one was related to filter() and the other one was related to arbitrary atoms.</description>
+      <description>PySAT is being developed with the rolling release model, which means we do not deliver major releases from time to time. Instead, many small (sometimes tiny) and frequent updates are provided. As a result, upgrading your installation of the toolkit every now and then to keep it up-to-date is good idea.&#xA;15.10.2026 (1.9.dev16) Fixed a bug in proofs being cut. Fixed a bug related to Cadical&amp;rsquo;s external propagation. Fixed a few more issues here and there.</description>
     </item>
     <item>
       <title>Usage</title>

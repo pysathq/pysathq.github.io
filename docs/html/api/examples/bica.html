@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Bica algorithm for formula simplification (pysat.examples.bica) &#8212; PySAT 1.9.dev15 documentation</title>
+    <title>Bica algorithm for formula simplification (pysat.examples.bica) &#8212; PySAT 1.9.dev16 documentation</title>
   
   
   
@@ -38,10 +38,10 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../../_static/documentation_options.js?v=1ed85331"></script>
-    <script src="../../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/documentation_options.js?v=2920d95b"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/examples/bica';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="icon" href="../../_static/favicon.ico"/>
@@ -121,8 +121,8 @@
       
     
     
-    <img src="../../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.9.dev15 documentation - Home"/>
-    <img src="../../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.9.dev15 documentation - Home"/>
+    <img src="../../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.9.dev16 documentation - Home"/>
+    <img src="../../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.9.dev16 documentation - Home"/>
   
   
 </a></div>
@@ -134,7 +134,7 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.9.dev15)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.9.dev16)</strong></a></div>
       
     </div>
     
@@ -254,7 +254,7 @@
           
           
             <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.9.dev15)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.9.dev16)</strong></a></div>
           
         
       </div>
@@ -526,7 +526,7 @@ standard <code class="docutils literal notranslate"><span class="pre">import</sp
 <span class="gp">... </span>    <span class="k">for</span> <span class="n">minf</span> <span class="ow">in</span> <span class="n">bica</span><span class="o">.</span><span class="n">enumerate</span><span class="p">():</span>
 <span class="gp">... </span>        <span class="n">minf</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_clauses</span><span class="o">=</span><span class="p">[</span><span class="n">bica</span><span class="o">.</span><span class="n">primes</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">minf</span><span class="p">])</span>
 <span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="n">minf</span><span class="p">)</span>
-<span class="go">CNF(from_string=&#39;p cnf 3 2\n-1 3 0\n-2 1 0&#39;)</span>
+<span class="go">CNF(from_string='p cnf 3 2\n-1 3 0\n-2 1 0')</span>
 </pre></div>
 </div>
 <p>As the example above demonstrates, Bica can enumerate all irreducible
@@ -540,7 +540,7 @@ particular example, the formula <span class="math notranslate nohighlight">\(f\t
 </section>
 <dl class="py class">
 <dt class="sig sig-object py" id="examples.bica.Bica">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">examples.bica.</span></span><span class="sig-name descname"><span class="pre">Bica</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formula</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">negated</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cnf'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">psolver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cd19'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padapt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pdcalls</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pexhaust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pminz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ppuresat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">psearch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'lin'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">punsorted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ptrim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">osolver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mgh'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oadapt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">odcalls</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oexhaust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ominz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">onodisj</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opuresat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oreduce</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ounsorted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">otrim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weighted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.bica.Bica" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">examples.bica.</span></span><span class="sig-name descname"><span class="pre">Bica</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">formula</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">negated</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cnf'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">psolver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cd19'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padapt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pdcalls</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pexhaust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pminz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ppuresat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">psearch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'lin'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">punsorted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ptrim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">osolver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mgh'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oadapt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">odcalls</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oexhaust</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ominz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">onodisj</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opuresat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oreduce</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ounsorted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">otrim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weighted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#examples.bica.Bica" title="Link to this definition">#</a></dt>
 <dd><p>A simple reimplementation of the Bica algorithm. Although the original
 implementation of Bica was also written in Python, both phases of the
 algorithm (prime enumeration and prime cover computation) were written
@@ -620,8 +620,8 @@ correct list of primes. Consider the following example:</p>
 <span class="gp">... </span>    <span class="k">for</span> <span class="n">minf</span> <span class="ow">in</span> <span class="n">bica</span><span class="o">.</span><span class="n">enumerate</span><span class="p">():</span>
 <span class="gp">... </span>        <span class="n">minf</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_clauses</span><span class="o">=</span><span class="p">[</span><span class="n">bica</span><span class="o">.</span><span class="n">primes</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">minf</span><span class="p">])</span>
 <span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="n">minf</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;all primes implicates: </span><span class="si">{</span><span class="n">bica</span><span class="o">.</span><span class="n">primes</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="go">CNF(from_string=&#39;p cnf 4 3\n4 0\n-2 3 0\n-1 2 0&#39;)</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'all primes implicates: </span><span class="si">{</span><span class="n">bica</span><span class="o">.</span><span class="n">primes</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="go">CNF(from_string='p cnf 4 3\n4 0\n-2 3 0\n-1 2 0')</span>
 <span class="go">all prime implicates: [[4], [-2, 3], [-1, 3], [-1, 2]]</span>
 </pre></div>
 </div>
@@ -651,9 +651,9 @@ decides to stop the process.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.examples.bica</span><span class="w"> </span><span class="kn">import</span> <span class="n">Bica</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.formula</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">&#39;test.cnf&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cnf</span> <span class="o">=</span> <span class="n">CNF</span><span class="p">(</span><span class="n">from_file</span><span class="o">=</span><span class="s1">'test.cnf'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cnf</span><span class="p">)</span>
-<span class="go">CNF(from_string=&#39;c n orig vars 5\np cnf 11 5\n-1 2 0\n1 -2 0\n1 2 -3 4 0\n1 2 3 -4 0\n1 2 3 4 5 0&#39;)</span>
+<span class="go">CNF(from_string='c n orig vars 5\np cnf 11 5\n-1 2 0\n1 -2 0\n1 2 -3 4 0\n1 2 3 -4 0\n1 2 3 4 5 0')</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Bica</span><span class="p">(</span><span class="n">cnf</span><span class="p">)</span> <span class="k">as</span> <span class="n">bica</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">for</span> <span class="n">minf</span> <span class="ow">in</span> <span class="n">bica</span><span class="o">.</span><span class="n">enumerate</span><span class="p">():</span>
@@ -795,7 +795,7 @@ of the algorithm, respectively.</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     <br/>
   </p>
 </div>
