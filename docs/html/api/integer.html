@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Integer variables (pysat.integer) &#8212; PySAT 1.9.dev16 documentation</title>
+    <title>Integer variables (pysat.integer) &#8212; PySAT 1.9.dev17 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../_static/documentation_options.js?v=2920d95b"></script>
+    <script src="../_static/documentation_options.js?v=8d585d42"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
@@ -121,8 +121,8 @@
       
     
     
-    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.9.dev16 documentation - Home"/>
-    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.9.dev16 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.9.dev17 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.9.dev17 documentation - Home"/>
   
   
 </a></div>
@@ -134,7 +134,7 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.9.dev16)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.9.dev17)</strong></a></div>
       
     </div>
     
@@ -254,7 +254,7 @@
           
           
             <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.9.dev16)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.9.dev17)</strong></a></div>
           
         
       </div>
@@ -1002,20 +1002,29 @@ that <code class="docutils literal notranslate"><span class="pre">b</span> <span
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.integer.IntegerEngine.clausify">
-<span class="sig-name descname"><span class="pre">clausify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cardenc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pbenc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.integer.IntegerEngine.clausify" title="Link to this definition">#</a></dt>
-<dd><p>Clausify all constraints and return a CNF encoding. All linear
-constraints are converted using the user-specified cardinality and
-pseudo-Boolean encoding. The former are utilized for unweighted
-constraints, while the latter are utilized for weighted
-constraints.</p>
-<p>Note that parameters <code class="docutils literal notranslate"><span class="pre">cardenc</span></code> and <code class="docutils literal notranslate"><span class="pre">pbenc</span></code> default to
-<code class="xref py py-attr docutils literal notranslate"><span class="pre">card.EncType.seqcounter</span></code> and
-<code class="xref py py-class docutils literal notranslate"><span class="pre">pysat.pb.EncType.best</span></code>, respectively.</p>
+<span class="sig-name descname"><span class="pre">clausify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cardenc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pbenc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intenc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.integer.IntegerEngine.clausify" title="Link to this definition">#</a></dt>
+<dd><p>Clausify all constraints and return a CNF encoding.</p>
+<p>Linear constraints over <a class="reference internal" href="#pysat.integer.Integer" title="pysat.integer.Integer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Integer</span></code></a> variables are encoded by
+Pindakaas as <em>integer</em> linear constraints, using the encoding
+<code class="docutils literal notranslate"><span class="pre">intenc</span></code>. The literals of each <a class="reference internal" href="#pysat.integer.Integer" title="pysat.integer.Integer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Integer</span></code></a> are passed to
+Pindakaas as an integer variable, which lets it use integer
+encodings, e.g. the mixed radix encoding.</p>
+<p>The remaining linear constraints, and all of them if <code class="docutils literal notranslate"><span class="pre">intenc</span></code>
+is <code class="docutils literal notranslate"><span class="pre">None</span></code>, are converted using the user-specified cardinality
+and pseudo-Boolean encoding. The former are utilized for
+unweighted constraints, while the latter are utilized for
+weighted constraints.</p>
+<p>Note that parameters <code class="docutils literal notranslate"><span class="pre">cardenc</span></code>, <code class="docutils literal notranslate"><span class="pre">pbenc</span></code> and <code class="docutils literal notranslate"><span class="pre">intenc</span></code>
+default to <code class="xref py py-attr docutils literal notranslate"><span class="pre">card.EncType.seqcounter</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">pysat.pb.EncType.best</span></code> and
+<code class="xref py py-class docutils literal notranslate"><span class="pre">pysat.pb.EncType.best</span></code>, respectively. The <em>native</em>
+encodings produce no clauses and raise <code class="xref py py-class docutils literal notranslate"><span class="pre">ValueError</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>cardenc</strong> (<em>int</em>) – cardinality encoding for unweighted constraints</p></li>
 <li><p><strong>pbenc</strong> (<em>int</em>) – PB encoding for weighted constraints</p></li>
+<li><p><strong>intenc</strong> (<em>int</em><em> or </em><em>None</em>) – encoding for integer linear constraints, or <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>

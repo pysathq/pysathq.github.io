@@ -220,20 +220,21 @@ list of cardinality encodings included is the following:</p>
 </ul>
 <p>Furthermore, PySAT supports a number of encodings of pseudo-Boolean
 constraints listed below. This is done by exploiting a third-party library
-<a href="https://pypi.org/project/pypblib/">PyPBLib</a> developed by the <a href="http://ulog.udl.cat/">Logic
-Optimization Group</a> of the University of Lleida.
-(PyPBLib is a wrapper over the known PBLib library<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup>.)</p>
+<a href="https://pypi.org/project/pindakaas/">Pindakaas</a><sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup>.</p>
 <ul>
 <li>binary decision diagrams (BDD)<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup> <sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup></li>
 <li>sequential weight counters<sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup></li>
 <li>sorting networks<sup id="fnref1:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup></li>
 <li>adder networks<sup id="fnref2:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup></li>
-<li>and binary merge<sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup></li>
+<li>binary merge<sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup></li>
+<li>the watchdog encoding<sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup></li>
+<li>the generalized totalizer<sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup></li>
+<li>and the mixed radix encoding<sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup></li>
 </ul>
 <p>Finally, PySAT now supports arbitrary Boolean formulas with on-the-fly
-clausification <sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup> and provides (pre-)processing functionality <sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup> by
+clausification <sup id="fnref:18"><a href="#fn:18" class="footnote-ref" role="doc-noteref">18</a></sup> and provides (pre-)processing functionality <sup id="fnref:19"><a href="#fn:19" class="footnote-ref" role="doc-noteref">19</a></sup> by
 exposing an interface to CaDiCaL&rsquo;s (version 1.5.3) preprocessor as well as
-external user-defined engines following the IPASIR-UP interface <sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup>.</p>
+external user-defined engines following the IPASIR-UP interface <sup id="fnref:20"><a href="#fn:20" class="footnote-ref" role="doc-noteref">20</a></sup>.</p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
@@ -278,8 +279,8 @@ Application to MaxSAT Solvers</em>. ICTAI 2013. pp. 9-17&#160;<a href="#fnref:8"
 <em>Incremental Cardinality Constraints for MaxSAT</em>. CP 2014. pp. 531-548&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:10">
-<p>Tobias Philipp, Peter Steinke. <em>PBLib - A Library for Encoding
-Pseudo-Boolean Constraints into CNF</em>. SAT 2015. pp. 9-16&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Hendrik Bierlee, Jip J. Dekker. <em>Pindakaas</em>. Software.
+<a href="https://doi.org/10.5281/zenodo.10851855">https://doi.org/10.5281/zenodo.10851855</a>&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:11">
 <p>Niklas Eén, Niklas Sörensson. <em>Translating Pseudo-Boolean Constraints
@@ -300,18 +301,31 @@ Translation of Pseudo-Boolean Constraints into CNF Such That Generalized
 Arc Consistency Is Maintained</em>. KI. 2014. pp. 123-134&#160;<a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:15">
-<p>G. S. Tseitin. <em>On the complexity of derivations in the propositional
-calculus</em>.  Studies in Mathematics and Mathematical Logic, Part II. pp.
-115–125, 1968&#160;<a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Olivier Bailleux, Yacine Boufkhad, Olivier Roussel. <em>New
+Encodings of Pseudo-Boolean Constraints into CNF</em>. SAT 2009. pp. 181-194&#160;<a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:16">
-<p>Armin Biere, Matti Järvisalo, Benjamin Kiesl. <em>Preprocessing in SAT
-Solving</em>. In <em>Handbook of Satisfiability - Second Edition</em>. pp. 391-435&#160;<a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Saurabh Joshi, Ruben Martins, Vasco Manquinho. <em>Generalized Totalizer
+Encoding for Pseudo-Boolean Constraints</em>. CP 2015. pp. 200-209&#160;<a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:17">
+<p>Anpeng Zha, Miyuki Koshimura, Hiroshi Fujita. <em>N-level Modulo-based
+CNF Encodings of Pseudo-Boolean Constraints for MaxSAT</em>. Constraints
+24(2). 2019. pp. 133-161&#160;<a href="#fnref:17" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:18">
+<p>G. S. Tseitin. <em>On the complexity of derivations in the propositional
+calculus</em>.  Studies in Mathematics and Mathematical Logic, Part II. pp.
+115–125, 1968&#160;<a href="#fnref:18" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:19">
+<p>Armin Biere, Matti Järvisalo, Benjamin Kiesl. <em>Preprocessing in SAT
+Solving</em>. In <em>Handbook of Satisfiability - Second Edition</em>. pp. 391-435&#160;<a href="#fnref:19" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:20">
 <p>Katalin Fazekas, Aina Niemetz, Mathias Preiner, Markus Kirchweger,
 Stefan Szeider, Armin Biere. <em>IPASIR-UP: User Propagators for CDCL</em>. SAT.
-2023. pp. 8:1-8:13&#160;<a href="#fnref:17" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+2023. pp. 8:1-8:13&#160;<a href="#fnref:20" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div>
