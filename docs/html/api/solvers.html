@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>SAT solvers’ API (pysat.solvers) &#8212; PySAT 1.9.dev17 documentation</title>
+    <title>SAT solvers’ API (pysat.solvers) &#8212; PySAT 1.9.dev18 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../_static/documentation_options.js?v=8d585d42"></script>
+    <script src="../_static/documentation_options.js?v=6542fe80"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
@@ -121,8 +121,8 @@
       
     
     
-    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.9.dev17 documentation - Home"/>
-    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.9.dev17 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.9.dev18 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.9.dev18 documentation - Home"/>
   
   
 </a></div>
@@ -134,7 +134,7 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.9.dev17)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.9.dev18)</strong></a></div>
       
     </div>
     
@@ -254,7 +254,7 @@
           
           
             <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.9.dev17)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.9.dev18)</strong></a></div>
           
         
       </div>
@@ -1442,7 +1442,7 @@ return <code class="docutils literal notranslate"><span class="pre">False</span>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.set_phases">
-<span class="sig-name descname"><span class="pre">set_phases</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">literals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.set_phases" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_phases</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">literals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hard</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.set_phases" title="Link to this definition">#</a></dt>
 <dd><p>The method takes a list of literals as an argument and sets
 <em>phases</em> (or MiniSat-like <em>polarities</em>) of the corresponding
 variables respecting the literals. For example, if a given list of
@@ -1457,9 +1457,14 @@ when branching on these variables. However, solvers
 following SAT calls due to the phase saving heuristic.</p>
 <p>Also <strong>note</strong> that <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical103</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical153</span></code>, and
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code> do not support this functionality.</p>
+<p>Experimental default parameter <code class="docutils literal notranslate"><span class="pre">hard=True</span></code> is not currently
+supported and is ignored.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>literals</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – a list of literals.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hard</strong> (<em>bool</em>) – persistent branching preferences</p></li>
+<li><p><strong>literals</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – a list of literals</p></li>
+</ul>
 </dd>
 </dl>
 <p>Usage example:</p>

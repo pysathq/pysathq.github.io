@@ -61,7 +61,7 @@
       <link>https://pysathq.github.io/updates/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://pysathq.github.io/updates/</guid>
-      <description>PySAT is being developed with the rolling release model, which means we do not deliver major releases from time to time. Instead, many small (sometimes tiny) and frequent updates are provided. As a result, upgrading your installation of the toolkit every now and then to keep it up-to-date is good idea.&#xA;15.10.2026 (1.9.dev17) Replaced pypblib with Pindakaas as the PB library (thanks for the effort to Jip Dekker!). 15.10.2026 (1.9.dev16) Fixed a bug in proofs being cut.</description>
+      <description>PySAT is being developed with the rolling release model, which means we do not deliver major releases from time to time. Instead, many small (sometimes tiny) and frequent updates are provided. As a result, upgrading your installation of the toolkit every now and then to keep it up-to-date is good idea.&#xA;3.11.2026 (1.9.dev18) Fixed a bug in Glucose3 related to reducing an empty learnt clause database. 15.10.2026 (1.9.dev17) Replaced pypblib with Pindakaas as the PB library (thanks for the effort to Jip Dekker!</description>
     </item>
     <item>
       <title>Usage</title>
