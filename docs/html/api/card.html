@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Cardinality encodings (pysat.card) &#8212; PySAT 1.9.dev18 documentation</title>
+    <title>Cardinality encodings (pysat.card) &#8212; PySAT 1.9.dev19 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../_static/documentation_options.js?v=6542fe80"></script>
+    <script src="../_static/documentation_options.js?v=c13a7a99"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
@@ -121,8 +121,8 @@
       
     
     
-    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.9.dev18 documentation - Home"/>
-    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.9.dev18 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.9.dev19 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.9.dev19 documentation - Home"/>
   
   
 </a></div>
@@ -134,7 +134,7 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.9.dev18)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.9.dev19)</strong></a></div>
       
     </div>
     
@@ -254,7 +254,7 @@
           
           
             <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.9.dev18)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.9.dev19)</strong></a></div>
           
         
       </div>
@@ -397,6 +397,9 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#pysat.card.ITotalizer" title="pysat.card.ITotalizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ITotalizer</span></code></a></p></td>
 <td><p>This class implements the iterative totalizer encoding <a class="footnote-reference brackets" href="#id24" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>11<span class="fn-bracket">]</span></a>.</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pysat.card.ISeqCounter" title="pysat.card.ISeqCounter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ISeqCounter</span></code></a></p></td>
+<td><p>This class implements an iterative sequential-counter encoding.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -478,9 +481,10 @@ this module, which is <a class="reference internal" href="#pysat.card.CardEnc" t
 <p>Additionally, to the standard cardinality encodings that are basically
 “static” CNF formulas, the module is designed to able to construct
 <em>incremental</em> cardinality encodings, i.e. those that can be incrementally
-extended at a later stage. At this point only the <em>iterative totalizer</em>
-<a class="footnote-reference brackets" href="#id24" id="id23" role="doc-noteref"><span class="fn-bracket">[</span>11<span class="fn-bracket">]</span></a> encoding is supported. Iterative totalizer can be accessed with the
-use of the <a class="reference internal" href="#pysat.card.ITotalizer" title="pysat.card.ITotalizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ITotalizer</span></code></a> class.</p>
+extended at a later stage. The <em>iterative totalizer</em> <a class="footnote-reference brackets" href="#id24" id="id23" role="doc-noteref"><span class="fn-bracket">[</span>11<span class="fn-bracket">]</span></a> is available
+through <a class="reference internal" href="#pysat.card.ITotalizer" title="pysat.card.ITotalizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ITotalizer</span></code></a>. An iterative sequential counter is available
+through <a class="reference internal" href="#pysat.card.ISeqCounter" title="pysat.card.ISeqCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">ISeqCounter</span></code></a>; it supports increasing the bound and
+obtaining constraint literals for prefixes of the input.</p>
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="id24" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span>11<span class="fn-bracket">]</span></span>
@@ -609,6 +613,132 @@ clauses, the “native” encoding of <a class="reference external" href="https:
 Given an AtMostK constraint <span class="math notranslate nohighlight">\(\sum_{i=1}^n{x_i\leq k}\)</span>, the
 native encoding represents it as a pair <code class="docutils literal notranslate"><span class="pre">[lits,</span> <span class="pre">k]</span></code>, where <code class="docutils literal notranslate"><span class="pre">lits</span></code>
 is a list of size <code class="docutils literal notranslate"><span class="pre">n</span></code> containing literals in the sum.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pysat.card.ISeqCounter">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.card.</span></span><span class="sig-name descname"><span class="pre">ISeqCounter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ubound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.card.ISeqCounter" title="Link to this definition">#</a></dt>
+<dd><p>This class implements an iterative sequential-counter encoding. Like
+<a class="reference internal" href="#pysat.card.ITotalizer" title="pysat.card.ITotalizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ITotalizer</span></code></a>, this class is not abstract and its objects once
+created can be reused several times: the bound can be increased, and
+the internal state can be read out as standalone constraint literals
+via <a class="reference internal" href="#pysat.card.ISeqCounter.get_constraint" title="pysat.card.ISeqCounter.get_constraint"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_constraint()</span></code></a>. The interface intentionally mirrors
+<a class="reference internal" href="#pysat.card.ITotalizer" title="pysat.card.ITotalizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ITotalizer</span></code></a>’s.</p>
+<p>The constructor of the class object takes 3 default arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lits</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – a list of literals to sum.</p></li>
+<li><p><strong>ubound</strong> (<em>int</em>) – the largest potential bound to use.</p></li>
+<li><p><strong>top_id</strong> (<em>integer</em><em> or </em><em>None</em>) – top variable identifier used so far.</p></li>
+</ul>
+</dd>
+</dl>
+<p>The encoding of the current counter can be accessed with the use of
+<a class="reference internal" href="formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a> variable stored as <code class="docutils literal notranslate"><span class="pre">self.cnf</span></code>. Potential bounds <strong>are
+not</strong> imposed by default but can be added as unit clauses in the final
+CNF formula. The bounds are stored in the list of Boolean variables as
+<code class="docutils literal notranslate"><span class="pre">self.rhs</span></code>. A concrete bound <span class="math notranslate nohighlight">\(k\)</span> can be enforced by
+considering a unit clause <code class="docutils literal notranslate"><span class="pre">-self.rhs[k]</span></code>. <strong>Note</strong> that
+<code class="docutils literal notranslate"><span class="pre">-self.rhs[0]</span></code> enforces all literals of the sum to be <em>false</em>.</p>
+<p>An <a class="reference internal" href="#pysat.card.ISeqCounter" title="pysat.card.ISeqCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">ISeqCounter</span></code></a> object should be deleted if it is not needed
+anymore.</p>
+<p>Possible usage of the class is shown below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.card</span><span class="w"> </span><span class="kn">import</span> <span class="n">ISeqCounter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">ISeqCounter</span><span class="p">(</span><span class="n">lits</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">ubound</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
+<span class="go">[[-1, 4], [-4, 5], [-2, 5], [-5, 6], [-3, 6], [-4, -2, 7], [-7, 8], [-5, -3, 8]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">rhs</span><span class="p">)</span>
+<span class="go">[6, 8]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.card.ISeqCounter.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.card.ISeqCounter.delete" title="Link to this definition">#</a></dt>
+<dd><p>Destroys a previously constructed <a class="reference internal" href="#pysat.card.ISeqCounter" title="pysat.card.ISeqCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">ISeqCounter</span></code></a> object.
+Internal variables <code class="docutils literal notranslate"><span class="pre">self.cnf</span></code> and <code class="docutils literal notranslate"><span class="pre">self.rhs</span></code> get cleaned.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.card.ISeqCounter.get_constraint">
+<span class="sig-name descname"><span class="pre">get_constraint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prefix_len</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bound</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.card.ISeqCounter.get_constraint" title="Link to this definition">#</a></dt>
+<dd><p>Get the literal whose negation requires that the sum of the first
+<code class="docutils literal notranslate"><span class="pre">prefix_len</span></code> literals of <code class="docutils literal notranslate"><span class="pre">self.lits</span></code> is at most <code class="docutils literal notranslate"><span class="pre">bound</span></code>.
+This lets a caller reuse the internal state of a partially-built
+counter as a standalone constraint, rather than only ever
+asserting the counter’s own top-level bound in <code class="docutils literal notranslate"><span class="pre">self.rhs</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prefix_len</strong> (<em>int</em>) – length of the prefix of <code class="docutils literal notranslate"><span class="pre">self.lits</span></code> to sum.</p></li>
+<li><p><strong>bound</strong> (<em>int</em>) – an upper bound already covered by the counter, i.e.
+<code class="docutils literal notranslate"><span class="pre">bound</span> <span class="pre">&lt;</span> <span class="pre">len(self.rhs)</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the requested literal, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if <code class="docutils literal notranslate"><span class="pre">prefix_len</span></code> and
+<code class="docutils literal notranslate"><span class="pre">bound</span></code> do not satisfy <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">&lt;=</span> <span class="pre">bound</span> <span class="pre">&lt;</span> <span class="pre">len(self.rhs)</span></code> and
+<code class="docutils literal notranslate"><span class="pre">bound</span> <span class="pre">&lt;</span> <span class="pre">prefix_len</span> <span class="pre">&lt;=</span> <span class="pre">len(self.lits)</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.card.ISeqCounter.increase">
+<span class="sig-name descname"><span class="pre">increase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ubound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.card.ISeqCounter.increase" title="Link to this definition">#</a></dt>
+<dd><p>Increases a potential upper bound that can be imposed on the
+literals in the sum of an existing <a class="reference internal" href="#pysat.card.ISeqCounter" title="pysat.card.ISeqCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">ISeqCounter</span></code></a> object to
+a new value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ubound</strong> (<em>int</em>) – a new upper bound.</p></li>
+<li><p><strong>top_id</strong> (<em>integer</em><em> or </em><em>None</em>) – a new top variable identifier.</p></li>
+</ul>
+</dd>
+</dl>
+<p>The top identifier <code class="docutils literal notranslate"><span class="pre">top_id</span></code> applied only if it is greater than
+the one used in <code class="docutils literal notranslate"><span class="pre">self</span></code>.</p>
+<p>This method creates additional clauses encoding the existing
+counter up to the new upper bound given and appends them to
+the list of clauses of <a class="reference internal" href="formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a> <code class="docutils literal notranslate"><span class="pre">self.cnf</span></code>. The number of
+newly created clauses is stored in variable <code class="docutils literal notranslate"><span class="pre">self.nof_new</span></code>.</p>
+<p>Also, a list of bounds <code class="docutils literal notranslate"><span class="pre">self.rhs</span></code> gets increased and its length
+becomes <code class="docutils literal notranslate"><span class="pre">ubound+1</span></code>.</p>
+<p>The method can be used in the following way:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.card</span><span class="w"> </span><span class="kn">import</span> <span class="n">ISeqCounter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">ISeqCounter</span><span class="p">(</span><span class="n">lits</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">ubound</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
+<span class="go">[[-1, 4], [-4, 5], [-2, 5], [-5, 6], [-3, 6], [-4, -2, 7], [-7, 8], [-5, -3, 8]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">rhs</span><span class="p">)</span>
+<span class="go">[6, 8]</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">increase</span><span class="p">(</span><span class="n">ubound</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">)</span>
+<span class="go">[[-1, 4], [-4, 5], [-2, 5], [-5, 6], [-3, 6], [-4, -2, 7], [-7, 8], [-5, -3, 8], [-7, -3, 9]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">cnf</span><span class="o">.</span><span class="n">clauses</span><span class="p">[</span><span class="o">-</span><span class="n">t</span><span class="o">.</span><span class="n">nof_new</span><span class="p">:])</span>
+<span class="go">[[-7, -3, 9]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">rhs</span><span class="p">)</span>
+<span class="go">[6, 8, 9]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysat.card.ISeqCounter.new">
+<span class="sig-name descname"><span class="pre">new</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ubound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.card.ISeqCounter.new" title="Link to this definition">#</a></dt>
+<dd><p>The actual constructor of <a class="reference internal" href="#pysat.card.ISeqCounter" title="pysat.card.ISeqCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">ISeqCounter</span></code></a>. Invoked from
+<code class="docutils literal notranslate"><span class="pre">self.__init__()</span></code>. Creates an object of <a class="reference internal" href="#pysat.card.ISeqCounter" title="pysat.card.ISeqCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">ISeqCounter</span></code></a>
+given a list of literals in the sum, the largest potential bound
+to consider, as well as the top variable identifier used so far.
+See the description of <a class="reference internal" href="#pysat.card.ISeqCounter" title="pysat.card.ISeqCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">ISeqCounter</span></code></a> for details.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -919,6 +1049,13 @@ different from <code class="docutils literal notranslate"><span class="pre">1</s
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.card.EncType"><code class="docutils literal notranslate"><span class="pre">EncType</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.card.ISeqCounter"><code class="docutils literal notranslate"><span class="pre">ISeqCounter</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.card.ISeqCounter.delete"><code class="docutils literal notranslate"><span class="pre">ISeqCounter.delete()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.card.ISeqCounter.get_constraint"><code class="docutils literal notranslate"><span class="pre">ISeqCounter.get_constraint()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.card.ISeqCounter.increase"><code class="docutils literal notranslate"><span class="pre">ISeqCounter.increase()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.card.ISeqCounter.new"><code class="docutils literal notranslate"><span class="pre">ISeqCounter.new()</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.card.ITotalizer"><code class="docutils literal notranslate"><span class="pre">ITotalizer</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.card.ITotalizer.delete"><code class="docutils literal notranslate"><span class="pre">ITotalizer.delete()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.card.ITotalizer.extend"><code class="docutils literal notranslate"><span class="pre">ITotalizer.extend()</span></code></a></li>
