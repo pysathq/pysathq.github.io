@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>SAT solvers’ API (pysat.solvers) &#8212; PySAT 1.9.dev19 documentation</title>
+    <title>SAT solvers’ API (pysat.solvers) &#8212; PySAT 1.9.dev21 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../_static/documentation_options.js?v=c13a7a99"></script>
+    <script src="../_static/documentation_options.js?v=4ff9395a"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
@@ -121,8 +121,8 @@
       
     
     
-    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.9.dev19 documentation - Home"/>
-    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.9.dev19 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.9.dev21 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.9.dev21 documentation - Home"/>
   
   
 </a></div>
@@ -134,7 +134,7 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.9.dev19)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.9.dev21)</strong></a></div>
       
     </div>
     
@@ -254,7 +254,7 @@
           
           
             <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.9.dev19)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.9.dev21)</strong></a></div>
           
         
       </div>
@@ -1124,6 +1124,56 @@ clause until no more models of the formula exist.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="pysat.solvers.Solver.flip_bits">
+<span class="sig-name descname"><span class="pre">flip_bits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assumptions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preferences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">budget</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.flip_bits" title="Link to this definition">#</a></dt>
+<dd><p>Run a “bit flipper” a.k.a. local search (based on CaDiCaL’s
+ProbSAT-like walker) aiming at a model of the formula that
+minimizes its <em>cost</em> with respect to a set of weighted literal
+preferences, i.e. the sum of the weights of the preferred literals
+falsified by the model. The method returns a pair of a model and
+its cost, or <code class="docutils literal notranslate"><span class="pre">(None,</span> <span class="pre">None)</span></code> if no model is found.</p>
+<p>Preferences are given as a dictionary mapping literals to their
+non-negative integer weights (both polarities of a variable can
+be preferred). The preferences are kept between the calls unless
+new ones are provided. The search is limited by a <code class="docutils literal notranslate"><span class="pre">budget</span></code>
+given in CaDiCaL’s local search <em>ticks</em> (a measure of memory
+accesses).</p>
+<p><strong>Note</strong> that all the clauses removed by preprocessing (see
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">Cadical300.process()</span></code>) are restored by the method.</p>
+<p><strong>Note</strong> that only <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical300</span></code> supports this
+functionality, without external propagators (and so without
+native cardinality constraints).</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This prototype implementation has been written by an LLM. So
+use at your own risk!</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>assumptions</strong> (<em>iterable</em><em>(</em><em>int</em><em>)</em>) – a list of assumption literals.</p></li>
+<li><p><strong>preferences</strong> (<em>dict</em><em>(</em><em>int</em><em>, </em><em>int</em><em>)</em>) – weighted preferred literals.</p></li>
+<li><p><strong>budget</strong> (<em>int</em>) – limit on the number of ticks.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple(list(int), int) or tuple(None, None).</p>
+</dd>
+</dl>
+<p>Usage example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.solvers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Solver</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Solver</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'cd30'</span><span class="p">,</span> <span class="n">bootstrap_with</span><span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]])</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">solve</span><span class="p">())</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">flip_bits</span><span class="p">(</span><span class="n">preferences</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">3</span><span class="p">}))</span>
+<span class="gp">...</span>
+<span class="go">True</span>
+<span class="go">([1, -2], 3)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="pysat.solvers.Solver.get_core">
 <span class="sig-name descname"><span class="pre">get_core</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysat.solvers.Solver.get_core" title="Link to this definition">#</a></dt>
 <dd><p>This method is to be used for extracting an unsatisfiable core in
@@ -1840,6 +1890,7 @@ are also allowed</em>.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.disconnect_propagator"><code class="docutils literal notranslate"><span class="pre">Solver.disconnect_propagator()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.enable_propagator"><code class="docutils literal notranslate"><span class="pre">Solver.enable_propagator()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.enum_models"><code class="docutils literal notranslate"><span class="pre">Solver.enum_models()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.flip_bits"><code class="docutils literal notranslate"><span class="pre">Solver.flip_bits()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.get_core"><code class="docutils literal notranslate"><span class="pre">Solver.get_core()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.get_model"><code class="docutils literal notranslate"><span class="pre">Solver.get_model()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pysat.solvers.Solver.get_proof"><code class="docutils literal notranslate"><span class="pre">Solver.get_proof()</span></code></a></li>

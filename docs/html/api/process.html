@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Formula processing (pysat.process) &#8212; PySAT 1.9.dev19 documentation</title>
+    <title>Formula processing (pysat.process) &#8212; PySAT 1.9.dev21 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../_static/documentation_options.js?v=c13a7a99"></script>
+    <script src="../_static/documentation_options.js?v=4ff9395a"></script>
     <script src="../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/process';</script>
@@ -120,8 +120,8 @@
       
     
     
-    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.9.dev19 documentation - Home"/>
-    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.9.dev19 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.9.dev21 documentation - Home"/>
+    <img src="../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.9.dev21 documentation - Home"/>
   
   
 </a></div>
@@ -133,7 +133,7 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.9.dev19)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.9.dev21)</strong></a></div>
       
     </div>
     
@@ -253,7 +253,7 @@
           
           
             <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.9.dev19)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.9.dev21)</strong></a></div>
           
         
       </div>
@@ -396,8 +396,8 @@
 </section>
 <section id="module-description">
 <h2>Module description<a class="headerlink" href="#module-description" title="Link to this heading">#</a></h2>
-<p>This module provides access to the preprocessor functionality of <a class="reference external" href="https://github.com/arminbiere/cadical">CaDiCaL
-1.5.3</a>. It can be used to
+<p>This module provides access to the preprocessor functionality of <a class="reference external" href="https://github.com/arminbiere/cadical">CaDiCaL</a>, version 1.5.3 by default
+(versions 1.9.5 and 3.0.0 can be selected instead). It can be used to
 process <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> (also see references therein) a given CNF formula and output
 a another formula, which is guaranteed to be <em>equisatisfiable</em> with the
 original formula. The processor can be invoked for a user-provided number
@@ -458,13 +458,23 @@ are used.)</p>
 </section>
 <dl class="py class">
 <dt class="sig sig-object py" id="pysat.process.Processor">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.process.</span></span><span class="sig-name descname"><span class="pre">Processor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bootstrap_with</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.process.Processor" title="Link to this definition">#</a></dt>
-<dd><p>This class provides interface to CaDiCaL’s preprocessor. The only
-input parameter is <code class="docutils literal notranslate"><span class="pre">bootstrap_with</span></code>, which is expected to be a
-<a class="reference internal" href="formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a> formula or a list (or iterable) of clauses.</p>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pysat.process.</span></span><span class="sig-name descname"><span class="pre">Processor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bootstrap_with</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">engine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cd15'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.process.Processor" title="Link to this definition">#</a></dt>
+<dd><p>This class provides interface to CaDiCaL’s preprocessor. The input
+parameters are <code class="docutils literal notranslate"><span class="pre">bootstrap_with</span></code>, which is expected to be a
+<a class="reference internal" href="formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a> formula or a list (or iterable) of clauses, and
+<code class="docutils literal notranslate"><span class="pre">engine</span></code>, which is the name of a CaDiCaL version to use, i.e. one of
+the names of <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical153</span></code> (default), <code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical195</span></code>, and
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Cadical300</span></code>. Note that preprocessing in CaDiCaL 1.9.5 should
+not differ from that of CaDiCaL 1.5.3, as the two versions apply the
+same techniques. In contrast, CaDiCaL 3.0.0 additionally applies
+congruence closure, SAT sweeping, and binary clause backbone
+computation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>bootstrap_with</strong> (<a class="reference internal" href="formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a> or iterable(iterable(int))) – a list of clauses for processor initialization.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bootstrap_with</strong> (<a class="reference internal" href="formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a> or iterable(iterable(int))) – a list of clauses for processor initialization.</p></li>
+<li><p><strong>engine</strong> (<em>str</em>) – name of the CaDiCaL version to use</p></li>
+</ul>
 </dd>
 </dl>
 <p>Once created and used, a processor must be deleted with the
@@ -482,7 +492,7 @@ reconstruction is lost.)</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.process</span><span class="w"> </span><span class="kn">import</span> <span class="n">Processor</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pysat.solvers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Solver</span>
 <span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">processor</span> <span class="o">=</span> <span class="n">Processor</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">processor</span> <span class="o">=</span> <span class="n">Processor</span><span class="p">(</span><span class="n">bootstrap_with</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]],</span> <span class="n">engine</span><span class="o">=</span><span class="s1">'cd195'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">processor</span><span class="o">.</span><span class="n">append_formula</span><span class="p">([[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">processor</span><span class="o">.</span><span class="n">add_clause</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt;</span>
@@ -557,11 +567,14 @@ status equals <code class="docutils literal notranslate"><span class="pre">True<
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pysat.process.Processor.process">
-<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cover</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decompose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">probe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">probehbr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subsume</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vivify</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freeze</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.process.Processor.process" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backbone</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">congruence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cover</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decompose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">probe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">probehbr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subsume</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sweep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ternary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transred</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vivify</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freeze</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysat.process.Processor.process" title="Link to this definition">#</a></dt>
 <dd><p>Runs CaDiCaL’s preprocessor for the internal formula for a given
 number of rounds and using the techniques specified in the
 arguments. Note that the default values of all the arguments used
-are set as in the default configuration of CaDiCaL 1.5.3.</p>
+are set as in the default configuration of CaDiCaL 1.5.3 and
+3.0.0. Arguments <code class="docutils literal notranslate"><span class="pre">backbone</span></code>, <code class="docutils literal notranslate"><span class="pre">congruence</span></code>, and <code class="docutils literal notranslate"><span class="pre">sweep</span></code> are
+used by CaDiCaL 3.0.0 only, as the older versions do not support
+these techniques.</p>
 <p>As the result, the method returns a <a class="reference internal" href="formula.html#pysat.formula.CNF" title="pysat.formula.CNF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CNF</span></code></a> object
 containing the processed formula. Additionally to the clauses, the
 formula contains a <code class="docutils literal notranslate"><span class="pre">status</span></code> variable, which is set to <code class="docutils literal notranslate"><span class="pre">False</span></code>
@@ -574,7 +587,11 @@ of other preprocessing techniques. For instance, subsumed, blocked
 and covered clause elimination is invoked only if bounded variable
 elimination is active. Subsumption elimination in turn may trigger
 vivification and transitive reduction if the corresponding flags
-are set.</p>
+are set. Also, in CaDiCaL 3.0.0, flag <code class="docutils literal notranslate"><span class="pre">probe</span></code> controls only
+failed literal probing while the other techniques applied along
+with probing are controlled by their own flags. Flag <code class="docutils literal notranslate"><span class="pre">elim</span></code>
+there controls both bounded variable elimination and its fast
+variant applied at the beginning of preprocessing.</p>
 <p>Finally, note that the <code class="docutils literal notranslate"><span class="pre">freeze</span></code> argument can be used to keep
 some of the variables of the original formula unchanged during
 preprocessing. If convenient, the list may contain literals too
@@ -583,14 +600,19 @@ preprocessing. If convenient, the list may contain literals too
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>rounds</strong> (<em>int</em>) – number of preprocessing rounds</p></li>
+<li><p><strong>backbone</strong> (<em>bool</em>) – compute backbones of the binary clauses (CaDiCaL 3.0.0 only)</p></li>
 <li><p><strong>block</strong> (<em>bool</em>) – apply blocked clause elimination</p></li>
-<li><p><strong>cover</strong> (<em>bool</em>) – apply covered clause elimination</p></li>
 <li><p><strong>condition</strong> (<em>bool</em>) – detect conditional autarkies and apply globally-blocked clause elimination</p></li>
+<li><p><strong>congruence</strong> (<em>bool</em>) – detect AND, XOR, and ITE gates and merge equivalent gate outputs (CaDiCaL 3.0.0 only)</p></li>
+<li><p><strong>cover</strong> (<em>bool</em>) – apply covered clause elimination</p></li>
 <li><p><strong>decompose</strong> (<em>bool</em>) – detect strongly connected components (SCCs) in the binary implication graph (BIG) and apply equivalent literal substitution (ELS)</p></li>
 <li><p><strong>elim</strong> (<em>bool</em>) – apply bounded variable elimination</p></li>
 <li><p><strong>probe</strong> (<em>bool</em>) – apply failed literal probing</p></li>
 <li><p><strong>probehbr</strong> (<em>bool</em>) – learn hyper binary resolvents while probing</p></li>
 <li><p><strong>subsume</strong> (<em>bool</em>) – apply global forward clause subsumption</p></li>
+<li><p><strong>sweep</strong> (<em>bool</em>) – apply SAT sweeping to detect equivalent literals and backbones (CaDiCaL 3.0.0 only)</p></li>
+<li><p><strong>ternary</strong> (<em>bool</em>) – apply hyper ternary resolution</p></li>
+<li><p><strong>transred</strong> (<em>bool</em>) – apply transitive reduction of the binary implication graph (BIG)</p></li>
 <li><p><strong>vivify</strong> (<em>bool</em>) – apply clause vivification</p></li>
 <li><p><strong>freeze</strong> (<em>list</em><em>(</em><em>int</em><em>) or </em><em>any iterable</em><em>(</em><em>int</em><em>)</em>) – a list of variables / literals to be kept during preprocessing</p></li>
 </ul>

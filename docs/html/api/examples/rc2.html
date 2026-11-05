@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>RC2 MaxSAT solver (pysat.examples.rc2) &#8212; PySAT 1.9.dev19 documentation</title>
+    <title>RC2 MaxSAT solver (pysat.examples.rc2) &#8212; PySAT 1.9.dev21 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../../_static/documentation_options.js?v=c13a7a99"></script>
+    <script src="../../_static/documentation_options.js?v=4ff9395a"></script>
     <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
@@ -121,8 +121,8 @@
       
     
     
-    <img src="../../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.9.dev19 documentation - Home"/>
-    <img src="../../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.9.dev19 documentation - Home"/>
+    <img src="../../_static/logo-dark.svg" class="logo__image only-light" alt="PySAT 1.9.dev21 documentation - Home"/>
+    <img src="../../_static/logo-dark.svg" class="logo__image only-dark pst-js-only" alt="PySAT 1.9.dev21 documentation - Home"/>
   
   
 </a></div>
@@ -134,7 +134,7 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.9.dev19)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.9.dev21)</strong></a></div>
       
     </div>
     
@@ -254,7 +254,7 @@
           
           
             <div class="navbar-item"><!-- This will display the version of the docs -->
-<a href=><strong>PySAT Documentation (version 1.9.dev19)</strong></a></div>
+<a href=><strong>PySAT Documentation (version 1.9.dev21)</strong></a></div>
           
         
       </div>
@@ -651,6 +651,9 @@ clause is hard).</p>
 <p>Also note that besides pure clauses, the method can also expect
 native cardinality constraints represented as a pair <code class="docutils literal notranslate"><span class="pre">(lits,</span>
 <span class="pre">bound)</span></code>. Only hard cardinality constraints can be added.</p>
+<p>Finally, note that clauses cannot be safely added if formula
+processing is used (see parameter <code class="docutils literal notranslate"><span class="pre">process</span></code>) as they may
+refer to variables eliminated by the processor.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -806,7 +809,8 @@ models corresponding to different maximal satisfiable subsets
 (MSSes) or minimal correction subsets (MCSes). To block MSSes, one
 should set the <code class="docutils literal notranslate"><span class="pre">block</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">1</span></code>. To block MCSes, set
 it to <code class="docutils literal notranslate"><span class="pre">-1</span></code>. By the default (for blocking MaxSAT models),
-<code class="docutils literal notranslate"><span class="pre">block</span></code> is set to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">block</span></code> is set to <code class="docutils literal notranslate"><span class="pre">0</span></code>. Note that if formula processing is
+used (see parameter <code class="docutils literal notranslate"><span class="pre">process</span></code>), only MCSes can be blocked.</p>
 <p>This MaxSAT enumeration call can be asynchronously interrupted, in
 which case the value of <code class="docutils literal notranslate"><span class="pre">expect_interrupt</span></code> must be set to
 <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
@@ -1139,7 +1143,8 @@ details.</p>
 to optimization levels up to the newly computed level. It
 also reactivates previously deactivated clauses (see
 <a class="reference internal" href="#examples.rc2.RC2Stratified.process_sels" title="examples.rc2.RC2Stratified.process_sels"><code class="xref py py-func docutils literal notranslate"><span class="pre">process_sels()</span></code></a> and <a class="reference internal" href="#examples.rc2.RC2Stratified.process_sums" title="examples.rc2.RC2Stratified.process_sums"><code class="xref py py-func docutils literal notranslate"><span class="pre">process_sums()</span></code></a> for
-details).</p>
+details). Clauses whose weight exceeds the gap between
+the upper and lower bounds are hardened instead.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1160,7 +1165,8 @@ activates more soft clauses by invoking
 <dd><p>This method does postprocessing of the current
 optimization level after it is solved. This includes
 <em>hardening</em> some of the soft clauses (depending on their
-remaining weights) and also garbage collection.</p>
+remaining weights) and also garbage collection. The
+level’s model is used to tighten the upper bound.</p>
 </dd></dl>
 
 <dl class="py method">
